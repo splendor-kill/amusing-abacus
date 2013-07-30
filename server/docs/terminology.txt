@@ -1,0 +1,57 @@
+nihil               虚空
+hostile             敌对的
+natural             中立
+cocoon              网络封包
+heartbeat           心跳
+treasure            宝物
+knapsack            背包 
+stash
+unit stats
+artifact
+creature
+spell
+specialty
+take off
+put on
+
+strengthen          强化
+blacklist           黑名单
+reputation          声望，威望
+loyalty             忠诚度，民心
+atlas               地图
+aggressor           战争发动者，入侵者，攻方
+offensive           攻势
+defensive           守势
+trophy              战利品，战争收获
+score               得分
+rank                排名
+bonus               奖励，奖金，附加红利
+FFA                 free for all
+FPS                 frame-per-second
+NOP                 no-operation
+NPC                 no-player-charactor
+
+
+engage              交战
+designation         番号
+reorganization      整编
+battlefront         前线
+vanguard            前锋
+flank               侧翼
+outflank            包抄
+
+theater
+army group
+army
+corps
+division
+brigade
+regiment
+battalion
+company
+platoon
+squad
+fireteam
+
+
+

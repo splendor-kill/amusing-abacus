@@ -1,0 +1,172 @@
+import "ProtoBasis.proto";
+
+package com.tentacle.trickraft.protocol;
+
+
+//管理者凭证
+message Warrant {
+    optional string admin_name          = 1;    //管理者名字
+    optional string cachet              = 2;    //授权文件, 管理者公钥
+}
+
+//重新加载配置, 以 CommonAnswer 回复
+message SysReloadCfg {
+    optional Instruction cmd            = 1;    //SYS_RELOAD_CFG
+    optional Warrant proof              = 2;    //凭证
+    
+    optional string which_cfg           = 4;    //重新加载哪个配置，为空时表示所有
+}
+
+//SYS_POST, 发布公告
+message SysPost {
+    optional Instruction cmd            = 1;    //
+    optional Warrant proof              = 2;    //凭证
+    
+    optional string content             = 3;    //内容
+}
+
+//SYS_PRESENT_GIFT, SYS_PRESENT_GIFT_AL 赠送礼物, 以 CommonAnswer 回复
+message SysPresentGift {
+    optional Instruction cmd                = 1;    //
+    optional Warrant proof                  = 2;    //凭证
+    
+    repeated string name                    = 4;    //玩家名或联盟名，为空表示所有   
+    
+    message Gift {
+        optional int32 cfg_no               = 1;    //配置序号
+        optional int32 amount               = 2;    //数量
+        optional int32 equip_strengthen_lv  = 3;    //装备强化等级
+        repeated ResAmount res              = 4;    //资源
+        optional int32 reputation           = 5;    //声望
+    }
+    
+    repeated Gift gifts                     = 5;    //礼物
+    repeated int64 doneeId                  = 6;    //玩家id或联盟id
+}
+
+//SYS_EXIT, 以 CommonAnswer 回复
+//SYS_IF_SERVER_DEAD, 以 SysQueryDeadAns 回复
+message SysCommonReq {
+    optional Instruction cmd                = 1;    //
+    optional Warrant proof                  = 2;    //凭证
+}
+
+//查询服务器是否死掉了
+message SysQueryDeadAns {
+    optional Instruction cmd            = 1;
+    optional eErrorCode err_code        = 2;    //错误码
+    
+    optional int32 cur_size_msg_queue   = 3;    //消息队列大小
+}
+
+//发送邮件, 以 CommonAnswer 回复
+message SysSendMail {
+    optional Instruction cmd    = 1;    //SYS_SEND_MAIL
+    optional Warrant proof      = 2;    //凭证
+
+    optional string from        = 3;    //发送者
+    optional int64 time         = 4;    //发送时间点, millisecond
+    optional string subject     = 5;    //主题
+    optional string content     = 6;    //内容
+    repeated string to          = 7;    //接受者
+}
+
+//获取可重加载的配置列表, 以 SysCommonReq 请求, 以此结构回复
+message SysGetReloadables {
+    optional Instruction cmd        = 1;    //SYS_GET_RELOADABLES
+    optional eErrorCode err_code    = 2;    //错误码
+
+    repeated string cfgs            = 3;    //可重加载的配置列表
+}
+
+//限制恶意玩家和恶意行为, 以 CommonAnswer 回复
+message SysLimitPlayerBehavior {
+    optional Instruction cmd        = 1;    //SYS_KICK_PLAYER, SYS_SHUT_UP
+    optional Warrant proof          = 2;    //凭证
+    
+    optional int64 player_id        = 3;    //限制谁？
+    optional int64 begin_ban_time   = 4;    //限制开始时间
+    optional int64 end_ban_time     = 5;    //限制结束时间
+    optional string memo            = 6;    //备注，如为什么要禁止他，他做了什么？
+    optional string supervisor      = 7;    //操作者
+}
+
+//用于Login-Server与Game-Server间的通信, 以 SysGetSessionAns 回复
+message SysGetSession {
+    optional Instruction cmd    = 1;    //SYS_GET_SESSION
+    optional Warrant proof      = 2;    //凭证
+
+    optional int32 server_id    = 3;    //哪个游戏服务器
+    optional int32 user_id      = 4;    //要获得谁的session
+
+}
+
+//
+message SysGetSessionAns {
+    optional Instruction cmd            = 1;
+    optional eErrorCode err_code        = 2;
+    
+    optional int32 user_id              = 3;    //
+    optional string session_key         = 4;    //登录服务器给的会话密钥
+    optional int64 time_stamp           = 5;    //时间戳
+}
+
+
+//GM聊天请求, 以 SysGmTalkAns 回复
+message SysGmTalk {
+    optional Instruction cmd            = 1;    //SYS_GM_TALK
+    optional Warrant proof              = 2;    //凭证
+    
+    optional string game_master         = 3;    //gm名
+}
+
+message SysGmTalkAns {
+    optional Instruction cmd            = 1;
+    optional eErrorCode err_code        = 2;
+    optional int64 game_master_id       = 3;
+}
+    
+//更新游戏服务器状态到登录服务器
+message SysRefreshServerStatus {
+    optional Instruction cmd            = 1;    //SYS_REFRESH_SERVER_STATUS
+    optional Warrant proof              = 2;    //凭证
+    
+    optional int32 server_id            = 3;    //
+    optional int32 busy_degree          = 4;    //繁忙程度，RUN_WELL 0; FULL 1; BUSY 2; HALTED 3
+}
+
+
+//SYS_QUERY_ONLINERS，以SysCommonReq请求，以此结构回复
+//SYS_QUERY_ALLIES，以SysCommonReq请求，以此结构回复
+message SysOnliners {
+    optional Instruction cmd            = 1;
+    optional eErrorCode err_code        = 2;    
+    message SimpleInfo {
+        optional int64 id       = 1;
+        optional string name    = 2;
+    }
+    repeated SimpleInfo info            = 3;
+}
+
+//解除对玩家的限制, 以 CommonAnswer 回复
+message SysUnblock {
+    optional Instruction cmd        = 1;    //SYS_UNBLOCK
+    optional Warrant proof          = 2;    //凭证
+    
+    optional int64 player_id        = 3;    //解禁谁的
+    optional eCommand behavior      = 4;    //什么行为？目前可填SYS_KICK_PLAYER, SYS_SHUT_UP
+    optional string supervisor      = 5;    //操作者
+}
+
+//密码重置
+message SysPwdReset {
+    optional Instruction cmd        = 1;    //SYS_RESET_PASSWORD
+    optional Warrant proof          = 2;    //凭证
+    
+    optional int32 user_id          = 3;    //账户id
+    optional string user_name       = 4;    //账户名
+    optional int64 player_id        = 5;    //玩家id
+    optional string player_name     = 6;    //玩家名
+    optional string new_pwd         = 7;    //新密码
+}
+

@@ -1,0 +1,848 @@
+package com.tentacle.trickraft.protocol;
+
+//兵种
+enum eForcesBranch
+{
+  FOOTMAN       = 0;  //步兵
+  CAVALRY       = 1;  //骑兵
+  ARCHER        = 2;  //弓箭兵
+  TANK          = 3;  //战车
+  FB_TOWER      = 4;  //箭塔, 箭楼
+  FB_PITFALL    = 5;  //陷阱
+}
+
+//tile类型
+enum eTileType {
+  NIHIL         = 0;  //虚无, 用于无效值
+  OPEN_SPACE    = 1;  //空地
+  FOREST        = 2;  //森林    |-WILDERNESS 野地
+  STONEMINE     = 3;  //石矿    |
+  FARMLAND      = 4;  //农田    |
+  IRONMINE      = 5;  //铁矿    |
+  MOUNTAIN_FORT = 6;  //山寨
+  BASE_CITY     = 7;  //主城    |-CITY 城池
+  TOWN          = 8;  //附属城  |
+  WATERS        = 9;  //水体
+}
+
+//资源类型
+enum eResType
+{
+  RT_UNKNOWN    = 0;  //无效值
+  COPPER        = 1;  //铜币
+  WOOD          = 2;  //木材
+  STONE         = 3;  //石头
+  FOOD          = 4;  //食物
+  IRON          = 5;  //铁
+  GOLD          = 6;  //RMB
+  POPULATION    = 7;  //人口
+}
+
+//关系
+enum eRelationship {
+  UNKNOWN       = 0;  //未知
+  OWN           = 1;  //所有者
+  FRIEND        = 2;  //朋友
+  ALLIED        = 3;  //联盟
+  HOSTILE       = 4;  //敌对
+  NATURAL       = 5;  //中立
+  PRE_FRIEND    = 6;  //准朋友, 用于想交但没确认的情况
+}
+
+//建筑种类
+enum eBuildingCategory {
+  BASIC     = 0;  //基本建筑
+  MILITARY  = 1;  //军事
+}
+
+//建筑类型
+enum eBuildingType {
+  MANSION       = 0;  //官府, 控制人口上限, 铜钱上限与产量
+  LUMBERMILL    = 1;  //伐木场, 控制木材产量
+  QUARRY        = 2;  //采石场, 控制石头产量
+  SMELTRY       = 3;  //冶炼场, 控制铁产量
+  GRANGE        = 4;  //农场, 控制粮食产量
+  RESIDENCE     = 5;  //民居, 控制人口增长率
+  DEPOT         = 6;  //仓库, 控制木材,石头,铁,粮食上限
+  CELLAR        = 7;  //地窖, 用于保护资源
+  MARKET        = 8;  //市场
+  COLLEGE       = 9;  //书院, 学习科技, 仅在主城有
+  WORKSHOP      = 10; //工房, deprecated
+  MILL          = 11; //磨坊, deprecated
+  COTTAGE       = 12; //草庐(隐门), 学习阵法, HUT should be better, 仅在主城有
+
+  BARRACK       = 13; //兵营
+  WALL          = 14; //城墙, deprecated
+  TOWER         = 15; //箭塔, 箭楼
+  PITFALL       = 16; //陷阱
+
+  WORLD         = 17; //世界, 不可建, 只是作为其他建筑的参照系
+  CITY          = 18; //城市
+  BT_PARK       = 19; //公园
+  BT_POOL       = 20; //池塘
+}
+
+//领土、城市、Tile状态
+enum eCityStatus {
+  PEACEFUL      = 0;  //非战争
+  IN_BATTLE     = 1;  //战争
+}
+
+//科技
+enum eTech {
+  LUMBER_HARVESTING     = 0;  //伐木术
+  METALLURGY            = 1;  //冶炼术
+  EXCAVATION            = 2;  //挖掘术
+  IMPLANTATION          = 3;  //种植术
+  DETECTION             = 4;  //侦查术
+  MARCHING              = 5;  //行军术
+  ATTCKING              = 6;  //攻击术
+  DEFENSE               = 7;  //防卫术
+  CITY_DEFENSE          = 8;  //城防术
+  COINAGE               = 9;  //铸币术
+  MARKSMANSHIP          = 10; //射击术(+射程)
+}
+
+//技能
+enum eSkill {
+  OPEN_TREASURE_CHEST   = 0;  //开宝箱
+  LURK_MARCH            = 1;  //秘密行军
+  REJUVENATION          = 2;  //回春术
+  SKELETON_KEY          = 3;  //开地窖
+  PERSUASION            = 4;  //劝降
+}
+
+//物品类型
+enum eItemType {
+  IT_UNKNOWN        = 0;
+
+  WEAPON            = 1;  //武器                ---+
+  WAR_ART_BOOK      = 2;  //兵书                   |
+  ARMOR             = 3;  //盔甲                   +-装备(Equipment)
+  WAR_HORSE         = 4;  //战马                   |
+  JADE_DISK         = 5;  //玉璧                ---+
+
+  TREASURE_CHEST    = 6;  //宝箱(TreasureChest) ---+
+  KEY               = 7;  //钥匙(Treasure)         +-道具(Props)
+  INTENSIFY_STONE   = 8;  //强化石(Treasure)    ---+
+
+  FOR_NOBLE_RANKING = 9;  //爵位类              ---+
+  COLLECTION        = 10; //收藏品                 +-宝物(Treasure)
+  FOR_FINISH_JOB    = 11; //任务类              ---+
+  
+  IT_GENERAL        = 12; //通用的              ---|-道具(Props)
+  
+}
+
+//消息类型
+enum eInfoType {
+    MT_UNKNOWN              = 0;  //未知
+    BATTLE_REPORT           = 1;  //战斗报告
+    SYSTEM_EVENT            = 2;  //系统事件
+    ACTIVITY_MESSAGE        = 3;  //活动消息
+    ALLIANCE_MESSAGE        = 4;  //联盟消息
+    PLAYER_MESSAGE          = 5;  //玩家消息
+    EXPLORE_REPORT          = 6;  //探险消息
+    SEND_ENVOY_REPORT       = 7;  //出使消息
+    TRANSACTION_REPORT      = 8;  //交易报告
+    ALLIANCE_BATTLE_REPORT  = 9;  //联盟战斗报告
+    MOVE_TROOPS_REPORT      = 10; //派遣军队报告，复用Report
+    ALLIANCE_INVITE_MESSAGE = 11; //联盟邀请消息
+    TROOPS_ESCAPE_REPORT    = 12; //军队逃跑时的报告
+    CLIENT_FEEDBACK         = 13; //玩家反馈
+    PAYMENT_MESSAGE         = 14; //支付消息
+    ALLIANCE_TROOPS_ESCAPE  = 15; //联盟军队逃跑报告
+    FRIENDS_LETTER          = 16; //添加好友
+    MT_SHAKE_MONEY_TREE     = 17; //摇钱树消息
+    IN_GAME_POSTER          = 18; //游戏内公告
+    SCENARIO_BATTLE_REPORT  = 19; //挑战副本的战斗报告，复用Report
+}
+
+//阵法
+enum eBattleArray {
+  BA_NONE           = 0;   //没有
+  BA_FENGSHI        = 1;   //锋矢阵
+  BA_BAGUA          = 2;   //八卦阵
+  BA_CHANGSHE       = 3;   //长蛇阵
+  BA_YULIN          = 4;   //鱼鳞阵
+  BA_ZHUIXING       = 5;   //锥形阵
+}
+
+//布阵水平
+enum eTacticalDeployLevel {
+    UNLEARNED = 0;  //未学习
+    BEGINNER  = 1;  //初学
+    SKILLED   = 2;  //熟练
+    MASTER    = 3;  //精通
+}
+
+//建筑状态
+enum eBuildingState {
+    NORMAL      = 0;  //正常状态
+    UPGRADING   = 1;  //升级中
+    DESTROYED   = 2;  //已毁坏
+
+}
+
+//队列类型
+enum eQueueType {
+    Q_BUILD             = 0;   //建造队列
+    Q_UPGRADE           = 1;   //升级队列
+    Q_TRAINING          = 2;   //训练队列
+    Q_MILITARY          = 3;   //军事队列, 包括EXPLORE, SEND_ENVOY, OCCUPY, ATTACK, PLUNDER, MOVE_TROOPS
+}
+
+//玩家指令
+enum eCommand {
+    NOP                         = 0;    //no operation
+    LOGIN                       = 1;    //登录
+    REGISTER                    = 2;    //注册
+    HEARTBEAT                   = 3;    //心跳
+    JOIN                        = 4;    //加入游戏
+    GET_KINGDOM_INFO            = 5;    //得到王国信息
+    GET_BUILDING_INFO           = 6;    //请求获得建筑信息
+    GET_PLAYER_INFO             = 7;    //得到玩家信息
+    UPGRADE                     = 8;    //升级
+    GET_UPGRADE_STATUS          = 9;    //查询升级状态
+    BUILDX                      = 10;   //建造
+    SPEEDUP                     = 11;   //加速
+    CHAT                        = 12;   //聊天
+    GET_TASK_LIST               = 13;   //任务, deprecated
+    GET_RANK_INFO               = 14;   //排名
+    GET_MAILLIST                = 15;   //邮件列表
+    GET_TREASURE                = 16;   //宝物, deprecated
+    GET_KNAPSACK                = 17;   //背包, 以 PlayerInfoAnswer 回应, 但仅会填充其背包信息
+    MOVE_CAPITAL                = 18;   //迁城
+    SCOUT                       = 19;   //侦查
+    SEND_MESSAGE                = 20;   //发信
+    ATTACK                      = 21;   //进攻
+    HUNT                        = 22;   //打猎, deprecated
+    OCCUPY                      = 23;   //占领
+    COLLECT                     = 24;   //收藏, deprecated, 客户端实现
+    FIT_UP                      = 25;   //装备
+    STRENGTHEN                  = 26;   //强化
+    EXPLORE                     = 27;   //探险
+    SEND_ENVOY                  = 28;   //出使
+    PLUNDER                     = 29;   //掠夺
+    USE_SKILL_OPEN_CHEST        = 30;   //使用技能
+    GET_QUEUE                   = 31;   //队列
+    ADD_TO_QUEUE                = 32;   //添加到队列, deprecated
+    CANCEL_TASK                 = 33;   //取消某个任务
+    CREATE_ACTOR                = 34;   //创建角色
+    EXIT                        = 35;   //退出游戏
+    LOGOUT                      = 36;   //登出, deprecated
+    GET_TILES                   = 37;   //获得Tiles
+    GET_SERVER_LIST             = 38;   //获得服务器列表
+    GET_ACTORS                  = 39;   //获得角色列表, 角色即玩家
+    GET_LEADERS                 = 40;   //获得玩家的将领列表, deprecated
+    CHECK_ID                    = 41;   //加入游戏时做身份验证
+    END_EXPLORE                 = 42;   //结束探险
+    END_SEND_ENVOY              = 43;   //结束出使
+    GET_CITY_INFO               = 44;   //得到城市信息
+    GOODS_REQ                   = 45;   //获得商品请求
+    TRAINING_REQ                = 46;   //训练请求
+    MARK_AS_READ                = 47;   //标记信息已读
+    GET_EQUIPS_DETAIL           = 48;   //获得装备的详细信息, deprecated
+    ATTR_POINTS_ASSIGN_REQ      = 49;   //属性点分配请求
+    RESET_ATTR_POINTS           = 50;   //洗点, 以 CommonReq 请求, 以 CommonAnswer 回应
+    MOVE_TROOPS                 = 51;   //派遣军队, 用于目的地已经为自己占有时的军队调遣
+    WITHDRAW_TROOPS             = 52;   //从山寨或野地撤军
+    TRANSPORT_RES               = 53;   //输送资源
+    MAKE_FRIEND                 = 54;   //添加好友
+    DISSOLVE_FRIENDSHIP         = 55;   //解除朋友关系
+    BLIND_SEEK                  = 56;   //随便看看
+    GET_FANS                    = 57;   //获得想与你成为好友的玩家列表, 以 CommonReq 请求
+    REPLY_MAKE_FRIEND           = 58;   //答复交友请求
+    CONSIGN                     = 59;   //寄售
+    SELL_TO_SYS                 = 60;   //卖给系统
+    BUY                         = 61;   //买
+    SHOW_MERCHANDISE            = 62;   //展示寄售的商品
+    GET_ENABLED_JOBS            = 63;   //获得已开启的任务
+    GET_ACHIEVED_JOBS           = 64;   //获得已实现可以去领奖的任务
+    GET_FINISHED_JOBS           = 65;   //获得已领奖完成的任务, deprecated
+    FINISH_JOB                  = 66;   //完成任务, 领取奖励
+    GET_FRIENDS                 = 67;   //获得好友列表, 以 CommonReq 请求
+    GET_ACTOR_BY_NAME           = 68;   //根据名称查找玩家
+    CANCEL_CONSIGN              = 69;   //撤销寄售
+    GOODS_HOT_REQ               = 70;   //获得热卖商品请求
+    GOODS_NEW_REQ               = 71;   //获得新商品请求
+    GET_VAR_DAT_FOR_UPGRADE     = 72;   //获取易变的数据, 因升级而变的
+    GET_VAR_DAT_FOR_TRAINING    = 73;   //获取易变的数据, 因训练而变的
+    GET_VAR_DAT_FOR_MILITARY    = 74;   //获取易变的数据, 因军事行动而变的
+    GET_ADD_YIELD_SCHEMES       = 75;   //获取增强产量的方案列表
+    SELECT_ADD_YIELD_SCHEME     = 76;   //选择某种增强产量的方案
+    GET_VIP_SCHEMES             = 77;   //获取VIP方案列表
+    SELECT_VIP_SCHEME           = 78;   //选择某种VIP方案
+    CREATE_NEW_CITY             = 81;   //创建一个新附属城
+    SYNC_STH                    = 82;   //同步信息
+    BUY_RES_FROM_SYS_SHOP       = 83;   //从系统商城购买资源
+    GIVE_UP                     = 84;   //放弃占领的野地或山寨
+    GET_AVOID_WAR_SCHEMES       = 85;   //获取免战方案列表
+    SELECT_AVOID_WAR_SCHEME     = 86;   //选择某种免战方案
+    GET_RED_ALERT_MSGS          = 87;   //获得被攻击警报列表, 以 CommonReq 请求
+    WHERE_ARE_YOU               = 88;   //根据玩家名称或城市名称获得城市坐标
+    SET_NEWCOMER_GUIDE_INFO     = 89;   //设置新手引导信息, deprecated
+    GET_VERSION_INFO            = 90;   //获得版本信息
+    RESET_SKILL_POINTS          = 91;   //洗技能点
+    SEND_FEEDBACK               = 92;   //玩家反馈信息
+    AUTHENTICATE                = 93;   //第3方平台登录验证
+    RECHARGE                    = 94;   //充值
+    SET_DEFENSIVE_BATTLE_ARRAY  = 95;   //设置防御阵法
+    BUY_LOYALTY                 = 96;   //购买民心值
+    CANCEL_AVOID_WAR            = 97;   //取消免战, 以 CommonReq 请求
+    SET_NEWCOMER_GUIDE_INFO_V2  = 98;   //设置新手引导信息版本2
+    SAFE_JOIN                   = 99;   //安全加入游戏
+    FORWARDING_MAIL             = 100;  //转发邮件
+    GET_AUTO_BUY_FOOD_SCHEMES       = 101;  //获取自动购买粮食方案列表
+    SELECT_AUTO_BUY_FOOD_SCHEME     = 102;  //选择某种自动购买粮食方案
+    SET_SPEND_GOLD_AUTO_BUY_FOOD    = 103;  //是否使用黄金自动购买粮食
+    USE_ITEM                        = 104;  //使用道具
+    STRAIGHT_TO                     = 105;  //直接登录
+    BUY_SHAKE_MONEY_TREE            = 106;  //买摇钱树, 以 Buy 请求
+    GET_SHAKE_MONEY_TREE_MSG        = 107;  //获取摇钱树消息列表, 参考 Maillist
+    GET_ITEMS                       = 108;  //获取道具, 参考 GetItems
+    SET_NEWCOMER_GUIDE_INFO_V3      = 109;  //设置新手引导信息版本3, 参数参考NewcomerGuideInfoV2
+    GET_COMMODITY_IDS               = 110;  //获取商品id列表, 以 CommonReq 请求, 以 CommodityIdAns 回答
+    GET_COMMODITY_BY_CFGNO          = 111;  //根据cfgno获取系统商城里商品的信息, 参考 CommodityByCfgNoReq
+    GET_SCENARIO_INFO               = 112;  //获取副本信息, 以 CommonReq 请求, 以 ScenarioInfoAns 回答
+    CHALLENGE_SCENARIO              = 113;  //挑战副本
+    SELECT_RENEW_VIGOR_SCHEME       = 114;  //补充体力, 以 SelectPurchaseScheme 请求, 以 RenewVigorSchemeAns 回答
+    CRAFT_EQUIP                     = 115;  //打造装备, 以 EquipCraftReq 请求, 以 EquipCraftAns 回答
+    GET_ACTIVITIES                  = 116;  //获取活动列表, 以 CommonReq 请求, 以 MyActivities 回答
+    FINISH_ACTIVITY                 = 117;  //完成活动, 领取奖励, refer FinishJob
+            
+
+    PUSH_RED_ALERT_MSG                  = 802;  //推攻击警报
+    PUSH_MESSAGE                        = 804;  //SEND_MESSAGE目标方接收消息
+    PUSH_CHAT_CONTENT                   = 805;  //推送聊天内容
+    PUSH_REPLY_MAKE_FRIEND_REQ          = 806;  //推交友结果给请求者
+    PUSH_FANS_COMING                    = 807;  //有人请求加你为好友
+    PUSH_ENABLE_JOB                     = 808;  //开启新任务通知
+    PUSH_ACHIEVE_JOB                    = 809;  //某任务已实现可以去领奖的通知
+    PUSH_TROOPS_ARRIVED                 = 810;  //派遣军队到达的消息
+    PUSH_LEADER_UPGRADED                = 811;  //推将领升级消息, 带参数 ParamForUpgradeLevel
+    PUSH_YOU_CAN_GET_HIGHER_PEERAGE     = 812;  //你现在可以升级更高的爵位
+    PUSH_SOME_PEOPLE_RAN_AWAY           = 813;  //有些人逃跑了
+    PUSH_YOU_HAVE_NEW_MAIL              = 814;  //你有新邮件了
+    PUSH_LAND_LOST                      = 815;  //丢失了领地, 带参数 Param
+    PUSH_WILDERNESS_LEVEL_CHANGED       = 815;  //野地级别改变
+    PUSH_ALL_CLEAR                      = 816;  //警报解除, 带参数 ParamForAllClear
+    PUSH_BATTLE_REPORT                  = 817;  //战斗报告
+    PUSH_NEW_PEERAGE                    = 818;  //爵位升级了, 带参数 ParamForNewPeerage
+    PUSH_TRADE_REPORT                   = 819;  //交易报告, 带参数 Information
+    PUSH_LOSE_FRIEND                    = 820;  //你失去朋友了
+    PUSH_FORTUNE_FAVOR_FOOLS            = 821;  //推送 摇出了有价值的东西 的消息, 带参数 MyMessage
+    PUSH_BROADCAST                      = 822;  //广播游戏内消息
+    PUSH_SCENARIO_BATTLE_REPORT         = 823;  //副本战斗报告
+
+
+    SYS_RELOAD_CFG              = 1000;     //重新加载配置
+    SYS_EXIT                    = 1001;     //退出系统, 以 SysCommonReq 请求
+    SYS_IDLE                    = 1002;     //空转, 用于测试
+    SYS_POST                    = 1003;     //发布公告
+    SYS_QUERY_ONLINERS          = 1004;     //查询在线玩家
+    SYS_PRESENT_GIFT            = 1005;     //赠送
+    SYS_PRESENT_GIFT_AL         = 1006;     //联盟赠送
+    SYS_IF_SERVER_DEAD          = 1007;     //询问服务器是否死亡, 以 SysCommonReq 请求
+    SYS_SEND_MAIL               = 1008;     //发送邮件
+    SYS_GET_RELOADABLES         = 1009;     //获取可重加载的配置列表
+    SYS_KICK_PLAYER             = 1010;     //踢人
+    SYS_SHUT_UP                 = 1011;     //禁言
+    SYS_GET_SESSION             = 1012;     //获取session
+    SYS_GM_TALK                 = 1013;     //GM发言, for pc chat client
+    SYS_REFRESH_SERVER_STATUS   = 1014;     //更新游戏服务器状态到登录服务器
+    SYS_QUERY_ALLIES            = 1015;     //查询联盟
+    SYS_UNBLOCK                 = 1016;     //解禁, 参考 SysUnblock
+    SYS_END_BATTLE              = 1017;     //有战斗打完了
+    SYS_RESET_PASSWORD          = 1018;     //密码重置
+
+
+
+    AL_CREATE_ALLIANCE          = 2000;     //创建联盟
+    AL_DISSOLVE_ALLIANCE        = 2001;     //解散联盟
+    AL_AUDIT_MEMBER             = 2002;     //审核成员
+    AL_QUIT_ALLIANCE            = 2003;     //退出联盟
+    AL_DEMISE                   = 2004;     //转让盟主(禅让)
+    AL_PROMOTE_ASSISTANT        = 2005;     //提拔副盟主
+    AL_RETIRE_ASSISTANT         = 2006;     //撤销副盟主
+    AL_LAUNCH_WAR               = 2007;     //发动战争, deprecated
+    AL_JOIN_BATTLE              = 2008;     //参加战争, deprecated
+    AL_PAY_OFF                  = 2009;     //发工资啦, deprecated
+    AL_UPGRADE_TECH             = 2010;     //升级联盟科技
+    AL_UPGRADE_LEVEL            = 2011;     //联盟升级(研究)
+    AL_TRAIN_TROOPS             = 2012;     //训练联盟军队
+    AL_EXPEL_MEMBER             = 2013;     //驱逐盟员
+    AL_DONATE_RES               = 2014;     //捐献资源
+    AL_DONATE_ITEM              = 2015;     //捐献宝物, deprecated
+    AL_DONATE_CORPS             = 2016;     //捐献军队
+    AL_EXCHANGE_MATERIAL        = 2017;     //兑换联盟物资
+    AL_GET_SALARY               = 2018;     //领取联盟工资, deprecated
+    AL_RECRUIT_TROOPS           = 2019;     //招募军队, deprecated
+    AL_MUSTER_TROOPS            = 2020;     //集结军队, deprecated
+    AL_GET_ALLIANCE_INFO        = 2021;     //获取联盟信息
+    AL_GET_MEMBER_INFO          = 2022;     //获取联盟成员信息
+    AL_APPLY_TO_JOIN            = 2023;     //申请加入联盟
+    AL_INVITE_TO_JOIN           = 2024;     //邀请玩家加入联盟
+    AL_SCOUT                    = 2025;     //侦查
+    AL_ATTACK                   = 2026;     //进攻
+    AL_REINFORCE                = 2027;     //增援
+    AL_RECALL                   = 2028;     //召回增援的行进中的军队(作为一个整体召回)
+    AL_CEDE_LAND                = 2029;     //放弃领地
+    AL_SPEEDUP                  = 2030;     //加速
+    AL_BUY_RES                  = 2031;     //购买资源
+    AL_DELIVER                  = 2032;     //发送信件
+    AL_MODIFY_POSTER            = 2033;     //修改公告
+    AL_MODIFY_INTRO             = 2034;     //修改简介
+    AL_GET_APPLICANTS           = 2035;     //获得申请加入联盟的玩家列表
+    AL_GET_ALLIANCE_EVENTS      = 2036;     //获取联盟事件
+    AL_GET_ALLIANCE_ITEMS       = 2037;     //获取联盟物资
+    AL_GET_ALLIANCE_LIST        = 2038;     //获取联盟列表
+    AL_UPGRADE_BATTLE_ARRAY     = 2039;     //联盟升级阵法
+    AL_GET_ALLIANCE_INFO_BY_POS = 2040;     //按位置获取联盟信息
+    AL_GET_TERRITORY            = 2041;     //获取联盟地图
+    AL_GET_QUEUE                = 2042;     //获取联盟任务队列
+    AL_GET_VAR_DAT              = 2043;     //获取同步数据
+    AL_WITHDRAW                 = 2044;     //撤回驻守在某联盟领地的军队(可撤回部分兵力)
+    AL_GET_RED_ALERT_MSGS       = 2045;     //获得被攻击警报列表, 以 CommonReq 请求
+    AL_SET_DEFENSIVE_BATTLE_ARRAY       = 2046; //设置联盟防御阵法, refer SetDefensiveBattleArray
+    AL_SELECT_AUTO_BUY_FOOD_SCHEME      = 2047; //选择某种自动购买粮食方案, refer SelectPurchaseScheme
+    AL_SET_SPEND_GOLD_AUTO_BUY_FOOD     = 2048; //是否使用黄金自动购买粮食, refer SpendGoldAutoBuyFood
+    AL_FINISH_JOB                       = 2049; //完成任务, 领取奖励, refer FinishJob
+    AL_GET_JOBS                         = 2050; //获取联盟任务列表, refer GetEnabledJobs
+
+
+
+
+    AL_PUSH_AUDIT_RESULT                = 2500;     //推审核结果
+    AL_PUSH_APPOINT_DISMISS             = 2501;     //人事任免(副盟主提拔或撤销)通知
+    AL_PUSH_PAYCHECK_ARRIVED            = 2502;     //钱到账了
+    AL_PUSH_ALLIANCE_UPGRADED           = 2503;     //联盟升级了
+    AL_PUSH_YOU_EXPELLED                = 2504;     //你被驱逐了, 带参数 MyMessage
+    AL_PUSH_BE_INVITED                  = 2505;     //有人邀请你加入联盟
+    AL_PUSH_ALLIANCE_DISSOLVED          = 2506;     //你们联盟解散了
+    AL_PUSH_ALLIANCE_ATTACK             = 2507;     //联盟进攻了, 带参数 RedAlertMsg
+    AL_PUSH_NOTIFY_MANAGERS_TO_SYNC     = 2609;     //通知其他管理人员已做了某些操作, 带参数 CommonReq
+    AL_PUSH_SOME_PEOPLE_RAN_AWAY        = 2610;     //有些人逃跑了, 带参数 Information
+    AL_PUSH_RED_ALERT_MSG               = 2611;     //推攻击警报, 带参数 RedAlertMsg
+    AL_PUSH_NOTIFY_TO_SYNC              = 2612;     //通知盟员同步生产力
+    AL_PUSH_BATTLE_REPORT               = 2613;     //联盟战斗报告
+    AL_PUSH_ALL_CLEAR                   = 2614;     //警报解除, 带参数 ParamForAllClear
+    AL_PUSH_EASY_UP                     = 2615;     //放松, 不用去打仗了, 带参数 ParamForAllClear
+
+    
+    
+    
+
+}
+
+//错误码
+enum eErrorCode {
+    OK                                              = 0;
+    FAILED                                          = 1;
+    NO_ENOUGH_RES                                   = 2;    //资源不够
+    CANNOT_BUILT_HERE                               = 3;    //不能建在此位置
+    CANNOT_ATTACK                                   = 4;    //不能攻击
+    SERVER_FULL                                     = 5;    //服务器人满
+    SESSION_KEY_ERR                                 = 6;    //session key错误
+    IN_BLACKLIST                                    = 7;    //在黑名单中
+    CANNOT_MOVE_CAPITAL_HERE                        = 8;    //不能把城迁到这
+    QUEUEQ_FULL                                     = 9;    //队列满
+    ERR_NAME_OR_PASSWORD                            = 10;   //错误的用户名或密码
+    NAME_DUPLICATED                                 = 11;   //名称重复
+    NO_THIS_PLAYER                                  = 12;   //不存在这个玩家
+    REQUESTED_POSITION_NO_EXIST                     = 13;   //某些请求的位置不存在
+    NO_THIS_CITY                                    = 14;   //没有这座城
+    NO_THIS_BUILDING                                = 15;   //没有这个建筑
+    THE_BUILDINGS_WAS_CREATED                       = 16;   //已经建造了这个建筑
+    IT_WAS_BUILT_ANOTHER_OBJECT_AT_THIS_POSITION    = 17;   //此位置已经有了另一个建筑
+    NO_IMPLEMENTED                                  = 18;   //还没实现
+    WHO_ARE_YOU                                     = 19;   //你是谁？
+    NOT_ENOUGH_CORPS                                = 20;   //兵力不够
+    DEST_HAS_CHANGED                                = 21;   //目标地点已改变
+    LAUNCH_WAR_PRECONDITION_NOT_SATISFIED           = 22;   //不满足发动战争的条件
+    YOU_CANNOT_EXPLORE_HERE                         = 23;   //不能在此地探险
+    NO_THIS_TASK                                    = 24;   //没有这个任务
+    INTERNAL_ERROR                                  = 25;   //内部错误
+    YOU_CANNOT_SEND_ENVOY_TO_THERE                  = 26;   //不能出使到哪儿
+    YOU_HAVE_MISSION_TOO_MUCH_TODAY                 = 27;   //今天出使次数太多
+    YOU_CANNOT_OCCUPY_THERE                         = 28;   //你不能占有它
+    MISSION_FAILED_CAUSE_BY_RECALL_ENVOY            = 29;   //因主动召回引起出使任务失败
+    BROKEN_TIMER                                    = 30;   //坏了的表
+    NOT_ENOUGH_IDLE_PEOPLE                          = 31;   //空闲人口不够
+    THERE_IS_ANOTHER_CORPS_ON_TRAINING              = 32;   //另一支部队在训练中
+    OBSOLETED_COMMAND                               = 33;   //废弃的命令, 已经用别的命令取代了
+    TOO_MANY_WORDS                                  = 34;   //话太多
+    CANNOT_MOVE_YOUR_TROOPS_TO_OTHERS_LAND          = 35;   //不能派遣军队到别人的领地
+    NO_THIS_TREASURE_CHEST                          = 37;   //不存在此宝箱
+    YOU_HAVE_NO_EXPERIENCE_ABOUT_THE_SKILL          = 38;   //你还没学习此技能
+    NEED_HIGHER_LEVEL                               = 39;   //级别不够
+    NO_INFO_ABOUT_THIS_ITEM                         = 40;   //找不到此物品的配置信息
+    YOU_CAN_NOT_OPEN_THE_TREASURE_CHEST             = 41;   //不能打开这个宝箱
+    NOT_ENOUGH_SKILL_POINTS                         = 42;   //技能点不够
+    YOU_MASTER_TACTICIAN                            = 43;   //你已经是战术大师了, 布阵水平最高级
+    YOU_CANNOT_ORDER_ME                             = 44;   //你不能执行此命令
+    CANT_SCOUT_NON_CITY                             = 45;   //只能侦查城市
+    NO_THIS_JOB                                     = 46;   //没这个任务
+    ALLIANCE_NOT_FOUND                              = 47;   //没找到这个联盟
+    YOU_DONT_HAVE_PERMISSION                        = 48;   //不让你干这事, (-_-)', 用于联盟权限体系
+    YOU_DONT_HAVE_SATISFY_ME                        = 49;   //你没能满足我, 用于期望客户端输入的数据有误
+    NO_THIS_CORPS                                   = 50;   //没有此军队
+    CANT_SCOUT_THERE                                = 51;   //不能侦查那儿
+    CANNOT_CREATE_TOWN_ANY_MORE                     = 52;   //不能再建附属城了
+    YOU_ARE_NOT_OWNER_OF_THE_LAND                   = 53;   //你不是这的地主
+    UNKNOWN_SCHEME                                  = 54;   //未知的方案
+    DURING_AVOID_WAR_PERIOD                         = 55;   //免战期间
+    ANOTHER_TROOPS_HAS_BEEN_STATIONED               = 56;   //已有另一支军队驻扎了
+    TROOPS_ON_THE_WAY                               = 57;   //军队还在路上
+    CONFIGURE_FILE_CORRUPTED                        = 58;   //配置文件出错
+    TOO_MANY_TRADES                                 = 59;   //交易太多了
+    UNDER_WAR                                       = 60;   //战争期间
+    CANNOT_RECALL_TROOPS_IT_WAS_DECLARED_WAR        = 61;   //不能召回已宣战的军队
+    NO_THIS_ITEM                                    = 62;   //没有此道具
+    YOU_BEAT_OTHERS_RECENTLY                        = 63;   //你最近打了别人
+    ANOTHER_SAME_TASK_IS_RUNNING                    = 64;   //另一个相同类型的任务已经正在运行中
+    IT_WAS_TOP_LEVEL_ALREADY                        = 65;   //已经是顶级了, 不能再升了
+    NEED_MORE_INTENSIFY_STONE                       = 66;   //需要更多的强化石
+    NO_THIS_GOODS                                   = 67;   //没这个商品
+    CANNOT_BUILD_MILITARY_BUILDING_BEFORE_STUDY_CITY_DEFENSE    = 68;   //建造箭塔或陷阱前得学习城防术
+    CANNOT_UPDATE_MILITARY_BUILDING_BEFORE_UPDATE_CITY_DEFENSE  = 69;   //升级箭塔或陷阱前得升级城防术
+    ALLIANCE_WAS_CREATED                            = 70;   //联盟已创建，不能再创建了
+    NO_THIS_BATTLE_ARRAY                            = 71;   //没学此阵法
+    YOU_DONT_HAVE_TO_SPEEDUP                        = 72;   //没必要加速
+    PLAYER_OFFLINE                                  = 76;   //玩家不在线
+    CANNOT_CANCEL_AVOID_WAR                         = 77;   //不能取消免战，因为没购买过免战或已过期
+    DURING_NEWCOMER_PROTECTION_PERIOD               = 78;   //新手保护期间
+    CANNOT_FIGHT_AGAINST_PLAYER_ON_YOUR_OWN_SIDE    = 79;   //不能打自己人
+    TOO_MANY_ASSISTANT                              = 80;   //副盟主太多了
+    THIS_TYPE_WAS_BUILT_ALREADY                     = 81;   //已经建了这种建筑了
+    TOO_MANY_GHOST_PROFILE                          = 82;   //小号太多了
+    TOO_MANY_FRIENDS                                = 83;   //好友太多了
+    SHUT_UP                                         = 84;   //闭嘴
+    FUCK_OFF                                        = 85;   //滚蛋
+    NO_SCHEME_OR_EXPIRED                            = 86;   //没选择方案或方案过期
+    NOT_ENOUGH_VIGOR                                = 87;   //体力不够挑战
+    NOT_ENOUGH_FOOD                                 = 88;   //粮草不够挑战
+    NOT_ENOUGH_MATERIAL                             = 89;   //原材料不够打造
+    CANNOT_CHALLENGE_THIS_SECTION                   = 90;   //还不能挑战这一章节
+    ILLEGAL_FORCE_DEPLOY_PLAN                       = 91;   //无效的兵力部署方案
+    NOT_ENOUGH_COPPER                               = 92;   //铜钱不够
+    NOT_ENOUGH_PEERAGE                              = 93;   //爵位不够
+    
+    
+    EC_RESERVED1	   = 100;       //PSEUDO_VIRGIN, 伪处, 已过了新手保护期
+    EC_RESERVED2	   = 101;       //NOT_ENOUGH_REPUTATION, 声望不够
+    EC_RESERVED3	   = 102;       //NOT_ENOUGH_GOLD, 金币不够
+    EC_RESERVED4	   = 103;       //NOT_ENOUGH_COPPER, 铜钱不够
+    EC_RESERVED5	   = 104;       //OPPONENT_DURING_NEWCOMER_PROTECTION_PERIOD, 对方新手保护
+    EC_RESERVED6	   = 105;       //CITY_NAME_DUPLICATED, 城市名称重复
+    EC_RESERVED7	   = 106;       //商品购买时间未到
+    EC_RESERVED8	   = 107;       //商品限时过期了
+    EC_RESERVED9	   = 108;       //限量商品已经卖完
+    EC_RESERVED10	   = 109;       //背包已经满
+    EC_RESERVED11	   = 110;       //已经是好友关系了
+    EC_RESERVED12	   = 111;       //LIMIT_MAX_BUY_LUCKY_TREE, 今天不能再买摇钱树了
+    EC_RESERVED13	   = 112;       //道具已经使用完了
+    EC_RESERVED14	   = 113;       //你已经干过此任务了
+    EC_RESERVED15	   = 114;       //充值失败
+    EC_RESERVED16	   = 115;       //含无效字符
+    EC_RESERVED17	   = 116;       //TOO_LOWER_TO_DONATE, 级别太低不能捐赠
+    EC_RESERVED18	   = 117;       //TOO_LOWER_TO_CONSIGN, 级别太低不能寄售
+    EC_RESERVED19	   = 118;       //无小喇叭道具
+    EC_RESERVED20	   = 119;       //非法请求
+    EC_RESERVED21	   = 120;       //玩家角色名重复, PLAYER_NAME_DUPLICATED
+    EC_RESERVED22	   = 121;       //联盟名重复, ALLY_NAME_DUPLICATED
+    EC_RESERVED23	   = 122;       //玩家等级不够，不能使用此装备
+    EC_RESERVED24	   = 123;       //人去楼空
+    EC_RESERVED25	   = 124;       //装备强化失败，并且还掉级了
+    EC_RESERVED26	   = 125;
+    EC_RESERVED27	   = 126;
+    EC_RESERVED28	   = 127;
+    EC_RESERVED29	   = 128;
+    EC_RESERVED30	   = 129;
+    EC_RESERVED31	   = 130;
+    EC_RESERVED32	   = 131;
+    EC_RESERVED33	   = 132;
+    EC_RESERVED34	   = 133;
+    EC_RESERVED35	   = 134;
+    EC_RESERVED36	   = 135;
+    EC_RESERVED37	   = 136;
+    EC_RESERVED38	   = 137;
+    EC_RESERVED39	   = 138;
+    EC_RESERVED40	   = 139;
+    EC_RESERVED41	   = 140;
+    EC_RESERVED42	   = 141;
+    EC_RESERVED43	   = 142;
+    EC_RESERVED44	   = 143;
+    EC_RESERVED45	   = 144;
+    EC_RESERVED46	   = 145;
+    EC_RESERVED47	   = 146;
+    EC_RESERVED48	   = 147;
+    EC_RESERVED49	   = 148;
+    EC_RESERVED50	   = 149;
+    
+}
+
+//可升级类型
+enum eUpgradable {
+    UT_UNKNOWN          = 0;    //
+    BUILDING            = 1;    //建筑
+    TECH                = 2;    //科技
+    TACTICAL_DEPLOY     = 3;    //阵法
+    SKILL               = 4;    //技能
+}
+
+//可加速类型
+enum eCanSpeedup {
+    SPD_BUILD       = 0;    //建造
+    SPD_UPGRADE     = 1;    //升级, 学习技能认为是从0升到1级
+    SPD_TRAINING    = 2;    //训练
+    SPD_MILITARY    = 3;    //军事行为, EXPLORE, SEND_ENVOY, OCCUPY, ATTACK, PLUNDER
+}
+
+//聊天对象
+enum eChatObject {
+    CHT_PLAYER      = 0;    //玩家
+    CHT_WORLD       = 1;    //广播
+    CHT_ALLIANCE    = 2;    //联盟
+    //CHT_FRIEND      = 3;    //好友
+    CHT_LOUDSPEAKER = 4;    //喇叭
+}
+
+//任务状态
+enum eTaskStatus {
+    TS_UNKNOWN     = 0;    //未知
+    TS_DOING       = 1;    //正在干
+    TS_NEXT_PHASE  = 2;    //切换到下一阶段了
+    TS_FINISHED    = 3;    //已完成
+}
+
+//排名域
+enum eRankScope {
+    SCP_LOCAL       = 0;    //本服
+    SCP_WORLD       = 1;    //整个游戏世界
+}
+
+//榜单类型
+enum ePlacardType {
+    PT_PLAYER_PRESTIGE                  = 0;    //玩家威望榜
+    PT_PLAYER_MILITARY_ACHIEVEMENT      = 1;    //玩家战绩榜
+    PT_ALLIANCE_PRESTIGE                = 2;    //联盟声望榜
+    PT_ALLIANCE_MILITARY_ACHIEVEMENT    = 3;    //联盟战绩榜
+    PT_EQUIP_STRENGTHEN_SHOW            = 4;    //装备强化榜
+    PT_SUPER_RICH                       = 5;    //超级富翁榜
+    PT_PLAYER_MILITARY_SCORES_TABLE     = 6;    //玩家战斗积分榜
+    PT_ALLIANCE_MILITARY_SCORES_TABLE   = 7;    //联盟战斗积分榜
+}
+
+//探险触发的事件
+enum eExploreEvent {
+    NOTHING     = 0;    //什么也没发现
+    FOUND_CHEST = 1;    //发现宝箱
+    FOUND_RES   = 2;    //发现资源
+    LOSE_FORCES = 3;    //损失兵
+}
+
+//建造点状态
+enum eAnchorStatus {
+    NOT_BUILD   = 0;    //未建造
+    BUILT       = 1;    //已建造
+}
+
+//升级状态
+enum eUpgradeStatus {
+    US_NULL           = 0;  //没升级
+    US_UPGRADING      = 1;  //升级中
+    US_COMPLETE       = 2;  //升级完成
+}
+
+//销售状态
+enum eMarketStatus {
+    IN_SALE     = 0;    //在售
+    SELLOUT     = 1;    //售完
+    OFF_SHELVES = 2;    //下架
+    ON_CONSIGN  = 3;    //寄售中
+}
+
+//装备状态标志
+enum eFitUpFlag {
+    FU_NONE         = 0;   //无效值
+    FU_UP           = 1;   //已装备上
+    FU_DOWN         = 2;   //已卸下
+    FU_ON_CONSIGN   = 3;   //寄售中
+}
+
+//军事行动
+enum eMilitaryOperation {
+    MO_NOP              = 0;    //什么也没干
+    MO_MOVE             = 1;    //移动
+    MO_FIRE             = 2;    //开火
+    MO_COUNTERSTRIKE    = 3;    //反击
+    MO_CRITICAL_STRIKE  = 4;    //暴击
+    MO_DODGE            = 5;    //躲避
+}
+
+//已读标记
+enum eReadFlag {
+    RF_UNREAD   = 0;    //未读
+    RF_READ     = 1;    //已读
+}
+
+//某支军队是否有效状态
+enum eCorpsStatus {
+    CS_INVALID  = 0;    //无效
+    CS_VALID    = 1;    //有效
+}
+
+//交友回复
+enum eMakeFriendReply {
+    AGREE   = 0;    //同意做朋友
+    REJECT  = 1;    //拒绝
+}
+
+//可交易的物资
+enum eTradableMaterial {
+    TM_OTHER            = 0;    //其它
+    TM_RES              = 1;    //资源
+    TM_TRESURE          = 2;    //宝物
+    TM_EQUIPMENT        = 3;    //装备
+    TM_TRESURE_CHEST    = 4;    //宝箱
+}
+
+//支付货币
+enum ePaymentCurrency {
+    PC_COPPER       = 0;    //铜钱
+    PC_RMB          = 1;    //RMB
+}
+
+//任务类型
+enum eJobType {
+    JT_ANY          = 0;    //所有的
+    JT_MAINLINE     = 1;    //主线任务(等级任务)
+    JT_DAILY        = 2;    //每日任务(循环任务)
+    JT_HIDDEN       = 3;    //隐藏任务
+    JT_ONLINE_TIME  = 4;    //在线时长任务
+    JT_AL_MAINLINE  = 5;    //联盟主线任务
+    JT_AL_DAILY     = 6;    //联盟每日任务
+}
+
+//任务状态
+enum eJobStatus {
+    JS_UNKNOWN      = 0;    //未知
+    JS_ENABLED      = 1;    //已开启的
+    JS_ACHIEVED     = 2;    //已实现但没领奖的
+    JS_FINISHED     = 3;    //已完成的
+}
+
+//客户端语言
+enum eClientLang {
+    CL_UNKNOWN      = 0;    //未知
+    CL_CHS          = 1;    //简体中文
+    CL_CHT          = 2;    //繁体中文
+    CL_ENGLISH      = 3;    //英语
+}
+
+
+//联盟权限(角色)
+enum eAllianceAuthority {
+  AA_INDEPENDENT    = 0;    //未加入联盟
+  AA_MEMBER         = 1;    //盟员
+  AA_ASSISTANT      = 2;    //副盟主
+  AA_CHIEFTAIN      = 3;    //盟主
+}
+
+//联盟地图类型
+enum eAllianceMapType {
+  AMT_VASSAL        = 0;    //诸侯(普通城)
+  AMT_CAPITAL       = 1;    //王城
+}
+
+//联盟科技
+enum eAllianceTech {
+  AT_ADV_LUMBER         = 0;    //高级伐木术 ----+
+  AT_ADV_EXCAVATION     = 1;    //高级采石术     |
+  AT_ADV_IMPLANTATION   = 2;    //高级种植术     +-生产科技
+  AT_ADV_METALLURGY     = 3;    //高级冶炼术     |
+  AT_ADV_TRAINING       = 4;    //高级练兵术 ----+
+
+  AT_GURUOJINTANG       = 5;    //固若金汤       ------+
+  AT_GONGQIBUBEI        = 6;    //攻其不备             |
+  AT_KUAIMAJIABIAN      = 7;    //快马加鞭             +-战争科技
+  AT_MIAOSHOUHUICHUN    = 8;    //妙手回春             |
+  AT_MARKSMANSHIP       = 9;    //百步穿杨(+射程)------+
+}
+
+//玩家在联盟的状态
+enum eAuditResult {
+    AR_UNKNOWN      = 0;    //和联盟无关
+    AR_AGREE        = 1;    //同意加入
+    AR_REJECT       = 2;    //拒绝加入
+    AR_PENDING      = 3;    //正在处理中
+    AR_QUIT         = 4;    //主动退出的
+    AR_KICK         = 5;    //被踢出去的
+}
+
+//人事变动(副盟主提拔或撤销)
+enum ePersonnelChange {
+    PC_APPOINT      = 0;    //提拔
+    PC_DISMISS      = 1;    //撤销
+    PC_DEMISE       = 2;    //转让
+}
+
+//联盟事件星等
+enum eAllianceEventStar {
+    AES_UNKNOWN     = 0;    //无效值
+    AES_ONE_STAR    = 1;    //1星事件
+    AES_TWO_STAR    = 2;    //2星事件
+    AES_THREE_STAR  = 3;    //3星事件
+}
+
+//用于区分联盟或玩家的标记
+enum eFlagConcernment {
+    FC_PLAYER       = 0;    //与玩家相关的
+    FC_ALLIANCE     = 1;    //与联盟相关的
+    //FC_NPC          = 2;    //PvE
+}
+
+//交易方
+enum eTradeSide {
+    TS_BUYER        = 0;    //买方
+    TS_SELLER       = 1;    //卖方
+}
+
+//战斗方
+enum eBattleSide {
+    BS_OFFENSIVE    = 0;    //攻
+    BS_DEFENSIVE    = 1;    //受
+}
+
+//副本状态
+enum eScenarioStatus {
+    SS_UNOPENED         = 0;    //未开启
+    SS_DOING            = 1;    //进行中
+    SS_FINISHED         = 2;    //已完成
+}
+
+
+//资源数量
+message ResAmount {
+  optional eResType type        = 1;  //资源类型
+  optional int32 amount         = 2;  //数量
+}
+
+//玩家指令
+message Instruction {
+    optional eCommand cmd       = 1;    //指令类型
+    optional int64 id           = 2;
+}
+
+//普通的不带参数的请求
+message CommonReq {
+    optional Instruction cmd            = 1;    //命令
+}
+
+//一般的消息响应包
+message CommonAnswer {
+    optional Instruction cmd     = 1;
+    optional eErrorCode err_code = 2;  //错误码
+}
+

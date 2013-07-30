@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry excluding="com/tentacle/trickraft/alliance/|com/tentacle/trickraft/antiseptic/|com/tentacle/trickraft/battle/|com/tentacle/trickraft/dao/|com/tentacle/trickraft/designer/|com/tentacle/trickraft/domain/|com/tentacle/trickraft/events/|com/tentacle/trickraft/serice/|com/tentacle/trickraft/server/|com/tentacle/trickraft/test/|com/tentacle/trickraft/testdesigner/|com/tentacle/trickraft/util/DirListener.java|com/tentacle/trickraft/util/FileLintener.java|com/tentacle/trickraft/util/MD5.java" including="com/tentacle/trickraft/protocol/|com/tentacle/trickraft/util/" kind="src" path="prot"/>
+	<classpathentry kind="lib" path="E:/work/server/projects/Trickraft/lib/protobuf-java-2.4.1.jar" sourcepath="D:/peer/protobuf-2.4.1/java/src"/>
+	<classpathentry kind="lib" path="E:/work/server/projects/Trickraft/lib/netty-3.2.5.Final.jar" sourcepath="D:/peer/netty-3.2.5.Final"/>
+	<classpathentry kind="lib" path="E:/work/server/projects/Trickraft/lib/log4j.jar"/>
+	<classpathentry kind="src" path="/Trickraft"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="E:/work/server/projects/Trickraft/lib/trove-3.0.3.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

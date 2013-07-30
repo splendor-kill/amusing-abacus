@@ -1,0 +1,1506 @@
+import "ProtoBasis.proto";
+
+package com.tentacle.trickraft.protocol;
+
+//队列, 以 Queue 回应
+message Queue {
+    optional Instruction cmd            = 1;    //GET_QUEUE
+    optional eErrorCode err_code        = 2;    //错误码(用于回复)
+    optional int64 city_id              = 3;    //那座城的队列
+    optional eQueueType type            = 4;    //队列类型
+
+    message Descriptor {
+        optional int64 task_id              = 1;    //任务Id
+        optional int64 remain_time          = 2;    //指令完成剩余时间, -1表示已执行
+        optional int32 phase                = 3;    //指令执行阶段, 从0开始
+        optional UpgradeReq upg_dat         = 4;    //当类型为Q_UPGRADE时使用
+        optional TrainCorpsReq train_dat    = 5;    //当类型为Q_TRAINING时使用
+        optional BuildReq build_dat         = 6;    //当类型为Q_BUILD时使用
+        optional AttackData atk_dat         = 7;    //当类型为Q_MILITARY时使用
+    }
+
+    repeated Descriptor tasks           = 5;
+}
+
+//资源生产力
+message Productivity {
+    optional eResType type              = 1;    //资源类型
+    optional double yield               = 2;    //产量, 单位(/ms)
+    optional int32 add_yield_effect     = 3;    //增强生产效率, 百分比值
+    optional int64 effect_remain_time   = 4;    //增强效果剩余时间(秒)
+}
+
+//建造点, 考虑箭塔, 陷阱
+message Anchor {
+    optional int64 id               = 1;
+    optional Position pos           = 2;  //位置
+    optional eBuildingType type     = 3;  //建筑类型
+    optional eAnchorStatus status   = 4;  //状态
+}
+
+//建筑
+message Building {
+  required int64 id                 = 1;
+  optional Position pos             = 2;  //建造位置, 相对于上一级界面
+  optional eBuildingType type       = 3;  //建筑类型
+  optional int32 level              = 4;  //级别
+  repeated ResAmount costs          = 5;  //成本
+  optional eBuildingState state     = 6;  //状态
+  repeated Anchor anchor            = 7;  //建造点
+  optional Corps corps              = 8;  //兵营里的部队
+  optional Corps corpsOnTraining    = 9;  //兵营里正在训练的部队
+  repeated int64 train_id           = 10; //训练指令id
+  repeated int64 sub_building_id    = 11; //子建筑Id列表
+  optional Productivity res_product = 12; //产生资源的建筑的生产力
+
+}
+
+//装备数量
+message EquipAmount {
+    optional Equipment equip        = 1;    //装备
+    optional int32 amount           = 2;    //数量
+}
+
+//兵种属性
+message ForcesAttr
+{
+  optional int32 hp             = 1;  //生命值
+  optional int32 attack         = 2;  //攻击力
+  optional int32 defence        = 3;  //防御力
+  optional int32 speed          = 4;  //速度
+  optional int32 strik_dis      = 5;  //攻击距离
+  optional int32 food_consume   = 6;  //食物消耗
+}
+
+//部队训练
+message ForcesTraining
+{
+  optional ResAmount costs      = 1;    //成本
+  optional int64 time_spend     = 2;    //时间
+}
+
+//兵种
+message ForcesBranch {
+  optional eForcesBranch type   = 1;  //兵种
+  optional ForcesAttr attr      = 2;  //兵种属性
+  optional ForcesTraining expenditure = 3;  //部队训练
+  optional int32 number               = 4;  //数量
+  optional int32 level                = 5;  //级别, 用于箭塔、陷阱
+  optional int64 id                   = 6;  //用于标识箭塔、陷阱
+}
+
+//部队
+message Corps {
+  optional int64 id             = 1;
+  repeated ForcesBranch force   = 2;    //兵种
+}
+
+//阵法
+message BattleArray {
+    optional int64 id                   = 1;
+    optional eBattleArray type          = 2;  //那种阵法
+    optional eTacticalDeployLevel level = 3;  //当前级别
+}
+
+//技能
+message Skill {
+    optional int64 id           = 1;
+    optional eSkill type        = 2;  //那种技能
+    optional int32 level        = 3;  //当前级别
+}
+
+//科技
+message Tech {
+    optional int64 id           = 1;
+    optional eTech type         = 2;  //那种科技
+    optional int32 level        = 3;  //当前级别
+}
+
+//将领
+message Leader {
+  optional int64 id         = 1;  //leader id
+  optional string name      = 2;  //名字
+  optional int64 player_id  = 3;  //playerId, for extension
+  optional int32 attack     = 4;  //攻击力
+  optional int32 defense    = 5;  //防御力
+  optional int32 speed      = 6;  //速度
+  optional int32 lucky      = 7;  //幸运值
+  optional int32 reputation = 8;  //声望(威望)
+  optional int32 level      = 9;  //级别
+  repeated BattleArray learned_battle_array   = 10;   //已学习的阵法
+  repeated Skill learned_skill                = 11;   //已学习的技能
+  optional BattleArray cur_battle_array       = 13;   //当前使用阵法
+  optional int32 undist_attr_points           = 14;   //未分配的属性点
+  optional int32 undist_skill_points          = 15;   //未分配的技能点
+  repeated Equipment equips                   = 16;   //将领穿上的装备
+}
+
+//属性点分配, 以 CommonAnswer 回应
+message AssignAttrPoints {
+    optional Instruction cmd    = 1;    //ATTR_POINTS_ASSIGN_REQ
+    optional int32 to_attack    = 2;    //分配到攻击属性的点数
+    optional int32 to_defense   = 3;    //分配到防御属性的点数
+    optional int32 to_speed     = 4;    //分配到速度属性的点数
+    optional int32 to_lucky     = 5;    //分配到幸运属性的点数
+}
+
+//玩家(角色)
+message Actor {
+    optional int64 id           = 1;    //playerId, 用于回复
+    optional string name        = 2;    //君主名称
+    optional string city_name   = 3;    //主城名称
+    optional int32 user_id      = 4;    //用户Id
+    optional int32 avatar_id    = 5;    //avatar-id
+    optional int64 city_id      = 6;    //主城的id, 用于回复
+    repeated Tech studied_tech  = 7;    //角色已研究的科技
+    optional int32 level             = 9;    //等级
+    optional int32 city_num          = 10;   //城池数量
+    optional int32 wilderness_num    = 11;   //野地数量
+    optional int32 moutain_fort_num  = 12;   //山寨数量
+    optional string self_intro       = 13;   //自我介绍
+    optional bool is_online          = 14;   //是否在线
+    optional string alliance_name    = 15;   //联盟名
+    optional eAllianceAuthority ally_auth       = 16;   //玩家在联盟中扮演的角色(行使的权力)
+    optional int32 contrib_value                = 18;   //对联盟的贡献值
+    optional int32 max_sale_items_same_time     = 19;   //同时寄售的物品的最大项数
+    optional int32 cur_sale_items_same_time     = 20;   //同时寄售的物品的当前项数
+    optional int32 peerage                      = 21;   //爵位
+    optional int64 alliance_id                  = 22;   //联盟Id
+    optional int64 avoid_war_remain_time        = 23;   //免战剩余时间(以秒为单位)
+    optional int64 vip_remain_time              = 24;   //VIP剩余时间
+    optional bool is_newcomer_guide_finished    = 25;   //是否完成新手任务
+    optional int32 newcomer_guide_stage         = 26;    //新手引导阶段
+
+}
+
+//位置
+message Position {
+    optional int64 parent_id    = 1; //父节点Id, 世界地图为0(或者设置is_relative为false)
+    optional int32 x            = 2; //坐标或位置序号
+    optional int32 y            = 3;
+    optional bool is_relative   = 4; //是否为相对位置
+}
+
+//tile
+message Tile {
+    optional int32 id                   = 1;
+    optional Position pos               = 2;    //位置
+    optional eTileType type             = 3;    //tile类型
+    repeated Productivity res_product   = 4;    //资源生产力
+    optional Corps corps                = 5;    //有多少兵力
+    optional int64 owner_id             = 6;    //所属势力
+    repeated ResAmount res              = 7;    //成本
+    optional int32 loyalty              = 8;    //忠诚度(民心)
+    optional string owner_name          = 9;    //所属势力名
+    optional int32 level                = 10;   //等级
+    optional int64 city_id              = 11;   //城市Id
+    optional string city_name           = 12;   //城市名(当类型为主城或附属城时)
+    optional int64 alliance_id          = 13;   //联盟Id
+    optional string alliance_name       = 14;   //联盟名
+    optional bool during_avoid_war      = 15;   //是否在免战期间
+    optional string owner_city_name     = 16;   //所属城市名
+    optional eCityStatus state          = 17;   //战争状态
+    optional int32 owner_peerage        = 18;   //所有者的爵位
+
+}
+
+//地图
+message Atlas
+{
+  required int32 width  = 1;  //宽
+  required int32 height = 2;  //高
+  repeated Tile tiles   = 3;  //tile集
+}
+
+//城市信息（主城, 附属城）
+message CityInfo {
+    optional int64 player_id                        = 1;    //拥有此城的玩家ID
+    optional int64 leader_id                        = 2;    //驻扎的将领
+    optional string name                            = 3;    //城市名
+    repeated ResAmount res_amount                   = 4;    //资源数量
+    repeated ResAmount res_capacity                 = 5;    //资源上限
+    repeated Productivity res_product               = 6;    //资源生产力
+    repeated Building buildings                     = 7;    //有哪些建筑
+    optional int32 loyalty                          = 8;    //忠诚度(民心)
+    optional Position pos                           = 9;    //位置
+    optional eCityStatus state                      = 10;   //状态
+    optional int64 id                               = 11;   //city id
+    optional eTileType type                         = 12;   //主城或附属城
+    optional int32 city_num                         = 13;   //拥有此城的玩家当前的城池数量
+    repeated Productivity consume_rate              = 14;   //资源消耗率
+    optional Corps corps                            = 15;   //城里的军队
+    optional eBattleArray defensive_battle_array    = 16;   //防御阵法
+    optional int64 auto_buy_food_remain_time        = 17;   //自动买粮剩余时间
+    optional bool is_enabled_spend_gold_auto_buy    = 18;   //是否开启了花黄金自己买粮的功能
+
+}
+
+
+//GET_KINGDOM_INFO请求, 以 KingdomInfoAnswer 回应
+message KingdomInfoReq {
+    optional Instruction cmd        = 1;    //must be GET_KINGDOM_INFO
+    optional int64 player_id        = 2;    //获得谁的kingdom_info
+}
+
+//GET_KINGDOM_INFO响应
+message KingdomInfoAnswer {
+    optional Instruction cmd        = 1;
+    optional eErrorCode err_code    = 2;  //错误码
+
+    repeated CityInfo city_info     = 3;  //城市信息
+    repeated Tile influence_zone    = 4;  //势力范围（占领的山寨和野地）
+}
+
+//GET_BUILDING_INFO请求, 以 BuildingInfoAnswer 回应
+message BuildingInfoReq {
+    optional Instruction cmd        = 1;    //must be GET_BUILDING_INFO
+    optional int64 player_id        = 2;    //who
+    optional int64 city_id          = 3;    //哪座城池？
+    optional int64 building_id      = 4;    //建筑ID
+}
+
+//GET_BUILDING_INFO响应
+message BuildingInfoAnswer {
+    optional Instruction cmd        = 1;    //
+    optional eErrorCode err_code    = 2;    //错误码
+
+    optional Building building      = 3;    //对应的建筑的信息
+}
+
+//GET_PLAYER_INFO请求, 以 PlayerInfoAnswer 回应,
+//但不会填充里面的背包结构, 取背包信息请使用 GET_KNAPSACK
+message PlayerInfoReq {
+    optional Instruction cmd        = 1;    //must be GET_PLAYER_INFO
+    optional int64 player_id        = 2;    //who
+}
+
+//GET_PLAYER_INFO响应
+message PlayerInfoAnswer {
+    optional Instruction cmd        = 1;    //must be GET_PLAYER_INFO
+    optional eErrorCode err_code    = 2;    //错误码
+    optional Leader leader          = 3;    //即玩家将领的信息
+    optional Knapsack knapsack      = 4;    //背包属于玩家
+}
+
+//UPGRADE, GET_UPGRADE_STATUS请求数据包, 以 UpgradeAnswer 回应
+message UpgradeReq {
+    optional Instruction cmd            = 1;    //must be UPGRADE, GET_UPGRADE_STATUS
+    optional eUpgradable which          = 2;    //升级什么？
+    optional int64 city_id              = 3;    //哪座城池？
+    optional int64 id                   = 4;    //升级对象Id（建筑）
+    optional eTech tech                 = 5;    //哪种科技？
+    optional eBattleArray battle_array  = 6;    //哪个阵法？
+    optional eSkill skill_type          = 7;    //哪个技能？
+    optional eBuildingType building_type    = 8;     //升级的建筑类型
+}
+
+//UPGRADE, GET_UPGRADE_STATUS响应数据包
+message UpgradeAnswer {
+    optional Instruction cmd            = 1;  //must be UPGRADE, GET_UPGRADE_STATUS
+    optional eErrorCode err_code        = 2;  //错误码
+
+    optional ResRequirement res_demand  = 3;  //升级所需资源不够时用此字段
+    optional UpgradeStatus status       = 4;  //立即升级时要直接给出结果
+    optional int64 task_id              = 5;  //任务Id
+    optional int64 remain_time          = 6;  //指令完成剩余时间, -1表示已执行
+    repeated Productivity res_product   = 7;  //升级引起的资源生产力变化
+    repeated ResAmount res_amount       = 8;  //升级引起的资源数量变化
+
+    optional eSkill skill_type          = 9;    //哪个技能？
+    optional int32 skill_level          = 10;   //此技能的新级别
+    optional int32 undist_skill_points  = 11;   //剩余的未分配的技能点
+
+
+}
+
+//NO_ENOUGH_RES, 资源需求
+message ResRequirement {
+    repeated ResAmount acquired_res = 1;    //已有的资源
+    repeated ResAmount need_res     = 2;    //需要的资源
+}
+
+//查询升级状态
+message UpgradeStatus {
+    optional eUpgradeStatus status  = 1;  //升级状态
+    optional int64 remain_time      = 2;  //剩余时间, 单位MilliSecond
+}
+
+//BUILD请求, 以 BuildAnswer 回应
+message BuildReq {
+    optional Instruction cmd    = 1;     //must be BUILD
+    optional eBuildingType type = 2;     //建造什么？
+    optional int64 city_id      = 3;     //哪座城池？
+    optional int64 building_id  = 4;     //建在哪个里面的
+    optional Position pos       = 5;     //哪个位置？
+}
+
+//BUILD回复
+message BuildAnswer {
+    optional Instruction cmd            = 1;
+    optional eErrorCode err_code        = 2;  //错误码
+
+    optional int64 building_id          = 3;  //新建的建筑物Id(或已建在此位置的建筑物Id)
+    optional ResRequirement res_demand  = 4;  //资源不够
+    optional Building building          = 5;  //新建的建筑物
+    repeated Productivity res_product   = 6;  //建筑引起的资源生产力变化
+    repeated ResAmount res_amount       = 7;  //建筑引起的资源数量变化
+    optional int32 reputation           = 8;  //声望(威望)
+}
+
+//SPEEDUP请求, 以 SpeedupAnswer 回应
+message SpeedupReq {
+    optional Instruction cmd    = 1;    //must be SPEEDUP
+    optional eCanSpeedup which  = 2;    //加速什么？
+    optional int64 task_id       = 3;    //对哪个任务加速？
+    optional int32 scheme_id    = 4;    //哪种加速方案
+}
+
+//SPEEDUP请求
+message SpeedupAnswer {
+    optional Instruction cmd        = 1;
+    optional eErrorCode err_code    = 2;  //错误码
+    optional int64 task_id           = 3;  //加速的任务
+    optional int64 remain_time      = 4;  //剩余时间, 单位MilliSecond
+}
+
+//CHAT, 以 CommonAnswer 回应给发起聊天者
+message ChatData {
+    optional Instruction cmd        = 1;    //must be CHAT
+    optional int64 from             = 2;    //谁说的？
+    optional eChatObject object     = 3;    //聊天对象
+    optional int64 to               = 4;    //对谁说？
+    optional string msg             = 5;    //说什么？
+    optional int64 time             = 6;    //时间
+    optional string from_name       = 7;    //A方名称
+    optional string to_name         = 8;    //B方名称
+}
+
+//ATTACK, OCCUPY, EXPLORE, SEND_ENVOY, PLUNDER, MOVE_TROOPS 请求, 以 DelayTask 回应
+message AttackData {
+    optional Instruction cmd             = 1;    //
+    optional int64 aggressor             = 2;    //战争发动者
+    optional int64 city_id               = 3;    //派遣兵力的城池
+    optional Corps corps                 = 4;    //用多少兵力
+    optional eBattleArray battle_array   = 5;    //用什么阵法
+    optional Position dest_pos           = 6;    //攻击哪?
+    optional int64 owner_id              = 7;    //所有者Id(用于校验)
+    optional eTileType dest_type         = 8;    //目标地类型(用于校验)
+    optional string owner_name           = 9;    //所属势力名
+    optional string dest_name            = 10;   //目标名称
+    optional string city_name            = 11;   //派遣兵力的城池名
+    optional Position city_pos           = 12;   //派遣兵力的城池位置
+}
+
+//执行以上命令(EXPLORE, SEND_ENVOY除外)的结果
+message Trophy {
+    optional Instruction cmd            = 1;    //
+    optional eErrorCode err_code        = 2;    //错误码
+
+    repeated ResAmount res              = 3;    //获得(损失)的资源
+    repeated Productivity res_product   = 4;    //获得(损失)的生产力
+    repeated Building destroyed         = 5;    //(被)毁坏的建筑
+    repeated int32 cfg_no               = 6;    //获得(损失)的装备配置Id
+    optional int64 occupied_id          = 7;    //被占有的对象id
+
+    message SimpleItem {
+        optional int32 cfg_no   = 1;
+        optional int32 amount   = 2;
+    }
+    repeated SimpleItem items           = 8;    //获得(损失)的物品
+}
+
+//JOIN, 以 CommonAnswer 回应
+message JoinGame {
+    optional Instruction cmd    = 1;    //must be JOIN
+    optional int64 player_id    = 2;    //以哪个playerId玩游戏
+    optional string session_key = 3;    //登录服务器给的会话密钥
+    //参数，目前有 jpush_app_key
+   repeated MyVariant args      = 4;
+}
+
+//CHECK_ID, 以 CheckIdAnswer 回应
+message CheckIdReq {
+    optional Instruction cmd    = 1;    //must be CHECK_ID
+    optional int32 user_id      = 2;    //
+    optional string session_key = 3;    //登录服务器给的会话密钥
+}
+
+//
+message CheckIdAnswer {
+   optional Instruction cmd     = 1;
+   optional eErrorCode err_code = 2;    //错误码
+
+   optional int32 new_mail_num  = 3;    //新邮件数量
+   //参数，
+   repeated MyVariant args      = 4;
+}
+
+//achievement
+message Score {
+    optional int32 order            = 1;    //名次
+    optional int64 player_id        = 2;
+    optional string name            = 3;    //玩家姓名
+    optional int32 res_score        = 4;    //资源得分
+    optional int32 construct_score  = 5;    //建造得分
+    optional int32 military_score   = 6;    //军事得分
+    optional int32 total_score      = 7;    //总得分
+}
+
+//GET_RANK_INFO, 以 RankInfoAnswer 回应
+message RankInfoReq {
+    optional Instruction cmd    = 1;    //
+    optional ePlacardType type  = 2;    //哪个排名榜
+    optional int32 first_nth    = 3;    //排名前n的, 默认为100
+}
+
+message RankInfoAnswer {
+    optional Instruction cmd        = 1;    //
+    optional eErrorCode err_code    = 2;    //错误码
+    optional ePlacardType type      = 3;    //哪个排名榜
+
+    message PlayerPrestigeInfo {
+        optional int64 player_id        = 1;
+        optional int32 order            = 2;    //玩家名次
+        optional string name            = 3;    //玩家名称
+        optional int32 level            = 4;    //玩家等级
+        optional bool is_vip            = 5;    //是否为VIP
+        optional int32 prestige         = 6;    //玩家威望值
+        optional int32 avatar_id        = 7;    //avatar-id
+    }
+    message PlayerMilitaryAchievementInfo {
+        optional int64 player_id        = 1;
+        optional int32 order            = 2;    //玩家名次
+        optional string name            = 3;    //玩家名称
+        optional int32 level            = 4;    //玩家等级
+        optional bool is_vip            = 5;    //是否为VIP
+        optional int32 win_num          = 6;    //胜利次数
+        optional int32 lose_num         = 7;    //失败次数
+        optional int32 total_num        = 8;    //总战斗次数或总积分
+        optional int32 avatar_id        = 9;    //avatar-id
+    }
+    message AlliancePrestigeInfo {
+        optional int64 alliance_id      = 1;
+        optional int32 order            = 2;    //联盟名次
+        optional string name            = 3;    //联盟名称
+        optional int32 level            = 4;    //联盟等级
+        optional string chieftain_name  = 5;    //盟主名称
+        optional int32 prestige         = 6;    //联盟威望值
+        optional bool is_vip            = 7;    //是否为VIP
+    }
+    message AllianceMilitaryAchievementInfo {
+        optional int64 alliance_id      = 1;
+        optional int32 order            = 2;    //联盟名次
+        optional string name            = 3;    //联盟名称
+        optional int32 level            = 4;    //联盟等级
+        optional string chieftain_name  = 5;    //盟主名称
+        optional int32 win_num          = 6;    //胜利次数
+        optional int32 lose_num         = 7;    //失败次数
+        optional int32 total_num        = 8;    //总战斗次数或总积分
+        optional bool is_vip            = 9;    //是否为VIP
+    }
+    message EquipStrengthenShowInfo {
+        optional int64 equip_id         = 1;
+        optional int32 order            = 2;    //名次
+        optional string name            = 3;    //装备名称
+        optional int32 level            = 4;    //强化等级
+        optional string player_name     = 5;    //玩家名称
+        optional int64 strengthen_time  = 6;    //强化成功时间
+        optional int32 cfg_no           = 7;    //配置序号
+        optional bool is_vip            = 8;    //是否为VIP
+        optional string artificer       = 9;    //创造者
+    }
+    message SuperRichInfo {
+        optional int64 player_id        = 1;
+        optional int32 order            = 2;    //玩家名次
+        optional string name            = 3;    //玩家名称
+        optional int32 level            = 4;    //玩家等级
+        optional bool is_vip            = 5;    //是否为VIP
+        optional int32 copper_money     = 6;    //铜钱数量
+        optional int32 avatar_id        = 7;    //avatar-id
+    }
+
+    optional PlayerPrestigeInfo my_pos_pp                   = 4;
+    repeated PlayerPrestigeInfo first_nth_pp                = 5;
+    optional PlayerMilitaryAchievementInfo my_pos_pma       = 6;
+    repeated PlayerMilitaryAchievementInfo first_nth_pma    = 7;
+    optional AlliancePrestigeInfo my_pos_ap                 = 8;
+    repeated AlliancePrestigeInfo first_nth_ap              = 9;
+    optional AllianceMilitaryAchievementInfo my_pos_ama     = 10;
+    repeated AllianceMilitaryAchievementInfo first_nth_ama  = 11;
+    optional EquipStrengthenShowInfo my_pos_ess             = 12;
+    repeated EquipStrengthenShowInfo first_nth_ess          = 13;
+    optional SuperRichInfo my_pos_sr                        = 14;
+    repeated SuperRichInfo first_nth_sr                     = 15;
+}
+
+//GET_MAILLIST, 以 Maillist 回应
+message Maillist {
+    optional Instruction cmd        = 1;    //GET_SHAKE_MONEY_TREE_MSG
+    optional eErrorCode err_code    = 2;    //错误码
+    optional int64 task_id          = 3;    //某次任务的报告或信息, 为0表示取所有未读邮件
+    repeated Information mail_list  = 4;    //报告或信息
+}
+
+//宝物
+message Treasure {
+    optional int64 id           = 1;    //宝物Id
+    optional eItemType type     = 2;    //宝物类型(KEY INTENSIFY_STONE FOR_NOBLE_RANKING COLLECTION FOR_FINISH_JOB)
+    optional string name        = 3;    //宝贝名
+    optional Position pos       = 4;    //位置
+    optional bool can_overlap   = 5;    //是否可以重叠, 如强化石
+    optional int32 amount       = 6;    //数量
+    optional string icon_url    = 7;    //图标地址
+    optional int64 place_time   = 8;    //放入背包的时间
+    optional int32 level        = 9;    //装备强化等级
+    optional int32 cfg_no       = 10;   //配置序号
+    optional int32 sell_price   = 11;   //商品单位销售价格(卖给系统商店时的价格)
+}
+
+//
+message TreasureChest {
+    optional Instruction cmd    = 1;    //
+    optional int64 id           = 2;    //宝箱Id
+    optional int32 level        = 3;    //宝箱等级
+    repeated Treasure treasure  = 4;
+    repeated Equipment equips   = 5;
+    repeated ResAmount res      = 6;    //宝箱中也有资源
+    optional string icon_url    = 7;    //图标地址
+    optional int64 place_time   = 8;    //放入背包的时间
+    //optional eItemType type    = 9;    //类型(TREASURE_CHEST)
+    optional int32 cfg_no       = 10;   //配置序号
+    optional int32 sell_price   = 11;   //商品单位销售价格(卖给系统商店时的价格)
+}
+
+//背包
+message Knapsack {
+    repeated Treasure treasure      = 1;
+    repeated Equipment equips       = 2;
+    repeated ResAmount res          = 3;
+    repeated TreasureChest chest    = 4;
+    repeated GeneralItem items      = 5;
+}
+
+//MOVE_CAPITAL, 以 CapitalMoveAnswer 回应
+message CapitalMove {
+    optional Instruction cmd     = 1;    //must be MOVE_CAPITAL
+    optional int64 city_id       = 2;    //迁哪个城？
+    optional Position dest_pos   = 3;    //迁到哪?
+}
+
+message CapitalMoveAnswer {
+    optional Instruction cmd            = 1;    //
+    optional eErrorCode err_code        = 2;    //错误码
+    optional Position dest_pos          = 3;    //迁到位置
+}
+
+
+//SCOUT, 以 ScoutReport 回应
+message ScoutReq {
+    optional Instruction cmd    = 1;    //must be SCOUT
+    optional Position dest_pos  = 2;    //侦查哪?
+}
+
+//侦查报告
+message ScoutReport {
+    optional Instruction cmd            = 1;    //
+    optional eErrorCode err_code        = 2;    //错误码
+    optional int64 owner_id             = 3;    //所有者Id
+    optional int32 level                = 4;    //级别
+    repeated ResAmount reserved         = 5;    //资源储量
+    repeated Productivity res_product   = 6;    //资源生产力
+    optional Corps corps                = 7;    //兵力
+    repeated Building defences          = 8;    //防御工事
+    optional string owner_name          = 9;    //所有者名字
+    optional Position dest_pos          = 10;   //目标地位置
+    optional eTileType dest_type        = 11;   //目标地类型
+    optional int32 loyalty              = 12;   //民心值
+}
+
+//SEND_MESSAGE, SEND_FEEDBACK, 以 CommonAnswer 回应给发送者
+message MyMessage {
+    optional Instruction cmd    = 1;    //SEND_MESSAGE, PUSH_MESSAGE, AL_DELIVER, SEND_FEEDBACK
+    optional int64 id           = 2;    //Id
+    optional string from        = 3;    //发送者
+    optional int64 time         = 4;    //发送时间点, millisecond
+    optional string subject     = 5;    //主题
+    optional string content     = 6;    //内容
+    repeated string to          = 7;    //接受者
+    repeated MyVariant args     = 8;    //参数
+}
+
+//COLLECT
+message Collect {
+    optional Instruction cmd         = 1;        //must be COLLECT
+    optional Position interested_pos = 2;        //对哪块地感兴趣?
+}
+
+//FIT_UP, 以 CommonAnswer 回应
+message EquipFitUp {
+    optional Instruction cmd         = 1;    //must be FIT_UP
+    optional Equipment equip         = 2;    //装备
+    optional eFitUpFlag flag         = 3;    //上装或卸装
+}
+
+//STRENGTHEN, 以 CommonAnswer 回应
+message EquipStrengthen {
+    optional Instruction cmd         = 1;    //must be STRENGTHEN
+    optional Equipment equip         = 2;    //装备
+
+}
+
+//END_EXPLORE, END_SEND_ENVOY结果
+message Explore {
+    optional Instruction cmd        = 1;    //
+    optional eErrorCode err_code    = 2;    //错误码
+    repeated ResAmount reap         = 3;    //收获的资源
+    optional Corps corps            = 4;    //损失的兵力
+    optional TreasureChest chest    = 5;    //宝箱
+    optional eExploreEvent event    = 6;    //事件类型
+    optional int32 people_num       = 7;    //使团总人数(用于END_SEND_ENVOY)
+    optional string friend          = 8;    //友军(用于END_SEND_ENVOY)
+    optional int64 task_id          = 9;    //哪个任务？
+    optional int64 time             = 10;   //探险或出使开始的时间点
+    optional Position dest          = 11;   //地点
+    optional int32 mark             = 12;   //标志码, 配置文件中的事件标志码
+    optional eTileType dest_type    = 13;   //目标地类型
+    optional int64 duration         = 14;   //活动持续时间
+    optional int64 mail_id          = 15;   //邮件Id
+    optional GeneralItem item       = 16;   //获得的道具
+}
+
+//延时类任务(BUILD, UPGRADE, TRAINING, EXPLORE, SEND_ENVOY, OCCUPY, ATTACK, PLUNDER)响应
+message DelayTask {
+    optional Instruction cmd     = 1;
+    optional eErrorCode err_code = 2;   //错误码
+    optional int64 task_id       = 3;   //任务Id
+    optional int64 remain_time   = 4;   //指令完成剩余时间, -1表示已执行
+
+    repeated Productivity consume_rate      = 5;   //资源消耗率
+
+}
+
+//END_EXPLORE, END_SEND_ENVOY请求, 以 Explore 回应
+message EndTask {
+    optional Instruction cmd        = 1;    //END_EXPLORE, END_SEND_ENVOY
+    optional int64 task_id          = 2;    //结束哪个任务？
+}
+
+
+//USE_SKILL_OPEN_CHEST 以 OpenTreasureChestAnswer 回应, 其他请求以 CommonAnswer 回应
+message SkillApply {
+    optional Instruction cmd    = 1;    //
+    optional int64 caster_id    = 2;    //谁使用了技能
+    optional eSkill skill       = 3;    //使用了什么技能
+    optional int64 target_id    = 4;    //对谁使用了技能
+    optional int64 cur_city_id  = 5;    //当前城市Id
+}
+
+//战斗报告
+message Report {
+    optional int64 id                       = 1;
+    optional int64 time                     = 2;    //战斗开始的时间点, millisecond
+    optional int64 winner                   = 3;    //胜者Id
+    optional int64 loser                    = 4;    //败者Id
+    optional int64 aggressor                = 5;    //攻方
+    optional int64 victim                   = 6;    //守方
+    optional Corps corps1                   = 7;    //攻方初始兵力
+    optional Corps corps2                   = 8;    //守方初始兵力
+    optional Corps lost1                    = 9;    //攻方损失兵力
+    optional Corps lost2                    = 10;   //守方损失兵力
+    optional Corps resurrection1            = 11;   //攻方复活兵力
+    optional Corps resurrection2            = 12;   //守方复活兵力
+    optional int32 reputation1              = 13;   //攻方获得的威望
+    optional int32 reputation2              = 14;   //守方获得的威望
+    optional Trophy trophy                  = 15;   //战利品
+    repeated BattleCourse battle_course     = 16;   //战斗过程
+    optional Position engage_location       = 17;   //交战地点
+    optional int64 task_id                  = 18;   //哪次战斗？
+    optional string aggressor_name          = 19;   //攻方名字
+    optional string victim_name             = 20;   //守方名字
+    optional eTileType dest_type            = 21;   //目标地类型
+    optional string city1_name              = 22;   //攻方发兵城池名称
+    optional string city2_name              = 23;   //守方城池名称
+    optional Position city1_pos             = 24;   //攻方发兵城池位置
+    optional Position city2_pos             = 25;   //守方城池位置
+    optional int32 avatar_id1               = 26;   //攻方avatar-id
+    optional int32 avatar_id2               = 27;   //守方avatar-id
+    optional int32 level1                   = 28;   //攻方等级
+    optional int32 level2                   = 29;   //守方等级, 若为NPC的野地, 则为此野地等级
+    optional eBattleArray battle_array1     = 30;   //攻方阵法
+    optional eBattleArray battle_array2     = 31;   //守方阵法
+    optional eFlagConcernment concernment   = 32;   //玩家战斗还是联盟战斗
+    optional bool is_change_hands           = 33;   //目标地是否易主
+    optional int32 dest_loyalty             = 34;   //目标地的民心值
+    optional int32 battlefield_distance     = 35;   //战场距离
+    optional Corps capitulant               = 36;   //被劝降的兵力
+    optional bool is_use_lurk_march         = 37;   //攻方是否使用秘密行军
+    optional bool is_use_skeleton_key       = 38;   //攻方是否使用了开地窖技能，及
+    optional int32 skeleton_key_level       = 39;   //开地窖技能级别
+    optional bool is_winner_use_persuasion  = 40;   //胜方是否使用了劝降术，及
+    optional int32 winner_persuasion_level  = 41;   //劝降术级别
+    optional eTacticalDeployLevel tac_lv1   = 42;   //攻方阵法等级
+    optional eTacticalDeployLevel tac_lv2   = 43;   //守方阵法等级
+}
+
+//战斗回合记录
+message BattleCourse {
+	optional int32 order            = 1;    //序号, which turn
+	optional eBattleSide offensive  = 2;    //主动方
+	optional eForcesBranch branch1  = 3;    //哪支兵打的？
+	optional eBattleSide defensive  = 4;    //被动方
+	optional eForcesBranch branch2  = 5;    //打哪支兵？
+	optional int32 damage           = 6;    //造成的伤害
+	optional int32 dead             = 7;    //死了多少兵
+	optional eMilitaryOperation op  = 8;    //采取的行动
+	optional int64 building_id1     = 9;    //主动方箭塔或陷阱id
+	optional int64 building_id2     = 10;   //被动方箭塔或陷阱id
+	optional int32 displacement     = 11;   //位移
+	optional int32 off_attack       = 12;   //主动方攻击力
+	optional int32 def_defence      = 13;   //被动方防御力
+	optional int32 off_forces       = 14;   //主动方兵力
+	optional int32 def_forces       = 15;   //被动方兵力
+}
+
+//信息
+message Information {
+    optional eInfoType type                     = 1;
+    optional Report report                      = 2;    //战斗报告
+    optional MyMessage myMsg                    = 3;    //系统事件、活动消息、联盟消息、玩家消息
+    optional TransactionReport trade_report     = 4;    //交易报告
+    optional Explore explore_report             = 5;    //探险或出使消息
+    optional TroopsEscapeReport esc_report      = 6;    //逃兵记录
+    optional int64 forwarder_id                 = 7;    //转发者Id
+    optional string forwarder_name              = 8;    //转发者名
+}
+
+//逃兵记录
+message TroopsEscapeReport {
+    optional int64 id                       = 1;
+    optional int64 time                     = 2;    //发生逃兵的时间点
+    optional int64 city_id                  = 3;    //发生逃兵的城市
+    optional Corps deserters                = 4;    //逃了多少什么兵
+    optional eFlagConcernment concernment   = 5;    //玩家or联盟
+    optional string city_name               = 6;    //发生逃兵的城市名
+}
+
+//MARK_AS_READ, 以 CommonAnswer 回应
+message MarkAsReadReq {
+    optional Instruction cmd    = 1;    //must be MARK_AS_READ
+    message Infor {
+        optional eInfoType type                 = 1;    //类型
+        optional int64 id                       = 2;    //report id
+    }
+    repeated Infor infors       = 2;    //待标记的那些信息
+}
+
+//CREATE_ACTOR请求, 以 ActorCreationAnswer 回复
+message ActorCreationReq {
+    optional Instruction cmd    = 1;    //CREATE_ACTOR
+    optional Actor actor        = 2;    //角色信息
+}
+
+//CREATE_ACTOR响应
+message ActorCreationAnswer {
+    optional Instruction cmd        = 1;
+    optional eErrorCode err_code    = 2;    //错误码
+
+    optional Actor actor            = 3;    //返回的角色信息
+}
+
+//GET_ACTORS请求, 以 ActorListAnswer 回复
+message GetActorsReq {
+    optional Instruction cmd    = 1;    //GET_ACTORS
+    optional int32 user_id      = 2;    //获得哪个user所创建的角色
+}
+
+//响应
+message ActorListAnswer {
+    optional Instruction cmd        = 1;    //
+    optional eErrorCode err_code    = 2;    //错误码
+    repeated Actor actor_list       = 3;    //角色列表
+}
+
+//GET_TILES请求, 以 TilesAnswer 回应
+message TilesReq {
+    optional Instruction cmd    = 1;    //must be GET_TILES
+    repeated Position pos       = 2;    //坐标
+}
+
+//GET_TILES响应
+message TilesAnswer {
+    optional Instruction cmd     = 1;   //
+    optional eErrorCode err_code = 2;   //错误码
+
+    optional Position min        = 3;   //世界地图的边界
+    optional Position max        = 4;
+    repeated Tile tiles          = 5;   //tiles集
+}
+
+//商品
+message Commodity {
+    optional int64 id                   = 1;    //标识
+    optional eTradableMaterial type     = 2;    //类型
+    optional Treasure treasure          = 3;    //宝物
+    optional Equipment equips           = 4;    //装备
+    repeated ResAmount res              = 5;    //资源
+    optional TreasureChest chest        = 6;    //宝箱
+    optional bool is_new                = 7;    //是否新品
+    optional bool is_hot                = 8;    //是否热卖
+    optional string icon_url            = 9;    //商品图标url地址
+    optional int64 time_on_shelves      = 10;   //上架时间点, millisecond
+    optional int64 time_off_shelves     = 11;   //下架时间点, millisecond
+    optional int32 units                = 12;   //商品交易单位
+    optional int32 buy_price            = 13;   //商品单位购买价格(从商店买或从寄售系统买的价格)
+    optional int32 sell_price           = 14;   //商品单位销售价格(卖给系统商店时的价格)
+    optional int32 discount             = 15;   //折扣
+    optional int32 total_worth          = 16;   //总价值
+    optional int32 sales_volume         = 17;   //销售量
+    optional int64 merchant_id          = 18;   //商品提供者id(0为系统)
+    optional string desc                = 19;   //商品广告
+    optional int32 trade_tax            = 20;   //交易税百分比
+    optional string merchant_name       = 21;   //商品提供者名字
+    optional ePaymentCurrency currency  = 22;   //支付货币
+    optional eMarketStatus status       = 23;   //销售状态
+    optional int32 cfg_no               = 24;   //对应配置文件中的id
+    optional int64 city_id              = 25;   //商品归属的城市id
+    optional int32 index                = 26;   //索引，用于检验
+    optional int64 consign_id           = 27;   //商品寄售标识
+    optional int32 max_quantum          = 28;   //限量
+    optional int32 cur_quantum          = 29;   //当前剩余量
+    optional int32 discount2            = 30;   //vip折扣
+    optional GeneralItem item           = 31;   //道具
+}
+
+//GOODS_REQ, GOODS_HOT_REQ, GOODS_NEW_REQ(系统商店、商城)
+//SHOW_MERCHANDISE(玩家市场、寄售系统、集市)
+//以 GoodsAnswer 回应
+message GoodsReq {
+    optional Instruction cmd        = 1;    //
+    optional int32 page_no          = 2;    //第几页
+    optional int32 max_count        = 3;    //单页返回的记录条数, 默认为30
+    optional int64 player_id        = 4;    //谁的商品？为0表示所有的商品
+
+    optional bool is_equip_type     = 5;    //是否为装备类型
+    optional bool is_prop_type      = 6;    //是否为道具类型
+    optional bool is_treasure_type  = 7;    //是否为宝物类型
+    optional eItemType item_type    = 8;    //物品细分类型
+    optional bool is_res_type       = 9;    //是否为资源类型
+    optional eResType res_type      = 10;   //具体资源类型
+    optional int32 cfg_no           = 11;   //按物品配置id分类
+
+}
+
+//GOODS_REQ响应
+message GoodsAnswer {
+    optional Instruction cmd     = 1;   //
+    optional eErrorCode err_code = 2;   //错误码
+    repeated Commodity goods     = 3;   //商品表
+    optional int32 cur_page      = 4;   //当前页
+
+    optional bool is_equip_type     = 5;    //是否为装备类型
+    optional bool is_prop_type      = 6;    //是否为道具类型
+    optional bool is_treasure_type  = 7;    //是否为宝物类型
+    optional eItemType item_type    = 8;    //物品细分类型
+    optional bool is_res_type       = 9;    //是否为资源类型
+    optional eResType res_type      = 10;   //具体资源类型
+
+    optional bool have_next         = 11;   //是否还有下一页
+}
+
+//PUSH_RED_ALERT_MSG, AL_PUSH_RED_ALERT_MSG 攻击警报
+message RedAlertMsg {
+    optional int64 remain_time      = 1;    //攻击时间, 单位MilliSecond
+    optional int64 aggressor_id     = 2;    //侵犯者Id
+    optional string aggressor_name  = 3;    //侵犯者名字
+    optional Tile dest              = 4;    //攻击目标地
+    optional int32 dest_pos         = 5;    //侵犯哪?(用于联盟)
+    optional eFlagConcernment concernment   = 6;    //玩家or联盟
+    optional int64 task_id                  = 7;    //任务Id
+    optional int64 aggressor_city_id        = 8;    //派兵城市Id
+    optional Corps aggressor_corps          = 9;    //派了多少什么兵
+    optional int64 victim_id                = 10;   //被攻打的联盟id
+    optional string victim_name             = 11;   //被攻打的联盟名字
+    optional Position aggressor_city_pos    = 12;    //派兵城市位置
+    optional string aggressor_city_name     = 13;    //派兵城市名称
+}
+
+//GET_RED_ALERT_MSGS, AL_GET_RED_ALERT_MSGS, 以 CommonReq 请求, 以 GetRedAlertMsgsAnswer 回应
+message GetRedAlertMsgsAnswer {
+    optional Instruction cmd        = 1;    //
+    optional eErrorCode err_code    = 2;    //
+    repeated RedAlertMsg alerts     = 3;    //警报列表
+}
+
+//TRAINING_REQ, 以 DelayTask 回应
+message TrainCorpsReq {
+    optional Instruction cmd        = 1;    //TRAINING_REQ
+    optional int64 player_id        = 2;    //谁的, should be delete
+    optional int64 city_id          = 3;    //哪座城
+    optional int64 barrack_id       = 4;    //哪个兵营
+    optional ForcesBranch force     = 5;    //多少什么兵
+}
+
+//装备
+message Equipment {
+    optional int64 equip_id          = 1;    //装备Id
+    optional eItemType equip_type    = 2;    //装备类型(WEAPON WAR_ART_BOOK ARMOR WAR_HORSE JADE_DISK)
+    optional int32 level             = 3;    //强化等级
+    optional int32 success_rate      = 4;    //当前时段强化成功百分比
+    optional int32 use_level         = 5;    //使用等级(穿上装备的前置条件)
+    optional int64 place_time        = 6;    //放入背包的时间
+    optional string icon_url         = 7;    //图标地址
+    optional int32 cfg_no            = 8;    //配置序号
+    optional int32 sell_price        = 9;    //商品单位销售价格(卖给系统商店时的价格)
+    optional int32 quality           = 10;   //品阶, 白1绿2蓝3紫4橙5
+    optional string artificer        = 11;   //创造者
+}
+
+//撤兵, 以 CommonAnswer 回应
+message WithdrawTroopsReq {
+    optional Instruction cmd        = 1;    //WITHDRAW_TROOPS
+    optional int32 from             = 2;    //从哪撤, tile_id
+}
+
+//输送资源, 以 CommonAnswer 回应
+message TransportResReq {
+    optional Instruction cmd        = 1;    //TRANSPORT_RES
+    optional int64 from_city        = 2;    //从哪
+    optional int64 to_city          = 3;    //送到哪
+    repeated ResAmount res_amount   = 4;    //多少什么资源
+}
+
+//添加好友, 以 CommonAnswer 回应
+message MakeFriend {
+    optional Instruction cmd        = 1;    //MAKE_FRIEND
+    repeated int64 friend_id        = 2;    //要添加的好友的playerId
+    repeated string friend_name     = 3;    //要添加的好友的player名字
+}
+
+//解除朋友关系, 以 DissolveFriendship 回应
+message DissolveFriendship {
+    optional Instruction cmd        = 1;    //DISSOLVE_FRIENDSHIP
+    optional eErrorCode err_code    = 2;    //错误码
+    repeated int64 friend_id        = 3;    //要解除的好友的playerId
+}
+
+//随便看看, 以 ActorListAnswer 回应
+message SeekBlindly {
+    optional Instruction cmd        = 1;    //BLIND_SEEK
+    optional int32 count            = 2;    //单页返回的记录条数, 默认为20
+}
+
+//GET_FANS, 获得想与你成为好友的玩家列表, 以 CommonReq 请求, 以 ActorListAnswer 回应
+
+//GET_FRIENDS, 获得好友列表, 以 CommonReq 请求, 以 ActorListAnswer 回应
+
+//推交友答复给请求者
+message PushReplyMakeFriend {
+    optional Instruction cmd        = 1;    //PUSH_REPLY_MAKE_FRIEND_REQ
+    optional Actor actor            = 2;    //回应的玩家信息
+    optional eMakeFriendReply reply = 3;    //同意或拒绝成为好友
+}
+
+//打开宝箱回复
+message OpenTreasureChestAnswer {
+    optional Instruction cmd        = 1;    //
+    optional eErrorCode err_code    = 2;    //错误码
+    repeated Treasure treasure      = 3;
+    repeated Equipment equips       = 4;
+    repeated ResAmount res_amount   = 5;    //多少什么资源
+}
+
+//答复交友请求, 以 ReplyMakeFriend 回应
+message ReplyMakeFriend {
+    optional Instruction cmd        = 1;    //REPLY_MAKE_FRIEND_REQ
+    optional eErrorCode err_code    = 2;    //错误码
+    repeated int64 acceptees        = 3;    //被同意的成为好友的玩家名单
+    repeated int64 rejectees        = 4;    //被拒绝的成为好友的玩家名单
+}
+
+//寄售和撤销寄售, 以 CommonAnswer 回应
+message Consign {
+    optional Instruction cmd            = 1;    //CONSIGN, CANCEL_CONSIGN
+    optional Commodity goods            = 2;    //商品
+}
+
+//卖给系统, 以CommonAnswer回应
+message SellToSys {
+    optional Instruction cmd            = 1;    //SELL_TO_SYS
+    optional Commodity goods            = 2;    //商品
+}
+
+//买, 以 CommonAnswer 回应
+message Buy {
+    optional Instruction cmd        = 1;    //BUY, AL_BUY_RES, BUY_RES_FROM_SYS_SHOP
+    optional int64 transaction_id   = 2;    //交易号
+    optional Commodity goods        = 3;    //商品
+    optional int32 quantity         = 4;    //购买量
+    optional int64 buyer_city_id    = 5;    //买方的城市id
+}
+
+//交易报告
+message TransactionReport {
+    optional int64 id               = 1;    //
+    optional eErrorCode err_code    = 2;    //交易结果
+    optional Commodity goods        = 3;    //商品
+    optional int32 quantity         = 4;    //购买量
+    optional int32 sum_value        = 5;    //交易额
+    optional int64 trade_time       = 6;    //交易时间
+    optional eTradeSide side        = 7;    //交易方
+}
+
+//任务 quest
+message Job {
+    optional int32 cfg_no           = 1;        //任务id
+    optional eJobType type          = 2;        //任务类型
+    optional int64 last_time        = 3;        //最后完成时间
+    optional int32 achieve_times    = 4;        //已完成的次数
+    optional int32 total_times      = 5;        //要完成的次数
+    optional eJobStatus status      = 6;        //任务状态
+}
+
+//获得已开启的任务, 以 Jobs 回应
+message GetEnabledJobs {
+    optional Instruction cmd        = 1;    //GET_ENABLED_JOBS
+    optional eJobType type          = 2;    //任务类型
+}
+
+//获得已实现可以去领奖的任务, 以 Jobs 回应
+message GetAchievedJobs {
+    optional Instruction cmd        = 1;    //GET_ACHIEVED_JOBS
+    optional eJobType type          = 2;    //任务类型
+}
+
+//获得已领奖完成的任务, 以 Jobs 回应
+message GetFinishedJobs {
+    optional Instruction cmd        = 1;    //GET_FINISHED_JOBS
+    optional eJobType type          = 2;    //任务类型
+}
+
+//获得的任务
+message Jobs {
+    optional Instruction cmd        = 1;    //
+    optional eErrorCode err_code    = 2;    //
+
+    repeated Job jobs               = 3;    //任务列表
+}
+
+//完成任务, 领取奖励, 以 CommonAnswer 回应
+message FinishJob {
+    optional Instruction cmd        = 1;    //FINISH_JOB, FINISH_ACTIVITY
+    optional int32 job_id           = 2;    //任务Id, 活动id
+    optional int64 cur_city_id      = 3;    //当前城市Id
+}
+
+//开启新任务通知(置任务状态为可用)
+message EnableJob {
+    optional Instruction cmd        = 1;    //PUSH_ENABLE_JOB
+    optional int32 job_id           = 2;    //任务Id
+}
+
+//某任务已实现可以去领奖的通知(置任务状态为已实现可领奖)
+message AchieveJob {
+    optional Instruction cmd        = 1;    //PUSH_ACHIEVE_JOB
+    optional int32 job_id           = 2;    //任务Id
+}
+
+//根据名称或id查找玩家, 以 ActorListAnswer 回复
+message GetActor {
+    optional Instruction cmd        = 1;    //GET_ACTOR_BY_NAME
+    optional string name            = 2;    //名称
+    optional int64 player_id        = 3;    //playerId
+}
+
+//易变的数据包, 以 VarDatPackAnswer 回复
+//GET_VAR_DAT_FOR_UPGRADE GET_VAR_DAT_FOR_TRAINING GET_VAR_DAT_FOR_MILITARY SYNC_STH
+message VarDatPackReq {
+    optional Instruction cmd                = 1;    //
+    optional int64 city_id                  = 2;    //要同步的城市id
+
+    optional bool sync_res                  = 3;    //是否同步资源
+    optional bool sync_prod                 = 4;    //是否同步生产力
+    optional bool sync_queue                = 5;    //是否同步队列
+    optional bool sync_reputation           = 6;    //是否同步威望值
+    optional bool sync_player_level         = 7;    //是否同步玩家级别
+    optional bool sync_corps                = 8;    //是否同步城市的军队
+    repeated eBattleArray sync_battle_array = 9;    //感兴趣的阵法
+    repeated eSkill sync_skill              = 10;   //感兴趣的技能
+    repeated eTech sync_tech                = 11;   //感兴趣的科技
+    repeated int64 sync_building_ids        = 12;   //感兴趣的建筑
+}
+
+//
+message VarDatPackAnswer {
+    optional Instruction cmd                    = 1;    //
+    optional eErrorCode err_code                = 2;    //
+
+    repeated ResAmount res_amount               = 3;    //资源数量
+    repeated Productivity res_product           = 4;    //资源生产力
+    repeated int64 task_id                      = 5;    //当前运行中的任务
+    optional int32 reputation                   = 6;    //威望
+    optional int32 player_level                 = 7;    //玩家级别
+    optional Corps corps                        = 8;    //城市中的军队信息
+    repeated BattleArray learned_battle_array   = 9;    //已学习的阵法
+    repeated Skill learned_skill                = 10;   //已学习的技能
+    repeated Tech studied_tech                  = 11;   //已研究的科技
+
+    message BuildingSimple {
+        optional int64 id                  = 1;     //建筑id
+        optional int64 city_id             = 2;     //建筑所在城市
+        optional int32 anchor              = 3;     //建筑点
+        optional int32 level               = 4;     //建筑级别
+        optional eBuildingState state      = 5;     //建筑损毁状态
+    }
+
+    repeated BuildingSimple building            = 12;   //发生改变的建筑
+    optional int64 city_id                      = 13;   //同步的城市id
+
+    message TaskSimple {
+        optional int64 task_id             = 1;     //任务Id
+        optional int64 remain_time         = 2;     //剩余时间, 单位MilliSecond
+    }
+    repeated TaskSimple tasks                   = 14;   //任务
+    repeated Productivity consume_rate          = 15;   //资源消耗率
+    optional int32 undist_attr_points           = 16;   //未分配的属性点
+    optional int32 undist_skill_points          = 17;   //未分配的技能点
+
+    repeated Tile influence_zone                = 18;   //势力范围（占领的山寨和野地）
+    optional int32 loyalty                      = 19;   //民心值
+
+}
+
+//购买方案
+message PurchaseScheme {
+    optional int32 scheme_id            = 1;    //方案标识
+    optional string name                = 2;    //名称
+    optional int32 gold_cost            = 3;    //花费
+    optional int32 effect_last_time     = 4;    //效果持续时间(秒)
+    optional string desc                = 5;    //描述
+    optional int32 add_yield_effect     = 6;    //增强生产效率, 百分数(ADD_YIELD_SCHEME)
+    optional int32 shrunken_time        = 7;    //缩短的时间(SPEEDUP_SCHEME)
+}
+
+//GET_ADD_YIELD_SCHEMES, GET_VIP_SCHEMES, GET_AVOID_WAR_SCHEMES, 以 GetPurchaseSchemes 回复
+message GetPurchaseSchemes {
+    optional Instruction cmd            = 1;    //
+    optional eErrorCode err_code        = 2;    //
+    repeated PurchaseScheme schemes     = 3;    //方案列表
+}
+
+//SELECT_ADD_YIELD_SCHEME, SELECT_VIP_SCHEME, SELECT_AVOID_WAR_SCHEME,
+//SELECT_AUTO_BUY_FOOD_SCHEME, AL_SELECT_AUTO_BUY_FOOD_SCHEME 以 CommonAnswer 回复
+message SelectPurchaseScheme {
+    optional Instruction cmd                = 1;    //
+    optional eResType res_type              = 2;    //为那种资源增产(ADD_YIELD_SCHEME)
+    optional int64 task_id                  = 3;    //加速任务Id(SPEEDUP_SCHEME)
+    optional int32 selected_scheme_id       = 4;    //选择的方案
+    optional int64 city_id                  = 5;    //应用资源增产方案的城市Id, 为哪个城市自动买粮
+    optional bool will_spend_gold           = 6;    //是否愿意花黄金自动买粮
+}
+
+//CREATE_NEW_CITY, 以 CityInfoAnswer 回复
+message CreateNewCity {
+    optional Instruction cmd            = 1;    //
+    optional int32 tile_id              = 2;    //建在哪？
+    optional string name                = 3;    //城市名
+    optional int64 city_id              = 4;    //当前城市
+}
+
+//GET_CITY_INFO, 以 CityInfoAnswer 回复
+message CityInfoReq {
+    optional Instruction cmd            = 1;    //
+    optional int64 city_id              = 2;    //城市Id
+    optional string city_name           = 3;    //城市名
+}
+
+//城市信息
+message CityInfoAnswer {
+    optional Instruction cmd            = 1;    //
+    optional eErrorCode err_code        = 2;    //
+
+    optional CityInfo info              = 3;    //城市信息
+}
+
+//GIVE_UP, 放弃占领的野地或山寨, 以 CommonAnswer 回复
+message GiveLandUp {
+    optional Instruction cmd            = 1;    //
+    optional Position where             = 2;    //放弃哪?
+}
+
+//终止某个任务, 以 CommonAnswer 回复
+message CancelTask {
+    optional Instruction cmd            = 1;    //CANCEL_TASK
+    optional int64 task_id              = 2;    //任务Id
+}
+
+//根据玩家名称或城市名称获得城市坐标, 以 IamHere 回复
+message WhereAreYou {
+    optional Instruction cmd        = 1;    //WHERE_ARE_YOU
+    optional string player_name     = 2;    //玩家名
+    optional string city_name       = 3;    //城市名
+}
+
+//
+message IamHere {
+    optional Instruction cmd            = 1;    //
+    optional eErrorCode err_code        = 2;    //
+    optional Position pos               = 3;    //位置
+    optional int64 city_id              = 4;    //城市Id
+}
+
+//PUSH_NEW_PEERAGE
+message ParamForNewPeerage {
+    optional int32 peerage              = 1;    //爵位Id
+}
+
+//PUSH_LEADER_UPGRADED
+message ParamForUpgradeLevel {
+    optional int32 undist_attr_points           = 1;    //未分配的属性点
+    optional int32 undist_skill_points          = 2;    //未分配的技能点
+    message SimpleItem {
+        optional int32 cfg_no   = 1;
+        optional int32 amount   = 2;
+    }
+    repeated SimpleItem items                   = 3;    //道具
+    repeated ResAmount res                      = 4;    //资源
+}
+
+//SET_NEWCOMER_GUIDE_INFO, 以此结构请求, 以 CommonAnswer 回复;
+message NewcomerGuideInfo {
+    optional Instruction cmd            = 1;    //
+    optional eErrorCode err_code        = 2;    //
+    optional bool is_finished           = 3;    //是否完成新手任务
+    optional int32 stage                = 4;    //新手引导阶段
+}
+
+//SET_NEWCOMER_GUIDE_INFO_V2, 以此结构请求, 以 NewcomerGuideInfoV2Answer 回复;
+message NewcomerGuideInfoV2 {
+    optional Instruction cmd            = 1;    //
+
+    optional bool is_finished           = 2;    //是否完成新手任务
+    optional int32 stage                = 3;    //新手引导阶段
+}
+
+message NewcomerGuideInfoV2Answer {
+    optional Instruction cmd            = 1;    //
+    optional eErrorCode err_code        = 2;    //
+
+    optional int32 job_id               = 3;    //新手引导任务Id
+}
+
+//设置防御阵法, 以 CommonAnswer 回复
+message SetDefensiveBattleArray {
+    optional Instruction cmd            = 1;    //SET_DEFENSIVE_BATTLE_ARRAY, AL_SET_DEFENSIVE_BATTLE_ARRAY
+
+    optional int64 city_id              = 2;    //哪个城市？
+    optional eBattleArray battle_array  = 3;    //什么阵法？
+}
+
+//购买民心值, 以 CommonAnswer 回复
+message BuyLoyalty {
+    optional Instruction cmd            = 1;    //BUY_LOYALTY
+
+    optional int64 city_id              = 2;    //哪个城市？
+    optional int32 how_many             = 3;    //购买多少？
+}
+
+//转发邮件, 分享战斗报告, 以 CommonAnswer 回复
+message MailForwarding {
+    optional Instruction cmd            = 1;    //FORWARDING_MAIL
+
+    repeated string player_name         = 2;    //要与之分享的玩家名
+    optional Information mail           = 3;    //要转发信息
+}
+
+//设置是否使用黄金自动购买粮食, 以 CommonAnswer 回复
+//SET_SPEND_GOLD_AUTO_BUY_FOOD, AL_SET_SPEND_GOLD_AUTO_BUY_FOOD
+message SpendGoldAutoBuyFood {
+    optional Instruction cmd            = 1;
+    optional int64 city_id              = 2;
+    optional bool will_spend_gold       = 3;    //是否愿意花黄金自动买粮
+}
+
+//变体类型, 用于动态参数
+message MyVariant {
+    optional string name                = 1;    //参数名
+    optional string val_type            = 2;    //值的类型, i4,i8,b,str,d, i4_seq, i8_seq, ...
+
+    optional int32 val_i4               = 3;    //整形值
+    optional int64 val_i8               = 4;    //长整形值
+    optional bool val_b                 = 5;    //布尔值
+    optional string val_str             = 6;    //串值
+    optional double val_d               = 7;    //浮点值
+
+    repeated int32 val_i4_seq           = 11;    //整形值序列
+    repeated int64 val_i8_seq           = 12;    //长整形值序列
+    repeated bool val_b_seq             = 13;    //布尔值序列
+    repeated string val_str_seq         = 14;    //串值序列
+    repeated double val_d_seq           = 15;    //浮点值序列
+}
+
+//IT_GENERAL
+message GeneralItem {
+    optional int64 id                   = 1;    //宝物Id
+    optional int32 cfg_no               = 2;    //配置Id
+    optional int32 amount               = 3;    //数量
+    optional int32 ration               = 4;    //限量销售
+    optional int32 level                = 5;    //强化等级
+    optional int64 place_time           = 6;    //放入背包的时间
+    repeated GeneralItem nested_items   = 7;    //嵌套的物品
+
+    message Attribute { //属性，来自于配置文件，用于动态发布新物品
+        optional eItemType type             = 1;    //宝物类型
+        optional string name                = 2;    //名字
+        optional int32 max_pile             = 3;    //最大堆叠数, 1表示不可重叠
+        optional int32 use_level            = 4;    //使用等级
+        optional int32 peerage_limit        = 5;    //爵位限制
+        optional string icon_url            = 6;    //图标地址
+        optional string desc                = 7;    //描述
+        optional int32 sell_price           = 8;    //商品单位销售价格(卖给系统商店时的价格)
+        optional double min_consign_price   = 9;    //每单位最小寄售价格
+        optional double max_consign_price   = 10;   //每单位最大寄售价格
+        optional int32 attack               = 11;   //攻击力
+        optional int32 defense              = 12;   //防御力
+        optional int32 speed                = 13;   //速度
+        optional int32 lucky                = 14;   //幸运值
+        optional bool is_container          = 15;   //是否可以作为容器
+        optional int32 capacity             = 16;   //容量
+        optional int32 valuation            = 17;   //估值, 用于宝箱类
+        repeated MyVariant use_parameters   = 18;   //打开参数名, 参数类型
+        repeated MyVariant use_effects      = 19;   //打开后的效果名, 类型
+    }
+    optional Attribute attr             = 8;    //属性
+
+}
+
+//使用道具，以 UseItemAns 回应
+message UseItemReq {
+    optional Instruction cmd            = 1;    //USE_ITEM
+    optional int64 item_id              = 2;    //道具Id，若此值为0，则使用配置Id
+    optional int64 city_id              = 3;    //城市Id
+    repeated MyVariant use_args         = 4;    //打开参数
+    optional int32 item_cfg_no          = 5;    //物品配置Id
+}
+
+//使用道具回复
+message UseItemAns {
+    optional Instruction cmd            = 1;    //
+    optional eErrorCode err_code        = 2;    //错误码
+    repeated MyVariant use_effects      = 3;    //打开后的效果
+    repeated GeneralItem items          = 4;    //使用后获得的道具
+}
+
+//获取道具, 以此结构请求与回应
+message GetItems {
+    optional Instruction cmd            = 1;    //GET_ITEMS
+    optional eErrorCode err_code        = 2;    //错误码
+    optional int64 item_id              = 3;    //道具Id, 当它为0时, 表示获取所有道具, 否则表示指定的道具
+    repeated GeneralItem items          = 4;    //道具列表
+}
+
+//获取商品id列表
+message CommodityIdAns {
+    optional Instruction cmd            = 1;    //
+    optional eErrorCode err_code        = 2;    //错误码
+    message SimpleInfo {
+        optional int64 commodity_id     = 1;    //商品id
+        optional int32 item_cfg_no      = 2;    //物品配置Id
+    }
+    repeated SimpleInfo commodityIds    = 3;
+}
+
+//根据cfgno获取系统商城里商品的信息, 以 CommodityByCfgNoAns 回复
+message CommodityByCfgNoReq {
+    optional Instruction cmd            = 1;    //GET_COMMODITY_BY_CFGNO
+    optional int32 item_cfg_no          = 2;    //物品配置Id
+}
+
+message CommodityByCfgNoAns {
+    optional Instruction cmd            = 1;    //
+    optional eErrorCode err_code        = 2;    //错误码
+    optional Commodity goods            = 3;    //对应的商品
+}
+
+//回复获取副本信息
+message ScenarioInfoAns {
+    optional Instruction cmd            = 1;    //GET_SCENARIO_INFO
+    optional eErrorCode err_code        = 2;    //错误码
+
+    optional int32 vigor                = 3;    //当前体力
+    optional int32 cur_chapter          = 4;    //当前开启的章
+    optional int32 cur_section          = 5;    //          节
+    optional int32 remain_num           = 6;    //剩余购买次数
+}
+
+//挑战副本, 以 CommonAnswer 回复
+message ChallengeReq {
+    optional Instruction cmd            = 1;    //CHALLENGE_SCENARIO
+
+    optional int32 chapter_id           = 2;    //挑战哪一章的
+    optional int32 section_id           = 3;    //          哪一节
+    optional Corps corps                = 4;    //用多少兵力
+    optional eBattleArray battle_array  = 5;    //用什么阵法
+}
+
+//推挑战副本的结果
+message ChallengeAns {
+    optional Instruction cmd            = 1;    //CHALLENGE_SCENARIO
+    optional eErrorCode err_code        = 2;    //错误码
+
+//    optional int32 chapter_id           = 3;    //挑战的章
+//    optional int32 section_id           = 4;    //      节
+    repeated GeneralItem items          = 5;    //获得的道具
+    optional int32 reputation           = 6;    //玩家威望
+    optional int32 peerage              = 7;    //玩家爵位
+}
+
+//补充体力回复
+message RenewVigorSchemeAns {
+    optional Instruction cmd            = 1;    //SELECT_RENEW_VIGOR_SCHEME
+    optional eErrorCode err_code        = 2;    //错误码
+
+    optional int32 remain_num           = 3;    //剩余购买次数
+}
+
+//打造装备请求, 以 EquipCraftAns 回答
+message EquipCraftReq {
+    optional Instruction cmd            = 1;    //CRAFT_EQUIP
+
+    optional int32 artifact_cfg_no      = 2;    //要打造的装备
+    repeated int64 ingredient           = 3;    //原材料，可重叠装备不用传, 服务端直接检查背包
+    optional bool is_autograph          = 4;    //是否签名
+}
+
+message EquipCraftAns {
+    optional Instruction cmd            = 1;    //CRAFT_EQUIP
+    optional eErrorCode err_code        = 2;    //错误码
+
+    optional Knapsack knapsack          = 3;    //背包, 失败时不填充此结构
+}
+
+message MyActivities {
+    optional Instruction cmd                = 1;    //GET_ACTIVITIES
+    optional eErrorCode err_code            = 2;    //错误码
+
+    message ActivityInfo {
+        optional int32 id           = 1;    //活动id
+        optional int32 type         = 2;    //活动类型        
+        optional string desc        = 3;    //活动说明
+        optional int64 begin_time   = 4;    //活动开始时间
+        optional int64 end_time     = 5;    //活动结束时间
+        optional int32 limit        = 6;    //限制次数
+        optional string content     = 7;    //内容
+        optional string name        = 9;    //活动名
+        repeated MyVariant params   = 10;   //参数
+    }
+    repeated ActivityInfo alive_activities  = 3;    //现阶段服务器举行的活动
+
+    message ActivityStatus {
+        optional int32 activity_id  = 1;    //活动id
+        optional eJobStatus status  = 2;    //状态，复用任务状态
+        optional int32 remain_num   = 3;    //剩余次数
+    }
+    repeated ActivityStatus my_activities   = 4;
+
+}
+

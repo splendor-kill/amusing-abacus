@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="CallOfWild" default="deploy" basedir=".">
+
+	<property name="src.dir" value="src" />
+	<property name="src.test.dir" value="test" />
+	<property name="bin.dir" value="bin" />
+	<property name="bin.java.dir" value="bin/java" />
+	<property name="bin.test.dir" value="bin/test" />
+	<property name="lib.dir" value="lib" />
+	<property name="res.dir" value="res" />
+	<property name="dist.dir" value="dist" />
+	<property name="docs.dir" value="docs" />
+	<property name="prj.name" value="${ant.project.name}" />
+	<property name="manifest" value="meta-${prj.name}/MANIFEST.MF" />
+	<property name="report.dir" value="report" />
+	<property name="jmock.dir" value="jmock-2.5.1" />
+	<property name="scripts.dir" value="${src.dir}/com/tentacle/trickraft/script" />
+	<property name="portal.dir" value="${dist.dir}/portal" />
+	<property name="keyfile" value="C:/MinGW/msys/1.0/home/Splendor/aug27" />
+
+	<path id="ext.libs.notest" description="third party libs exclude junit">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+			<exclude name="junit-4.10.jar" />
+			<exclude name="${jmock.dir}/*.jar" />
+		</fileset>
+	</path>
+
+	<path id="ext.libs" description="third party libs">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<target name="init">
+		<mkdir dir="${bin.dir}" />
+		<mkdir dir="${bin.java.dir}" />
+		<mkdir dir="${bin.test.dir}" />
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${report.dir}" />
+		<mkdir dir="${docs.dir}" />
+		<mkdir dir="${portal.dir}" />
+	</target>
+
+	<target name="compileJava" depends="init">
+		<javac encoding="UTF-8" srcdir="${src.dir}" destdir="${bin.java.dir}" includeantruntime="false" 
+			excludes="**/test/**, **/testdesigner/**" debug="false" optimize="true" 
+			target="1.6" source="1.6" >
+			<classpath refid="ext.libs.notest" />
+		</javac>
+	</target>
+
+	<target name="compileTest" depends="compileJava">
+		<javac encoding="UTF-8" srcdir="${src.test.dir}" destdir="${bin.test.dir}" includeantruntime="false" debug="false" optimize="true">
+			<classpath>
+				<path refid="ext.libs" />
+				<pathelement location="${bin.java.dir}" />
+			</classpath>
+		</javac>
+	</target>
+
+	<target name="jar" depends="compileJava">
+		<jar destfile="${dist.dir}/${prj.name}.jar" baseDir="${bin.java.dir}" />
+	</target>
+
+	<target name="test" depends="compileTest">
+		<junit printsummary="yes">
+			<formatter type="xml" />
+			<classpath>
+				<path refid="ext.libs" />
+				<pathelement location="${bin.java.dir}" />
+				<pathelement location="${bin.test.dir}" />
+			</classpath>
+			<batchtest fork="yes" todir="${report.dir}">
+				<fileset dir="${src.test.dir}" includes="**/*.java" />
+			</batchtest>
+		</junit>
+		<fail if="junit.failure" message="Unit test(s) failed. See reports!" />
+	</target>
+
+	<target name="test.report" depends="test">
+		<junitreport todir="${report.dir}">
+			<fileset dir="${report.dir}" includes="TEST-*.xml" />
+			<report todir="${report.dir}" />
+		</junitreport>
+	</target>
+
+	<target name="doc" depends="compileJava" description="create docs">
+		<javadoc destdir="${docs.dir}" encoding="UTF-8" docencoding="UTF-8" charset="UTF-8" access="public" classpathref="ext.libs.notest" author="true" version="true" use="true" windowtitle="${prj.name} dev docs">
+			<packageset dir="${src.dir}" defaultexcludes="yes">
+				<include name="**/server/**" />
+				<exclude name="${src.test.dir}/**" />
+			</packageset>
+
+			<tag name="todo" scope="all" description="TODO" />
+			<group title="server docs for developer" packages="com.tentacle.trickraft.server.*" />
+			<link href="www.deepenter.com/developer/trickraft/docs/" />
+		</javadoc>
+	</target>
+
+	<target name="deploy" depends="jar">
+		<copy todir="${dist.dir}">
+			<fileset dir=".">
+				<exclude name="${src.dir}/**" />
+				<exclude name="${src.test.dir}/**" />
+				<exclude name="${bin.dir}/**" />
+				<exclude name="${dist.dir}/**" />
+				<exclude name="${report.dir}/**" />
+				<exclude name="${docs.dir}/**" />
+				<exclude name="logs/*.*" />
+				<exclude name=".settings/**" />
+				<exclude name="*.class" />
+				<exclude name="*.scc" />
+				<exclude name="*.classpath" />
+				<exclude name="*.project" />
+				<exclude name="build*.xml" />
+				<exclude name="meta-*/**" />
+				<exclude name="${lib.dir}/junit*.jar" />
+				<exclude name="test-res/**" />
+				<exclude name="db/gm_account.*" />
+				<exclude name="fill-some-data.sh" />
+				<exclude name="server-start.bat" />
+				<exclude name="ProxoolMysql.properties" />
+				<exclude name="login-server-start.sh" />
+				<exclude name="portal-over.sh" />
+				<exclude name="exe/**" />
+			</fileset>
+		</copy>
+		<copy todir="${portal.dir}">
+			<fileset dir="${dist.dir}">
+				<include name="TrickraftServer.jar"/>
+				<include name="lib/**" />
+				<include name="logs/**" />
+				<include name="log4j.properties" />
+				<include name="c3p0Mysql.properties" />
+				<include name="res/config.properties" />
+				<include name="res/Versioncfg.csv" />
+			</fileset>
+		</copy>
+		<copy file="${basedir}/db/gm_account.sh" todir="${portal.dir}/db" />
+		<copy file="${basedir}/db/gm_account.sql" todir="${portal.dir}/db" />
+		<copy file="${basedir}/fill-some-data.sh" todir="${portal.dir}" />
+		<copy file="${basedir}/login-server-start.sh" todir="${portal.dir}" />
+		<copy file="${basedir}/portal-over.sh" todir="${portal.dir}" />
+		<touch file="${portal.dir}/logs/.keep" />
+
+		<copy file="${scripts.dir}/ScriptJobsHall.java" todir="${dist.dir}/res/scripts" />
+		<touch file="${dist.dir}/logs/.keep" />
+	</target>
+
+	<target name="pub" depends="deploy">
+		<scp todir="root@10.22.11.104:~/work" keyfile="${keyfile}" trust="true">
+			<fileset dir="${dist.dir}" />
+		</scp>
+	</target>
+
+	<target name="pubgame" depends="deploy">
+		<scp todir="root@10.22.11.104:~/work" keyfile="${keyfile}" trust="true">
+			<fileset dir="${dist.dir}">
+				<exclude name="portal/**" />
+			</fileset>
+		</scp>
+	</target>
+
+	<target name="clean" description="clean up">
+		<delete dir="${bin.dir}" />
+		<delete dir="${dist.dir}" />
+		<delete dir="${report.dir}" />
+		<delete dir="${docs.dir}" />
+	</target>
+
+</project>

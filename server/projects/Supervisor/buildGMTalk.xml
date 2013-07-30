@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Supervisor" default="deploy" basedir=".">
+
+	<property name="src.dir" value="src" />
+	<property name="src.ref.dir" value="../Trickraft/src" />
+	<property name="bin.dir" value="bin" />
+	<property name="bin.java.dir" value="bin/java" />
+	<property name="lib.dir" value="lib" />
+	<property name="lib.ref.dir" value="../Trickraft/lib" />
+	<property name="res.dir" value="res" />
+	<property name="dist.dir" value="dist" />
+	<property name="prj.name" value="${ant.project.name}" />
+	<property name="mainclass" value="com.tentacle.hegemonic.supervisor.GameMasterTalk" />
+
+	<path id="ext.libs.notest" description="third party libs exclude junit">
+		<fileset dir="${lib.ref.dir}">
+			<!--exclude name="**/*.jar" /-->
+			<include name="protobuf-java-2.4.1.jar" />
+			<include name="netty-3.2.5.Final.jar" />
+			<include name="log4j.jar" />
+			<include name="trove-3.0.3.jar" />
+		</fileset>
+	</path>
+
+	<path id="ext.libs" description="third party libs">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<target name="init">
+		<mkdir dir="${bin.dir}" />
+		<mkdir dir="${bin.java.dir}" />
+		<mkdir dir="${dist.dir}" />
+	</target>
+
+	<target name="compileJava" depends="init">
+		<javac encoding="UTF-8" srcdir="${src.dir}" sourcepath="${src.ref.dir}" 
+			destdir="${bin.java.dir}" includeantruntime="false"
+			excludes="**/test/**, **/testdesigner/**" debug="false" optimize="true" 
+			target="1.6" source="1.6" >
+			<classpath refid="ext.libs.notest" />
+			<!--classpath refid="ext.libs" /-->
+		</javac>
+	</target>
+
+	<target name="jar" depends="compileJava">
+		<pathconvert property="mf.classpath" pathsep=" ">
+			<path refid="ext.libs.notest" />
+			<flattenmapper />
+		</pathconvert>
+		<jar destfile="${dist.dir}/${prj.name}.jar" baseDir="${bin.java.dir}" />
+	</target>
+
+	<target name="deploy" depends="jar">
+		<copy todir="${dist.dir}">
+			<fileset dir=".">
+				<exclude name="${src.dir}/**" />
+				<exclude name="${bin.dir}/**" />
+				<exclude name="${dist.dir}/**" />
+				<exclude name="logs/*.*" />
+				<exclude name="dat/*.*" />
+				<exclude name=".settings/**" />
+				<exclude name="*.class" />
+				<exclude name="*.scc" />
+				<exclude name="*.classpath" />
+				<exclude name="*.project" />
+				<exclude name="build*.xml" />
+				<exclude name="meta-*/**" />
+				<exclude name="${lib.dir}/junit*.jar" />
+			</fileset>
+		</copy>
+		<copy todir="${dist.dir}/lib">
+			<fileset dir="${lib.ref.dir}">
+				<include name="protobuf-java-2.4.1.jar" />
+				<include name="netty-3.2.5.Final.jar" />
+				<include name="log4j.jar" />
+				<include name="trove-3.0.3.jar" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="run" depends="deploy">
+		<java classname="com.tentacle.hegemonic.supervisor.Director" classpath="${dist.dir}/${prj.name}.jar" />
+	</target>
+
+	<target name="clean" description="clean up">
+		<delete dir="${bin.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+
+</project>

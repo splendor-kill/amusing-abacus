@@ -1,0 +1,504 @@
+import "ProtoBasis.proto";
+import "ProtoPlayer.proto";
+
+package com.tentacle.trickraft.protocol;
+
+
+//联盟信息
+message AllianceInfo {
+    optional int64 id               = 1;    //联盟Id
+    optional string name            = 2;    //名字
+    optional int32 level            = 3;    //等级
+    optional int32 people_num       = 4;    //人数
+    optional int32 people_capacity  = 5;    //最大人口数
+    optional int32 territory_id     = 6;    //领土Id
+    optional string territory       = 7;    //领土
+    optional int32 ranking          = 8;    //排名
+    optional int64 chieftain_id     = 9;    //盟主Id
+    optional string chieftain_name  = 10;   //盟主名字
+    optional string intro           = 11;   //简介
+    optional string poster          = 12;   //公告
+    optional int32 reputation       = 13;   //联盟声望
+
+    message AlTech {
+        optional eAllianceTech al_tech_type     = 1;    //联盟科技类型
+        optional int32 al_tech_level            = 2;    //联盟科技级别
+    }
+    repeated AlTech al_techs                    = 14;   //联盟科技
+    repeated BattleArray al_battle_array        = 15;   //当前使用的阵法
+    optional Corps cur_corps                    = 16;   //有多少兵力
+    optional Corps corps_on_training            = 17;   //训练中的士兵
+    repeated ResAmount res_amount               = 18;   //资源数量
+    optional int32 max_members                  = 19;   //最大成员数
+    repeated Productivity consume_rate          = 20;   //资源消耗率
+    optional eBattleArray defensive_battle_array    = 21;   //防御阵法
+    optional int64 auto_buy_food_remain_time        = 22;   //自动买粮剩余时间
+    optional bool is_enabled_spend_gold_auto_buy    = 23;   //是否开启了花黄金自己买粮的功能
+
+}
+
+//领土
+message Territory {
+    optional int32 territory_id     = 1;    //领土Id
+    optional string territory       = 2;    //名字
+    optional Corps corps            = 3;    //有多少兵力
+    optional int32 level            = 4;    //等级
+    optional int32 reputation_yeild = 5;    //声望产量(/h)
+    repeated int64 treasure_id      = 6;    //产出的宝物
+    optional int32 treasure_yeild   = 7;    //宝物产量(/72h)
+    optional int64 alliance_id      = 8;    //联盟Id
+    optional string alliance_name   = 9;    //联盟名
+    optional eCityStatus state      = 10;   //状态
+
+}
+
+
+//创建联盟请求, 以 AllianceAnswer 回复
+message CreateAlliance {
+    optional Instruction cmd        = 1;    //AL_CREATE_ALLIANCE
+    optional string ally_name       = 2;    //联盟名称
+    optional string intro           = 3;    //联盟简介
+    optional int64 city_id          = 4;    //在哪个城市创建联盟
+}
+
+//创建联盟的应答
+message AllianceAnswer {
+    optional Instruction cmd        = 1;    //
+    optional eErrorCode err_code    = 2;    //
+
+    optional AllianceInfo info      = 3;    //联盟信息
+}
+
+//AL_DISSOLVE_ALLIANCE, 以 CommonReq 请求, 以 CommonAnswer 回复
+
+//审核成员, 以 AuditMember 回复
+message AuditMember {
+    optional Instruction cmd        = 1;    //AL_AUDIT_MEMBER
+    optional eErrorCode err_code    = 2;    //
+    repeated int64 acceptees        = 3;    //被同意加入的玩家
+    repeated int64 rejectees        = 4;    //被拒绝的玩家
+}
+
+//推审核结果
+message PushAuditResult {
+    optional Instruction cmd            = 1;    //AL_PUSH_AUDIT_RESULT
+    optional int64 ally_id              = 2;    //联盟Id
+    optional string ally_name           = 3;    //联盟名字
+    optional eAuditResult audit_result  = 4;    //结果
+}
+
+//AL_QUIT_ALLIANCE, 以 CommonReq 请求, 以 CommonAnswer 回复
+
+//转让盟主(禅让), 以 CommonAnswer 回复
+message DemiseAlliance {
+    optional Instruction cmd        = 1;    //AL_DEMISE
+    optional int64 successor_id     = 2;    //继任者Id
+}
+
+//提拔副盟主, 以 CommonAnswer 回复
+message PromoteAssistant {
+    optional Instruction cmd        = 1;    //AL_PROMOTE_ASSISTANT
+    optional int64 player_id        = 2;    //成员Id
+}
+
+//撤销副盟主, 以 CommonAnswer 回复
+message RetireAssistant {
+    optional Instruction cmd        = 1;    //AL_RETIRE_ASSISTANT
+    optional int64 assistant_id     = 2;    //副盟主Id
+}
+
+//人事任免(副盟主提拔或撤销), 以 CommonAnswer 回复
+message PushPersonnelChange {
+    optional Instruction cmd            = 1;    //AL_PUSH_APPOINT_DISMISS
+    optional int64 player_id            = 2;    //当事人Id
+    optional ePersonnelChange change    = 3;    //提拔或撤销
+}
+
+//发工资啦, 以 CommonAnswer 回复
+message PayOff {
+    optional Instruction cmd            = 1;    //AL_PAY_OFF
+    optional int32 money                = 2;    //拿出来发工资的总金额
+}
+
+//升级联盟科技或阵法, 以 DelayTask 回复
+message AlUpgradeReq {
+    optional Instruction cmd            = 1;    //AL_UPGRADE_TECH, AL_UPGRADE_BATTLE_ARRAY
+    optional eUpgradable which          = 2;    //升级什么？
+    optional eAllianceTech which_tech   = 3;    //升级(研究)什么科技
+    optional eBattleArray battle_array  = 4;    //哪个阵法？
+}
+
+
+//AL_UPGRADE_LEVEL, 以 CommonReq 请求, 以 CommonAnswer 回复
+
+//训练联盟军队, 以 DelayTask 回复
+message TrainAllyTroops {
+    optional Instruction cmd        = 1;    //AL_TRAIN_TROOPS
+    optional ForcesBranch force     = 2;    //多少什么兵
+}
+
+//驱逐盟员, 以 CommonAnswer 回复
+message ExpelMember {
+    optional Instruction cmd        = 1;    //AL_EXPEL_MEMBER
+    optional int64 member_id        = 2;    //踢谁
+}
+
+//捐献资源, 以 DonateAnswer 回复
+message DonateRes {
+    optional Instruction cmd        = 1;    //AL_DONATE_RES
+    repeated ResAmount res_amount   = 2;    //多少什么资源
+    optional int64 city_id          = 3;    //捐哪个城市的资源
+}
+
+//捐献资源回应包
+message DonateAnswer {
+    optional Instruction cmd                    = 1;
+    optional eErrorCode err_code                = 2;
+    optional int32 contrib_value                = 3;    //获得或消耗的贡献值
+}
+
+//AL_EXCHANGE_MATERIAL, 以 DonateAnswer 回复
+message DonateItem {
+    optional Instruction cmd                    = 1;    //
+    optional int64 item_id                      = 2;    //宝物Id
+    optional eItemType item_type                = 3;    //宝物类型
+    optional int32 cfg_no                       = 4;    //配置序号
+    optional int32 amount                       = 5;    //数量
+}
+
+//捐献军队, 以 DonateAnswer 回复
+message DonateCorps {
+    optional Instruction cmd                    = 1;    //AL_DONATE_CORPS
+    optional int64 city_id                      = 2;    //捐哪个城市的兵
+    repeated ForcesBranch force                 = 3;    //多少什么兵
+}
+
+//获取联盟信息, 以 AllianceAnswer 回复
+message GetAllianceInfo {
+    optional Instruction cmd                    = 1;    //AL_GET_ALLIANCE_INFO
+    optional int64 ally_id                      = 2;    //联盟Id
+    optional string ally_name                   = 3;    //联盟名
+}
+
+//AL_GET_ALLIANCE_INFO_BY_POS, 以 AllianceListAnswer 回复
+message GetAllianceInfoByPos {
+    optional Instruction cmd                    = 1;    //
+    repeated int32 pos                          = 2;    //对哪些土地感兴趣, 为空表示所有土地上的联盟
+}
+
+//获取联盟成员信息, 以 ActorListAnswer 回复
+message GetMemberInfo {
+    optional Instruction cmd                    = 1;    //AL_GET_MEMBER_INFO
+    repeated int64 members                      = 2;    //哪些盟员
+}
+
+//申请加入联盟, 以 CommonAnswer 回复
+message ApplyToJoin {
+    optional Instruction cmd                    = 1;    //AL_APPLY_TO_JOIN
+    optional int64 alliance_id                  = 2;    //想加入哪个联盟
+    optional string alliance_name               = 3;    //联盟名字
+}
+
+//邀请玩家加入联盟, 以 CommonAnswer 回复
+message InviteToJoin {
+    optional Instruction cmd                    = 1;    //AL_INVITE_TO_JOIN
+    optional int64 invitee_id                   = 2;    //被邀请者Id
+    optional string invitee_name                = 3;    //被邀请者名字
+}
+
+//侦查, 以 AlScoutReport 回复
+message AllianceScout {
+    optional Instruction cmd                    = 1;    //AL_SCOUT
+    optional int32 dest_pos                     = 2;    //侦查哪?
+    optional int64 alliance_id                  = 3;    //侦查哪个联盟？
+}
+
+//联盟侦查报告
+message AlScoutReport {
+    optional Instruction cmd        = 1;    //
+    optional eErrorCode err_code    = 2;    //
+    optional Territory terra        = 3;    //领土
+    optional AllianceInfo info      = 4;    //联盟信息
+}
+
+//进攻或增援, 以 DelayTask 回复
+message AllianceAttack {
+    optional Instruction cmd                    = 1;    //AL_ATTACK, AL_REINFORCE
+    optional int32 dest_pos                     = 2;    //进攻哪?
+    optional int64 alliance_id                  = 3;    //进攻哪个联盟(用于校验)
+    optional Corps corps                        = 4;    //用多少兵力
+    optional eBattleArray battle_array          = 5;    //用什么阵法
+    optional string alliance_name               = 6;    //联盟名
+    optional string land_name                   = 7;    //领土名
+}
+
+//召回或撤回军队, 以 CommonAnswer 回复
+message AllianceRecallCorps {
+    optional Instruction cmd                    = 1;    //AL_RECALL, AL_WITHDRAW
+    optional int32 pos                          = 2;    //哪块领地上的
+    optional Corps corps                        = 3;    //多少什么兵
+    optional int64 task_id                      = 4;    //召回哪次增援任务派出的兵
+}
+
+//放弃领地, 以 CommonAnswer 回复
+message CedeLand {
+    optional Instruction cmd                    = 1;    //AL_CEDE_LAND
+    optional int32 pos                          = 2;    //放弃哪块土地？
+}
+
+//AL_SPEEDUP, 复用 SpeedupReq
+
+//AL_BUY_RES, 联盟购买资源, 复用Buy
+
+//AL_DELIVER, 发送联盟信件, 复用Message
+
+//修改公告或简介, 以 CommonAnswer 回复
+message ModifyPoster {
+    optional Instruction cmd                    = 1;    //AL_MODIFY_POSTER, AL_MODIFY_INTRO
+    optional string new_poster                  = 2;    //新的公告或简介
+}
+
+//AL_GET_APPLICANTS, 以 CommonReq 请求, 以 ActorListAnswer 回复
+
+//AL_GET_ALLIANCE_EVENTS, 以 AllianceEventsReq 请求, 以 AllianceEventsAnswer 回复
+message AllianceEventsReq {
+    optional Instruction cmd                    = 1;
+    optional eAllianceEventStar xstar           = 2;    //几星事件
+    optional int32 page_no                      = 3;    //第几页
+    optional int32 max_count                    = 4;    //单页返回的记录条数, 默认为30
+}
+
+//联盟事件列表
+message AllianceEventsAnswer {
+    optional Instruction cmd                    = 1;
+    optional eErrorCode err_code                = 2;
+    repeated AllianceEvent ally_events          = 3;    //联盟事件Id
+    optional int32 cur_page                     = 4;    //当前页
+    optional int32 total_pages                  = 5;    //总页数
+}
+
+//联盟事件
+message AllianceEvent {
+    optional int64 id                       = 1;    //事件标识
+    optional int32 cfg_no                   = 2;    //事件的配置Id
+    optional eAllianceEventStar xstar       = 3;    //几星事件
+    optional int64 time                     = 4;    //事件发生的时间
+    optional string who                     = 5;    //当事人
+    optional eAllianceAuthority ally_auth   = 6;    //玩家在联盟中扮演的角色(行使的权力)
+
+
+    /////////////////3 STARs/////////////////
+    //1 捐献金币
+    message ParamsDonateGold {
+        optional int32 how_many         = 1;    //捐了多少
+    }
+    //2 联盟升级
+    message ParamsUpgrade {
+        optional int32 which_level      = 1;    //升到了几级
+    }
+    //3 占领领地
+    message ParamsOccupyLand {
+        optional string loser           = 1;    //从谁手上获得的
+        optional int32 where            = 2;    //占领了哪
+        optional int32 terra_level      = 3;    //领地等级
+        optional int32 terra_name       = 4;    //领地名称
+    }
+    //4 失去领地
+    message ParamLoseLand {
+        optional string conqueror       = 1;    //征服者
+        optional int32 where            = 2;    //哪
+        optional int32 terra_level      = 3;    //领地等级
+        optional int32 terra_name       = 4;    //领地名称
+    }
+    //5 放弃领地
+    message ParamsCedeLand {
+        optional int32 where            = 1;    //放弃了哪
+        optional int32 terra_level      = 2;    //领地等级
+        optional int32 terra_name       = 3;    //领地名称
+    }
+
+    /////////////////2 STARs/////////////////
+    //捐献资源
+    message ParamsDonateRes {
+        repeated ResAmount res_amount   = 1;    //多少什么资源
+    }
+    //捐献军队
+    message ParamsDonateCorps {
+        repeated ForcesBranch force     = 1;    //多少什么兵
+    }
+    //捐献金钱
+    message ParamsCopper {
+        optional int32 how_many         = 1;    //捐了多少
+    }
+    //每日联盟礼物
+    message ParamsAllianceGift {
+        repeated ResAmount res_amount   = 1;    //多少什么资源
+    }
+    //用金币从商城购买资源
+    message ParamsBuyResFromSysShop {
+        optional int32 cost             = 1;    //花了多少金币
+        repeated ResAmount res          = 2;    //买了些什么资源
+    }
+    //用金钱从市场购买资源
+    message ParamsBuyResFromMarket {
+        optional int32 cost             = 1;    //花了多少金币
+        repeated ResAmount res          = 2;    //买了些什么资源
+        optional int64 seller           = 3;    //从谁那买的
+    }
+    //花金币加速完成征兵队列
+    message ParamsSpeedupTrainning {
+        optional int32 cost             = 1;    //花了多少金币
+        optional ForcesBranch force     = 2;    //加速了多少什么兵的训练
+        optional int64 save_time        = 3;    //节省了多少时间
+    }
+    //花金币召回
+    message ParamsRecallCorps {
+        optional int32 cost             = 1;    //花了多少金币
+        optional int32 where            = 2;    //从哪召回
+        optional ForcesBranch force     = 3;    //多少什么兵
+    }
+    //联盟科技提升
+    message ParamsUpgradeTech {
+        optional eAllianceTech tech     = 1;    //什么科技
+        optional int32 which_level      = 2;    //升到了几级
+    }
+
+    //联盟阵法升级
+    message ParamsUpgradeBattleArray {
+        optional eBattleArray battle_array  = 1;    //什么阵法
+        optional int32 which_level          = 2;    //升到了几级
+    }
+
+
+    /////////////////1 STAR/////////////////
+    //新成员加入联盟
+    message ParamsWelcomeNewMember {
+        optional string new_guy         = 1;    //新成员
+    }
+    //联盟成员被踢出
+    message ParamsExpel {
+        optional string expeller        = 1;    //谁赶的
+        optional string expellee        = 2;    //谁被赶
+    }
+    //联盟成员主动离开联盟
+    message ParamsQuit {
+        optional string who             = 1;    //谁离开了
+    }
+    //盟主或者副盟主提升成员
+    message ParamsPromote {
+        optional string commander       = 1;    //谁提拔的
+        optional string lucky_guy       = 2;    //提拔了谁
+    }
+    //盟主或者副盟主降级成员
+    message ParamsRetire {
+        optional string commander       = 1;    //谁下令降的
+        optional string retiree         = 2;    //谁被降级了
+    }
+    //成员兑换联盟宝物
+    message ParamsExchange {
+        optional string commander       = 1;    //谁兑换的
+        optional string what            = 2;    //兑换了什么
+        optional int32 amount           = 3;    //兑换了多少
+        optional int32 consumed_contrib_value   = 4;    //消耗了多少贡献值
+    }
+
+    optional ParamsDonateGold params_donate                         = 300;
+    optional ParamsUpgrade params_upgrade                           = 301;
+    optional ParamsOccupyLand params_occupy_land                    = 302;
+    optional ParamLoseLand params_lose_land                         = 303;
+    optional ParamsCedeLand params_cede_land                        = 304;
+
+    optional ParamsDonateRes params_donate_res                      = 200;
+    optional ParamsDonateCorps params_donate_corps                  = 201;
+    optional ParamsCopper params_copper                             = 202;
+    optional ParamsAllianceGift params_alliance_gift                = 203;
+    optional ParamsBuyResFromSysShop params_buy_res_from_sys_shop   = 204;
+    optional ParamsBuyResFromMarket params_buy_res_from_market      = 205;
+    optional ParamsSpeedupTrainning params_speedup_trainning        = 206;
+    optional ParamsRecallCorps params_recall_corps                  = 207;
+    optional ParamsUpgradeTech params_upgrade_tech                  = 208;
+    optional ParamsUpgradeBattleArray params_upgrade_battle_array   = 209;
+
+    optional ParamsWelcomeNewMember params_welcome_new_member       = 100;
+    optional ParamsExpel params_expel                               = 101;
+    optional ParamsQuit params_quit                                 = 102;
+    optional ParamsPromote params_promote                           = 103;
+    optional ParamsRetire params_retire                             = 104;
+    optional ParamsExchange params_exchange                         = 105;
+
+}
+
+//AL_GET_ALLIANCE_ITEMS, 以 GoodsReq 请求, 以 AllianceItems 回应
+
+message AllianceItems {
+    optional Instruction cmd        = 1;
+    optional eErrorCode err_code    = 2;
+    optional Knapsack knapsack      = 3;    //复用背包结构
+    optional int32 cur_page         = 4;   //当前页
+    optional bool have_next         = 5;   //是否还有下一页
+}
+
+//AL_PUSH_BE_INVITED, 有人邀请你加入联盟
+message SomeoneInviteYouToJoinAlliance {
+    optional Instruction cmd        = 1;
+    optional int64 inviter_id       = 2;    //邀请者Id
+    optional string inviter_name    = 3;    //邀请者名字
+    optional int64 alliance_id      = 4;    //联盟Id
+    optional string alliance_name   = 5;    //联盟名字
+}
+
+//AL_GET_ALLIANCE_LIST, 以 AllianceListReq 请求, 以 AllianceListAnswer 回应
+message AllianceListReq {
+    optional Instruction cmd        = 1;
+    optional int32 page_no          = 2;    //第几页
+    optional int32 max_count        = 3;    //单页返回的记录条数, 默认为30
+}
+
+message AllianceListAnswer {
+    optional Instruction cmd        = 1;
+    optional eErrorCode err_code    = 2;
+    repeated AllianceInfo ally_list = 3;
+    optional int32 cur_page         = 4;    //当前页
+    optional int32 total_pages      = 5;    //总页数
+}
+
+//AL_GET_TERRITORY, 以 CommonReq 请求, 以 Territories 回复
+message Territories {
+    optional Instruction cmd        = 1;
+    optional eErrorCode err_code    = 2;
+    repeated Territory terris       = 3;
+}
+
+//AL_GET_QUEUE, 以 AllianceQueue 请求, 以 AllianceQueue 回复
+message AllianceQueue {
+    optional Instruction cmd            = 1;    //
+    optional eErrorCode err_code        = 2;    //错误码(用于回复)
+    optional eQueueType type            = 3;    //队列类型
+
+    message Descriptor {
+        optional int64 task_id                      = 1;    //任务Id
+        optional int64 remain_time                  = 2;    //指令完成剩余时间, -1表示已执行
+        optional int32 phase                        = 3;    //指令执行阶段, 从0开始
+        optional AllianceAttack atk_dat             = 4;    //当类型为Q_MILITARY时使用
+        optional AlUpgradeReq upg_dat               = 5;    //当类型为Q_UPGRADE时使用
+        optional TrainAllyTroops train_dat          = 6;    //当类型为Q_TRAINING时使用
+    }
+
+    repeated Descriptor tasks           = 4;
+}
+
+//AL_GET_VAR_DAT, 以 CommonReq 请求, 以 AllianceVarDatPack 回复
+message AllianceVarDatPack {
+    optional Instruction cmd        = 1;    //
+    optional eErrorCode err_code    = 2;    //
+    optional AllianceInfo info      = 3;    //联盟信息
+    repeated int64 task_id          = 4;    //当前运行中的联盟任务
+}
+
+
+//解除警报的参数
+message ParamForAllClear {
+    optional eFlagConcernment concernment   = 1;    //玩家or联盟
+    optional int64 task_id                  = 2;    //任务Id
+}
+
