@@ -13,7 +13,7 @@ import com.tentacle.callofwild.protocol.ProtoAdmin.SysReloadCfg;
 import com.tentacle.callofwild.protocol.ProtoAdmin.Warrant;
 import com.tentacle.callofwild.protocol.ProtoBasis.Instruction;
 import com.tentacle.callofwild.protocol.ProtoBasis.eCommand;
-import com.tentacle.callofwild.util.Consts;
+
 
 public class ReloadConfig {
     private static final Logger logger = Logger.getLogger(ReloadConfig.class);
@@ -36,7 +36,7 @@ public class ReloadConfig {
     }
 
     public static void main(String[] args) {
-        PropertyConfigurator.configure(Consts.LOG_FILE_PATH);
+//        PropertyConfigurator.configure(Consts.LOG_FILE_PATH);
         if (args.length < 4) {
             System.out.println("usage: ReloadConfig name key whichcfg port");
             return;

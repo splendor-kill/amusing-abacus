@@ -45,7 +45,6 @@ import com.tentacle.callofwild.protocol.ProtoLogin.AccountReq;
 import com.tentacle.callofwild.protocol.ProtoLogin.Authentication;
 import com.tentacle.callofwild.protocol.ProtoLogin.ServerListAnswer;
 import com.tentacle.callofwild.protocol.ProtoLogin.VersionInfo;
-import com.tentacle.callofwild.util.Consts;
 import com.tentacle.callofwild.util.MD5;
 import com.tentacle.callofwild.util.Utils;
 
@@ -369,7 +368,7 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
             Session ss = acquireSession(userId);
             String sessionKey = ss.getSessionKey();
             if (clientVer == null || clientVer.isEmpty()) {
-                sessionKey = Consts.str_old_ver_do_not_support_session_key;
+//                sessionKey = Consts.str_old_ver_do_not_support_session_key;
                 ss.setSessionKey(sessionKey);
             } else {
                 double ver = 0.0;
@@ -379,10 +378,10 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
                     ans.setErrCode(eErrorCode.YOU_DONT_HAVE_SATISFY_ME);
                     break;
                 }
-                if (ver < Consts.client_version_start_support_session_key) {
-                    sessionKey = Consts.str_old_ver_do_not_support_session_key;
-                    ss.setSessionKey(sessionKey);
-                }
+//                if (ver < Consts.client_version_start_support_session_key) {
+//                    sessionKey = Consts.str_old_ver_do_not_support_session_key;
+//                    ss.setSessionKey(sessionKey);
+//                }
             }
 
             ans.setSessionKey(sessionKey).setName(name).setUserId(userId);

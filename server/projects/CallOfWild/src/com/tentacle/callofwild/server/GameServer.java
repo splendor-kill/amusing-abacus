@@ -5,7 +5,6 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 import org.jboss.netty.channel.Channel;
 
 import com.google.protobuf.InvalidProtocolBufferException;
@@ -13,107 +12,12 @@ import com.tentacle.callofwild.designer.Glossary;
 import com.tentacle.callofwild.persist.base.DaoLoginTread;
 import com.tentacle.callofwild.persist.base.DaoThread;
 import com.tentacle.callofwild.protocol.MyCodec.Cocoon;
-import com.tentacle.callofwild.protocol.ProtoAdmin.SysCommonReq;
-import com.tentacle.callofwild.protocol.ProtoAdmin.SysGetSessionAns;
-import com.tentacle.callofwild.protocol.ProtoAdmin.SysGmTalk;
-import com.tentacle.callofwild.protocol.ProtoAdmin.SysLimitPlayerBehavior;
-import com.tentacle.callofwild.protocol.ProtoAdmin.SysPost;
-import com.tentacle.callofwild.protocol.ProtoAdmin.SysPresentGift;
-import com.tentacle.callofwild.protocol.ProtoAdmin.SysPwdReset;
 import com.tentacle.callofwild.protocol.ProtoAdmin.SysRefreshServerStatus;
-import com.tentacle.callofwild.protocol.ProtoAdmin.SysReloadCfg;
-import com.tentacle.callofwild.protocol.ProtoAdmin.SysSendMail;
-import com.tentacle.callofwild.protocol.ProtoAdmin.SysUnblock;
 import com.tentacle.callofwild.protocol.ProtoAdmin.Warrant;
-import com.tentacle.callofwild.protocol.ProtoAlliance.AlUpgradeReq;
-import com.tentacle.callofwild.protocol.ProtoAlliance.AllianceAttack;
-import com.tentacle.callofwild.protocol.ProtoAlliance.AllianceEventsReq;
-import com.tentacle.callofwild.protocol.ProtoAlliance.AllianceListReq;
-import com.tentacle.callofwild.protocol.ProtoAlliance.AllianceQueue;
-import com.tentacle.callofwild.protocol.ProtoAlliance.AllianceRecallCorps;
-import com.tentacle.callofwild.protocol.ProtoAlliance.AllianceScout;
-import com.tentacle.callofwild.protocol.ProtoAlliance.ApplyToJoin;
-import com.tentacle.callofwild.protocol.ProtoAlliance.AuditMember;
-import com.tentacle.callofwild.protocol.ProtoAlliance.CedeLand;
-import com.tentacle.callofwild.protocol.ProtoAlliance.CreateAlliance;
-import com.tentacle.callofwild.protocol.ProtoAlliance.DemiseAlliance;
-import com.tentacle.callofwild.protocol.ProtoAlliance.DonateCorps;
-import com.tentacle.callofwild.protocol.ProtoAlliance.DonateItem;
-import com.tentacle.callofwild.protocol.ProtoAlliance.DonateRes;
-import com.tentacle.callofwild.protocol.ProtoAlliance.ExpelMember;
-import com.tentacle.callofwild.protocol.ProtoAlliance.GetAllianceInfo;
-import com.tentacle.callofwild.protocol.ProtoAlliance.GetMemberInfo;
-import com.tentacle.callofwild.protocol.ProtoAlliance.InviteToJoin;
-import com.tentacle.callofwild.protocol.ProtoAlliance.ModifyPoster;
-import com.tentacle.callofwild.protocol.ProtoAlliance.PromoteAssistant;
-import com.tentacle.callofwild.protocol.ProtoAlliance.RetireAssistant;
-import com.tentacle.callofwild.protocol.ProtoAlliance.TrainAllyTroops;
-import com.tentacle.callofwild.protocol.ProtoBasis.CommonReq;
 import com.tentacle.callofwild.protocol.ProtoBasis.Instruction;
 import com.tentacle.callofwild.protocol.ProtoBasis.eCommand;
 import com.tentacle.callofwild.protocol.ProtoBasis.eErrorCode;
-import com.tentacle.callofwild.protocol.ProtoLogin.Recharge;
-import com.tentacle.callofwild.protocol.ProtoPlayer.ActorCreationReq;
-import com.tentacle.callofwild.protocol.ProtoPlayer.AssignAttrPoints;
-import com.tentacle.callofwild.protocol.ProtoPlayer.AttackData;
-import com.tentacle.callofwild.protocol.ProtoPlayer.BuildReq;
-import com.tentacle.callofwild.protocol.ProtoPlayer.BuildingInfoReq;
-import com.tentacle.callofwild.protocol.ProtoPlayer.Buy;
-import com.tentacle.callofwild.protocol.ProtoPlayer.BuyLoyalty;
-import com.tentacle.callofwild.protocol.ProtoPlayer.CancelTask;
-import com.tentacle.callofwild.protocol.ProtoPlayer.CapitalMove;
-import com.tentacle.callofwild.protocol.ProtoPlayer.ChallengeReq;
-import com.tentacle.callofwild.protocol.ProtoPlayer.ChatData;
-import com.tentacle.callofwild.protocol.ProtoPlayer.CheckIdReq;
-import com.tentacle.callofwild.protocol.ProtoPlayer.CityInfoReq;
-import com.tentacle.callofwild.protocol.ProtoPlayer.CommodityByCfgNoReq;
-import com.tentacle.callofwild.protocol.ProtoPlayer.Consign;
-import com.tentacle.callofwild.protocol.ProtoPlayer.CreateNewCity;
-import com.tentacle.callofwild.protocol.ProtoPlayer.DissolveFriendship;
-import com.tentacle.callofwild.protocol.ProtoPlayer.EndTask;
-import com.tentacle.callofwild.protocol.ProtoPlayer.EquipCraftReq;
-import com.tentacle.callofwild.protocol.ProtoPlayer.EquipFitUp;
-import com.tentacle.callofwild.protocol.ProtoPlayer.EquipStrengthen;
-import com.tentacle.callofwild.protocol.ProtoPlayer.FinishJob;
-import com.tentacle.callofwild.protocol.ProtoPlayer.GetAchievedJobs;
-import com.tentacle.callofwild.protocol.ProtoPlayer.GetActor;
-import com.tentacle.callofwild.protocol.ProtoPlayer.GetActorsReq;
-import com.tentacle.callofwild.protocol.ProtoPlayer.GetEnabledJobs;
-import com.tentacle.callofwild.protocol.ProtoPlayer.GetItems;
-import com.tentacle.callofwild.protocol.ProtoPlayer.GetPurchaseSchemes;
-import com.tentacle.callofwild.protocol.ProtoPlayer.GiveLandUp;
-import com.tentacle.callofwild.protocol.ProtoPlayer.GoodsReq;
-import com.tentacle.callofwild.protocol.ProtoPlayer.JoinGame;
-import com.tentacle.callofwild.protocol.ProtoPlayer.KingdomInfoReq;
-import com.tentacle.callofwild.protocol.ProtoPlayer.MailForwarding;
-import com.tentacle.callofwild.protocol.ProtoPlayer.Maillist;
-import com.tentacle.callofwild.protocol.ProtoPlayer.MakeFriend;
-import com.tentacle.callofwild.protocol.ProtoPlayer.MarkAsReadReq;
-import com.tentacle.callofwild.protocol.ProtoPlayer.MyMessage;
-import com.tentacle.callofwild.protocol.ProtoPlayer.NewcomerGuideInfo;
-import com.tentacle.callofwild.protocol.ProtoPlayer.NewcomerGuideInfoV2;
-import com.tentacle.callofwild.protocol.ProtoPlayer.PlayerInfoReq;
-import com.tentacle.callofwild.protocol.ProtoPlayer.Queue;
-import com.tentacle.callofwild.protocol.ProtoPlayer.RankInfoReq;
-import com.tentacle.callofwild.protocol.ProtoPlayer.ReplyMakeFriend;
-import com.tentacle.callofwild.protocol.ProtoPlayer.ScoutReq;
-import com.tentacle.callofwild.protocol.ProtoPlayer.SeekBlindly;
-import com.tentacle.callofwild.protocol.ProtoPlayer.SelectPurchaseScheme;
-import com.tentacle.callofwild.protocol.ProtoPlayer.SellToSys;
-import com.tentacle.callofwild.protocol.ProtoPlayer.SetDefensiveBattleArray;
-import com.tentacle.callofwild.protocol.ProtoPlayer.SkillApply;
-import com.tentacle.callofwild.protocol.ProtoPlayer.SpeedupReq;
-import com.tentacle.callofwild.protocol.ProtoPlayer.SpendGoldAutoBuyFood;
-import com.tentacle.callofwild.protocol.ProtoPlayer.TilesReq;
-import com.tentacle.callofwild.protocol.ProtoPlayer.TrainCorpsReq;
-import com.tentacle.callofwild.protocol.ProtoPlayer.TransportResReq;
-import com.tentacle.callofwild.protocol.ProtoPlayer.UpgradeReq;
-import com.tentacle.callofwild.protocol.ProtoPlayer.UseItemReq;
-import com.tentacle.callofwild.protocol.ProtoPlayer.VarDatPackReq;
-import com.tentacle.callofwild.protocol.ProtoPlayer.WhereAreYou;
-import com.tentacle.callofwild.protocol.ProtoPlayer.WithdrawTroopsReq;
 import com.tentacle.callofwild.script.LoadScriptFile;
-import com.tentacle.callofwild.util.Consts;
 import com.tentacle.callofwild.util.Utils;
 
 public class GameServer {
@@ -166,10 +70,10 @@ public class GameServer {
 	
 	private void parseConfig() {
         String strTmp = Utils.getConfig().getProperty("logger_debug", "no");
-        if (Consts.LOGGER_DEBUG.equals(strTmp))
+//        if (Consts.LOGGER_DEBUG.equals(strTmp))
             isConsoleEnabled = true;
         strTmp = Utils.getConfig().getProperty("console_debug", "yes");
-        if (Consts.CONSOLE_DEBUG.equals(strTmp))
+//        if (Consts.CONSOLE_DEBUG.equals(strTmp))
             isLoggerEnabled = true;
 	    
 		strTmp = Utils.getConfig().getProperty("culture_lang", "chs");
@@ -270,7 +174,7 @@ public class GameServer {
                  .setCmd(Instruction.newBuilder().setCmd(eCommand.SYS_REFRESH_SERVER_STATUS))
                  .setServerId(getTheServerId())
                  .setProof(Warrant.newBuilder().setAdminName(world.server.getAdminName()).setCachet(world.server.getAdminKey()));
-		sb.setBusyDegree(Consts.GAMESRVSTATUS.RUN_WELL);
+//		sb.setBusyDegree(Consts.GAMESRVSTATUS.RUN_WELL);
         
 		world.send(getCarrier().getChannel2LoginServer(), sb.getCmd(), eErrorCode.OK, sb.build());   
 	}
@@ -281,7 +185,7 @@ public class GameServer {
                  .setCmd(Instruction.newBuilder().setCmd(eCommand.SYS_REFRESH_SERVER_STATUS))
                  .setServerId(getTheServerId())
                  .setProof(Warrant.newBuilder().setAdminName(world.server.getAdminName()).setCachet(world.server.getAdminKey()));
-		sb.setBusyDegree(Consts.GAMESRVSTATUS.HALTED);
+//		sb.setBusyDegree(Consts.GAMESRVSTATUS.HALTED);
         
 		world.send(getCarrier().getChannel2LoginServer(), sb.getCmd(), eErrorCode.OK, sb.build());   
 	}
@@ -355,7 +259,7 @@ public class GameServer {
 	}
 	
 	public static void main(String[] args) throws IOException {	
-		PropertyConfigurator.configure(Consts.LOG_FILE_PATH);
+//		PropertyConfigurator.configure(Consts.LOG_FILE_PATH);
 
         final GameServer server = getInstance();
         Thread.currentThread().setPriority(Thread.MAX_PRIORITY);

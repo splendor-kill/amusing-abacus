@@ -28,7 +28,6 @@ import com.tentacle.callofwild.domain.baseinfo.UsersInfo;
 import com.tentacle.callofwild.persist.base.DaoLoginTread;
 import com.tentacle.callofwild.persist.baseservice.UsersService;
 import com.tentacle.callofwild.protocol.MyCodec;
-import com.tentacle.callofwild.util.Consts;
 import com.tentacle.callofwild.util.Utils;
 
 public class LoginServer {
@@ -193,7 +192,7 @@ public class LoginServer {
 
     
     public static void main(String[] args) {
-        PropertyConfigurator.configure(Consts.LOG_FILE_PATH);
+//        PropertyConfigurator.configure(Consts.LOG_FILE_PATH);
         LoginServer loginServer = new LoginServer();
         try {
             loginServer.init();

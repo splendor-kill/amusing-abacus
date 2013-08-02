@@ -14,7 +14,6 @@ import com.tentacle.callofwild.protocol.ProtoAdmin.SysCommonReq;
 import com.tentacle.callofwild.protocol.ProtoAdmin.Warrant;
 import com.tentacle.callofwild.protocol.ProtoBasis.Instruction;
 import com.tentacle.callofwild.protocol.ProtoBasis.eCommand;
-import com.tentacle.callofwild.util.Consts;
 import com.tentacle.callofwild.util.Utils;
 
 public class SafeQuit {
@@ -39,7 +38,7 @@ public class SafeQuit {
 	}
 
 	public static void main(String[] args) {
-		PropertyConfigurator.configure(Consts.LOG_FILE_PATH);
+//		PropertyConfigurator.configure(Consts.LOG_FILE_PATH);
 		if (args.length < 2) {
 			System.out.println("usage: SafeQuit name key port");
 			return;

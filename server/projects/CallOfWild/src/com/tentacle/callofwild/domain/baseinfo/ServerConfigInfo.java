@@ -1,7 +1,6 @@
 package com.tentacle.callofwild.domain.baseinfo;
 
 import com.tentacle.callofwild.protocol.ProtoLogin.GameServer;
-import com.tentacle.callofwild.util.Consts;
 
 /**
  * 
@@ -17,7 +16,7 @@ public class ServerConfigInfo {
 	private boolean isnew;
 	private String doaminName;
 	//同时游戏服务器状态
-	private int curGameSrvStatus = Consts.GAMESRVSTATUS.RUN_WELL;
+	private int curGameSrvStatus;// = Consts.GAMESRVSTATUS.RUN_WELL;
 	//当前在线时间
 	private long curSrvTime;
 	private String helpUrl;
