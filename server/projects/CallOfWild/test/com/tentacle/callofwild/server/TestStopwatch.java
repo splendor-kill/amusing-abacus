@@ -8,9 +8,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.tentacle.callofwild.contact.IEventHandler;
-import com.tentacle.callofwild.contact.Incident;
-import com.tentacle.callofwild.server.Stopwatch;
+import com.tentacle.callofwild.contract.IEventHandler;
+import com.tentacle.callofwild.contract.Incident;
+import com.tentacle.callofwild.logic.Stopwatch;
 
 public class TestStopwatch {
 	Mockery context = new Mockery();

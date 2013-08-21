@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
-import com.tentacle.callofwild.contact.IReloadable;
+import com.tentacle.callofwild.contract.IReloadable;
 import com.tentacle.callofwild.util.Utils;
 
 import au.com.bytecode.opencsv.CSVReader;

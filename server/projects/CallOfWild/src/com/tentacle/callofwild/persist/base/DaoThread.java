@@ -13,8 +13,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.apache.log4j.Logger;
 
+import com.tentacle.callofwild.logic.GameServer;
 import com.tentacle.callofwild.persist.base.DAOBject.OPT_TYPE;
-import com.tentacle.callofwild.server.GameServer;
 
 public class DaoThread {
 	private static final Logger logger = Logger.getLogger(DaoThread.class);
