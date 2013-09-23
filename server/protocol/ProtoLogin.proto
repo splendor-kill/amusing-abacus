@@ -1,94 +1,75 @@
 import "ProtoBasis.proto";
 
-package com.tentacle.trickraft.protocol;
+package com.tentacle.callofwild.protocol;
 
 //账户信息
 message Account {
-  optional int32 id         = 1;
-  optional string name      = 2;
-  optional string password  = 3;
-  optional string email     = 4;
-
-  optional GameServer first_server      = 5;    //第一次登陆的服务器
-  optional int64 signup_time            = 6;    //注册时间点, millisecond
-  optional string id_card_no            = 7;    //身份证号, 或用于公钥算法的客户端随机值
-  repeated Charge charges               = 8;    //充值记录
-  
-  optional string platform              = 9;    //接入平台, 默认为空
-  optional string uid                   = 10;   //微博平台下的uid
-  optional string auth_code             = 11;   //授权码
-  optional string channel               = 12;   //渠道号
-  
-  optional string phone_no              = 13;   //手机号
-  optional string phone_model           = 14;   //手机型号
-  optional string phone_resolution      = 15;   //手机分辨率
-  optional string phone_os              = 16;   //手机操作系统
-  optional string phone_manufacturer    = 17;   //手机制造商
-  optional string phone_imei            = 18;   //IMEI
-  optional string phone_mac             = 19;   //MAC
-  optional string client_version        = 20;   //客户端版本
+    optional int32 id                     = 1;
+    optional string name                  = 2;
+    optional string password              = 3;
+    optional string email                 = 4;
+    optional GameServer first_server      = 5;    //第一次登陆的服务器
+    optional int64 signup_time            = 6;    //注册时间点, millisecond
+    optional string id_card_no            = 7;    //身份证号, 或用于公钥算法的客户端随机值
+    
+    optional string platform              = 9;    //接入平台, 默认为空
+    optional string uid                   = 10;   //微博平台下的uid
+    optional string auth_code             = 11;   //授权码
+    optional string channel               = 12;   //渠道号
+    
+    optional string phone_no              = 13;   //手机号
+    optional string phone_model           = 14;   //手机型号
+    optional string phone_resolution      = 15;   //手机分辨率
+    optional string phone_os              = 16;   //手机操作系统
+    optional string phone_manufacturer    = 17;   //手机制造商
+    optional string phone_imei            = 18;   //IMEI
+    optional string phone_imsi            = 19;   //IMSI
+    optional string phone_mac             = 20;   //MAC
+    optional string client_ver            = 21;   //客户端版本
 
 }
 
-//单笔充值
-message Charge {
-    optional int64 id               = 1;    
-    optional string uin             = 2;
-    optional int32 goods_count      = 3; 
-    optional double original_money  = 4;
-    optional double order_money     = 5;
-    optional int64 player_id        = 6;
-    optional string order_serial    = 7;
-    optional string which_channel   = 8;
-}
 
-//充值
-message Recharge {
-    optional Instruction cmd        = 1;  //RECHARGE
-    optional Charge charge_record   = 2;  //充值记录
-}
-
-//LOGIN, REGISTER响应
-message AccountAnswer {
-  optional Instruction cmd     = 1;
-  optional eErrorCode err_code = 2;  //错误码
-
-  optional string name         = 3;  //名称
-  optional int32 user_id       = 4;  //成功后服务端分配的用户Id
-  optional string session_key  = 5;  //成功后会话密钥
-  optional bool is_debut       = 6;  //是否首次进入游戏
-  repeated GameServer servers       = 7;  //服务器列表
-  //optional GameServer server        = 8;  //否则, 让他进入已经选择的游戏服务器
+//LOGIN, REGISTER
+message AccountAns {
+    optional Instruction cmd     = 1;
+    optional eErrorCode err_code = 2;  //错误码
+    
+    optional string name         = 3;  //名称
+    optional int32 user_id       = 4;  //成功后服务端分配的用户Id
+    optional string session_key  = 5;  //成功后会话密钥
+    optional bool is_debut       = 6;  //是否首次进入游戏
+    repeated GameServer servers       = 7;  //服务器列表
 }
 
 //游戏服务器
 message GameServer {
-  optional int32 id             = 1;
-  optional string name          = 2;
-  optional string ipv4          = 3;
-  optional int32 port           = 4;
-  optional bool is_new          = 5;    //是否为新服
-  optional int32 busy_degree    = 6;    //繁忙程度，RUN_WELL 0; FULL 1; BUSY 2; HALTED 3
-  optional string domain_name   = 7;    //域名
-  optional string url           = 8;    //地址，放维护公告等
-  optional string activity_url  = 9;    //活动地址
+    optional int32 id             = 1;
+    optional string name          = 2;
+    optional string ipv4          = 3;
+    optional int32 port           = 4;
+    optional bool is_new          = 5;    //是否为新服
+    optional int32 busy_degree    = 6;    //繁忙程度，RUN_WELL 0; FULL 1; BUSY 2; HALTED 3
+    optional string domain_name   = 7;    //域名
+    optional string url           = 8;    //地址，放维护公告等
+    optional string activity_url  = 9;    //活动地址
 }
 
-//GET_SERVER_LIST响应
-message ServerListAnswer {
+//GET_SERVER_LIST
+message ServerListAns {
     optional Instruction cmd            = 1;
     optional eErrorCode err_code        = 2;
 
     repeated GameServer servers         = 3;
 }
 
-//LOGIN, REGISTER请求
+//LOGIN, REGISTER
 message AccountReq {
-  optional Instruction cmd      = 1;    //must be LOGIN, REGISTER
-  optional Account account      = 2;
+    optional Instruction cmd      = 1;
+    optional Account account      = 2;
 }
 
-//GET_VERSION_INFO, 以 VersionInfo 请求, 以此结构回复;
+//GET_VERSION_INFO
 message VersionInfo {
     optional Instruction cmd                = 1;    //
     optional eErrorCode err_code            = 2;    //
@@ -107,13 +88,13 @@ message VersionInfo {
     optional string channel                 = 15;   //渠道号
 }
 
-//第3方平台登录验证, 以 CommonAnswer 回复;
+//AUTHENTICATE
 message Authentication {
-    optional Instruction cmd            = 1;    //AUTHENTICATE
-    optional eErrorCode err_code        = 2;    //
-    
-    optional string session_id          = 3;    //
-    optional string uid                 = 4;    //
-    optional Account account            = 5;    //账户信息   
+    optional Instruction cmd            = 1;
+    optional eErrorCode err_code        = 2;
+
+    optional string session_id          = 3;
+    optional string uid                 = 4;
+    optional Account account            = 5;
 }
 

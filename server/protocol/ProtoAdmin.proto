@@ -1,6 +1,6 @@
 import "ProtoBasis.proto";
 
-package com.tentacle.trickraft.protocol;
+package com.tentacle.callofwild.protocol;
 
 
 //管理者凭证

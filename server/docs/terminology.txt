@@ -1,3 +1,11 @@
+prefix
+  projects:	CoW    CallOfWild
+  protocol:	Net
+
+
+
+
+
 nihil               虚空
 hostile             敌对的
 natural             中立
@@ -52,6 +60,10 @@ company
 platoon
 squad
 fireteam
+
+
+
+
 
 
 

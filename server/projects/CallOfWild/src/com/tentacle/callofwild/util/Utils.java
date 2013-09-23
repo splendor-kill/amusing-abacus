@@ -15,6 +15,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -626,7 +627,8 @@ public class Utils {
 	}
 	
 	public static void main(String[] args) {
-	    testTimeInPeriod();
+		testLinear();
+//	    testTimeInPeriod();
 //	    testGetTimePeriodInMs();
 //	    testUnicodeSupplementary();
 		/*
@@ -1015,8 +1017,8 @@ public class Utils {
         String ss = makeString(0x41, 177700, 0x61);
         System.out.println(ss);
         String pattern = "[\\ud800\\udc00-\\udbff\\udfff]+";
-        
         System.out.println(ss.replaceAll(pattern, "*"));
+
     }
 	
 	// month start from 0, that is JANUARY is 0;
@@ -1081,5 +1083,42 @@ public class Utils {
         System.out.println(timeInPeriod(now, begin, end));
         System.out.println(timeInPeriod(now, end, begin));
     }
+    
+    
+    public static int [] linear(int n, int dim) {
+        int[] a = new int[dim];
+        double mean = Math.log(n) / Math. log(dim);
+        int least = (int) Math.floor (mean);
+        if (least <= 0)
+            least = 1;
+        for (int i = 0; i < a.length; i++) {
+            a[i] = least;
+        }
+        int prod = 1;
+        for (int i = 0; i < a.length; i++) {
+            prod *= a[i];
+        }
+        int index = a.length - 1;
+        while (prod < n) {
+            int v = a[index];
+            a[index] += 1;
+            prod /= v;
+            prod *= v + 1;
+            if (index-- == 0)
+                index = a. length - 1;
+        }
+        return a;
+    }
+       
+    private static void testLinear() {
+//        System.out.println(Arrays.toString(linear(26, 2)));
+        for (int i = 0; i < 50; i++) {
+            System. out.println(i + ":\t" + Arrays.toString( linear(i, 2)));
+        }
+        for (int i = 0; i < 50; i++) {
+            System. out.println(i + ":\t" + Arrays.toString( linear(i, 3)));
+        }
+    }
+
 	
 }
