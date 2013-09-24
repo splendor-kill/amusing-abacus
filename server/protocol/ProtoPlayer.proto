@@ -3,15 +3,15 @@ import "ProtoBasis.proto";
 package com.tentacle.callofwild.protocol;
 
 
-
+//玩家
 message NetPlayer {
     optional int64 id           = 1;    //playerId, 用于回复
-    optional string name        = 2;    //君主名称
+    optional string name        = 2;    //玩家名称
     optional int32 user_id      = 4;    //用户Id
 
 }
 
-
+//Join
 message JoinGame {
     optional Instruction cmd    = 1;    //
     optional int64 player_id    = 2;    //以哪个playerId玩游戏
@@ -19,12 +19,14 @@ message JoinGame {
    	repeated MyVariant args     = 4;
 }
 
+//CHECK_ID
 message CheckIdReq {
     optional Instruction cmd    = 1;    //
     optional int32 user_id      = 2;    //
     optional string session_key = 3;    //登录服务器给的会话密钥
 }
 
+//CHECK_ID
 message CheckIdAns {
    optional Instruction cmd     = 1;
    optional eErrorCode err_code = 2;    //
@@ -33,77 +35,41 @@ message CheckIdAns {
 }
 
 //CREATE_PLAYER
-message PlayerCreationReq {
-    optional Instruction cmd    = 1;    //
-    optional NetPlayer player   = 2;    //角色信息
-}
-
-//CREATE_PLAYER
-message PlayerCreationAns {
+message PlayerCreation {
     optional Instruction cmd        = 1;
     optional eErrorCode err_code    = 2;    //
 
     optional NetPlayer player       = 3;    //返回的角色信息
 }
 
+//道具
 message NetItem {
-    optional int64 id                   = 1;    //宝物Id
+    optional int64 id                   = 1;    //道具Id
     optional int32 cfg_no               = 2;    //配置Id
     optional int32 amount               = 3;    //数量
     optional int32 ration               = 4;    //限量销售
     optional int32 level                = 5;    //强化等级
     optional int64 place_time           = 6;    //放入背包的时间
     repeated NetItem nested_items   	= 7;    //嵌套的物品
-
-    message Attribute { //属性，来自于配置文件，用于动态发布新物品
-        optional int32 type                 = 1;    //宝物类型
-        optional string name                = 2;    //名字
-        optional int32 max_pile             = 3;    //最大堆叠数, 1表示不可重叠
-        optional int32 use_level            = 4;    //使用等级
-        optional int32 peerage_limit        = 5;    //爵位限制
-        optional string icon_url            = 6;    //图标地址
-        optional string desc                = 7;    //描述
-        optional int32 sell_price           = 8;    //商品单位销售价格(卖给系统商店时的价格)
-        optional double min_consign_price   = 9;    //每单位最小寄售价格
-        optional double max_consign_price   = 10;   //每单位最大寄售价格
-        optional int32 attack               = 11;   //攻击力
-        optional int32 defense              = 12;   //防御力
-        optional int32 speed                = 13;   //速度
-        optional int32 lucky                = 14;   //幸运值
-        optional bool is_container          = 15;   //是否可以作为容器
-        optional int32 capacity             = 16;   //容量
-        optional int32 valuation            = 17;   //估值, 用于宝箱类
-        repeated MyVariant use_parameters   = 18;   //打开参数名, 参数类型
-        repeated MyVariant use_effects      = 19;   //打开后的效果名, 类型
-    }
-    optional Attribute attr             = 8;    //属性
+    repeated MyVariant attrs            = 8;    //属性
 
 }
 
-//使用道具，以 UseItemAns 回应
+//USE_ITEM
 message UseItemReq {
-    optional Instruction cmd            = 1;    //USE_ITEM
+    optional Instruction cmd            = 1;    //
     optional int64 item_id              = 2;    //道具Id，若此值为0，则使用配置Id
     optional int64 city_id              = 3;    //城市Id
     repeated MyVariant use_args         = 4;    //打开参数
     optional int32 item_cfg_no          = 5;    //物品配置Id
 }
 
-//使用道具回复
+//USE_ITEM
 message UseItemAns {
     optional Instruction cmd            = 1;    //
     optional eErrorCode err_code        = 2;    //错误码
     repeated MyVariant use_effects      = 3;    //打开后的效果
-    repeated NetItem items          = 4;    //使用后获得的道具
+    repeated NetItem items              = 4;    //使用后获得的道具
 }
-
-//获取道具, 以此结构请求与回应
-message GetItems {
-    optional Instruction cmd            = 1;    //GET_ITEMS
-    optional eErrorCode err_code        = 2;    //错误码
-    optional int64 item_id              = 3;    //道具Id, 当它为0时, 表示获取所有道具, 否则表示指定的道具
-    repeated NetItem items          	= 4;    //道具列表
-}
-
 
 

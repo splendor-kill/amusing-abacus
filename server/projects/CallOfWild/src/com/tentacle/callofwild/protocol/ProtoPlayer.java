@@ -2683,574 +2683,7 @@ public final class ProtoPlayer {
     // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.CheckIdAns)
   }
   
-  public interface PlayerCreationReqOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-    
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
-    boolean hasCmd();
-    com.tentacle.callofwild.protocol.ProtoBasis.Instruction getCmd();
-    com.tentacle.callofwild.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
-    
-    // optional .com.tentacle.callofwild.protocol.NetPlayer player = 2;
-    boolean hasPlayer();
-    com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayer getPlayer();
-    com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayerOrBuilder getPlayerOrBuilder();
-  }
-  public static final class PlayerCreationReq extends
-      com.google.protobuf.GeneratedMessage
-      implements PlayerCreationReqOrBuilder {
-    // Use PlayerCreationReq.newBuilder() to construct.
-    private PlayerCreationReq(Builder builder) {
-      super(builder);
-    }
-    private PlayerCreationReq(boolean noInit) {}
-    
-    private static final PlayerCreationReq defaultInstance;
-    public static PlayerCreationReq getDefaultInstance() {
-      return defaultInstance;
-    }
-    
-    public PlayerCreationReq getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-    
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.tentacle.callofwild.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_PlayerCreationReq_descriptor;
-    }
-    
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.tentacle.callofwild.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_PlayerCreationReq_fieldAccessorTable;
-    }
-    
-    private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
-    public static final int CMD_FIELD_NUMBER = 1;
-    private com.tentacle.callofwild.protocol.ProtoBasis.Instruction cmd_;
-    public boolean hasCmd() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public com.tentacle.callofwild.protocol.ProtoBasis.Instruction getCmd() {
-      return cmd_;
-    }
-    public com.tentacle.callofwild.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder() {
-      return cmd_;
-    }
-    
-    // optional .com.tentacle.callofwild.protocol.NetPlayer player = 2;
-    public static final int PLAYER_FIELD_NUMBER = 2;
-    private com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayer player_;
-    public boolean hasPlayer() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayer getPlayer() {
-      return player_;
-    }
-    public com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayerOrBuilder getPlayerOrBuilder() {
-      return player_;
-    }
-    
-    private void initFields() {
-      cmd_ = com.tentacle.callofwild.protocol.ProtoBasis.Instruction.getDefaultInstance();
-      player_ = com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayer.getDefaultInstance();
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      memoizedIsInitialized = 1;
-      return true;
-    }
-    
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeMessage(1, cmd_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeMessage(2, player_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-    
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-    
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, cmd_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, player_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-    
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-    
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReqOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.tentacle.callofwild.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_PlayerCreationReq_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.tentacle.callofwild.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_PlayerCreationReq_fieldAccessorTable;
-      }
-      
-      // Construct using com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-      
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getCmdFieldBuilder();
-          getPlayerFieldBuilder();
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-      
-      public Builder clear() {
-        super.clear();
-        if (cmdBuilder_ == null) {
-          cmd_ = com.tentacle.callofwild.protocol.ProtoBasis.Instruction.getDefaultInstance();
-        } else {
-          cmdBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (playerBuilder_ == null) {
-          player_ = com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayer.getDefaultInstance();
-        } else {
-          playerBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000002);
-        return this;
-      }
-      
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-      
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq.getDescriptor();
-      }
-      
-      public com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq getDefaultInstanceForType() {
-        return com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq.getDefaultInstance();
-      }
-      
-      public com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq build() {
-        com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-      
-      private com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
-      public com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq buildPartial() {
-        com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq result = new com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        if (cmdBuilder_ == null) {
-          result.cmd_ = cmd_;
-        } else {
-          result.cmd_ = cmdBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        if (playerBuilder_ == null) {
-          result.player_ = player_;
-        } else {
-          result.player_ = playerBuilder_.build();
-        }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-      
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq) {
-          return mergeFrom((com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-      
-      public Builder mergeFrom(com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq other) {
-        if (other == com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq.getDefaultInstance()) return this;
-        if (other.hasCmd()) {
-          mergeCmd(other.getCmd());
-        }
-        if (other.hasPlayer()) {
-          mergePlayer(other.getPlayer());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-      
-      public final boolean isInitialized() {
-        return true;
-      }
-      
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              com.tentacle.callofwild.protocol.ProtoBasis.Instruction.Builder subBuilder = com.tentacle.callofwild.protocol.ProtoBasis.Instruction.newBuilder();
-              if (hasCmd()) {
-                subBuilder.mergeFrom(getCmd());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setCmd(subBuilder.buildPartial());
-              break;
-            }
-            case 18: {
-              com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayer.Builder subBuilder = com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayer.newBuilder();
-              if (hasPlayer()) {
-                subBuilder.mergeFrom(getPlayer());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setPlayer(subBuilder.buildPartial());
-              break;
-            }
-          }
-        }
-      }
-      
-      private int bitField0_;
-      
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
-      private com.tentacle.callofwild.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.callofwild.protocol.ProtoBasis.Instruction.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.tentacle.callofwild.protocol.ProtoBasis.Instruction, com.tentacle.callofwild.protocol.ProtoBasis.Instruction.Builder, com.tentacle.callofwild.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
-      public boolean hasCmd() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      public com.tentacle.callofwild.protocol.ProtoBasis.Instruction getCmd() {
-        if (cmdBuilder_ == null) {
-          return cmd_;
-        } else {
-          return cmdBuilder_.getMessage();
-        }
-      }
-      public Builder setCmd(com.tentacle.callofwild.protocol.ProtoBasis.Instruction value) {
-        if (cmdBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          cmd_ = value;
-          onChanged();
-        } else {
-          cmdBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      public Builder setCmd(
-          com.tentacle.callofwild.protocol.ProtoBasis.Instruction.Builder builderForValue) {
-        if (cmdBuilder_ == null) {
-          cmd_ = builderForValue.build();
-          onChanged();
-        } else {
-          cmdBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      public Builder mergeCmd(com.tentacle.callofwild.protocol.ProtoBasis.Instruction value) {
-        if (cmdBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001) &&
-              cmd_ != com.tentacle.callofwild.protocol.ProtoBasis.Instruction.getDefaultInstance()) {
-            cmd_ =
-              com.tentacle.callofwild.protocol.ProtoBasis.Instruction.newBuilder(cmd_).mergeFrom(value).buildPartial();
-          } else {
-            cmd_ = value;
-          }
-          onChanged();
-        } else {
-          cmdBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      public Builder clearCmd() {
-        if (cmdBuilder_ == null) {
-          cmd_ = com.tentacle.callofwild.protocol.ProtoBasis.Instruction.getDefaultInstance();
-          onChanged();
-        } else {
-          cmdBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        return this;
-      }
-      public com.tentacle.callofwild.protocol.ProtoBasis.Instruction.Builder getCmdBuilder() {
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return getCmdFieldBuilder().getBuilder();
-      }
-      public com.tentacle.callofwild.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder() {
-        if (cmdBuilder_ != null) {
-          return cmdBuilder_.getMessageOrBuilder();
-        } else {
-          return cmd_;
-        }
-      }
-      private com.google.protobuf.SingleFieldBuilder<
-          com.tentacle.callofwild.protocol.ProtoBasis.Instruction, com.tentacle.callofwild.protocol.ProtoBasis.Instruction.Builder, com.tentacle.callofwild.protocol.ProtoBasis.InstructionOrBuilder> 
-          getCmdFieldBuilder() {
-        if (cmdBuilder_ == null) {
-          cmdBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.tentacle.callofwild.protocol.ProtoBasis.Instruction, com.tentacle.callofwild.protocol.ProtoBasis.Instruction.Builder, com.tentacle.callofwild.protocol.ProtoBasis.InstructionOrBuilder>(
-                  cmd_,
-                  getParentForChildren(),
-                  isClean());
-          cmd_ = null;
-        }
-        return cmdBuilder_;
-      }
-      
-      // optional .com.tentacle.callofwild.protocol.NetPlayer player = 2;
-      private com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayer player_ = com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayer.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayer, com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayer.Builder, com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayerOrBuilder> playerBuilder_;
-      public boolean hasPlayer() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      public com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayer getPlayer() {
-        if (playerBuilder_ == null) {
-          return player_;
-        } else {
-          return playerBuilder_.getMessage();
-        }
-      }
-      public Builder setPlayer(com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayer value) {
-        if (playerBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          player_ = value;
-          onChanged();
-        } else {
-          playerBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000002;
-        return this;
-      }
-      public Builder setPlayer(
-          com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayer.Builder builderForValue) {
-        if (playerBuilder_ == null) {
-          player_ = builderForValue.build();
-          onChanged();
-        } else {
-          playerBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000002;
-        return this;
-      }
-      public Builder mergePlayer(com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayer value) {
-        if (playerBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002) &&
-              player_ != com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayer.getDefaultInstance()) {
-            player_ =
-              com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayer.newBuilder(player_).mergeFrom(value).buildPartial();
-          } else {
-            player_ = value;
-          }
-          onChanged();
-        } else {
-          playerBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000002;
-        return this;
-      }
-      public Builder clearPlayer() {
-        if (playerBuilder_ == null) {
-          player_ = com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayer.getDefaultInstance();
-          onChanged();
-        } else {
-          playerBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000002);
-        return this;
-      }
-      public com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayer.Builder getPlayerBuilder() {
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return getPlayerFieldBuilder().getBuilder();
-      }
-      public com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayerOrBuilder getPlayerOrBuilder() {
-        if (playerBuilder_ != null) {
-          return playerBuilder_.getMessageOrBuilder();
-        } else {
-          return player_;
-        }
-      }
-      private com.google.protobuf.SingleFieldBuilder<
-          com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayer, com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayer.Builder, com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayerOrBuilder> 
-          getPlayerFieldBuilder() {
-        if (playerBuilder_ == null) {
-          playerBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayer, com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayer.Builder, com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayerOrBuilder>(
-                  player_,
-                  getParentForChildren(),
-                  isClean());
-          player_ = null;
-        }
-        return playerBuilder_;
-      }
-      
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.PlayerCreationReq)
-    }
-    
-    static {
-      defaultInstance = new PlayerCreationReq(true);
-      defaultInstance.initFields();
-    }
-    
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.PlayerCreationReq)
-  }
-  
-  public interface PlayerCreationAnsOrBuilder
+  public interface PlayerCreationOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
     // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
@@ -3267,32 +2700,32 @@ public final class ProtoPlayer {
     com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayer getPlayer();
     com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayerOrBuilder getPlayerOrBuilder();
   }
-  public static final class PlayerCreationAns extends
+  public static final class PlayerCreation extends
       com.google.protobuf.GeneratedMessage
-      implements PlayerCreationAnsOrBuilder {
-    // Use PlayerCreationAns.newBuilder() to construct.
-    private PlayerCreationAns(Builder builder) {
+      implements PlayerCreationOrBuilder {
+    // Use PlayerCreation.newBuilder() to construct.
+    private PlayerCreation(Builder builder) {
       super(builder);
     }
-    private PlayerCreationAns(boolean noInit) {}
+    private PlayerCreation(boolean noInit) {}
     
-    private static final PlayerCreationAns defaultInstance;
-    public static PlayerCreationAns getDefaultInstance() {
+    private static final PlayerCreation defaultInstance;
+    public static PlayerCreation getDefaultInstance() {
       return defaultInstance;
     }
     
-    public PlayerCreationAns getDefaultInstanceForType() {
+    public PlayerCreation getDefaultInstanceForType() {
       return defaultInstance;
     }
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.callofwild.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_PlayerCreationAns_descriptor;
+      return com.tentacle.callofwild.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_PlayerCreation_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.callofwild.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_PlayerCreationAns_fieldAccessorTable;
+      return com.tentacle.callofwild.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_PlayerCreation_fieldAccessorTable;
     }
     
     private int bitField0_;
@@ -3391,41 +2824,41 @@ public final class ProtoPlayer {
       return super.writeReplace();
     }
     
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns parseFrom(
+    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data).buildParsed();
     }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns parseFrom(
+    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry)
                .buildParsed();
     }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns parseFrom(byte[] data)
+    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data).buildParsed();
     }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns parseFrom(
+    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry)
                .buildParsed();
     }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns parseFrom(java.io.InputStream input)
+    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input).buildParsed();
     }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns parseFrom(
+    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input, extensionRegistry)
                .buildParsed();
     }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns parseDelimitedFrom(java.io.InputStream input)
+    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       Builder builder = newBuilder();
       if (builder.mergeDelimitedFrom(input)) {
@@ -3434,7 +2867,7 @@ public final class ProtoPlayer {
         return null;
       }
     }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns parseDelimitedFrom(
+    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3445,12 +2878,12 @@ public final class ProtoPlayer {
         return null;
       }
     }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns parseFrom(
+    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input).buildParsed();
     }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns parseFrom(
+    public static com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3460,7 +2893,7 @@ public final class ProtoPlayer {
     
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns prototype) {
+    public static Builder newBuilder(com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -3473,18 +2906,18 @@ public final class ProtoPlayer {
     }
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAnsOrBuilder {
+       implements com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.callofwild.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_PlayerCreationAns_descriptor;
+        return com.tentacle.callofwild.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_PlayerCreation_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.callofwild.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_PlayerCreationAns_fieldAccessorTable;
+        return com.tentacle.callofwild.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_PlayerCreation_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns.newBuilder()
+      // Construct using com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3528,24 +2961,24 @@ public final class ProtoPlayer {
       
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns.getDescriptor();
+        return com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation.getDescriptor();
       }
       
-      public com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns getDefaultInstanceForType() {
-        return com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns.getDefaultInstance();
+      public com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation getDefaultInstanceForType() {
+        return com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation.getDefaultInstance();
       }
       
-      public com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns build() {
-        com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns result = buildPartial();
+      public com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation build() {
+        com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
       
-      private com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns buildParsed()
+      private com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns result = buildPartial();
+        com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
@@ -3553,8 +2986,8 @@ public final class ProtoPlayer {
         return result;
       }
       
-      public com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns buildPartial() {
-        com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns result = new com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns(this);
+      public com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation buildPartial() {
+        com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation result = new com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -3583,16 +3016,16 @@ public final class ProtoPlayer {
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns) {
-          return mergeFrom((com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns)other);
+        if (other instanceof com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation) {
+          return mergeFrom((com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
       
-      public Builder mergeFrom(com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns other) {
-        if (other == com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation other) {
+        if (other == com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation.getDefaultInstance()) return this;
         if (other.hasCmd()) {
           mergeCmd(other.getCmd());
         }
@@ -3872,15 +3305,15 @@ public final class ProtoPlayer {
         return playerBuilder_;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.PlayerCreationAns)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.PlayerCreation)
     }
     
     static {
-      defaultInstance = new PlayerCreationAns(true);
+      defaultInstance = new PlayerCreation(true);
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.PlayerCreationAns)
+    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.PlayerCreation)
   }
   
   public interface NetItemOrBuilder
@@ -3920,10 +3353,15 @@ public final class ProtoPlayer {
     com.tentacle.callofwild.protocol.ProtoPlayer.NetItemOrBuilder getNestedItemsOrBuilder(
         int index);
     
-    // optional .com.tentacle.callofwild.protocol.NetItem.Attribute attr = 8;
-    boolean hasAttr();
-    com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute getAttr();
-    com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.AttributeOrBuilder getAttrOrBuilder();
+    // repeated .com.tentacle.callofwild.protocol.MyVariant attrs = 8;
+    java.util.List<com.tentacle.callofwild.protocol.ProtoBasis.MyVariant> 
+        getAttrsList();
+    com.tentacle.callofwild.protocol.ProtoBasis.MyVariant getAttrs(int index);
+    int getAttrsCount();
+    java.util.List<? extends com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder> 
+        getAttrsOrBuilderList();
+    com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder getAttrsOrBuilder(
+        int index);
   }
   public static final class NetItem extends
       com.google.protobuf.GeneratedMessage
@@ -3951,1913 +3389,6 @@ public final class ProtoPlayer {
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.tentacle.callofwild.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_NetItem_fieldAccessorTable;
-    }
-    
-    public interface AttributeOrBuilder
-        extends com.google.protobuf.MessageOrBuilder {
-      
-      // optional int32 type = 1;
-      boolean hasType();
-      int getType();
-      
-      // optional string name = 2;
-      boolean hasName();
-      String getName();
-      
-      // optional int32 max_pile = 3;
-      boolean hasMaxPile();
-      int getMaxPile();
-      
-      // optional int32 use_level = 4;
-      boolean hasUseLevel();
-      int getUseLevel();
-      
-      // optional int32 peerage_limit = 5;
-      boolean hasPeerageLimit();
-      int getPeerageLimit();
-      
-      // optional string icon_url = 6;
-      boolean hasIconUrl();
-      String getIconUrl();
-      
-      // optional string desc = 7;
-      boolean hasDesc();
-      String getDesc();
-      
-      // optional int32 sell_price = 8;
-      boolean hasSellPrice();
-      int getSellPrice();
-      
-      // optional double min_consign_price = 9;
-      boolean hasMinConsignPrice();
-      double getMinConsignPrice();
-      
-      // optional double max_consign_price = 10;
-      boolean hasMaxConsignPrice();
-      double getMaxConsignPrice();
-      
-      // optional int32 attack = 11;
-      boolean hasAttack();
-      int getAttack();
-      
-      // optional int32 defense = 12;
-      boolean hasDefense();
-      int getDefense();
-      
-      // optional int32 speed = 13;
-      boolean hasSpeed();
-      int getSpeed();
-      
-      // optional int32 lucky = 14;
-      boolean hasLucky();
-      int getLucky();
-      
-      // optional bool is_container = 15;
-      boolean hasIsContainer();
-      boolean getIsContainer();
-      
-      // optional int32 capacity = 16;
-      boolean hasCapacity();
-      int getCapacity();
-      
-      // optional int32 valuation = 17;
-      boolean hasValuation();
-      int getValuation();
-      
-      // repeated .com.tentacle.callofwild.protocol.MyVariant use_parameters = 18;
-      java.util.List<com.tentacle.callofwild.protocol.ProtoBasis.MyVariant> 
-          getUseParametersList();
-      com.tentacle.callofwild.protocol.ProtoBasis.MyVariant getUseParameters(int index);
-      int getUseParametersCount();
-      java.util.List<? extends com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder> 
-          getUseParametersOrBuilderList();
-      com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder getUseParametersOrBuilder(
-          int index);
-      
-      // repeated .com.tentacle.callofwild.protocol.MyVariant use_effects = 19;
-      java.util.List<com.tentacle.callofwild.protocol.ProtoBasis.MyVariant> 
-          getUseEffectsList();
-      com.tentacle.callofwild.protocol.ProtoBasis.MyVariant getUseEffects(int index);
-      int getUseEffectsCount();
-      java.util.List<? extends com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder> 
-          getUseEffectsOrBuilderList();
-      com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder getUseEffectsOrBuilder(
-          int index);
-    }
-    public static final class Attribute extends
-        com.google.protobuf.GeneratedMessage
-        implements AttributeOrBuilder {
-      // Use Attribute.newBuilder() to construct.
-      private Attribute(Builder builder) {
-        super(builder);
-      }
-      private Attribute(boolean noInit) {}
-      
-      private static final Attribute defaultInstance;
-      public static Attribute getDefaultInstance() {
-        return defaultInstance;
-      }
-      
-      public Attribute getDefaultInstanceForType() {
-        return defaultInstance;
-      }
-      
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.tentacle.callofwild.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_NetItem_Attribute_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.tentacle.callofwild.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_NetItem_Attribute_fieldAccessorTable;
-      }
-      
-      private int bitField0_;
-      // optional int32 type = 1;
-      public static final int TYPE_FIELD_NUMBER = 1;
-      private int type_;
-      public boolean hasType() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      public int getType() {
-        return type_;
-      }
-      
-      // optional string name = 2;
-      public static final int NAME_FIELD_NUMBER = 2;
-      private java.lang.Object name_;
-      public boolean hasName() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      public String getName() {
-        java.lang.Object ref = name_;
-        if (ref instanceof String) {
-          return (String) ref;
-        } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
-          if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-            name_ = s;
-          }
-          return s;
-        }
-      }
-      private com.google.protobuf.ByteString getNameBytes() {
-        java.lang.Object ref = name_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-          name_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      
-      // optional int32 max_pile = 3;
-      public static final int MAX_PILE_FIELD_NUMBER = 3;
-      private int maxPile_;
-      public boolean hasMaxPile() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      public int getMaxPile() {
-        return maxPile_;
-      }
-      
-      // optional int32 use_level = 4;
-      public static final int USE_LEVEL_FIELD_NUMBER = 4;
-      private int useLevel_;
-      public boolean hasUseLevel() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      public int getUseLevel() {
-        return useLevel_;
-      }
-      
-      // optional int32 peerage_limit = 5;
-      public static final int PEERAGE_LIMIT_FIELD_NUMBER = 5;
-      private int peerageLimit_;
-      public boolean hasPeerageLimit() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      public int getPeerageLimit() {
-        return peerageLimit_;
-      }
-      
-      // optional string icon_url = 6;
-      public static final int ICON_URL_FIELD_NUMBER = 6;
-      private java.lang.Object iconUrl_;
-      public boolean hasIconUrl() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      public String getIconUrl() {
-        java.lang.Object ref = iconUrl_;
-        if (ref instanceof String) {
-          return (String) ref;
-        } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
-          if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-            iconUrl_ = s;
-          }
-          return s;
-        }
-      }
-      private com.google.protobuf.ByteString getIconUrlBytes() {
-        java.lang.Object ref = iconUrl_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-          iconUrl_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      
-      // optional string desc = 7;
-      public static final int DESC_FIELD_NUMBER = 7;
-      private java.lang.Object desc_;
-      public boolean hasDesc() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
-      }
-      public String getDesc() {
-        java.lang.Object ref = desc_;
-        if (ref instanceof String) {
-          return (String) ref;
-        } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
-          if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-            desc_ = s;
-          }
-          return s;
-        }
-      }
-      private com.google.protobuf.ByteString getDescBytes() {
-        java.lang.Object ref = desc_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-          desc_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      
-      // optional int32 sell_price = 8;
-      public static final int SELL_PRICE_FIELD_NUMBER = 8;
-      private int sellPrice_;
-      public boolean hasSellPrice() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
-      }
-      public int getSellPrice() {
-        return sellPrice_;
-      }
-      
-      // optional double min_consign_price = 9;
-      public static final int MIN_CONSIGN_PRICE_FIELD_NUMBER = 9;
-      private double minConsignPrice_;
-      public boolean hasMinConsignPrice() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
-      }
-      public double getMinConsignPrice() {
-        return minConsignPrice_;
-      }
-      
-      // optional double max_consign_price = 10;
-      public static final int MAX_CONSIGN_PRICE_FIELD_NUMBER = 10;
-      private double maxConsignPrice_;
-      public boolean hasMaxConsignPrice() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
-      }
-      public double getMaxConsignPrice() {
-        return maxConsignPrice_;
-      }
-      
-      // optional int32 attack = 11;
-      public static final int ATTACK_FIELD_NUMBER = 11;
-      private int attack_;
-      public boolean hasAttack() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
-      }
-      public int getAttack() {
-        return attack_;
-      }
-      
-      // optional int32 defense = 12;
-      public static final int DEFENSE_FIELD_NUMBER = 12;
-      private int defense_;
-      public boolean hasDefense() {
-        return ((bitField0_ & 0x00000800) == 0x00000800);
-      }
-      public int getDefense() {
-        return defense_;
-      }
-      
-      // optional int32 speed = 13;
-      public static final int SPEED_FIELD_NUMBER = 13;
-      private int speed_;
-      public boolean hasSpeed() {
-        return ((bitField0_ & 0x00001000) == 0x00001000);
-      }
-      public int getSpeed() {
-        return speed_;
-      }
-      
-      // optional int32 lucky = 14;
-      public static final int LUCKY_FIELD_NUMBER = 14;
-      private int lucky_;
-      public boolean hasLucky() {
-        return ((bitField0_ & 0x00002000) == 0x00002000);
-      }
-      public int getLucky() {
-        return lucky_;
-      }
-      
-      // optional bool is_container = 15;
-      public static final int IS_CONTAINER_FIELD_NUMBER = 15;
-      private boolean isContainer_;
-      public boolean hasIsContainer() {
-        return ((bitField0_ & 0x00004000) == 0x00004000);
-      }
-      public boolean getIsContainer() {
-        return isContainer_;
-      }
-      
-      // optional int32 capacity = 16;
-      public static final int CAPACITY_FIELD_NUMBER = 16;
-      private int capacity_;
-      public boolean hasCapacity() {
-        return ((bitField0_ & 0x00008000) == 0x00008000);
-      }
-      public int getCapacity() {
-        return capacity_;
-      }
-      
-      // optional int32 valuation = 17;
-      public static final int VALUATION_FIELD_NUMBER = 17;
-      private int valuation_;
-      public boolean hasValuation() {
-        return ((bitField0_ & 0x00010000) == 0x00010000);
-      }
-      public int getValuation() {
-        return valuation_;
-      }
-      
-      // repeated .com.tentacle.callofwild.protocol.MyVariant use_parameters = 18;
-      public static final int USE_PARAMETERS_FIELD_NUMBER = 18;
-      private java.util.List<com.tentacle.callofwild.protocol.ProtoBasis.MyVariant> useParameters_;
-      public java.util.List<com.tentacle.callofwild.protocol.ProtoBasis.MyVariant> getUseParametersList() {
-        return useParameters_;
-      }
-      public java.util.List<? extends com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder> 
-          getUseParametersOrBuilderList() {
-        return useParameters_;
-      }
-      public int getUseParametersCount() {
-        return useParameters_.size();
-      }
-      public com.tentacle.callofwild.protocol.ProtoBasis.MyVariant getUseParameters(int index) {
-        return useParameters_.get(index);
-      }
-      public com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder getUseParametersOrBuilder(
-          int index) {
-        return useParameters_.get(index);
-      }
-      
-      // repeated .com.tentacle.callofwild.protocol.MyVariant use_effects = 19;
-      public static final int USE_EFFECTS_FIELD_NUMBER = 19;
-      private java.util.List<com.tentacle.callofwild.protocol.ProtoBasis.MyVariant> useEffects_;
-      public java.util.List<com.tentacle.callofwild.protocol.ProtoBasis.MyVariant> getUseEffectsList() {
-        return useEffects_;
-      }
-      public java.util.List<? extends com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder> 
-          getUseEffectsOrBuilderList() {
-        return useEffects_;
-      }
-      public int getUseEffectsCount() {
-        return useEffects_.size();
-      }
-      public com.tentacle.callofwild.protocol.ProtoBasis.MyVariant getUseEffects(int index) {
-        return useEffects_.get(index);
-      }
-      public com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder getUseEffectsOrBuilder(
-          int index) {
-        return useEffects_.get(index);
-      }
-      
-      private void initFields() {
-        type_ = 0;
-        name_ = "";
-        maxPile_ = 0;
-        useLevel_ = 0;
-        peerageLimit_ = 0;
-        iconUrl_ = "";
-        desc_ = "";
-        sellPrice_ = 0;
-        minConsignPrice_ = 0D;
-        maxConsignPrice_ = 0D;
-        attack_ = 0;
-        defense_ = 0;
-        speed_ = 0;
-        lucky_ = 0;
-        isContainer_ = false;
-        capacity_ = 0;
-        valuation_ = 0;
-        useParameters_ = java.util.Collections.emptyList();
-        useEffects_ = java.util.Collections.emptyList();
-      }
-      private byte memoizedIsInitialized = -1;
-      public final boolean isInitialized() {
-        byte isInitialized = memoizedIsInitialized;
-        if (isInitialized != -1) return isInitialized == 1;
-        
-        memoizedIsInitialized = 1;
-        return true;
-      }
-      
-      public void writeTo(com.google.protobuf.CodedOutputStream output)
-                          throws java.io.IOException {
-        getSerializedSize();
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          output.writeInt32(1, type_);
-        }
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          output.writeBytes(2, getNameBytes());
-        }
-        if (((bitField0_ & 0x00000004) == 0x00000004)) {
-          output.writeInt32(3, maxPile_);
-        }
-        if (((bitField0_ & 0x00000008) == 0x00000008)) {
-          output.writeInt32(4, useLevel_);
-        }
-        if (((bitField0_ & 0x00000010) == 0x00000010)) {
-          output.writeInt32(5, peerageLimit_);
-        }
-        if (((bitField0_ & 0x00000020) == 0x00000020)) {
-          output.writeBytes(6, getIconUrlBytes());
-        }
-        if (((bitField0_ & 0x00000040) == 0x00000040)) {
-          output.writeBytes(7, getDescBytes());
-        }
-        if (((bitField0_ & 0x00000080) == 0x00000080)) {
-          output.writeInt32(8, sellPrice_);
-        }
-        if (((bitField0_ & 0x00000100) == 0x00000100)) {
-          output.writeDouble(9, minConsignPrice_);
-        }
-        if (((bitField0_ & 0x00000200) == 0x00000200)) {
-          output.writeDouble(10, maxConsignPrice_);
-        }
-        if (((bitField0_ & 0x00000400) == 0x00000400)) {
-          output.writeInt32(11, attack_);
-        }
-        if (((bitField0_ & 0x00000800) == 0x00000800)) {
-          output.writeInt32(12, defense_);
-        }
-        if (((bitField0_ & 0x00001000) == 0x00001000)) {
-          output.writeInt32(13, speed_);
-        }
-        if (((bitField0_ & 0x00002000) == 0x00002000)) {
-          output.writeInt32(14, lucky_);
-        }
-        if (((bitField0_ & 0x00004000) == 0x00004000)) {
-          output.writeBool(15, isContainer_);
-        }
-        if (((bitField0_ & 0x00008000) == 0x00008000)) {
-          output.writeInt32(16, capacity_);
-        }
-        if (((bitField0_ & 0x00010000) == 0x00010000)) {
-          output.writeInt32(17, valuation_);
-        }
-        for (int i = 0; i < useParameters_.size(); i++) {
-          output.writeMessage(18, useParameters_.get(i));
-        }
-        for (int i = 0; i < useEffects_.size(); i++) {
-          output.writeMessage(19, useEffects_.get(i));
-        }
-        getUnknownFields().writeTo(output);
-      }
-      
-      private int memoizedSerializedSize = -1;
-      public int getSerializedSize() {
-        int size = memoizedSerializedSize;
-        if (size != -1) return size;
-      
-        size = 0;
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(1, type_);
-        }
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(2, getNameBytes());
-        }
-        if (((bitField0_ & 0x00000004) == 0x00000004)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(3, maxPile_);
-        }
-        if (((bitField0_ & 0x00000008) == 0x00000008)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(4, useLevel_);
-        }
-        if (((bitField0_ & 0x00000010) == 0x00000010)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(5, peerageLimit_);
-        }
-        if (((bitField0_ & 0x00000020) == 0x00000020)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(6, getIconUrlBytes());
-        }
-        if (((bitField0_ & 0x00000040) == 0x00000040)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(7, getDescBytes());
-        }
-        if (((bitField0_ & 0x00000080) == 0x00000080)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(8, sellPrice_);
-        }
-        if (((bitField0_ & 0x00000100) == 0x00000100)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeDoubleSize(9, minConsignPrice_);
-        }
-        if (((bitField0_ & 0x00000200) == 0x00000200)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeDoubleSize(10, maxConsignPrice_);
-        }
-        if (((bitField0_ & 0x00000400) == 0x00000400)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(11, attack_);
-        }
-        if (((bitField0_ & 0x00000800) == 0x00000800)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(12, defense_);
-        }
-        if (((bitField0_ & 0x00001000) == 0x00001000)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(13, speed_);
-        }
-        if (((bitField0_ & 0x00002000) == 0x00002000)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(14, lucky_);
-        }
-        if (((bitField0_ & 0x00004000) == 0x00004000)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBoolSize(15, isContainer_);
-        }
-        if (((bitField0_ & 0x00008000) == 0x00008000)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(16, capacity_);
-        }
-        if (((bitField0_ & 0x00010000) == 0x00010000)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(17, valuation_);
-        }
-        for (int i = 0; i < useParameters_.size(); i++) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(18, useParameters_.get(i));
-        }
-        for (int i = 0; i < useEffects_.size(); i++) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(19, useEffects_.get(i));
-        }
-        size += getUnknownFields().getSerializedSize();
-        memoizedSerializedSize = size;
-        return size;
-      }
-      
-      private static final long serialVersionUID = 0L;
-      @java.lang.Override
-      protected java.lang.Object writeReplace()
-          throws java.io.ObjectStreamException {
-        return super.writeReplace();
-      }
-      
-      public static com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute parseFrom(
-          com.google.protobuf.ByteString data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return newBuilder().mergeFrom(data).buildParsed();
-      }
-      public static com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute parseFrom(
-          com.google.protobuf.ByteString data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return newBuilder().mergeFrom(data, extensionRegistry)
-                 .buildParsed();
-      }
-      public static com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute parseFrom(byte[] data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return newBuilder().mergeFrom(data).buildParsed();
-      }
-      public static com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute parseFrom(
-          byte[] data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return newBuilder().mergeFrom(data, extensionRegistry)
-                 .buildParsed();
-      }
-      public static com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute parseFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return newBuilder().mergeFrom(input).buildParsed();
-      }
-      public static com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute parseFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return newBuilder().mergeFrom(input, extensionRegistry)
-                 .buildParsed();
-      }
-      public static com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute parseDelimitedFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        Builder builder = newBuilder();
-        if (builder.mergeDelimitedFrom(input)) {
-          return builder.buildParsed();
-        } else {
-          return null;
-        }
-      }
-      public static com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute parseDelimitedFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        Builder builder = newBuilder();
-        if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-          return builder.buildParsed();
-        } else {
-          return null;
-        }
-      }
-      public static com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute parseFrom(
-          com.google.protobuf.CodedInputStream input)
-          throws java.io.IOException {
-        return newBuilder().mergeFrom(input).buildParsed();
-      }
-      public static com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute parseFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return newBuilder().mergeFrom(input, extensionRegistry)
-                 .buildParsed();
-      }
-      
-      public static Builder newBuilder() { return Builder.create(); }
-      public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder(com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute prototype) {
-        return newBuilder().mergeFrom(prototype);
-      }
-      public Builder toBuilder() { return newBuilder(this); }
-      
-      @java.lang.Override
-      protected Builder newBuilderForType(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        Builder builder = new Builder(parent);
-        return builder;
-      }
-      public static final class Builder extends
-          com.google.protobuf.GeneratedMessage.Builder<Builder>
-         implements com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.AttributeOrBuilder {
-        public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-          return com.tentacle.callofwild.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_NetItem_Attribute_descriptor;
-        }
-        
-        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-          return com.tentacle.callofwild.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_NetItem_Attribute_fieldAccessorTable;
-        }
-        
-        // Construct using com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute.newBuilder()
-        private Builder() {
-          maybeForceBuilderInitialization();
-        }
-        
-        private Builder(BuilderParent parent) {
-          super(parent);
-          maybeForceBuilderInitialization();
-        }
-        private void maybeForceBuilderInitialization() {
-          if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-            getUseParametersFieldBuilder();
-            getUseEffectsFieldBuilder();
-          }
-        }
-        private static Builder create() {
-          return new Builder();
-        }
-        
-        public Builder clear() {
-          super.clear();
-          type_ = 0;
-          bitField0_ = (bitField0_ & ~0x00000001);
-          name_ = "";
-          bitField0_ = (bitField0_ & ~0x00000002);
-          maxPile_ = 0;
-          bitField0_ = (bitField0_ & ~0x00000004);
-          useLevel_ = 0;
-          bitField0_ = (bitField0_ & ~0x00000008);
-          peerageLimit_ = 0;
-          bitField0_ = (bitField0_ & ~0x00000010);
-          iconUrl_ = "";
-          bitField0_ = (bitField0_ & ~0x00000020);
-          desc_ = "";
-          bitField0_ = (bitField0_ & ~0x00000040);
-          sellPrice_ = 0;
-          bitField0_ = (bitField0_ & ~0x00000080);
-          minConsignPrice_ = 0D;
-          bitField0_ = (bitField0_ & ~0x00000100);
-          maxConsignPrice_ = 0D;
-          bitField0_ = (bitField0_ & ~0x00000200);
-          attack_ = 0;
-          bitField0_ = (bitField0_ & ~0x00000400);
-          defense_ = 0;
-          bitField0_ = (bitField0_ & ~0x00000800);
-          speed_ = 0;
-          bitField0_ = (bitField0_ & ~0x00001000);
-          lucky_ = 0;
-          bitField0_ = (bitField0_ & ~0x00002000);
-          isContainer_ = false;
-          bitField0_ = (bitField0_ & ~0x00004000);
-          capacity_ = 0;
-          bitField0_ = (bitField0_ & ~0x00008000);
-          valuation_ = 0;
-          bitField0_ = (bitField0_ & ~0x00010000);
-          if (useParametersBuilder_ == null) {
-            useParameters_ = java.util.Collections.emptyList();
-            bitField0_ = (bitField0_ & ~0x00020000);
-          } else {
-            useParametersBuilder_.clear();
-          }
-          if (useEffectsBuilder_ == null) {
-            useEffects_ = java.util.Collections.emptyList();
-            bitField0_ = (bitField0_ & ~0x00040000);
-          } else {
-            useEffectsBuilder_.clear();
-          }
-          return this;
-        }
-        
-        public Builder clone() {
-          return create().mergeFrom(buildPartial());
-        }
-        
-        public com.google.protobuf.Descriptors.Descriptor
-            getDescriptorForType() {
-          return com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute.getDescriptor();
-        }
-        
-        public com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute getDefaultInstanceForType() {
-          return com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute.getDefaultInstance();
-        }
-        
-        public com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute build() {
-          com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute result = buildPartial();
-          if (!result.isInitialized()) {
-            throw newUninitializedMessageException(result);
-          }
-          return result;
-        }
-        
-        private com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute buildParsed()
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute result = buildPartial();
-          if (!result.isInitialized()) {
-            throw newUninitializedMessageException(
-              result).asInvalidProtocolBufferException();
-          }
-          return result;
-        }
-        
-        public com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute buildPartial() {
-          com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute result = new com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute(this);
-          int from_bitField0_ = bitField0_;
-          int to_bitField0_ = 0;
-          if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-            to_bitField0_ |= 0x00000001;
-          }
-          result.type_ = type_;
-          if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-            to_bitField0_ |= 0x00000002;
-          }
-          result.name_ = name_;
-          if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-            to_bitField0_ |= 0x00000004;
-          }
-          result.maxPile_ = maxPile_;
-          if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-            to_bitField0_ |= 0x00000008;
-          }
-          result.useLevel_ = useLevel_;
-          if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-            to_bitField0_ |= 0x00000010;
-          }
-          result.peerageLimit_ = peerageLimit_;
-          if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-            to_bitField0_ |= 0x00000020;
-          }
-          result.iconUrl_ = iconUrl_;
-          if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-            to_bitField0_ |= 0x00000040;
-          }
-          result.desc_ = desc_;
-          if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-            to_bitField0_ |= 0x00000080;
-          }
-          result.sellPrice_ = sellPrice_;
-          if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
-            to_bitField0_ |= 0x00000100;
-          }
-          result.minConsignPrice_ = minConsignPrice_;
-          if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
-            to_bitField0_ |= 0x00000200;
-          }
-          result.maxConsignPrice_ = maxConsignPrice_;
-          if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
-            to_bitField0_ |= 0x00000400;
-          }
-          result.attack_ = attack_;
-          if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
-            to_bitField0_ |= 0x00000800;
-          }
-          result.defense_ = defense_;
-          if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
-            to_bitField0_ |= 0x00001000;
-          }
-          result.speed_ = speed_;
-          if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
-            to_bitField0_ |= 0x00002000;
-          }
-          result.lucky_ = lucky_;
-          if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
-            to_bitField0_ |= 0x00004000;
-          }
-          result.isContainer_ = isContainer_;
-          if (((from_bitField0_ & 0x00008000) == 0x00008000)) {
-            to_bitField0_ |= 0x00008000;
-          }
-          result.capacity_ = capacity_;
-          if (((from_bitField0_ & 0x00010000) == 0x00010000)) {
-            to_bitField0_ |= 0x00010000;
-          }
-          result.valuation_ = valuation_;
-          if (useParametersBuilder_ == null) {
-            if (((bitField0_ & 0x00020000) == 0x00020000)) {
-              useParameters_ = java.util.Collections.unmodifiableList(useParameters_);
-              bitField0_ = (bitField0_ & ~0x00020000);
-            }
-            result.useParameters_ = useParameters_;
-          } else {
-            result.useParameters_ = useParametersBuilder_.build();
-          }
-          if (useEffectsBuilder_ == null) {
-            if (((bitField0_ & 0x00040000) == 0x00040000)) {
-              useEffects_ = java.util.Collections.unmodifiableList(useEffects_);
-              bitField0_ = (bitField0_ & ~0x00040000);
-            }
-            result.useEffects_ = useEffects_;
-          } else {
-            result.useEffects_ = useEffectsBuilder_.build();
-          }
-          result.bitField0_ = to_bitField0_;
-          onBuilt();
-          return result;
-        }
-        
-        public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute) {
-            return mergeFrom((com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute)other);
-          } else {
-            super.mergeFrom(other);
-            return this;
-          }
-        }
-        
-        public Builder mergeFrom(com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute other) {
-          if (other == com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute.getDefaultInstance()) return this;
-          if (other.hasType()) {
-            setType(other.getType());
-          }
-          if (other.hasName()) {
-            setName(other.getName());
-          }
-          if (other.hasMaxPile()) {
-            setMaxPile(other.getMaxPile());
-          }
-          if (other.hasUseLevel()) {
-            setUseLevel(other.getUseLevel());
-          }
-          if (other.hasPeerageLimit()) {
-            setPeerageLimit(other.getPeerageLimit());
-          }
-          if (other.hasIconUrl()) {
-            setIconUrl(other.getIconUrl());
-          }
-          if (other.hasDesc()) {
-            setDesc(other.getDesc());
-          }
-          if (other.hasSellPrice()) {
-            setSellPrice(other.getSellPrice());
-          }
-          if (other.hasMinConsignPrice()) {
-            setMinConsignPrice(other.getMinConsignPrice());
-          }
-          if (other.hasMaxConsignPrice()) {
-            setMaxConsignPrice(other.getMaxConsignPrice());
-          }
-          if (other.hasAttack()) {
-            setAttack(other.getAttack());
-          }
-          if (other.hasDefense()) {
-            setDefense(other.getDefense());
-          }
-          if (other.hasSpeed()) {
-            setSpeed(other.getSpeed());
-          }
-          if (other.hasLucky()) {
-            setLucky(other.getLucky());
-          }
-          if (other.hasIsContainer()) {
-            setIsContainer(other.getIsContainer());
-          }
-          if (other.hasCapacity()) {
-            setCapacity(other.getCapacity());
-          }
-          if (other.hasValuation()) {
-            setValuation(other.getValuation());
-          }
-          if (useParametersBuilder_ == null) {
-            if (!other.useParameters_.isEmpty()) {
-              if (useParameters_.isEmpty()) {
-                useParameters_ = other.useParameters_;
-                bitField0_ = (bitField0_ & ~0x00020000);
-              } else {
-                ensureUseParametersIsMutable();
-                useParameters_.addAll(other.useParameters_);
-              }
-              onChanged();
-            }
-          } else {
-            if (!other.useParameters_.isEmpty()) {
-              if (useParametersBuilder_.isEmpty()) {
-                useParametersBuilder_.dispose();
-                useParametersBuilder_ = null;
-                useParameters_ = other.useParameters_;
-                bitField0_ = (bitField0_ & ~0x00020000);
-                useParametersBuilder_ = 
-                  com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                     getUseParametersFieldBuilder() : null;
-              } else {
-                useParametersBuilder_.addAllMessages(other.useParameters_);
-              }
-            }
-          }
-          if (useEffectsBuilder_ == null) {
-            if (!other.useEffects_.isEmpty()) {
-              if (useEffects_.isEmpty()) {
-                useEffects_ = other.useEffects_;
-                bitField0_ = (bitField0_ & ~0x00040000);
-              } else {
-                ensureUseEffectsIsMutable();
-                useEffects_.addAll(other.useEffects_);
-              }
-              onChanged();
-            }
-          } else {
-            if (!other.useEffects_.isEmpty()) {
-              if (useEffectsBuilder_.isEmpty()) {
-                useEffectsBuilder_.dispose();
-                useEffectsBuilder_ = null;
-                useEffects_ = other.useEffects_;
-                bitField0_ = (bitField0_ & ~0x00040000);
-                useEffectsBuilder_ = 
-                  com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                     getUseEffectsFieldBuilder() : null;
-              } else {
-                useEffectsBuilder_.addAllMessages(other.useEffects_);
-              }
-            }
-          }
-          this.mergeUnknownFields(other.getUnknownFields());
-          return this;
-        }
-        
-        public final boolean isInitialized() {
-          return true;
-        }
-        
-        public Builder mergeFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-            com.google.protobuf.UnknownFieldSet.newBuilder(
-              this.getUnknownFields());
-          while (true) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              default: {
-                if (!parseUnknownField(input, unknownFields,
-                                       extensionRegistry, tag)) {
-                  this.setUnknownFields(unknownFields.build());
-                  onChanged();
-                  return this;
-                }
-                break;
-              }
-              case 8: {
-                bitField0_ |= 0x00000001;
-                type_ = input.readInt32();
-                break;
-              }
-              case 18: {
-                bitField0_ |= 0x00000002;
-                name_ = input.readBytes();
-                break;
-              }
-              case 24: {
-                bitField0_ |= 0x00000004;
-                maxPile_ = input.readInt32();
-                break;
-              }
-              case 32: {
-                bitField0_ |= 0x00000008;
-                useLevel_ = input.readInt32();
-                break;
-              }
-              case 40: {
-                bitField0_ |= 0x00000010;
-                peerageLimit_ = input.readInt32();
-                break;
-              }
-              case 50: {
-                bitField0_ |= 0x00000020;
-                iconUrl_ = input.readBytes();
-                break;
-              }
-              case 58: {
-                bitField0_ |= 0x00000040;
-                desc_ = input.readBytes();
-                break;
-              }
-              case 64: {
-                bitField0_ |= 0x00000080;
-                sellPrice_ = input.readInt32();
-                break;
-              }
-              case 73: {
-                bitField0_ |= 0x00000100;
-                minConsignPrice_ = input.readDouble();
-                break;
-              }
-              case 81: {
-                bitField0_ |= 0x00000200;
-                maxConsignPrice_ = input.readDouble();
-                break;
-              }
-              case 88: {
-                bitField0_ |= 0x00000400;
-                attack_ = input.readInt32();
-                break;
-              }
-              case 96: {
-                bitField0_ |= 0x00000800;
-                defense_ = input.readInt32();
-                break;
-              }
-              case 104: {
-                bitField0_ |= 0x00001000;
-                speed_ = input.readInt32();
-                break;
-              }
-              case 112: {
-                bitField0_ |= 0x00002000;
-                lucky_ = input.readInt32();
-                break;
-              }
-              case 120: {
-                bitField0_ |= 0x00004000;
-                isContainer_ = input.readBool();
-                break;
-              }
-              case 128: {
-                bitField0_ |= 0x00008000;
-                capacity_ = input.readInt32();
-                break;
-              }
-              case 136: {
-                bitField0_ |= 0x00010000;
-                valuation_ = input.readInt32();
-                break;
-              }
-              case 146: {
-                com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder subBuilder = com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.newBuilder();
-                input.readMessage(subBuilder, extensionRegistry);
-                addUseParameters(subBuilder.buildPartial());
-                break;
-              }
-              case 154: {
-                com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder subBuilder = com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.newBuilder();
-                input.readMessage(subBuilder, extensionRegistry);
-                addUseEffects(subBuilder.buildPartial());
-                break;
-              }
-            }
-          }
-        }
-        
-        private int bitField0_;
-        
-        // optional int32 type = 1;
-        private int type_ ;
-        public boolean hasType() {
-          return ((bitField0_ & 0x00000001) == 0x00000001);
-        }
-        public int getType() {
-          return type_;
-        }
-        public Builder setType(int value) {
-          bitField0_ |= 0x00000001;
-          type_ = value;
-          onChanged();
-          return this;
-        }
-        public Builder clearType() {
-          bitField0_ = (bitField0_ & ~0x00000001);
-          type_ = 0;
-          onChanged();
-          return this;
-        }
-        
-        // optional string name = 2;
-        private java.lang.Object name_ = "";
-        public boolean hasName() {
-          return ((bitField0_ & 0x00000002) == 0x00000002);
-        }
-        public String getName() {
-          java.lang.Object ref = name_;
-          if (!(ref instanceof String)) {
-            String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
-            name_ = s;
-            return s;
-          } else {
-            return (String) ref;
-          }
-        }
-        public Builder setName(String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-          name_ = value;
-          onChanged();
-          return this;
-        }
-        public Builder clearName() {
-          bitField0_ = (bitField0_ & ~0x00000002);
-          name_ = getDefaultInstance().getName();
-          onChanged();
-          return this;
-        }
-        void setName(com.google.protobuf.ByteString value) {
-          bitField0_ |= 0x00000002;
-          name_ = value;
-          onChanged();
-        }
-        
-        // optional int32 max_pile = 3;
-        private int maxPile_ ;
-        public boolean hasMaxPile() {
-          return ((bitField0_ & 0x00000004) == 0x00000004);
-        }
-        public int getMaxPile() {
-          return maxPile_;
-        }
-        public Builder setMaxPile(int value) {
-          bitField0_ |= 0x00000004;
-          maxPile_ = value;
-          onChanged();
-          return this;
-        }
-        public Builder clearMaxPile() {
-          bitField0_ = (bitField0_ & ~0x00000004);
-          maxPile_ = 0;
-          onChanged();
-          return this;
-        }
-        
-        // optional int32 use_level = 4;
-        private int useLevel_ ;
-        public boolean hasUseLevel() {
-          return ((bitField0_ & 0x00000008) == 0x00000008);
-        }
-        public int getUseLevel() {
-          return useLevel_;
-        }
-        public Builder setUseLevel(int value) {
-          bitField0_ |= 0x00000008;
-          useLevel_ = value;
-          onChanged();
-          return this;
-        }
-        public Builder clearUseLevel() {
-          bitField0_ = (bitField0_ & ~0x00000008);
-          useLevel_ = 0;
-          onChanged();
-          return this;
-        }
-        
-        // optional int32 peerage_limit = 5;
-        private int peerageLimit_ ;
-        public boolean hasPeerageLimit() {
-          return ((bitField0_ & 0x00000010) == 0x00000010);
-        }
-        public int getPeerageLimit() {
-          return peerageLimit_;
-        }
-        public Builder setPeerageLimit(int value) {
-          bitField0_ |= 0x00000010;
-          peerageLimit_ = value;
-          onChanged();
-          return this;
-        }
-        public Builder clearPeerageLimit() {
-          bitField0_ = (bitField0_ & ~0x00000010);
-          peerageLimit_ = 0;
-          onChanged();
-          return this;
-        }
-        
-        // optional string icon_url = 6;
-        private java.lang.Object iconUrl_ = "";
-        public boolean hasIconUrl() {
-          return ((bitField0_ & 0x00000020) == 0x00000020);
-        }
-        public String getIconUrl() {
-          java.lang.Object ref = iconUrl_;
-          if (!(ref instanceof String)) {
-            String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
-            iconUrl_ = s;
-            return s;
-          } else {
-            return (String) ref;
-          }
-        }
-        public Builder setIconUrl(String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000020;
-          iconUrl_ = value;
-          onChanged();
-          return this;
-        }
-        public Builder clearIconUrl() {
-          bitField0_ = (bitField0_ & ~0x00000020);
-          iconUrl_ = getDefaultInstance().getIconUrl();
-          onChanged();
-          return this;
-        }
-        void setIconUrl(com.google.protobuf.ByteString value) {
-          bitField0_ |= 0x00000020;
-          iconUrl_ = value;
-          onChanged();
-        }
-        
-        // optional string desc = 7;
-        private java.lang.Object desc_ = "";
-        public boolean hasDesc() {
-          return ((bitField0_ & 0x00000040) == 0x00000040);
-        }
-        public String getDesc() {
-          java.lang.Object ref = desc_;
-          if (!(ref instanceof String)) {
-            String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
-            desc_ = s;
-            return s;
-          } else {
-            return (String) ref;
-          }
-        }
-        public Builder setDesc(String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000040;
-          desc_ = value;
-          onChanged();
-          return this;
-        }
-        public Builder clearDesc() {
-          bitField0_ = (bitField0_ & ~0x00000040);
-          desc_ = getDefaultInstance().getDesc();
-          onChanged();
-          return this;
-        }
-        void setDesc(com.google.protobuf.ByteString value) {
-          bitField0_ |= 0x00000040;
-          desc_ = value;
-          onChanged();
-        }
-        
-        // optional int32 sell_price = 8;
-        private int sellPrice_ ;
-        public boolean hasSellPrice() {
-          return ((bitField0_ & 0x00000080) == 0x00000080);
-        }
-        public int getSellPrice() {
-          return sellPrice_;
-        }
-        public Builder setSellPrice(int value) {
-          bitField0_ |= 0x00000080;
-          sellPrice_ = value;
-          onChanged();
-          return this;
-        }
-        public Builder clearSellPrice() {
-          bitField0_ = (bitField0_ & ~0x00000080);
-          sellPrice_ = 0;
-          onChanged();
-          return this;
-        }
-        
-        // optional double min_consign_price = 9;
-        private double minConsignPrice_ ;
-        public boolean hasMinConsignPrice() {
-          return ((bitField0_ & 0x00000100) == 0x00000100);
-        }
-        public double getMinConsignPrice() {
-          return minConsignPrice_;
-        }
-        public Builder setMinConsignPrice(double value) {
-          bitField0_ |= 0x00000100;
-          minConsignPrice_ = value;
-          onChanged();
-          return this;
-        }
-        public Builder clearMinConsignPrice() {
-          bitField0_ = (bitField0_ & ~0x00000100);
-          minConsignPrice_ = 0D;
-          onChanged();
-          return this;
-        }
-        
-        // optional double max_consign_price = 10;
-        private double maxConsignPrice_ ;
-        public boolean hasMaxConsignPrice() {
-          return ((bitField0_ & 0x00000200) == 0x00000200);
-        }
-        public double getMaxConsignPrice() {
-          return maxConsignPrice_;
-        }
-        public Builder setMaxConsignPrice(double value) {
-          bitField0_ |= 0x00000200;
-          maxConsignPrice_ = value;
-          onChanged();
-          return this;
-        }
-        public Builder clearMaxConsignPrice() {
-          bitField0_ = (bitField0_ & ~0x00000200);
-          maxConsignPrice_ = 0D;
-          onChanged();
-          return this;
-        }
-        
-        // optional int32 attack = 11;
-        private int attack_ ;
-        public boolean hasAttack() {
-          return ((bitField0_ & 0x00000400) == 0x00000400);
-        }
-        public int getAttack() {
-          return attack_;
-        }
-        public Builder setAttack(int value) {
-          bitField0_ |= 0x00000400;
-          attack_ = value;
-          onChanged();
-          return this;
-        }
-        public Builder clearAttack() {
-          bitField0_ = (bitField0_ & ~0x00000400);
-          attack_ = 0;
-          onChanged();
-          return this;
-        }
-        
-        // optional int32 defense = 12;
-        private int defense_ ;
-        public boolean hasDefense() {
-          return ((bitField0_ & 0x00000800) == 0x00000800);
-        }
-        public int getDefense() {
-          return defense_;
-        }
-        public Builder setDefense(int value) {
-          bitField0_ |= 0x00000800;
-          defense_ = value;
-          onChanged();
-          return this;
-        }
-        public Builder clearDefense() {
-          bitField0_ = (bitField0_ & ~0x00000800);
-          defense_ = 0;
-          onChanged();
-          return this;
-        }
-        
-        // optional int32 speed = 13;
-        private int speed_ ;
-        public boolean hasSpeed() {
-          return ((bitField0_ & 0x00001000) == 0x00001000);
-        }
-        public int getSpeed() {
-          return speed_;
-        }
-        public Builder setSpeed(int value) {
-          bitField0_ |= 0x00001000;
-          speed_ = value;
-          onChanged();
-          return this;
-        }
-        public Builder clearSpeed() {
-          bitField0_ = (bitField0_ & ~0x00001000);
-          speed_ = 0;
-          onChanged();
-          return this;
-        }
-        
-        // optional int32 lucky = 14;
-        private int lucky_ ;
-        public boolean hasLucky() {
-          return ((bitField0_ & 0x00002000) == 0x00002000);
-        }
-        public int getLucky() {
-          return lucky_;
-        }
-        public Builder setLucky(int value) {
-          bitField0_ |= 0x00002000;
-          lucky_ = value;
-          onChanged();
-          return this;
-        }
-        public Builder clearLucky() {
-          bitField0_ = (bitField0_ & ~0x00002000);
-          lucky_ = 0;
-          onChanged();
-          return this;
-        }
-        
-        // optional bool is_container = 15;
-        private boolean isContainer_ ;
-        public boolean hasIsContainer() {
-          return ((bitField0_ & 0x00004000) == 0x00004000);
-        }
-        public boolean getIsContainer() {
-          return isContainer_;
-        }
-        public Builder setIsContainer(boolean value) {
-          bitField0_ |= 0x00004000;
-          isContainer_ = value;
-          onChanged();
-          return this;
-        }
-        public Builder clearIsContainer() {
-          bitField0_ = (bitField0_ & ~0x00004000);
-          isContainer_ = false;
-          onChanged();
-          return this;
-        }
-        
-        // optional int32 capacity = 16;
-        private int capacity_ ;
-        public boolean hasCapacity() {
-          return ((bitField0_ & 0x00008000) == 0x00008000);
-        }
-        public int getCapacity() {
-          return capacity_;
-        }
-        public Builder setCapacity(int value) {
-          bitField0_ |= 0x00008000;
-          capacity_ = value;
-          onChanged();
-          return this;
-        }
-        public Builder clearCapacity() {
-          bitField0_ = (bitField0_ & ~0x00008000);
-          capacity_ = 0;
-          onChanged();
-          return this;
-        }
-        
-        // optional int32 valuation = 17;
-        private int valuation_ ;
-        public boolean hasValuation() {
-          return ((bitField0_ & 0x00010000) == 0x00010000);
-        }
-        public int getValuation() {
-          return valuation_;
-        }
-        public Builder setValuation(int value) {
-          bitField0_ |= 0x00010000;
-          valuation_ = value;
-          onChanged();
-          return this;
-        }
-        public Builder clearValuation() {
-          bitField0_ = (bitField0_ & ~0x00010000);
-          valuation_ = 0;
-          onChanged();
-          return this;
-        }
-        
-        // repeated .com.tentacle.callofwild.protocol.MyVariant use_parameters = 18;
-        private java.util.List<com.tentacle.callofwild.protocol.ProtoBasis.MyVariant> useParameters_ =
-          java.util.Collections.emptyList();
-        private void ensureUseParametersIsMutable() {
-          if (!((bitField0_ & 0x00020000) == 0x00020000)) {
-            useParameters_ = new java.util.ArrayList<com.tentacle.callofwild.protocol.ProtoBasis.MyVariant>(useParameters_);
-            bitField0_ |= 0x00020000;
-           }
-        }
-        
-        private com.google.protobuf.RepeatedFieldBuilder<
-            com.tentacle.callofwild.protocol.ProtoBasis.MyVariant, com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder, com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder> useParametersBuilder_;
-        
-        public java.util.List<com.tentacle.callofwild.protocol.ProtoBasis.MyVariant> getUseParametersList() {
-          if (useParametersBuilder_ == null) {
-            return java.util.Collections.unmodifiableList(useParameters_);
-          } else {
-            return useParametersBuilder_.getMessageList();
-          }
-        }
-        public int getUseParametersCount() {
-          if (useParametersBuilder_ == null) {
-            return useParameters_.size();
-          } else {
-            return useParametersBuilder_.getCount();
-          }
-        }
-        public com.tentacle.callofwild.protocol.ProtoBasis.MyVariant getUseParameters(int index) {
-          if (useParametersBuilder_ == null) {
-            return useParameters_.get(index);
-          } else {
-            return useParametersBuilder_.getMessage(index);
-          }
-        }
-        public Builder setUseParameters(
-            int index, com.tentacle.callofwild.protocol.ProtoBasis.MyVariant value) {
-          if (useParametersBuilder_ == null) {
-            if (value == null) {
-              throw new NullPointerException();
-            }
-            ensureUseParametersIsMutable();
-            useParameters_.set(index, value);
-            onChanged();
-          } else {
-            useParametersBuilder_.setMessage(index, value);
-          }
-          return this;
-        }
-        public Builder setUseParameters(
-            int index, com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder builderForValue) {
-          if (useParametersBuilder_ == null) {
-            ensureUseParametersIsMutable();
-            useParameters_.set(index, builderForValue.build());
-            onChanged();
-          } else {
-            useParametersBuilder_.setMessage(index, builderForValue.build());
-          }
-          return this;
-        }
-        public Builder addUseParameters(com.tentacle.callofwild.protocol.ProtoBasis.MyVariant value) {
-          if (useParametersBuilder_ == null) {
-            if (value == null) {
-              throw new NullPointerException();
-            }
-            ensureUseParametersIsMutable();
-            useParameters_.add(value);
-            onChanged();
-          } else {
-            useParametersBuilder_.addMessage(value);
-          }
-          return this;
-        }
-        public Builder addUseParameters(
-            int index, com.tentacle.callofwild.protocol.ProtoBasis.MyVariant value) {
-          if (useParametersBuilder_ == null) {
-            if (value == null) {
-              throw new NullPointerException();
-            }
-            ensureUseParametersIsMutable();
-            useParameters_.add(index, value);
-            onChanged();
-          } else {
-            useParametersBuilder_.addMessage(index, value);
-          }
-          return this;
-        }
-        public Builder addUseParameters(
-            com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder builderForValue) {
-          if (useParametersBuilder_ == null) {
-            ensureUseParametersIsMutable();
-            useParameters_.add(builderForValue.build());
-            onChanged();
-          } else {
-            useParametersBuilder_.addMessage(builderForValue.build());
-          }
-          return this;
-        }
-        public Builder addUseParameters(
-            int index, com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder builderForValue) {
-          if (useParametersBuilder_ == null) {
-            ensureUseParametersIsMutable();
-            useParameters_.add(index, builderForValue.build());
-            onChanged();
-          } else {
-            useParametersBuilder_.addMessage(index, builderForValue.build());
-          }
-          return this;
-        }
-        public Builder addAllUseParameters(
-            java.lang.Iterable<? extends com.tentacle.callofwild.protocol.ProtoBasis.MyVariant> values) {
-          if (useParametersBuilder_ == null) {
-            ensureUseParametersIsMutable();
-            super.addAll(values, useParameters_);
-            onChanged();
-          } else {
-            useParametersBuilder_.addAllMessages(values);
-          }
-          return this;
-        }
-        public Builder clearUseParameters() {
-          if (useParametersBuilder_ == null) {
-            useParameters_ = java.util.Collections.emptyList();
-            bitField0_ = (bitField0_ & ~0x00020000);
-            onChanged();
-          } else {
-            useParametersBuilder_.clear();
-          }
-          return this;
-        }
-        public Builder removeUseParameters(int index) {
-          if (useParametersBuilder_ == null) {
-            ensureUseParametersIsMutable();
-            useParameters_.remove(index);
-            onChanged();
-          } else {
-            useParametersBuilder_.remove(index);
-          }
-          return this;
-        }
-        public com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder getUseParametersBuilder(
-            int index) {
-          return getUseParametersFieldBuilder().getBuilder(index);
-        }
-        public com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder getUseParametersOrBuilder(
-            int index) {
-          if (useParametersBuilder_ == null) {
-            return useParameters_.get(index);  } else {
-            return useParametersBuilder_.getMessageOrBuilder(index);
-          }
-        }
-        public java.util.List<? extends com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder> 
-             getUseParametersOrBuilderList() {
-          if (useParametersBuilder_ != null) {
-            return useParametersBuilder_.getMessageOrBuilderList();
-          } else {
-            return java.util.Collections.unmodifiableList(useParameters_);
-          }
-        }
-        public com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder addUseParametersBuilder() {
-          return getUseParametersFieldBuilder().addBuilder(
-              com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.getDefaultInstance());
-        }
-        public com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder addUseParametersBuilder(
-            int index) {
-          return getUseParametersFieldBuilder().addBuilder(
-              index, com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.getDefaultInstance());
-        }
-        public java.util.List<com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder> 
-             getUseParametersBuilderList() {
-          return getUseParametersFieldBuilder().getBuilderList();
-        }
-        private com.google.protobuf.RepeatedFieldBuilder<
-            com.tentacle.callofwild.protocol.ProtoBasis.MyVariant, com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder, com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder> 
-            getUseParametersFieldBuilder() {
-          if (useParametersBuilder_ == null) {
-            useParametersBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-                com.tentacle.callofwild.protocol.ProtoBasis.MyVariant, com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder, com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder>(
-                    useParameters_,
-                    ((bitField0_ & 0x00020000) == 0x00020000),
-                    getParentForChildren(),
-                    isClean());
-            useParameters_ = null;
-          }
-          return useParametersBuilder_;
-        }
-        
-        // repeated .com.tentacle.callofwild.protocol.MyVariant use_effects = 19;
-        private java.util.List<com.tentacle.callofwild.protocol.ProtoBasis.MyVariant> useEffects_ =
-          java.util.Collections.emptyList();
-        private void ensureUseEffectsIsMutable() {
-          if (!((bitField0_ & 0x00040000) == 0x00040000)) {
-            useEffects_ = new java.util.ArrayList<com.tentacle.callofwild.protocol.ProtoBasis.MyVariant>(useEffects_);
-            bitField0_ |= 0x00040000;
-           }
-        }
-        
-        private com.google.protobuf.RepeatedFieldBuilder<
-            com.tentacle.callofwild.protocol.ProtoBasis.MyVariant, com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder, com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder> useEffectsBuilder_;
-        
-        public java.util.List<com.tentacle.callofwild.protocol.ProtoBasis.MyVariant> getUseEffectsList() {
-          if (useEffectsBuilder_ == null) {
-            return java.util.Collections.unmodifiableList(useEffects_);
-          } else {
-            return useEffectsBuilder_.getMessageList();
-          }
-        }
-        public int getUseEffectsCount() {
-          if (useEffectsBuilder_ == null) {
-            return useEffects_.size();
-          } else {
-            return useEffectsBuilder_.getCount();
-          }
-        }
-        public com.tentacle.callofwild.protocol.ProtoBasis.MyVariant getUseEffects(int index) {
-          if (useEffectsBuilder_ == null) {
-            return useEffects_.get(index);
-          } else {
-            return useEffectsBuilder_.getMessage(index);
-          }
-        }
-        public Builder setUseEffects(
-            int index, com.tentacle.callofwild.protocol.ProtoBasis.MyVariant value) {
-          if (useEffectsBuilder_ == null) {
-            if (value == null) {
-              throw new NullPointerException();
-            }
-            ensureUseEffectsIsMutable();
-            useEffects_.set(index, value);
-            onChanged();
-          } else {
-            useEffectsBuilder_.setMessage(index, value);
-          }
-          return this;
-        }
-        public Builder setUseEffects(
-            int index, com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder builderForValue) {
-          if (useEffectsBuilder_ == null) {
-            ensureUseEffectsIsMutable();
-            useEffects_.set(index, builderForValue.build());
-            onChanged();
-          } else {
-            useEffectsBuilder_.setMessage(index, builderForValue.build());
-          }
-          return this;
-        }
-        public Builder addUseEffects(com.tentacle.callofwild.protocol.ProtoBasis.MyVariant value) {
-          if (useEffectsBuilder_ == null) {
-            if (value == null) {
-              throw new NullPointerException();
-            }
-            ensureUseEffectsIsMutable();
-            useEffects_.add(value);
-            onChanged();
-          } else {
-            useEffectsBuilder_.addMessage(value);
-          }
-          return this;
-        }
-        public Builder addUseEffects(
-            int index, com.tentacle.callofwild.protocol.ProtoBasis.MyVariant value) {
-          if (useEffectsBuilder_ == null) {
-            if (value == null) {
-              throw new NullPointerException();
-            }
-            ensureUseEffectsIsMutable();
-            useEffects_.add(index, value);
-            onChanged();
-          } else {
-            useEffectsBuilder_.addMessage(index, value);
-          }
-          return this;
-        }
-        public Builder addUseEffects(
-            com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder builderForValue) {
-          if (useEffectsBuilder_ == null) {
-            ensureUseEffectsIsMutable();
-            useEffects_.add(builderForValue.build());
-            onChanged();
-          } else {
-            useEffectsBuilder_.addMessage(builderForValue.build());
-          }
-          return this;
-        }
-        public Builder addUseEffects(
-            int index, com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder builderForValue) {
-          if (useEffectsBuilder_ == null) {
-            ensureUseEffectsIsMutable();
-            useEffects_.add(index, builderForValue.build());
-            onChanged();
-          } else {
-            useEffectsBuilder_.addMessage(index, builderForValue.build());
-          }
-          return this;
-        }
-        public Builder addAllUseEffects(
-            java.lang.Iterable<? extends com.tentacle.callofwild.protocol.ProtoBasis.MyVariant> values) {
-          if (useEffectsBuilder_ == null) {
-            ensureUseEffectsIsMutable();
-            super.addAll(values, useEffects_);
-            onChanged();
-          } else {
-            useEffectsBuilder_.addAllMessages(values);
-          }
-          return this;
-        }
-        public Builder clearUseEffects() {
-          if (useEffectsBuilder_ == null) {
-            useEffects_ = java.util.Collections.emptyList();
-            bitField0_ = (bitField0_ & ~0x00040000);
-            onChanged();
-          } else {
-            useEffectsBuilder_.clear();
-          }
-          return this;
-        }
-        public Builder removeUseEffects(int index) {
-          if (useEffectsBuilder_ == null) {
-            ensureUseEffectsIsMutable();
-            useEffects_.remove(index);
-            onChanged();
-          } else {
-            useEffectsBuilder_.remove(index);
-          }
-          return this;
-        }
-        public com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder getUseEffectsBuilder(
-            int index) {
-          return getUseEffectsFieldBuilder().getBuilder(index);
-        }
-        public com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder getUseEffectsOrBuilder(
-            int index) {
-          if (useEffectsBuilder_ == null) {
-            return useEffects_.get(index);  } else {
-            return useEffectsBuilder_.getMessageOrBuilder(index);
-          }
-        }
-        public java.util.List<? extends com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder> 
-             getUseEffectsOrBuilderList() {
-          if (useEffectsBuilder_ != null) {
-            return useEffectsBuilder_.getMessageOrBuilderList();
-          } else {
-            return java.util.Collections.unmodifiableList(useEffects_);
-          }
-        }
-        public com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder addUseEffectsBuilder() {
-          return getUseEffectsFieldBuilder().addBuilder(
-              com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.getDefaultInstance());
-        }
-        public com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder addUseEffectsBuilder(
-            int index) {
-          return getUseEffectsFieldBuilder().addBuilder(
-              index, com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.getDefaultInstance());
-        }
-        public java.util.List<com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder> 
-             getUseEffectsBuilderList() {
-          return getUseEffectsFieldBuilder().getBuilderList();
-        }
-        private com.google.protobuf.RepeatedFieldBuilder<
-            com.tentacle.callofwild.protocol.ProtoBasis.MyVariant, com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder, com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder> 
-            getUseEffectsFieldBuilder() {
-          if (useEffectsBuilder_ == null) {
-            useEffectsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-                com.tentacle.callofwild.protocol.ProtoBasis.MyVariant, com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder, com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder>(
-                    useEffects_,
-                    ((bitField0_ & 0x00040000) == 0x00040000),
-                    getParentForChildren(),
-                    isClean());
-            useEffects_ = null;
-          }
-          return useEffectsBuilder_;
-        }
-        
-        // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.NetItem.Attribute)
-      }
-      
-      static {
-        defaultInstance = new Attribute(true);
-        defaultInstance.initFields();
-      }
-      
-      // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.NetItem.Attribute)
     }
     
     private int bitField0_;
@@ -5942,17 +3473,25 @@ public final class ProtoPlayer {
       return nestedItems_.get(index);
     }
     
-    // optional .com.tentacle.callofwild.protocol.NetItem.Attribute attr = 8;
-    public static final int ATTR_FIELD_NUMBER = 8;
-    private com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute attr_;
-    public boolean hasAttr() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+    // repeated .com.tentacle.callofwild.protocol.MyVariant attrs = 8;
+    public static final int ATTRS_FIELD_NUMBER = 8;
+    private java.util.List<com.tentacle.callofwild.protocol.ProtoBasis.MyVariant> attrs_;
+    public java.util.List<com.tentacle.callofwild.protocol.ProtoBasis.MyVariant> getAttrsList() {
+      return attrs_;
     }
-    public com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute getAttr() {
-      return attr_;
+    public java.util.List<? extends com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder> 
+        getAttrsOrBuilderList() {
+      return attrs_;
     }
-    public com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.AttributeOrBuilder getAttrOrBuilder() {
-      return attr_;
+    public int getAttrsCount() {
+      return attrs_.size();
+    }
+    public com.tentacle.callofwild.protocol.ProtoBasis.MyVariant getAttrs(int index) {
+      return attrs_.get(index);
+    }
+    public com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder getAttrsOrBuilder(
+        int index) {
+      return attrs_.get(index);
     }
     
     private void initFields() {
@@ -5963,7 +3502,7 @@ public final class ProtoPlayer {
       level_ = 0;
       placeTime_ = 0L;
       nestedItems_ = java.util.Collections.emptyList();
-      attr_ = com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute.getDefaultInstance();
+      attrs_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -5998,8 +3537,8 @@ public final class ProtoPlayer {
       for (int i = 0; i < nestedItems_.size(); i++) {
         output.writeMessage(7, nestedItems_.get(i));
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeMessage(8, attr_);
+      for (int i = 0; i < attrs_.size(); i++) {
+        output.writeMessage(8, attrs_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -6038,9 +3577,9 @@ public final class ProtoPlayer {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(7, nestedItems_.get(i));
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      for (int i = 0; i < attrs_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(8, attr_);
+          .computeMessageSize(8, attrs_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -6159,7 +3698,7 @@ public final class ProtoPlayer {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getNestedItemsFieldBuilder();
-          getAttrFieldBuilder();
+          getAttrsFieldBuilder();
         }
       }
       private static Builder create() {
@@ -6186,12 +3725,12 @@ public final class ProtoPlayer {
         } else {
           nestedItemsBuilder_.clear();
         }
-        if (attrBuilder_ == null) {
-          attr_ = com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute.getDefaultInstance();
+        if (attrsBuilder_ == null) {
+          attrs_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000080);
         } else {
-          attrBuilder_.clear();
+          attrsBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
       
@@ -6263,13 +3802,14 @@ public final class ProtoPlayer {
         } else {
           result.nestedItems_ = nestedItemsBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000040;
-        }
-        if (attrBuilder_ == null) {
-          result.attr_ = attr_;
+        if (attrsBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) == 0x00000080)) {
+            attrs_ = java.util.Collections.unmodifiableList(attrs_);
+            bitField0_ = (bitField0_ & ~0x00000080);
+          }
+          result.attrs_ = attrs_;
         } else {
-          result.attr_ = attrBuilder_.build();
+          result.attrs_ = attrsBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -6331,8 +3871,31 @@ public final class ProtoPlayer {
             }
           }
         }
-        if (other.hasAttr()) {
-          mergeAttr(other.getAttr());
+        if (attrsBuilder_ == null) {
+          if (!other.attrs_.isEmpty()) {
+            if (attrs_.isEmpty()) {
+              attrs_ = other.attrs_;
+              bitField0_ = (bitField0_ & ~0x00000080);
+            } else {
+              ensureAttrsIsMutable();
+              attrs_.addAll(other.attrs_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.attrs_.isEmpty()) {
+            if (attrsBuilder_.isEmpty()) {
+              attrsBuilder_.dispose();
+              attrsBuilder_ = null;
+              attrs_ = other.attrs_;
+              bitField0_ = (bitField0_ & ~0x00000080);
+              attrsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getAttrsFieldBuilder() : null;
+            } else {
+              attrsBuilder_.addAllMessages(other.attrs_);
+            }
+          }
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -6402,12 +3965,9 @@ public final class ProtoPlayer {
               break;
             }
             case 66: {
-              com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute.Builder subBuilder = com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute.newBuilder();
-              if (hasAttr()) {
-                subBuilder.mergeFrom(getAttr());
-              }
+              com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder subBuilder = com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.newBuilder();
               input.readMessage(subBuilder, extensionRegistry);
-              setAttr(subBuilder.buildPartial());
+              addAttrs(subBuilder.buildPartial());
               break;
             }
           }
@@ -6728,94 +4288,190 @@ public final class ProtoPlayer {
         return nestedItemsBuilder_;
       }
       
-      // optional .com.tentacle.callofwild.protocol.NetItem.Attribute attr = 8;
-      private com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute attr_ = com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute, com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute.Builder, com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.AttributeOrBuilder> attrBuilder_;
-      public boolean hasAttr() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+      // repeated .com.tentacle.callofwild.protocol.MyVariant attrs = 8;
+      private java.util.List<com.tentacle.callofwild.protocol.ProtoBasis.MyVariant> attrs_ =
+        java.util.Collections.emptyList();
+      private void ensureAttrsIsMutable() {
+        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
+          attrs_ = new java.util.ArrayList<com.tentacle.callofwild.protocol.ProtoBasis.MyVariant>(attrs_);
+          bitField0_ |= 0x00000080;
+         }
       }
-      public com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute getAttr() {
-        if (attrBuilder_ == null) {
-          return attr_;
+      
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.tentacle.callofwild.protocol.ProtoBasis.MyVariant, com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder, com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder> attrsBuilder_;
+      
+      public java.util.List<com.tentacle.callofwild.protocol.ProtoBasis.MyVariant> getAttrsList() {
+        if (attrsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(attrs_);
         } else {
-          return attrBuilder_.getMessage();
+          return attrsBuilder_.getMessageList();
         }
       }
-      public Builder setAttr(com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute value) {
-        if (attrBuilder_ == null) {
+      public int getAttrsCount() {
+        if (attrsBuilder_ == null) {
+          return attrs_.size();
+        } else {
+          return attrsBuilder_.getCount();
+        }
+      }
+      public com.tentacle.callofwild.protocol.ProtoBasis.MyVariant getAttrs(int index) {
+        if (attrsBuilder_ == null) {
+          return attrs_.get(index);
+        } else {
+          return attrsBuilder_.getMessage(index);
+        }
+      }
+      public Builder setAttrs(
+          int index, com.tentacle.callofwild.protocol.ProtoBasis.MyVariant value) {
+        if (attrsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          attr_ = value;
+          ensureAttrsIsMutable();
+          attrs_.set(index, value);
           onChanged();
         } else {
-          attrBuilder_.setMessage(value);
+          attrsBuilder_.setMessage(index, value);
         }
-        bitField0_ |= 0x00000080;
         return this;
       }
-      public Builder setAttr(
-          com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute.Builder builderForValue) {
-        if (attrBuilder_ == null) {
-          attr_ = builderForValue.build();
+      public Builder setAttrs(
+          int index, com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder builderForValue) {
+        if (attrsBuilder_ == null) {
+          ensureAttrsIsMutable();
+          attrs_.set(index, builderForValue.build());
           onChanged();
         } else {
-          attrBuilder_.setMessage(builderForValue.build());
+          attrsBuilder_.setMessage(index, builderForValue.build());
         }
-        bitField0_ |= 0x00000080;
         return this;
       }
-      public Builder mergeAttr(com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute value) {
-        if (attrBuilder_ == null) {
-          if (((bitField0_ & 0x00000080) == 0x00000080) &&
-              attr_ != com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute.getDefaultInstance()) {
-            attr_ =
-              com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute.newBuilder(attr_).mergeFrom(value).buildPartial();
-          } else {
-            attr_ = value;
+      public Builder addAttrs(com.tentacle.callofwild.protocol.ProtoBasis.MyVariant value) {
+        if (attrsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
           }
+          ensureAttrsIsMutable();
+          attrs_.add(value);
           onChanged();
         } else {
-          attrBuilder_.mergeFrom(value);
+          attrsBuilder_.addMessage(value);
         }
-        bitField0_ |= 0x00000080;
         return this;
       }
-      public Builder clearAttr() {
-        if (attrBuilder_ == null) {
-          attr_ = com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute.getDefaultInstance();
+      public Builder addAttrs(
+          int index, com.tentacle.callofwild.protocol.ProtoBasis.MyVariant value) {
+        if (attrsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureAttrsIsMutable();
+          attrs_.add(index, value);
           onChanged();
         } else {
-          attrBuilder_.clear();
+          attrsBuilder_.addMessage(index, value);
         }
-        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
-      public com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute.Builder getAttrBuilder() {
-        bitField0_ |= 0x00000080;
-        onChanged();
-        return getAttrFieldBuilder().getBuilder();
-      }
-      public com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.AttributeOrBuilder getAttrOrBuilder() {
-        if (attrBuilder_ != null) {
-          return attrBuilder_.getMessageOrBuilder();
+      public Builder addAttrs(
+          com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder builderForValue) {
+        if (attrsBuilder_ == null) {
+          ensureAttrsIsMutable();
+          attrs_.add(builderForValue.build());
+          onChanged();
         } else {
-          return attr_;
+          attrsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addAttrs(
+          int index, com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder builderForValue) {
+        if (attrsBuilder_ == null) {
+          ensureAttrsIsMutable();
+          attrs_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          attrsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addAllAttrs(
+          java.lang.Iterable<? extends com.tentacle.callofwild.protocol.ProtoBasis.MyVariant> values) {
+        if (attrsBuilder_ == null) {
+          ensureAttrsIsMutable();
+          super.addAll(values, attrs_);
+          onChanged();
+        } else {
+          attrsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      public Builder clearAttrs() {
+        if (attrsBuilder_ == null) {
+          attrs_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000080);
+          onChanged();
+        } else {
+          attrsBuilder_.clear();
+        }
+        return this;
+      }
+      public Builder removeAttrs(int index) {
+        if (attrsBuilder_ == null) {
+          ensureAttrsIsMutable();
+          attrs_.remove(index);
+          onChanged();
+        } else {
+          attrsBuilder_.remove(index);
+        }
+        return this;
+      }
+      public com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder getAttrsBuilder(
+          int index) {
+        return getAttrsFieldBuilder().getBuilder(index);
+      }
+      public com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder getAttrsOrBuilder(
+          int index) {
+        if (attrsBuilder_ == null) {
+          return attrs_.get(index);  } else {
+          return attrsBuilder_.getMessageOrBuilder(index);
         }
       }
-      private com.google.protobuf.SingleFieldBuilder<
-          com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute, com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute.Builder, com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.AttributeOrBuilder> 
-          getAttrFieldBuilder() {
-        if (attrBuilder_ == null) {
-          attrBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute, com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute.Builder, com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.AttributeOrBuilder>(
-                  attr_,
+      public java.util.List<? extends com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder> 
+           getAttrsOrBuilderList() {
+        if (attrsBuilder_ != null) {
+          return attrsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(attrs_);
+        }
+      }
+      public com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder addAttrsBuilder() {
+        return getAttrsFieldBuilder().addBuilder(
+            com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.getDefaultInstance());
+      }
+      public com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder addAttrsBuilder(
+          int index) {
+        return getAttrsFieldBuilder().addBuilder(
+            index, com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.getDefaultInstance());
+      }
+      public java.util.List<com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder> 
+           getAttrsBuilderList() {
+        return getAttrsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.tentacle.callofwild.protocol.ProtoBasis.MyVariant, com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder, com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder> 
+          getAttrsFieldBuilder() {
+        if (attrsBuilder_ == null) {
+          attrsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.tentacle.callofwild.protocol.ProtoBasis.MyVariant, com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.Builder, com.tentacle.callofwild.protocol.ProtoBasis.MyVariantOrBuilder>(
+                  attrs_,
+                  ((bitField0_ & 0x00000080) == 0x00000080),
                   getParentForChildren(),
                   isClean());
-          attr_ = null;
+          attrs_ = null;
         }
-        return attrBuilder_;
+        return attrsBuilder_;
       }
       
       // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.NetItem)
@@ -8733,826 +6389,6 @@ public final class ProtoPlayer {
     // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.UseItemAns)
   }
   
-  public interface GetItemsOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-    
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
-    boolean hasCmd();
-    com.tentacle.callofwild.protocol.ProtoBasis.Instruction getCmd();
-    com.tentacle.callofwild.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
-    
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
-    boolean hasErrCode();
-    com.tentacle.callofwild.protocol.ProtoBasis.eErrorCode getErrCode();
-    
-    // optional int64 item_id = 3;
-    boolean hasItemId();
-    long getItemId();
-    
-    // repeated .com.tentacle.callofwild.protocol.NetItem items = 4;
-    java.util.List<com.tentacle.callofwild.protocol.ProtoPlayer.NetItem> 
-        getItemsList();
-    com.tentacle.callofwild.protocol.ProtoPlayer.NetItem getItems(int index);
-    int getItemsCount();
-    java.util.List<? extends com.tentacle.callofwild.protocol.ProtoPlayer.NetItemOrBuilder> 
-        getItemsOrBuilderList();
-    com.tentacle.callofwild.protocol.ProtoPlayer.NetItemOrBuilder getItemsOrBuilder(
-        int index);
-  }
-  public static final class GetItems extends
-      com.google.protobuf.GeneratedMessage
-      implements GetItemsOrBuilder {
-    // Use GetItems.newBuilder() to construct.
-    private GetItems(Builder builder) {
-      super(builder);
-    }
-    private GetItems(boolean noInit) {}
-    
-    private static final GetItems defaultInstance;
-    public static GetItems getDefaultInstance() {
-      return defaultInstance;
-    }
-    
-    public GetItems getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-    
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.tentacle.callofwild.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_GetItems_descriptor;
-    }
-    
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.tentacle.callofwild.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_GetItems_fieldAccessorTable;
-    }
-    
-    private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
-    public static final int CMD_FIELD_NUMBER = 1;
-    private com.tentacle.callofwild.protocol.ProtoBasis.Instruction cmd_;
-    public boolean hasCmd() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public com.tentacle.callofwild.protocol.ProtoBasis.Instruction getCmd() {
-      return cmd_;
-    }
-    public com.tentacle.callofwild.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder() {
-      return cmd_;
-    }
-    
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
-    public static final int ERR_CODE_FIELD_NUMBER = 2;
-    private com.tentacle.callofwild.protocol.ProtoBasis.eErrorCode errCode_;
-    public boolean hasErrCode() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public com.tentacle.callofwild.protocol.ProtoBasis.eErrorCode getErrCode() {
-      return errCode_;
-    }
-    
-    // optional int64 item_id = 3;
-    public static final int ITEM_ID_FIELD_NUMBER = 3;
-    private long itemId_;
-    public boolean hasItemId() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    public long getItemId() {
-      return itemId_;
-    }
-    
-    // repeated .com.tentacle.callofwild.protocol.NetItem items = 4;
-    public static final int ITEMS_FIELD_NUMBER = 4;
-    private java.util.List<com.tentacle.callofwild.protocol.ProtoPlayer.NetItem> items_;
-    public java.util.List<com.tentacle.callofwild.protocol.ProtoPlayer.NetItem> getItemsList() {
-      return items_;
-    }
-    public java.util.List<? extends com.tentacle.callofwild.protocol.ProtoPlayer.NetItemOrBuilder> 
-        getItemsOrBuilderList() {
-      return items_;
-    }
-    public int getItemsCount() {
-      return items_.size();
-    }
-    public com.tentacle.callofwild.protocol.ProtoPlayer.NetItem getItems(int index) {
-      return items_.get(index);
-    }
-    public com.tentacle.callofwild.protocol.ProtoPlayer.NetItemOrBuilder getItemsOrBuilder(
-        int index) {
-      return items_.get(index);
-    }
-    
-    private void initFields() {
-      cmd_ = com.tentacle.callofwild.protocol.ProtoBasis.Instruction.getDefaultInstance();
-      errCode_ = com.tentacle.callofwild.protocol.ProtoBasis.eErrorCode.OK;
-      itemId_ = 0L;
-      items_ = java.util.Collections.emptyList();
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      memoizedIsInitialized = 1;
-      return true;
-    }
-    
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeMessage(1, cmd_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeEnum(2, errCode_.getNumber());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt64(3, itemId_);
-      }
-      for (int i = 0; i < items_.size(); i++) {
-        output.writeMessage(4, items_.get(i));
-      }
-      getUnknownFields().writeTo(output);
-    }
-    
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-    
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, cmd_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(2, errCode_.getNumber());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(3, itemId_);
-      }
-      for (int i = 0; i < items_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, items_.get(i));
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-    
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.GetItems parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.GetItems parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.GetItems parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.GetItems parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.GetItems parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.GetItems parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.GetItems parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.GetItems parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.GetItems parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static com.tentacle.callofwild.protocol.ProtoPlayer.GetItems parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.tentacle.callofwild.protocol.ProtoPlayer.GetItems prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-    
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.tentacle.callofwild.protocol.ProtoPlayer.GetItemsOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.tentacle.callofwild.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_GetItems_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.tentacle.callofwild.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_GetItems_fieldAccessorTable;
-      }
-      
-      // Construct using com.tentacle.callofwild.protocol.ProtoPlayer.GetItems.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-      
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getCmdFieldBuilder();
-          getItemsFieldBuilder();
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-      
-      public Builder clear() {
-        super.clear();
-        if (cmdBuilder_ == null) {
-          cmd_ = com.tentacle.callofwild.protocol.ProtoBasis.Instruction.getDefaultInstance();
-        } else {
-          cmdBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        errCode_ = com.tentacle.callofwild.protocol.ProtoBasis.eErrorCode.OK;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        itemId_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        if (itemsBuilder_ == null) {
-          items_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
-        } else {
-          itemsBuilder_.clear();
-        }
-        return this;
-      }
-      
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-      
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.tentacle.callofwild.protocol.ProtoPlayer.GetItems.getDescriptor();
-      }
-      
-      public com.tentacle.callofwild.protocol.ProtoPlayer.GetItems getDefaultInstanceForType() {
-        return com.tentacle.callofwild.protocol.ProtoPlayer.GetItems.getDefaultInstance();
-      }
-      
-      public com.tentacle.callofwild.protocol.ProtoPlayer.GetItems build() {
-        com.tentacle.callofwild.protocol.ProtoPlayer.GetItems result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-      
-      private com.tentacle.callofwild.protocol.ProtoPlayer.GetItems buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        com.tentacle.callofwild.protocol.ProtoPlayer.GetItems result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
-      public com.tentacle.callofwild.protocol.ProtoPlayer.GetItems buildPartial() {
-        com.tentacle.callofwild.protocol.ProtoPlayer.GetItems result = new com.tentacle.callofwild.protocol.ProtoPlayer.GetItems(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        if (cmdBuilder_ == null) {
-          result.cmd_ = cmd_;
-        } else {
-          result.cmd_ = cmdBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.errCode_ = errCode_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.itemId_ = itemId_;
-        if (itemsBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008)) {
-            items_ = java.util.Collections.unmodifiableList(items_);
-            bitField0_ = (bitField0_ & ~0x00000008);
-          }
-          result.items_ = items_;
-        } else {
-          result.items_ = itemsBuilder_.build();
-        }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-      
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.tentacle.callofwild.protocol.ProtoPlayer.GetItems) {
-          return mergeFrom((com.tentacle.callofwild.protocol.ProtoPlayer.GetItems)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-      
-      public Builder mergeFrom(com.tentacle.callofwild.protocol.ProtoPlayer.GetItems other) {
-        if (other == com.tentacle.callofwild.protocol.ProtoPlayer.GetItems.getDefaultInstance()) return this;
-        if (other.hasCmd()) {
-          mergeCmd(other.getCmd());
-        }
-        if (other.hasErrCode()) {
-          setErrCode(other.getErrCode());
-        }
-        if (other.hasItemId()) {
-          setItemId(other.getItemId());
-        }
-        if (itemsBuilder_ == null) {
-          if (!other.items_.isEmpty()) {
-            if (items_.isEmpty()) {
-              items_ = other.items_;
-              bitField0_ = (bitField0_ & ~0x00000008);
-            } else {
-              ensureItemsIsMutable();
-              items_.addAll(other.items_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.items_.isEmpty()) {
-            if (itemsBuilder_.isEmpty()) {
-              itemsBuilder_.dispose();
-              itemsBuilder_ = null;
-              items_ = other.items_;
-              bitField0_ = (bitField0_ & ~0x00000008);
-              itemsBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getItemsFieldBuilder() : null;
-            } else {
-              itemsBuilder_.addAllMessages(other.items_);
-            }
-          }
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-      
-      public final boolean isInitialized() {
-        return true;
-      }
-      
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              com.tentacle.callofwild.protocol.ProtoBasis.Instruction.Builder subBuilder = com.tentacle.callofwild.protocol.ProtoBasis.Instruction.newBuilder();
-              if (hasCmd()) {
-                subBuilder.mergeFrom(getCmd());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setCmd(subBuilder.buildPartial());
-              break;
-            }
-            case 16: {
-              int rawValue = input.readEnum();
-              com.tentacle.callofwild.protocol.ProtoBasis.eErrorCode value = com.tentacle.callofwild.protocol.ProtoBasis.eErrorCode.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(2, rawValue);
-              } else {
-                bitField0_ |= 0x00000002;
-                errCode_ = value;
-              }
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              itemId_ = input.readInt64();
-              break;
-            }
-            case 34: {
-              com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Builder subBuilder = com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.newBuilder();
-              input.readMessage(subBuilder, extensionRegistry);
-              addItems(subBuilder.buildPartial());
-              break;
-            }
-          }
-        }
-      }
-      
-      private int bitField0_;
-      
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
-      private com.tentacle.callofwild.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.callofwild.protocol.ProtoBasis.Instruction.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.tentacle.callofwild.protocol.ProtoBasis.Instruction, com.tentacle.callofwild.protocol.ProtoBasis.Instruction.Builder, com.tentacle.callofwild.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
-      public boolean hasCmd() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      public com.tentacle.callofwild.protocol.ProtoBasis.Instruction getCmd() {
-        if (cmdBuilder_ == null) {
-          return cmd_;
-        } else {
-          return cmdBuilder_.getMessage();
-        }
-      }
-      public Builder setCmd(com.tentacle.callofwild.protocol.ProtoBasis.Instruction value) {
-        if (cmdBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          cmd_ = value;
-          onChanged();
-        } else {
-          cmdBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      public Builder setCmd(
-          com.tentacle.callofwild.protocol.ProtoBasis.Instruction.Builder builderForValue) {
-        if (cmdBuilder_ == null) {
-          cmd_ = builderForValue.build();
-          onChanged();
-        } else {
-          cmdBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      public Builder mergeCmd(com.tentacle.callofwild.protocol.ProtoBasis.Instruction value) {
-        if (cmdBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001) &&
-              cmd_ != com.tentacle.callofwild.protocol.ProtoBasis.Instruction.getDefaultInstance()) {
-            cmd_ =
-              com.tentacle.callofwild.protocol.ProtoBasis.Instruction.newBuilder(cmd_).mergeFrom(value).buildPartial();
-          } else {
-            cmd_ = value;
-          }
-          onChanged();
-        } else {
-          cmdBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      public Builder clearCmd() {
-        if (cmdBuilder_ == null) {
-          cmd_ = com.tentacle.callofwild.protocol.ProtoBasis.Instruction.getDefaultInstance();
-          onChanged();
-        } else {
-          cmdBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        return this;
-      }
-      public com.tentacle.callofwild.protocol.ProtoBasis.Instruction.Builder getCmdBuilder() {
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return getCmdFieldBuilder().getBuilder();
-      }
-      public com.tentacle.callofwild.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder() {
-        if (cmdBuilder_ != null) {
-          return cmdBuilder_.getMessageOrBuilder();
-        } else {
-          return cmd_;
-        }
-      }
-      private com.google.protobuf.SingleFieldBuilder<
-          com.tentacle.callofwild.protocol.ProtoBasis.Instruction, com.tentacle.callofwild.protocol.ProtoBasis.Instruction.Builder, com.tentacle.callofwild.protocol.ProtoBasis.InstructionOrBuilder> 
-          getCmdFieldBuilder() {
-        if (cmdBuilder_ == null) {
-          cmdBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.tentacle.callofwild.protocol.ProtoBasis.Instruction, com.tentacle.callofwild.protocol.ProtoBasis.Instruction.Builder, com.tentacle.callofwild.protocol.ProtoBasis.InstructionOrBuilder>(
-                  cmd_,
-                  getParentForChildren(),
-                  isClean());
-          cmd_ = null;
-        }
-        return cmdBuilder_;
-      }
-      
-      // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
-      private com.tentacle.callofwild.protocol.ProtoBasis.eErrorCode errCode_ = com.tentacle.callofwild.protocol.ProtoBasis.eErrorCode.OK;
-      public boolean hasErrCode() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      public com.tentacle.callofwild.protocol.ProtoBasis.eErrorCode getErrCode() {
-        return errCode_;
-      }
-      public Builder setErrCode(com.tentacle.callofwild.protocol.ProtoBasis.eErrorCode value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        bitField0_ |= 0x00000002;
-        errCode_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearErrCode() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        errCode_ = com.tentacle.callofwild.protocol.ProtoBasis.eErrorCode.OK;
-        onChanged();
-        return this;
-      }
-      
-      // optional int64 item_id = 3;
-      private long itemId_ ;
-      public boolean hasItemId() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      public long getItemId() {
-        return itemId_;
-      }
-      public Builder setItemId(long value) {
-        bitField0_ |= 0x00000004;
-        itemId_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearItemId() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        itemId_ = 0L;
-        onChanged();
-        return this;
-      }
-      
-      // repeated .com.tentacle.callofwild.protocol.NetItem items = 4;
-      private java.util.List<com.tentacle.callofwild.protocol.ProtoPlayer.NetItem> items_ =
-        java.util.Collections.emptyList();
-      private void ensureItemsIsMutable() {
-        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
-          items_ = new java.util.ArrayList<com.tentacle.callofwild.protocol.ProtoPlayer.NetItem>(items_);
-          bitField0_ |= 0x00000008;
-         }
-      }
-      
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.tentacle.callofwild.protocol.ProtoPlayer.NetItem, com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Builder, com.tentacle.callofwild.protocol.ProtoPlayer.NetItemOrBuilder> itemsBuilder_;
-      
-      public java.util.List<com.tentacle.callofwild.protocol.ProtoPlayer.NetItem> getItemsList() {
-        if (itemsBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(items_);
-        } else {
-          return itemsBuilder_.getMessageList();
-        }
-      }
-      public int getItemsCount() {
-        if (itemsBuilder_ == null) {
-          return items_.size();
-        } else {
-          return itemsBuilder_.getCount();
-        }
-      }
-      public com.tentacle.callofwild.protocol.ProtoPlayer.NetItem getItems(int index) {
-        if (itemsBuilder_ == null) {
-          return items_.get(index);
-        } else {
-          return itemsBuilder_.getMessage(index);
-        }
-      }
-      public Builder setItems(
-          int index, com.tentacle.callofwild.protocol.ProtoPlayer.NetItem value) {
-        if (itemsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureItemsIsMutable();
-          items_.set(index, value);
-          onChanged();
-        } else {
-          itemsBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      public Builder setItems(
-          int index, com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Builder builderForValue) {
-        if (itemsBuilder_ == null) {
-          ensureItemsIsMutable();
-          items_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          itemsBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      public Builder addItems(com.tentacle.callofwild.protocol.ProtoPlayer.NetItem value) {
-        if (itemsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureItemsIsMutable();
-          items_.add(value);
-          onChanged();
-        } else {
-          itemsBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      public Builder addItems(
-          int index, com.tentacle.callofwild.protocol.ProtoPlayer.NetItem value) {
-        if (itemsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureItemsIsMutable();
-          items_.add(index, value);
-          onChanged();
-        } else {
-          itemsBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      public Builder addItems(
-          com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Builder builderForValue) {
-        if (itemsBuilder_ == null) {
-          ensureItemsIsMutable();
-          items_.add(builderForValue.build());
-          onChanged();
-        } else {
-          itemsBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      public Builder addItems(
-          int index, com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Builder builderForValue) {
-        if (itemsBuilder_ == null) {
-          ensureItemsIsMutable();
-          items_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          itemsBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      public Builder addAllItems(
-          java.lang.Iterable<? extends com.tentacle.callofwild.protocol.ProtoPlayer.NetItem> values) {
-        if (itemsBuilder_ == null) {
-          ensureItemsIsMutable();
-          super.addAll(values, items_);
-          onChanged();
-        } else {
-          itemsBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      public Builder clearItems() {
-        if (itemsBuilder_ == null) {
-          items_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
-          onChanged();
-        } else {
-          itemsBuilder_.clear();
-        }
-        return this;
-      }
-      public Builder removeItems(int index) {
-        if (itemsBuilder_ == null) {
-          ensureItemsIsMutable();
-          items_.remove(index);
-          onChanged();
-        } else {
-          itemsBuilder_.remove(index);
-        }
-        return this;
-      }
-      public com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Builder getItemsBuilder(
-          int index) {
-        return getItemsFieldBuilder().getBuilder(index);
-      }
-      public com.tentacle.callofwild.protocol.ProtoPlayer.NetItemOrBuilder getItemsOrBuilder(
-          int index) {
-        if (itemsBuilder_ == null) {
-          return items_.get(index);  } else {
-          return itemsBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      public java.util.List<? extends com.tentacle.callofwild.protocol.ProtoPlayer.NetItemOrBuilder> 
-           getItemsOrBuilderList() {
-        if (itemsBuilder_ != null) {
-          return itemsBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(items_);
-        }
-      }
-      public com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Builder addItemsBuilder() {
-        return getItemsFieldBuilder().addBuilder(
-            com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.getDefaultInstance());
-      }
-      public com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Builder addItemsBuilder(
-          int index) {
-        return getItemsFieldBuilder().addBuilder(
-            index, com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.getDefaultInstance());
-      }
-      public java.util.List<com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Builder> 
-           getItemsBuilderList() {
-        return getItemsFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.tentacle.callofwild.protocol.ProtoPlayer.NetItem, com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Builder, com.tentacle.callofwild.protocol.ProtoPlayer.NetItemOrBuilder> 
-          getItemsFieldBuilder() {
-        if (itemsBuilder_ == null) {
-          itemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.tentacle.callofwild.protocol.ProtoPlayer.NetItem, com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Builder, com.tentacle.callofwild.protocol.ProtoPlayer.NetItemOrBuilder>(
-                  items_,
-                  ((bitField0_ & 0x00000008) == 0x00000008),
-                  getParentForChildren(),
-                  isClean());
-          items_ = null;
-        }
-        return itemsBuilder_;
-      }
-      
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.GetItems)
-    }
-    
-    static {
-      defaultInstance = new GetItems(true);
-      defaultInstance.initFields();
-    }
-    
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.GetItems)
-  }
-  
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_tentacle_callofwild_protocol_NetPlayer_descriptor;
   private static
@@ -9574,25 +6410,15 @@ public final class ProtoPlayer {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_tentacle_callofwild_protocol_CheckIdAns_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_PlayerCreationReq_descriptor;
+    internal_static_com_tentacle_callofwild_protocol_PlayerCreation_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_PlayerCreationReq_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_PlayerCreationAns_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_PlayerCreationAns_fieldAccessorTable;
+      internal_static_com_tentacle_callofwild_protocol_PlayerCreation_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_tentacle_callofwild_protocol_NetItem_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_tentacle_callofwild_protocol_NetItem_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_NetItem_Attribute_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_NetItem_Attribute_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_tentacle_callofwild_protocol_UseItemReq_descriptor;
   private static
@@ -9603,11 +6429,6 @@ public final class ProtoPlayer {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_tentacle_callofwild_protocol_UseItemAns_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_GetItems_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_GetItems_fieldAccessorTable;
   
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -9632,50 +6453,29 @@ public final class ProtoPlayer {
       "uction\022>\n\010err_code\030\002 \001(\0162,.com.tentacle." +
       "callofwild.protocol.eErrorCode\0229\n\004args\030\004" +
       " \003(\0132+.com.tentacle.callofwild.protocol." +
-      "MyVariant\"\214\001\n\021PlayerCreationReq\022:\n\003cmd\030\001" +
-      " \001(\0132-.com.tentacle.callofwild.protocol." +
-      "Instruction\022;\n\006player\030\002 \001(\0132+.com.tentac" +
-      "le.callofwild.protocol.NetPlayer\"\314\001\n\021Pla" +
-      "yerCreationAns\022:\n\003cmd\030\001 \001(\0132-.com.tentac",
-      "le.callofwild.protocol.Instruction\022>\n\010er" +
-      "r_code\030\002 \001(\0162,.com.tentacle.callofwild.p" +
-      "rotocol.eErrorCode\022;\n\006player\030\003 \001(\0132+.com" +
-      ".tentacle.callofwild.protocol.NetPlayer\"" +
-      "\275\005\n\007NetItem\022\n\n\002id\030\001 \001(\003\022\016\n\006cfg_no\030\002 \001(\005\022" +
-      "\016\n\006amount\030\003 \001(\005\022\016\n\006ration\030\004 \001(\005\022\r\n\005level" +
-      "\030\005 \001(\005\022\022\n\nplace_time\030\006 \001(\003\022?\n\014nested_ite" +
-      "ms\030\007 \003(\0132).com.tentacle.callofwild.proto" +
-      "col.NetItem\022A\n\004attr\030\010 \001(\01323.com.tentacle" +
-      ".callofwild.protocol.NetItem.Attribute\032\316",
-      "\003\n\tAttribute\022\014\n\004type\030\001 \001(\005\022\014\n\004name\030\002 \001(\t" +
-      "\022\020\n\010max_pile\030\003 \001(\005\022\021\n\tuse_level\030\004 \001(\005\022\025\n" +
-      "\rpeerage_limit\030\005 \001(\005\022\020\n\010icon_url\030\006 \001(\t\022\014" +
-      "\n\004desc\030\007 \001(\t\022\022\n\nsell_price\030\010 \001(\005\022\031\n\021min_" +
-      "consign_price\030\t \001(\001\022\031\n\021max_consign_price" +
-      "\030\n \001(\001\022\016\n\006attack\030\013 \001(\005\022\017\n\007defense\030\014 \001(\005\022" +
-      "\r\n\005speed\030\r \001(\005\022\r\n\005lucky\030\016 \001(\005\022\024\n\014is_cont" +
-      "ainer\030\017 \001(\010\022\020\n\010capacity\030\020 \001(\005\022\021\n\tvaluati" +
-      "on\030\021 \001(\005\022C\n\016use_parameters\030\022 \003(\0132+.com.t" +
-      "entacle.callofwild.protocol.MyVariant\022@\n",
-      "\013use_effects\030\023 \003(\0132+.com.tentacle.callof" +
-      "wild.protocol.MyVariant\"\276\001\n\nUseItemReq\022:" +
-      "\n\003cmd\030\001 \001(\0132-.com.tentacle.callofwild.pr" +
-      "otocol.Instruction\022\017\n\007item_id\030\002 \001(\003\022\017\n\007c" +
-      "ity_id\030\003 \001(\003\022=\n\010use_args\030\004 \003(\0132+.com.ten" +
-      "tacle.callofwild.protocol.MyVariant\022\023\n\013i" +
-      "tem_cfg_no\030\005 \001(\005\"\204\002\n\nUseItemAns\022:\n\003cmd\030\001" +
-      " \001(\0132-.com.tentacle.callofwild.protocol." +
-      "Instruction\022>\n\010err_code\030\002 \001(\0162,.com.tent" +
-      "acle.callofwild.protocol.eErrorCode\022@\n\013u",
-      "se_effects\030\003 \003(\0132+.com.tentacle.callofwi" +
-      "ld.protocol.MyVariant\0228\n\005items\030\004 \003(\0132).c" +
-      "om.tentacle.callofwild.protocol.NetItem\"" +
-      "\321\001\n\010GetItems\022:\n\003cmd\030\001 \001(\0132-.com.tentacle" +
-      ".callofwild.protocol.Instruction\022>\n\010err_" +
-      "code\030\002 \001(\0162,.com.tentacle.callofwild.pro" +
-      "tocol.eErrorCode\022\017\n\007item_id\030\003 \001(\003\0228\n\005ite" +
-      "ms\030\004 \003(\0132).com.tentacle.callofwild.proto" +
-      "col.NetItem"
+      "MyVariant\"\311\001\n\016PlayerCreation\022:\n\003cmd\030\001 \001(" +
+      "\0132-.com.tentacle.callofwild.protocol.Ins" +
+      "truction\022>\n\010err_code\030\002 \001(\0162,.com.tentacl" +
+      "e.callofwild.protocol.eErrorCode\022;\n\006play" +
+      "er\030\003 \001(\0132+.com.tentacle.callofwild.proto",
+      "col.NetPlayer\"\345\001\n\007NetItem\022\n\n\002id\030\001 \001(\003\022\016\n" +
+      "\006cfg_no\030\002 \001(\005\022\016\n\006amount\030\003 \001(\005\022\016\n\006ration\030" +
+      "\004 \001(\005\022\r\n\005level\030\005 \001(\005\022\022\n\nplace_time\030\006 \001(\003" +
+      "\022?\n\014nested_items\030\007 \003(\0132).com.tentacle.ca" +
+      "llofwild.protocol.NetItem\022:\n\005attrs\030\010 \003(\013" +
+      "2+.com.tentacle.callofwild.protocol.MyVa" +
+      "riant\"\276\001\n\nUseItemReq\022:\n\003cmd\030\001 \001(\0132-.com." +
+      "tentacle.callofwild.protocol.Instruction" +
+      "\022\017\n\007item_id\030\002 \001(\003\022\017\n\007city_id\030\003 \001(\003\022=\n\010us" +
+      "e_args\030\004 \003(\0132+.com.tentacle.callofwild.p",
+      "rotocol.MyVariant\022\023\n\013item_cfg_no\030\005 \001(\005\"\204" +
+      "\002\n\nUseItemAns\022:\n\003cmd\030\001 \001(\0132-.com.tentacl" +
+      "e.callofwild.protocol.Instruction\022>\n\010err" +
+      "_code\030\002 \001(\0162,.com.tentacle.callofwild.pr" +
+      "otocol.eErrorCode\022@\n\013use_effects\030\003 \003(\0132+" +
+      ".com.tentacle.callofwild.protocol.MyVari" +
+      "ant\0228\n\005items\030\004 \003(\0132).com.tentacle.callof" +
+      "wild.protocol.NetItem"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -9714,40 +6514,24 @@ public final class ProtoPlayer {
               new java.lang.String[] { "Cmd", "ErrCode", "Args", },
               com.tentacle.callofwild.protocol.ProtoPlayer.CheckIdAns.class,
               com.tentacle.callofwild.protocol.ProtoPlayer.CheckIdAns.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_PlayerCreationReq_descriptor =
+          internal_static_com_tentacle_callofwild_protocol_PlayerCreation_descriptor =
             getDescriptor().getMessageTypes().get(4);
-          internal_static_com_tentacle_callofwild_protocol_PlayerCreationReq_fieldAccessorTable = new
+          internal_static_com_tentacle_callofwild_protocol_PlayerCreation_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_PlayerCreationReq_descriptor,
-              new java.lang.String[] { "Cmd", "Player", },
-              com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq.class,
-              com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationReq.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_PlayerCreationAns_descriptor =
-            getDescriptor().getMessageTypes().get(5);
-          internal_static_com_tentacle_callofwild_protocol_PlayerCreationAns_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_PlayerCreationAns_descriptor,
+              internal_static_com_tentacle_callofwild_protocol_PlayerCreation_descriptor,
               new java.lang.String[] { "Cmd", "ErrCode", "Player", },
-              com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns.class,
-              com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreationAns.Builder.class);
+              com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation.class,
+              com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation.Builder.class);
           internal_static_com_tentacle_callofwild_protocol_NetItem_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_com_tentacle_callofwild_protocol_NetItem_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_tentacle_callofwild_protocol_NetItem_descriptor,
-              new java.lang.String[] { "Id", "CfgNo", "Amount", "Ration", "Level", "PlaceTime", "NestedItems", "Attr", },
+              new java.lang.String[] { "Id", "CfgNo", "Amount", "Ration", "Level", "PlaceTime", "NestedItems", "Attrs", },
               com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.class,
               com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_NetItem_Attribute_descriptor =
-            internal_static_com_tentacle_callofwild_protocol_NetItem_descriptor.getNestedTypes().get(0);
-          internal_static_com_tentacle_callofwild_protocol_NetItem_Attribute_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_NetItem_Attribute_descriptor,
-              new java.lang.String[] { "Type", "Name", "MaxPile", "UseLevel", "PeerageLimit", "IconUrl", "Desc", "SellPrice", "MinConsignPrice", "MaxConsignPrice", "Attack", "Defense", "Speed", "Lucky", "IsContainer", "Capacity", "Valuation", "UseParameters", "UseEffects", },
-              com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute.class,
-              com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.Attribute.Builder.class);
           internal_static_com_tentacle_callofwild_protocol_UseItemReq_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_com_tentacle_callofwild_protocol_UseItemReq_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_tentacle_callofwild_protocol_UseItemReq_descriptor,
@@ -9755,21 +6539,13 @@ public final class ProtoPlayer {
               com.tentacle.callofwild.protocol.ProtoPlayer.UseItemReq.class,
               com.tentacle.callofwild.protocol.ProtoPlayer.UseItemReq.Builder.class);
           internal_static_com_tentacle_callofwild_protocol_UseItemAns_descriptor =
-            getDescriptor().getMessageTypes().get(8);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_com_tentacle_callofwild_protocol_UseItemAns_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_tentacle_callofwild_protocol_UseItemAns_descriptor,
               new java.lang.String[] { "Cmd", "ErrCode", "UseEffects", "Items", },
               com.tentacle.callofwild.protocol.ProtoPlayer.UseItemAns.class,
               com.tentacle.callofwild.protocol.ProtoPlayer.UseItemAns.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_GetItems_descriptor =
-            getDescriptor().getMessageTypes().get(9);
-          internal_static_com_tentacle_callofwild_protocol_GetItems_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_GetItems_descriptor,
-              new java.lang.String[] { "Cmd", "ErrCode", "ItemId", "Items", },
-              com.tentacle.callofwild.protocol.ProtoPlayer.GetItems.class,
-              com.tentacle.callofwild.protocol.ProtoPlayer.GetItems.Builder.class);
           return null;
         }
       };

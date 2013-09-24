@@ -6,7 +6,7 @@ enum eCommand {
     NOP                         = 0;    //no operation
     HEARTBEAT                   = 3;    //心跳
 
-    CHECK_ID                    = 41;   //加入游戏时做身份验证
+    CHECK_ID                    = 41;   //加入游戏时做身份验证, 请求 CheckIdReq, 应答 CheckIdAns
     JOIN                        = 4;    //加入游戏
     GET_PLAYER_INFO             = 7;    //得到玩家信息
     UPGRADE                     = 8;    //升级
@@ -17,19 +17,19 @@ enum eCommand {
     ATTACK                      = 21;   //进攻
     FIT_UP                      = 25;   //装备
     STRENGTHEN                  = 26;   //强化
-    CREATE_PLAYER               = 34;   //创建
+    CREATE_PLAYER               = 34;   //创建玩家, 请求 PlayerCreation, 应答 PlayerCreation
     MARK_AS_READ                = 47;   //标记信息已读
     MAKE_FRIEND                 = 54;   //添加好友
-    USE_ITEM                    = 104;  //使用道具
+    USE_ITEM                    = 104;  //使用道具, 请求 UseItemReq, 应答 UseItemAns
     GET_SCENARIO_INFO           = 112;  //获取副本信息, 以 CommonReq 请求, 以 ScenarioInfoAns 回答
     CHALLENGE_SCENARIO          = 113;  //挑战副本
 
 
-    REGISTER                    = 2000;    //注册
-    LOGIN                       = 2001;    //登录
-    AUTHENTICATE                = 2002;    //第3方平台登录验证
-    LOGOUT                      = 2003;    //退出游戏
-
+    REGISTER                    = 2000;    //注册, 请求 AccountReq, 应答 AccountAns
+    LOGIN                       = 2001;    //登录, 请求 AccountReq, 应答 AccountAns
+    AUTHENTICATE                = 2002;    //第3方平台登录验证, 请求 Authentication, 应答 Authentication
+    LOGOUT                      = 2003;    //退出游戏, 请求 CommonReq, 应答 CommonAns
+    GET_VERSION_INFO            = 2004;    //获取版本信息, 请求 VersionInfo, 应答 VersionInfo
 
     PUSH_MESSAGE                        = 804;  //SEND_MESSAGE目标方接收消息
     PUSH_CHAT_CONTENT                   = 805;  //推送聊天内容
