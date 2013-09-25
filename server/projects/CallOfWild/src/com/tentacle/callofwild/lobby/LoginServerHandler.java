@@ -33,17 +33,16 @@ import com.tentacle.callofwild.protocol.ProtoAdmin.SysPwdReset;
 import com.tentacle.callofwild.protocol.ProtoAdmin.SysRefreshServerStatus;
 import com.tentacle.callofwild.protocol.ProtoAdmin.SysReloadCfg;
 import com.tentacle.callofwild.protocol.ProtoAdmin.Warrant;
-import com.tentacle.callofwild.protocol.ProtoBasis.CommonAnswer;
+import com.tentacle.callofwild.protocol.ProtoBasis.CommonAns;
 import com.tentacle.callofwild.protocol.ProtoBasis.CommonReq;
 import com.tentacle.callofwild.protocol.ProtoBasis.Instruction;
 import com.tentacle.callofwild.protocol.ProtoBasis.InstructionOrBuilder;
 import com.tentacle.callofwild.protocol.ProtoBasis.eCommand;
 import com.tentacle.callofwild.protocol.ProtoBasis.eErrorCode;
 import com.tentacle.callofwild.protocol.ProtoLogin.Account;
-import com.tentacle.callofwild.protocol.ProtoLogin.AccountAnswer;
+import com.tentacle.callofwild.protocol.ProtoLogin.AccountAns;
 import com.tentacle.callofwild.protocol.ProtoLogin.AccountReq;
 import com.tentacle.callofwild.protocol.ProtoLogin.Authentication;
-import com.tentacle.callofwild.protocol.ProtoLogin.ServerListAnswer;
 import com.tentacle.callofwild.protocol.ProtoLogin.VersionInfo;
 import com.tentacle.callofwild.util.MD5;
 import com.tentacle.callofwild.util.Utils;
@@ -151,10 +150,6 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 				handleRegister(ch, AccountReq.parseFrom(cocoon.dat));
 				loginServer.brand(ch);
 				break;
-			case GET_SERVER_LIST:
-				handleGetServerList(ch, CommonReq.parseFrom(cocoon.dat));
-				loginServer.brand(ch);
-				break;
 			case GET_VERSION_INFO:
 				handleVersionInfo(ch, VersionInfo.parseFrom(cocoon.dat));
 				loginServer.brand(ch);
@@ -239,31 +234,8 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 				break;
 			}
 			
-			ans.setMajorVer(verCfg.getMajorVer())
-				.setMinorVer(verCfg.getMinorVer())
-				.setAppOrRes(verCfg.getAppRes())
+			ans.setVerNum(String.valueOf(verCfg.getMajorVer()))
 				.setIsCompulsive((verCfg.getCompulsive() == 1));
-			
-			String str = verCfg.getPkgUrl();
-			if (str != null) ans.setPkgUrl(str);
-			str = verCfg.getAppUrl();
-			if (str != null) ans.setAppUrl(str);
-			str = verCfg.getHelpUrl();
-			if (str != null) ans.setHelpUrl(str);
-			str = verCfg.getActivityUrl();
-			if (str != null) ans.setActivityUrl(str);
-			str = verCfg.getRechargeNotifyUrl();
-			if (str != null) ans.setRechargeNotifyUrl(str);
-			str = verCfg.getTempCredentialUrl();
-			if (str != null) ans.setTempCredentialUrl(str);
-			
-            if (prepaidCardPartner.contains(channel)) {
-                boolean enable = Utils.timeInPeriod(System.currentTimeMillis(), prepaidCardOpenTime, prepaidCardCloseTime);
-                ans.setTokenCredentialUrl(enable ? "open" : "closed");
-            } else {
-                str = verCfg.getTokenCredentialUrl();
-                if (str != null) ans.setTokenCredentialUrl(str);
-            }
 			
 		} while (false);
 
@@ -278,11 +250,11 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 	 
 	
 	public void handleAuth(Channel ch, Authentication data) {
-		CommonAnswer.Builder ans = CommonAnswer.newBuilder()
+		CommonAns.Builder ans = CommonAns.newBuilder()
 				.setErrCode(eErrorCode.OK)
 				.setCmd(data.getCmd());
 		
-		String channel = data.getAccount().getChannel();
+		String channel = data.getAccount().getChannelId();
 		if (channel == null || channel.trim().isEmpty()) {
             channel = defaultChannelId;
         }
@@ -319,13 +291,13 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 		userInfo.setUserName(name);
 		userInfo.setPassword(MD5.Md5(acc.getPassword()));
 		userInfo.setEmail(acc.getEmail());
-		userInfo.setCardId(acc.getIdCardNo());
+		userInfo.setCardId(acc.getCardId());
 		userInfo.setPhoneNumber(acc.getPhoneNo());
 		userInfo.setRegeditDate(new Date());
 		userInfo.setPlatform(acc.getPlatform());
 		userInfo.setUid(acc.getUid());
 		userInfo.setAuthCode(acc.getAuthCode());
-		userInfo.setChannel(acc.getChannel());
+		userInfo.setChannel(acc.getChannelId());
 		userInfo.setPhoneModel(acc.getPhoneModel());
 		userInfo.setPhoneResolution(acc.getPhoneResolution());
 		userInfo.setPhoneOs(acc.getPhoneOs());
@@ -346,7 +318,7 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 		String pass = acc.getPassword();	
 		String clientVer = acc.getClientVersion();
 
-		AccountAnswer.Builder ans = AccountAnswer.newBuilder()
+		AccountAns.Builder ans = AccountAns.newBuilder()
 				.setCmd(makeCmd(accountReqDat.getCmd()))
 				.setErrCode(eErrorCode.OK);
 		
@@ -406,7 +378,7 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 	public void handleRegister(Channel ch, AccountReq accountReqDat) {
 		Account acc = accountReqDat.getAccount();
 		eErrorCode ec = saveUser(acc);	
-		AccountAnswer.Builder ans = AccountAnswer.newBuilder()
+		AccountAns.Builder ans = AccountAns.newBuilder()
 				.setCmd(makeCmd(accountReqDat.getCmd()))
 				.setErrCode(ec);
 		
@@ -417,29 +389,6 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 		ch.write(wrapper);
 		logger.debug("[" + cmd + "]: send[" + ans.getErrCode() + "] to [" + ch.getRemoteAddress() + "]");
 	}
-	
-	public void handleGetServerList(Channel ch, CommonReq data) {
-		ServerListAnswer.Builder ans = ServerListAnswer.newBuilder()
-				.setCmd(makeCmd(data.getCmd()))
-				.setErrCode(eErrorCode.OK);
-
-		do {
-			if (serversInfo == null) {
-				ans.setErrCode(eErrorCode.FAILED);
-				break;
-			}
-			for (ServerConfigInfo cfg : serversInfo) {
-				ans.addServers(cfg.toNet());
-			}
-		} while (false);
-
-		Instruction ins = ans.getCmd();
-		eCommand cmd = ins.getCmd();
-		long cmdId = ins.getId();
-		Cocoon wrapper = new Cocoon(cmd.getNumber(), cmdId, ans.build().toByteArray());
-		ch.write(wrapper);
-		logger.debug("[" + cmd + "]: send[" + ans.getErrCode() + "] to [" + ch.getRemoteAddress() + "]");
-	}	
 	
 	public void handleSysReloadCfg(Channel ch, SysReloadCfg data) {
 		if (!isTheGuyReliable(data.getProof())) {

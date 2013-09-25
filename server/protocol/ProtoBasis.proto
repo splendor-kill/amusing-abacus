@@ -50,6 +50,7 @@ enum eCommand {
     SYS_GET_RELOADABLES         = 1009;     //获取可重加载的配置列表
     SYS_KICK_PLAYER             = 1010;     //踢人
     SYS_SHUT_UP                 = 1011;     //禁言
+    SYS_GET_SESSION             = 1012;     //获取session
     SYS_GM_TALK                 = 1013;     //GM发言, for pc chat client
     SYS_REFRESH_SERVER_STATUS   = 1014;     //更新游戏服务器状态到登录服务器
     SYS_UNBLOCK                 = 1016;     //解禁, 参考 SysUnblock
@@ -84,8 +85,11 @@ enum eErrorCode {
     UNKNOWN_SCHEME                                  = 54;   //未知的方案
     CONFIGURE_FILE_CORRUPTED                        = 58;   //配置文件出错
     NO_THIS_ITEM                                    = 62;   //没有此道具
+    TOO_MANY_GHOST_PROFILE                          = 82;   //小号太多了
     SHUT_UP                                         = 84;   //闭嘴
     FUCK_OFF                                        = 85;   //滚蛋
+
+
 
 }
 

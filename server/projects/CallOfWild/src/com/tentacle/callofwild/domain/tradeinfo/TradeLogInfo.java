@@ -151,18 +151,7 @@ public class TradeLogInfo {
 	}
 	
 	public void setRes(int resType, int num) {
-		if (eResType.WOOD_VALUE == resType) {
-			woods = num;
-		}
-		else if (eResType.STONE_VALUE == resType) {
-			stone = num;
-		}
-		else if (eResType.IRON_VALUE == resType) {
-			irons = num;
-		}
-		else if (eResType.FOOD_VALUE == resType) {
-			foods = num;
-		}
+
 	}
 
 }

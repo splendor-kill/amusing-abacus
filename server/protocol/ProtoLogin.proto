@@ -10,13 +10,13 @@ message Account {
     optional string password              = 3;
     optional string email                 = 4;
     optional GameServer first_server      = 5;    //第一次登陆的服务器
-    optional int64 signup_time            = 6;    //注册时间点, millisecond
-    optional string id_card_no            = 7;    //身份证号, 或用于公钥算法的客户端随机值
+    optional int64 register_date          = 6;    //注册时间, millisecond
+    optional string card_id               = 7;    //身份证号, 或用于公钥算法的客户端随机值
     
     optional string platform              = 9;    //接入平台, 默认为空
-    optional string uid                   = 10;   //微博平台下的uid
+    optional string uid                   = 10;   //第三方平台下的uid
     optional string auth_code             = 11;   //授权码
-    optional string channel               = 12;   //渠道号
+    optional string channel_id            = 12;   //渠道号
     
     optional string phone_no              = 13;   //手机号
     optional string phone_model           = 14;   //手机型号
@@ -26,7 +26,7 @@ message Account {
     optional string phone_imei            = 18;   //IMEI
     optional string phone_imsi            = 19;   //IMSI
     optional string phone_mac             = 20;   //MAC
-    optional string client_ver            = 21;   //客户端版本
+    optional string client_version        = 21;   //客户端版本
 
 }
 

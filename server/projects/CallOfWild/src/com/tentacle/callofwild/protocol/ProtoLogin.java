@@ -32,13 +32,13 @@ public final class ProtoLogin {
     com.tentacle.callofwild.protocol.ProtoLogin.GameServer getFirstServer();
     com.tentacle.callofwild.protocol.ProtoLogin.GameServerOrBuilder getFirstServerOrBuilder();
     
-    // optional int64 signup_time = 6;
-    boolean hasSignupTime();
-    long getSignupTime();
+    // optional int64 register_date = 6;
+    boolean hasRegisterDate();
+    long getRegisterDate();
     
-    // optional string id_card_no = 7;
-    boolean hasIdCardNo();
-    String getIdCardNo();
+    // optional string card_id = 7;
+    boolean hasCardId();
+    String getCardId();
     
     // optional string platform = 9;
     boolean hasPlatform();
@@ -52,9 +52,9 @@ public final class ProtoLogin {
     boolean hasAuthCode();
     String getAuthCode();
     
-    // optional string channel = 12;
-    boolean hasChannel();
-    String getChannel();
+    // optional string channel_id = 12;
+    boolean hasChannelId();
+    String getChannelId();
     
     // optional string phone_no = 13;
     boolean hasPhoneNo();
@@ -88,9 +88,9 @@ public final class ProtoLogin {
     boolean hasPhoneMac();
     String getPhoneMac();
     
-    // optional string client_ver = 21;
-    boolean hasClientVer();
-    String getClientVer();
+    // optional string client_version = 21;
+    boolean hasClientVersion();
+    String getClientVersion();
   }
   public static final class Account extends
       com.google.protobuf.GeneratedMessage
@@ -240,24 +240,24 @@ public final class ProtoLogin {
       return firstServer_;
     }
     
-    // optional int64 signup_time = 6;
-    public static final int SIGNUP_TIME_FIELD_NUMBER = 6;
-    private long signupTime_;
-    public boolean hasSignupTime() {
+    // optional int64 register_date = 6;
+    public static final int REGISTER_DATE_FIELD_NUMBER = 6;
+    private long registerDate_;
+    public boolean hasRegisterDate() {
       return ((bitField0_ & 0x00000020) == 0x00000020);
     }
-    public long getSignupTime() {
-      return signupTime_;
+    public long getRegisterDate() {
+      return registerDate_;
     }
     
-    // optional string id_card_no = 7;
-    public static final int ID_CARD_NO_FIELD_NUMBER = 7;
-    private java.lang.Object idCardNo_;
-    public boolean hasIdCardNo() {
+    // optional string card_id = 7;
+    public static final int CARD_ID_FIELD_NUMBER = 7;
+    private java.lang.Object cardId_;
+    public boolean hasCardId() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
-    public String getIdCardNo() {
-      java.lang.Object ref = idCardNo_;
+    public String getCardId() {
+      java.lang.Object ref = cardId_;
       if (ref instanceof String) {
         return (String) ref;
       } else {
@@ -265,17 +265,17 @@ public final class ProtoLogin {
             (com.google.protobuf.ByteString) ref;
         String s = bs.toStringUtf8();
         if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          idCardNo_ = s;
+          cardId_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getIdCardNoBytes() {
-      java.lang.Object ref = idCardNo_;
+    private com.google.protobuf.ByteString getCardIdBytes() {
+      java.lang.Object ref = cardId_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        idCardNo_ = b;
+        cardId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -378,14 +378,14 @@ public final class ProtoLogin {
       }
     }
     
-    // optional string channel = 12;
-    public static final int CHANNEL_FIELD_NUMBER = 12;
-    private java.lang.Object channel_;
-    public boolean hasChannel() {
+    // optional string channel_id = 12;
+    public static final int CHANNEL_ID_FIELD_NUMBER = 12;
+    private java.lang.Object channelId_;
+    public boolean hasChannelId() {
       return ((bitField0_ & 0x00000400) == 0x00000400);
     }
-    public String getChannel() {
-      java.lang.Object ref = channel_;
+    public String getChannelId() {
+      java.lang.Object ref = channelId_;
       if (ref instanceof String) {
         return (String) ref;
       } else {
@@ -393,17 +393,17 @@ public final class ProtoLogin {
             (com.google.protobuf.ByteString) ref;
         String s = bs.toStringUtf8();
         if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          channel_ = s;
+          channelId_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getChannelBytes() {
-      java.lang.Object ref = channel_;
+    private com.google.protobuf.ByteString getChannelIdBytes() {
+      java.lang.Object ref = channelId_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        channel_ = b;
+        channelId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -666,14 +666,14 @@ public final class ProtoLogin {
       }
     }
     
-    // optional string client_ver = 21;
-    public static final int CLIENT_VER_FIELD_NUMBER = 21;
-    private java.lang.Object clientVer_;
-    public boolean hasClientVer() {
+    // optional string client_version = 21;
+    public static final int CLIENT_VERSION_FIELD_NUMBER = 21;
+    private java.lang.Object clientVersion_;
+    public boolean hasClientVersion() {
       return ((bitField0_ & 0x00080000) == 0x00080000);
     }
-    public String getClientVer() {
-      java.lang.Object ref = clientVer_;
+    public String getClientVersion() {
+      java.lang.Object ref = clientVersion_;
       if (ref instanceof String) {
         return (String) ref;
       } else {
@@ -681,17 +681,17 @@ public final class ProtoLogin {
             (com.google.protobuf.ByteString) ref;
         String s = bs.toStringUtf8();
         if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          clientVer_ = s;
+          clientVersion_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getClientVerBytes() {
-      java.lang.Object ref = clientVer_;
+    private com.google.protobuf.ByteString getClientVersionBytes() {
+      java.lang.Object ref = clientVersion_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        clientVer_ = b;
+        clientVersion_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -704,12 +704,12 @@ public final class ProtoLogin {
       password_ = "";
       email_ = "";
       firstServer_ = com.tentacle.callofwild.protocol.ProtoLogin.GameServer.getDefaultInstance();
-      signupTime_ = 0L;
-      idCardNo_ = "";
+      registerDate_ = 0L;
+      cardId_ = "";
       platform_ = "";
       uid_ = "";
       authCode_ = "";
-      channel_ = "";
+      channelId_ = "";
       phoneNo_ = "";
       phoneModel_ = "";
       phoneResolution_ = "";
@@ -718,7 +718,7 @@ public final class ProtoLogin {
       phoneImei_ = "";
       phoneImsi_ = "";
       phoneMac_ = "";
-      clientVer_ = "";
+      clientVersion_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -748,10 +748,10 @@ public final class ProtoLogin {
         output.writeMessage(5, firstServer_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt64(6, signupTime_);
+        output.writeInt64(6, registerDate_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeBytes(7, getIdCardNoBytes());
+        output.writeBytes(7, getCardIdBytes());
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeBytes(9, getPlatformBytes());
@@ -763,7 +763,7 @@ public final class ProtoLogin {
         output.writeBytes(11, getAuthCodeBytes());
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        output.writeBytes(12, getChannelBytes());
+        output.writeBytes(12, getChannelIdBytes());
       }
       if (((bitField0_ & 0x00000800) == 0x00000800)) {
         output.writeBytes(13, getPhoneNoBytes());
@@ -790,7 +790,7 @@ public final class ProtoLogin {
         output.writeBytes(20, getPhoneMacBytes());
       }
       if (((bitField0_ & 0x00080000) == 0x00080000)) {
-        output.writeBytes(21, getClientVerBytes());
+        output.writeBytes(21, getClientVersionBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -823,11 +823,11 @@ public final class ProtoLogin {
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(6, signupTime_);
+          .computeInt64Size(6, registerDate_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(7, getIdCardNoBytes());
+          .computeBytesSize(7, getCardIdBytes());
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
@@ -843,7 +843,7 @@ public final class ProtoLogin {
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(12, getChannelBytes());
+          .computeBytesSize(12, getChannelIdBytes());
       }
       if (((bitField0_ & 0x00000800) == 0x00000800)) {
         size += com.google.protobuf.CodedOutputStream
@@ -879,7 +879,7 @@ public final class ProtoLogin {
       }
       if (((bitField0_ & 0x00080000) == 0x00080000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(21, getClientVerBytes());
+          .computeBytesSize(21, getClientVersionBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1020,9 +1020,9 @@ public final class ProtoLogin {
           firstServerBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000010);
-        signupTime_ = 0L;
+        registerDate_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000020);
-        idCardNo_ = "";
+        cardId_ = "";
         bitField0_ = (bitField0_ & ~0x00000040);
         platform_ = "";
         bitField0_ = (bitField0_ & ~0x00000080);
@@ -1030,7 +1030,7 @@ public final class ProtoLogin {
         bitField0_ = (bitField0_ & ~0x00000100);
         authCode_ = "";
         bitField0_ = (bitField0_ & ~0x00000200);
-        channel_ = "";
+        channelId_ = "";
         bitField0_ = (bitField0_ & ~0x00000400);
         phoneNo_ = "";
         bitField0_ = (bitField0_ & ~0x00000800);
@@ -1048,7 +1048,7 @@ public final class ProtoLogin {
         bitField0_ = (bitField0_ & ~0x00020000);
         phoneMac_ = "";
         bitField0_ = (bitField0_ & ~0x00040000);
-        clientVer_ = "";
+        clientVersion_ = "";
         bitField0_ = (bitField0_ & ~0x00080000);
         return this;
       }
@@ -1115,11 +1115,11 @@ public final class ProtoLogin {
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.signupTime_ = signupTime_;
+        result.registerDate_ = registerDate_;
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.idCardNo_ = idCardNo_;
+        result.cardId_ = cardId_;
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000080;
         }
@@ -1135,7 +1135,7 @@ public final class ProtoLogin {
         if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
           to_bitField0_ |= 0x00000400;
         }
-        result.channel_ = channel_;
+        result.channelId_ = channelId_;
         if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
           to_bitField0_ |= 0x00000800;
         }
@@ -1171,7 +1171,7 @@ public final class ProtoLogin {
         if (((from_bitField0_ & 0x00080000) == 0x00080000)) {
           to_bitField0_ |= 0x00080000;
         }
-        result.clientVer_ = clientVer_;
+        result.clientVersion_ = clientVersion_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1203,11 +1203,11 @@ public final class ProtoLogin {
         if (other.hasFirstServer()) {
           mergeFirstServer(other.getFirstServer());
         }
-        if (other.hasSignupTime()) {
-          setSignupTime(other.getSignupTime());
+        if (other.hasRegisterDate()) {
+          setRegisterDate(other.getRegisterDate());
         }
-        if (other.hasIdCardNo()) {
-          setIdCardNo(other.getIdCardNo());
+        if (other.hasCardId()) {
+          setCardId(other.getCardId());
         }
         if (other.hasPlatform()) {
           setPlatform(other.getPlatform());
@@ -1218,8 +1218,8 @@ public final class ProtoLogin {
         if (other.hasAuthCode()) {
           setAuthCode(other.getAuthCode());
         }
-        if (other.hasChannel()) {
-          setChannel(other.getChannel());
+        if (other.hasChannelId()) {
+          setChannelId(other.getChannelId());
         }
         if (other.hasPhoneNo()) {
           setPhoneNo(other.getPhoneNo());
@@ -1245,8 +1245,8 @@ public final class ProtoLogin {
         if (other.hasPhoneMac()) {
           setPhoneMac(other.getPhoneMac());
         }
-        if (other.hasClientVer()) {
-          setClientVer(other.getClientVer());
+        if (other.hasClientVersion()) {
+          setClientVersion(other.getClientVersion());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1310,12 +1310,12 @@ public final class ProtoLogin {
             }
             case 48: {
               bitField0_ |= 0x00000020;
-              signupTime_ = input.readInt64();
+              registerDate_ = input.readInt64();
               break;
             }
             case 58: {
               bitField0_ |= 0x00000040;
-              idCardNo_ = input.readBytes();
+              cardId_ = input.readBytes();
               break;
             }
             case 74: {
@@ -1335,7 +1335,7 @@ public final class ProtoLogin {
             }
             case 98: {
               bitField0_ |= 0x00000400;
-              channel_ = input.readBytes();
+              channelId_ = input.readBytes();
               break;
             }
             case 106: {
@@ -1380,7 +1380,7 @@ public final class ProtoLogin {
             }
             case 170: {
               bitField0_ |= 0x00080000;
-              clientVer_ = input.readBytes();
+              clientVersion_ = input.readBytes();
               break;
             }
           }
@@ -1608,60 +1608,60 @@ public final class ProtoLogin {
         return firstServerBuilder_;
       }
       
-      // optional int64 signup_time = 6;
-      private long signupTime_ ;
-      public boolean hasSignupTime() {
+      // optional int64 register_date = 6;
+      private long registerDate_ ;
+      public boolean hasRegisterDate() {
         return ((bitField0_ & 0x00000020) == 0x00000020);
       }
-      public long getSignupTime() {
-        return signupTime_;
+      public long getRegisterDate() {
+        return registerDate_;
       }
-      public Builder setSignupTime(long value) {
+      public Builder setRegisterDate(long value) {
         bitField0_ |= 0x00000020;
-        signupTime_ = value;
+        registerDate_ = value;
         onChanged();
         return this;
       }
-      public Builder clearSignupTime() {
+      public Builder clearRegisterDate() {
         bitField0_ = (bitField0_ & ~0x00000020);
-        signupTime_ = 0L;
+        registerDate_ = 0L;
         onChanged();
         return this;
       }
       
-      // optional string id_card_no = 7;
-      private java.lang.Object idCardNo_ = "";
-      public boolean hasIdCardNo() {
+      // optional string card_id = 7;
+      private java.lang.Object cardId_ = "";
+      public boolean hasCardId() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
-      public String getIdCardNo() {
-        java.lang.Object ref = idCardNo_;
+      public String getCardId() {
+        java.lang.Object ref = cardId_;
         if (!(ref instanceof String)) {
           String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
-          idCardNo_ = s;
+          cardId_ = s;
           return s;
         } else {
           return (String) ref;
         }
       }
-      public Builder setIdCardNo(String value) {
+      public Builder setCardId(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000040;
-        idCardNo_ = value;
+        cardId_ = value;
         onChanged();
         return this;
       }
-      public Builder clearIdCardNo() {
+      public Builder clearCardId() {
         bitField0_ = (bitField0_ & ~0x00000040);
-        idCardNo_ = getDefaultInstance().getIdCardNo();
+        cardId_ = getDefaultInstance().getCardId();
         onChanged();
         return this;
       }
-      void setIdCardNo(com.google.protobuf.ByteString value) {
+      void setCardId(com.google.protobuf.ByteString value) {
         bitField0_ |= 0x00000040;
-        idCardNo_ = value;
+        cardId_ = value;
         onChanged();
       }
       
@@ -1773,39 +1773,39 @@ public final class ProtoLogin {
         onChanged();
       }
       
-      // optional string channel = 12;
-      private java.lang.Object channel_ = "";
-      public boolean hasChannel() {
+      // optional string channel_id = 12;
+      private java.lang.Object channelId_ = "";
+      public boolean hasChannelId() {
         return ((bitField0_ & 0x00000400) == 0x00000400);
       }
-      public String getChannel() {
-        java.lang.Object ref = channel_;
+      public String getChannelId() {
+        java.lang.Object ref = channelId_;
         if (!(ref instanceof String)) {
           String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
-          channel_ = s;
+          channelId_ = s;
           return s;
         } else {
           return (String) ref;
         }
       }
-      public Builder setChannel(String value) {
+      public Builder setChannelId(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000400;
-        channel_ = value;
+        channelId_ = value;
         onChanged();
         return this;
       }
-      public Builder clearChannel() {
+      public Builder clearChannelId() {
         bitField0_ = (bitField0_ & ~0x00000400);
-        channel_ = getDefaultInstance().getChannel();
+        channelId_ = getDefaultInstance().getChannelId();
         onChanged();
         return this;
       }
-      void setChannel(com.google.protobuf.ByteString value) {
+      void setChannelId(com.google.protobuf.ByteString value) {
         bitField0_ |= 0x00000400;
-        channel_ = value;
+        channelId_ = value;
         onChanged();
       }
       
@@ -2097,39 +2097,39 @@ public final class ProtoLogin {
         onChanged();
       }
       
-      // optional string client_ver = 21;
-      private java.lang.Object clientVer_ = "";
-      public boolean hasClientVer() {
+      // optional string client_version = 21;
+      private java.lang.Object clientVersion_ = "";
+      public boolean hasClientVersion() {
         return ((bitField0_ & 0x00080000) == 0x00080000);
       }
-      public String getClientVer() {
-        java.lang.Object ref = clientVer_;
+      public String getClientVersion() {
+        java.lang.Object ref = clientVersion_;
         if (!(ref instanceof String)) {
           String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
-          clientVer_ = s;
+          clientVersion_ = s;
           return s;
         } else {
           return (String) ref;
         }
       }
-      public Builder setClientVer(String value) {
+      public Builder setClientVersion(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00080000;
-        clientVer_ = value;
+        clientVersion_ = value;
         onChanged();
         return this;
       }
-      public Builder clearClientVer() {
+      public Builder clearClientVersion() {
         bitField0_ = (bitField0_ & ~0x00080000);
-        clientVer_ = getDefaultInstance().getClientVer();
+        clientVersion_ = getDefaultInstance().getClientVersion();
         onChanged();
         return this;
       }
-      void setClientVer(com.google.protobuf.ByteString value) {
+      void setClientVersion(com.google.protobuf.ByteString value) {
         bitField0_ |= 0x00080000;
-        clientVer_ = value;
+        clientVersion_ = value;
         onChanged();
       }
       
@@ -6588,45 +6588,46 @@ public final class ProtoLogin {
   static {
     java.lang.String[] descriptorData = {
       "\n\020ProtoLogin.proto\022 com.tentacle.callofw" +
-      "ild.protocol\032\020ProtoBasis.proto\"\262\003\n\007Accou" +
+      "ild.protocol\032\020ProtoBasis.proto\"\270\003\n\007Accou" +
       "nt\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\020\n\010password" +
       "\030\003 \001(\t\022\r\n\005email\030\004 \001(\t\022B\n\014first_server\030\005 " +
       "\001(\0132,.com.tentacle.callofwild.protocol.G" +
-      "ameServer\022\023\n\013signup_time\030\006 \001(\003\022\022\n\nid_car" +
-      "d_no\030\007 \001(\t\022\020\n\010platform\030\t \001(\t\022\013\n\003uid\030\n \001(" +
-      "\t\022\021\n\tauth_code\030\013 \001(\t\022\017\n\007channel\030\014 \001(\t\022\020\n" +
-      "\010phone_no\030\r \001(\t\022\023\n\013phone_model\030\016 \001(\t\022\030\n\020" +
-      "phone_resolution\030\017 \001(\t\022\020\n\010phone_os\030\020 \001(\t",
-      "\022\032\n\022phone_manufacturer\030\021 \001(\t\022\022\n\nphone_im" +
-      "ei\030\022 \001(\t\022\022\n\nphone_imsi\030\023 \001(\t\022\021\n\tphone_ma" +
-      "c\030\024 \001(\t\022\022\n\nclient_ver\030\025 \001(\t\"\204\001\n\nAccountR" +
-      "eq\022:\n\003cmd\030\001 \001(\0132-.com.tentacle.callofwil" +
-      "d.protocol.Instruction\022:\n\007account\030\002 \001(\0132" +
-      ").com.tentacle.callofwild.protocol.Accou" +
-      "nt\"\215\002\n\nAccountAns\022:\n\003cmd\030\001 \001(\0132-.com.ten" +
-      "tacle.callofwild.protocol.Instruction\022>\n" +
-      "\010err_code\030\002 \001(\0162,.com.tentacle.callofwil" +
-      "d.protocol.eErrorCode\022\014\n\004name\030\003 \001(\t\022\017\n\007u",
-      "ser_id\030\004 \001(\005\022\023\n\013session_key\030\005 \001(\t\022\020\n\010is_" +
-      "debut\030\006 \001(\010\022=\n\007servers\030\007 \003(\0132,.com.tenta" +
-      "cle.callofwild.protocol.GameServer\"\237\001\n\nG" +
-      "ameServer\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\014\n\004i" +
-      "pv4\030\003 \001(\t\022\014\n\004port\030\004 \001(\005\022\016\n\006is_new\030\005 \001(\010\022" +
-      "\023\n\013busy_degree\030\006 \001(\005\022\023\n\013domain_name\030\007 \001(" +
-      "\t\022\013\n\003url\030\010 \001(\t\022\024\n\014activity_url\030\t \001(\t\"\231\002\n" +
-      "\013VersionInfo\022:\n\003cmd\030\001 \001(\0132-.com.tentacle" +
-      ".callofwild.protocol.Instruction\022>\n\010err_" +
-      "code\030\002 \001(\0162,.com.tentacle.callofwild.pro",
-      "tocol.eErrorCode\022\017\n\007ver_num\030\003 \001(\t\022\025\n\rpla" +
-      "tform_desc\030\004 \001(\t\022\025\n\ris_compulsive\030\005 \001(\010\022" +
-      "\017\n\007channel\030\006 \001(\t\022>\n\tmore_info\030\007 \001(\0132+.co" +
-      "m.tentacle.callofwild.protocol.MyVariant" +
-      "\"\351\001\n\016Authentication\022:\n\003cmd\030\001 \001(\0132-.com.t" +
-      "entacle.callofwild.protocol.Instruction\022" +
-      ">\n\010err_code\030\002 \001(\0162,.com.tentacle.callofw" +
-      "ild.protocol.eErrorCode\022\022\n\nsession_id\030\003 " +
-      "\001(\t\022\013\n\003uid\030\004 \001(\t\022:\n\007account\030\005 \001(\0132).com." +
-      "tentacle.callofwild.protocol.Account"
+      "ameServer\022\025\n\rregister_date\030\006 \001(\003\022\017\n\007card" +
+      "_id\030\007 \001(\t\022\020\n\010platform\030\t \001(\t\022\013\n\003uid\030\n \001(\t" +
+      "\022\021\n\tauth_code\030\013 \001(\t\022\022\n\nchannel_id\030\014 \001(\t\022" +
+      "\020\n\010phone_no\030\r \001(\t\022\023\n\013phone_model\030\016 \001(\t\022\030" +
+      "\n\020phone_resolution\030\017 \001(\t\022\020\n\010phone_os\030\020 \001",
+      "(\t\022\032\n\022phone_manufacturer\030\021 \001(\t\022\022\n\nphone_" +
+      "imei\030\022 \001(\t\022\022\n\nphone_imsi\030\023 \001(\t\022\021\n\tphone_" +
+      "mac\030\024 \001(\t\022\026\n\016client_version\030\025 \001(\t\"\204\001\n\nAc" +
+      "countReq\022:\n\003cmd\030\001 \001(\0132-.com.tentacle.cal" +
+      "lofwild.protocol.Instruction\022:\n\007account\030" +
+      "\002 \001(\0132).com.tentacle.callofwild.protocol" +
+      ".Account\"\215\002\n\nAccountAns\022:\n\003cmd\030\001 \001(\0132-.c" +
+      "om.tentacle.callofwild.protocol.Instruct" +
+      "ion\022>\n\010err_code\030\002 \001(\0162,.com.tentacle.cal" +
+      "lofwild.protocol.eErrorCode\022\014\n\004name\030\003 \001(",
+      "\t\022\017\n\007user_id\030\004 \001(\005\022\023\n\013session_key\030\005 \001(\t\022" +
+      "\020\n\010is_debut\030\006 \001(\010\022=\n\007servers\030\007 \003(\0132,.com" +
+      ".tentacle.callofwild.protocol.GameServer" +
+      "\"\237\001\n\nGameServer\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(" +
+      "\t\022\014\n\004ipv4\030\003 \001(\t\022\014\n\004port\030\004 \001(\005\022\016\n\006is_new\030" +
+      "\005 \001(\010\022\023\n\013busy_degree\030\006 \001(\005\022\023\n\013domain_nam" +
+      "e\030\007 \001(\t\022\013\n\003url\030\010 \001(\t\022\024\n\014activity_url\030\t \001" +
+      "(\t\"\231\002\n\013VersionInfo\022:\n\003cmd\030\001 \001(\0132-.com.te" +
+      "ntacle.callofwild.protocol.Instruction\022>" +
+      "\n\010err_code\030\002 \001(\0162,.com.tentacle.callofwi",
+      "ld.protocol.eErrorCode\022\017\n\007ver_num\030\003 \001(\t\022" +
+      "\025\n\rplatform_desc\030\004 \001(\t\022\025\n\ris_compulsive\030" +
+      "\005 \001(\010\022\017\n\007channel\030\006 \001(\t\022>\n\tmore_info\030\007 \001(" +
+      "\0132+.com.tentacle.callofwild.protocol.MyV" +
+      "ariant\"\351\001\n\016Authentication\022:\n\003cmd\030\001 \001(\0132-" +
+      ".com.tentacle.callofwild.protocol.Instru" +
+      "ction\022>\n\010err_code\030\002 \001(\0162,.com.tentacle.c" +
+      "allofwild.protocol.eErrorCode\022\022\n\nsession" +
+      "_id\030\003 \001(\t\022\013\n\003uid\030\004 \001(\t\022:\n\007account\030\005 \001(\0132" +
+      ").com.tentacle.callofwild.protocol.Accou",
+      "nt"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -6638,7 +6639,7 @@ public final class ProtoLogin {
           internal_static_com_tentacle_callofwild_protocol_Account_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_tentacle_callofwild_protocol_Account_descriptor,
-              new java.lang.String[] { "Id", "Name", "Password", "Email", "FirstServer", "SignupTime", "IdCardNo", "Platform", "Uid", "AuthCode", "Channel", "PhoneNo", "PhoneModel", "PhoneResolution", "PhoneOs", "PhoneManufacturer", "PhoneImei", "PhoneImsi", "PhoneMac", "ClientVer", },
+              new java.lang.String[] { "Id", "Name", "Password", "Email", "FirstServer", "RegisterDate", "CardId", "Platform", "Uid", "AuthCode", "ChannelId", "PhoneNo", "PhoneModel", "PhoneResolution", "PhoneOs", "PhoneManufacturer", "PhoneImei", "PhoneImsi", "PhoneMac", "ClientVersion", },
               com.tentacle.callofwild.protocol.ProtoLogin.Account.class,
               com.tentacle.callofwild.protocol.ProtoLogin.Account.Builder.class);
           internal_static_com_tentacle_callofwild_protocol_AccountReq_descriptor =

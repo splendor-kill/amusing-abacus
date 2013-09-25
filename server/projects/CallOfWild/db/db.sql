@@ -1,16 +1,16 @@
 /*删除数据库*/
-DROP DATABASE IF EXISTS trickraft;
+DROP DATABASE IF EXISTS callofwild;
 /*创建数据库*/
-CREATE DATABASE trickraft  DEFAULT CHARACTER SET UTF8;
+CREATE DATABASE callofwild  DEFAULT CHARACTER SET UTF8;
 
 /*使用当前DB*/
-USE trickraft; 
+USE callofwild; 
 
 /*
 	玩家表
 	drop table Player
 */
-DROP TABLE IF EXISTS trickraft.Player;
+DROP TABLE IF EXISTS Player;
 CREATE TABLE Player
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -28,7 +28,7 @@ CREATE TABLE Player
 
 /************************************/
 
-DROP TABLE IF EXISTS trickraft.Map;
+DROP TABLE IF EXISTS Map;
 CREATE TABLE Map
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -41,7 +41,7 @@ CREATE TABLE Map
 	城市(主城，附属城)
 	DROP TABLE City
 */
-DROP TABLE IF EXISTS trickraft.City;
+DROP TABLE IF EXISTS City;
 CREATE TABLE City
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -75,7 +75,7 @@ CREATE TABLE City
 	城市搬迁记录
 	CityMoveLog
 */
-DROP TABLE IF EXISTS trickraft.CityMoveLog;
+DROP TABLE IF EXISTS CityMoveLog;
 CREATE TABLE CityMoveLog
 (
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -92,7 +92,7 @@ CREATE TABLE CityMoveLog
 	野地(资源)
 	drop table Wilderness
 */
-DROP TABLE IF EXISTS trickraft.Wilderness;
+DROP TABLE IF EXISTS Wilderness;
 CREATE TABLE Wilderness
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -116,7 +116,7 @@ CREATE TABLE Wilderness
 	空地
 	drop table SpaceArea
 */
-DROP TABLE IF EXISTS trickraft.SpaceArea;
+DROP TABLE IF EXISTS SpaceArea;
 CREATE TABLE SpaceArea
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -130,7 +130,7 @@ CREATE TABLE SpaceArea
 	山寨
 	drop table  Mount
 */
-DROP TABLE IF EXISTS trickraft.Mount;
+DROP TABLE IF EXISTS Mount;
 CREATE TABLE Mount
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -153,7 +153,7 @@ CREATE TABLE Mount
 	基础建筑
 	drop table  Build
 */
-DROP TABLE IF EXISTS trickraft.Build;
+DROP TABLE IF EXISTS Build;
 CREATE TABLE Build
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -169,7 +169,7 @@ CREATE TABLE Build
 	建筑动作
 	drop table  Build
 */
-DROP TABLE IF EXISTS trickraft.BuildAction;
+DROP TABLE IF EXISTS BuildAction;
 CREATE TABLE BuildAction
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -183,7 +183,7 @@ CREATE TABLE BuildAction
 	阵法类型 
 	drop table  BattleArrayType
 */
-DROP TABLE IF EXISTS trickraft.BattleArrayType;
+DROP TABLE IF EXISTS BattleArrayType;
 CREATE TABLE BattleArrayType
 (
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -195,7 +195,7 @@ CREATE TABLE BattleArrayType
 	阵法
 	drop table  BattleArray
 */
-DROP TABLE IF EXISTS trickraft.BattleArray;
+DROP TABLE IF EXISTS BattleArray;
 CREATE TABLE BattleArray
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -210,7 +210,7 @@ CREATE TABLE BattleArray
 	科研类型 
 	drop table  TechnologyType
 */
-DROP TABLE IF EXISTS trickraft.TechnologyType;
+DROP TABLE IF EXISTS TechnologyType;
 CREATE TABLE TechnologyType
 (
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -222,7 +222,7 @@ CREATE TABLE TechnologyType
 	科研类型 
 	drop table  TechnologyType
 */
-DROP TABLE IF EXISTS trickraft.Technology;
+DROP TABLE IF EXISTS Technology;
 CREATE TABLE Technology
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -240,7 +240,7 @@ CREATE TABLE Technology
 	将领 
 	drop table  Leader
 */
-DROP TABLE IF EXISTS trickraft.Leader;
+DROP TABLE IF EXISTS Leader;
 CREATE TABLE Leader
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -261,7 +261,7 @@ CREATE TABLE Leader
 	将领技能表 Skill
 	drop table  Skill
 */
-DROP TABLE IF EXISTS trickraft.Skill;
+DROP TABLE IF EXISTS Skill;
 CREATE TABLE Skill
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -280,7 +280,7 @@ CREATE TABLE Skill
 	装备表 Equip
 	drop table  Equip
 */
-DROP TABLE IF EXISTS trickraft.Equip;
+DROP TABLE IF EXISTS Equip;
 CREATE TABLE Equip
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -309,7 +309,7 @@ CREATE TABLE Equip
 	军队表 Troops
 	drop table Troops
 */
-DROP TABLE IF EXISTS trickraft.Troops;
+DROP TABLE IF EXISTS Troops;
 CREATE TABLE Troops
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -327,7 +327,7 @@ CREATE TABLE Troops
 	军队逃跑记录日志 TroopsFleeLog
 	drop table TroopsFleeLog
 */
-DROP TABLE IF EXISTS trickraft.TroopsFleeLog;
+DROP TABLE IF EXISTS TroopsFleeLog;
 CREATE TABLE TroopsFleeLog
 (
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -344,7 +344,7 @@ CREATE TABLE TroopsFleeLog
 	军事力量表 Armforce
 	drop table Armforce
 */
-DROP TABLE IF EXISTS trickraft.Armforce;
+DROP TABLE IF EXISTS Armforce;
 CREATE TABLE Armforce
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -358,7 +358,7 @@ CREATE TABLE Armforce
 	探险表Explore
 	drop table Exploree
 */
-DROP TABLE IF EXISTS trickraft.Exploree;
+DROP TABLE IF EXISTS Exploree;
 CREATE TABLE Exploree
 (
 	id NUMERIC(21) PRIMARY KEY ,
@@ -379,7 +379,7 @@ CREATE TABLE Exploree
 	出使 OutMission
 	drop table OutMission
 */
-DROP TABLE IF EXISTS trickraft.OutMission;
+DROP TABLE IF EXISTS OutMission;
 CREATE TABLE OutMission
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -401,7 +401,7 @@ CREATE TABLE OutMission
 	占领野地 occupyWild
 	drop table occupyWild
 */
-DROP TABLE IF EXISTS trickraft.occupyWild;
+DROP TABLE IF EXISTS occupyWild;
 CREATE TABLE occupyWild
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -421,7 +421,7 @@ CREATE TABLE occupyWild
 	攻打山寨 OccupyMount
 	drop table OccupyMount
 */
-DROP TABLE IF EXISTS trickraft.OccupyMount;
+DROP TABLE IF EXISTS OccupyMount;
 CREATE TABLE OccupyMount
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -443,7 +443,7 @@ CREATE TABLE OccupyMount
 	攻占城池 OccupyCity
 	drop table OccupyCity
 */
-DROP TABLE IF EXISTS trickraft.OccupyCity;
+DROP TABLE IF EXISTS OccupyCity;
 CREATE TABLE OccupyCity
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -461,7 +461,7 @@ CREATE TABLE OccupyCity
 	宝箱 TreasureChests
 	drop table TreasureChests
 */
-DROP TABLE IF EXISTS trickraft.TreasureChests;
+DROP TABLE IF EXISTS TreasureChests;
 CREATE TABLE TreasureChests
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -479,7 +479,7 @@ CREATE TABLE TreasureChests
 	宝箱物品 Treasuregoods
 	drop table Treasuregoods
 */
-DROP TABLE IF EXISTS trickraft.Treasuregoods;
+DROP TABLE IF EXISTS Treasuregoods;
 CREATE TABLE Treasuregoods
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -493,7 +493,7 @@ CREATE TABLE Treasuregoods
 	装备类型表 EquipMaps
 	drop table EquipMaps
 */
-DROP TABLE IF EXISTS trickraft.EquipMaps;
+DROP TABLE IF EXISTS EquipMaps;
 CREATE TABLE EquipMaps
 (
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -505,7 +505,7 @@ CREATE TABLE EquipMaps
 	资源类型表 ResourceMaps
 	drop table ResourceMaps
 */
-DROP TABLE IF EXISTS trickraft.ResourceMaps;
+DROP TABLE IF EXISTS ResourceMaps;
 CREATE TABLE ResourceMaps
 (
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -518,7 +518,7 @@ CREATE TABLE ResourceMaps
 	背包 PlayerStorage
 	drop table PlayerStorage
 */
-DROP TABLE IF EXISTS trickraft.PlayerStorage;
+DROP TABLE IF EXISTS PlayerStorage;
 CREATE TABLE PlayerStorage
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -535,7 +535,7 @@ CREATE TABLE PlayerStorage
 	资源表 Resource
 	drop table Resource
 */
-DROP TABLE IF EXISTS trickraft.Resource;
+DROP TABLE IF EXISTS Resource;
 CREATE TABLE Resource
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -551,7 +551,7 @@ CREATE TABLE Resource
 	升级石 UpgradeStone
 	drop table UpgradeStone
 */
-DROP TABLE IF EXISTS trickraft.UpgradeStone;
+DROP TABLE IF EXISTS UpgradeStone;
 CREATE TABLE UpgradeStone
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -570,7 +570,7 @@ CREATE TABLE UpgradeStone
 	系统商店表 SystemShop
 	drop table SystemShop
 */
-DROP TABLE IF EXISTS trickraft.SystemShop;
+DROP TABLE IF EXISTS SystemShop;
 CREATE TABLE SystemShop
 (
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -595,7 +595,7 @@ CREATE TABLE SystemShop
 /***
  * 商城商品购买数量记录表
  */
-DROP TABLE IF EXISTS trickraft.ShopBuyNum;
+DROP TABLE IF EXISTS ShopBuyNum;
 CREATE TABLE ShopBuyNum
 (
 	goodsid INT PRIMARY KEY, 
@@ -606,7 +606,7 @@ CREATE TABLE ShopBuyNum
 /***
  * 玩家战绩积分排行榜
  */
-DROP TABLE IF EXISTS trickraft.PlCbtGain;
+DROP TABLE IF EXISTS PlCbtGain;
 CREATE TABLE PlCbtGain
 (
 	playerid NUMERIC(21) PRIMARY KEY, 
@@ -619,7 +619,7 @@ CREATE TABLE PlCbtGain
 /**
  * 联盟战绩积分排行榜
  */
-DROP TABLE IF EXISTS trickraft.AlCbtGain;
+DROP TABLE IF EXISTS AlCbtGain;
 CREATE TABLE AlCbtGain
 (
 	allianceid NUMERIC(21) PRIMARY KEY, 
@@ -631,7 +631,7 @@ CREATE TABLE AlCbtGain
 	寄售系统表 PlayerMarket
 	drop table PlayerMarket
 */
-DROP TABLE IF EXISTS trickraft.PlayerMarket;
+DROP TABLE IF EXISTS PlayerMarket;
 CREATE TABLE PlayerMarket
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -652,7 +652,7 @@ CREATE TABLE PlayerMarket
 	交易表 TradeLog
 	drop table TradeLog
 */
-DROP TABLE IF EXISTS trickraft.TradeLog;
+DROP TABLE IF EXISTS TradeLog;
 CREATE TABLE TradeLog
 (
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -676,7 +676,7 @@ CREATE TABLE TradeLog
 /**
  * 摇钱树表
  */
-DROP TABLE IF EXISTS trickraft.MoneyTree;
+DROP TABLE IF EXISTS MoneyTree;
 CREATE TABLE MoneyTree
 (
    playerid NUMERIC(21) PRIMARY KEY ,
@@ -689,7 +689,7 @@ CREATE TABLE MoneyTree
 /**
  * 摇钱树获得的宝物记录表
  */
-DROP TABLE IF EXISTS trickraft.ObtainedGoods;
+DROP TABLE IF EXISTS ObtainedGoods;
 CREATE TABLE ObtainedGoods
 (
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -704,7 +704,7 @@ CREATE TABLE ObtainedGoods
 /**
  * 摇钱树摇得的事件消息
  */
-DROP TABLE IF EXISTS trickraft.TreeMoneyEvent;
+DROP TABLE IF EXISTS TreeMoneyEvent;
 CREATE TABLE TreeMoneyEvent
 (
     id NUMERIC(21) PRIMARY KEY ,
@@ -716,7 +716,7 @@ CREATE TABLE TreeMoneyEvent
 	系统消息表 SystemSms
 	drop table SystemSms
 */
-DROP TABLE IF EXISTS trickraft.SystemSms;
+DROP TABLE IF EXISTS SystemSms;
 CREATE TABLE SystemSms
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -735,7 +735,7 @@ CREATE TABLE SystemSms
 	玩家关系表 Unions
 	drop table Unions
 */
-DROP TABLE IF EXISTS trickraft.Unions;
+DROP TABLE IF EXISTS Unions;
 CREATE TABLE Unions
 (
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -748,7 +748,7 @@ CREATE TABLE Unions
 /**
  * 玩家好友申请加入表
  */
-DROP TABLE IF EXISTS trickraft.AuditFriend;
+DROP TABLE IF EXISTS AuditFriend;
 CREATE TABLE AuditFriend
 (
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -776,7 +776,7 @@ CREATE TABLE ReportUnion
 	战报详情 Scout
 	drop table Scout
 */
-DROP TABLE IF EXISTS trickraft.Jobs;
+DROP TABLE IF EXISTS Jobs;
 CREATE TABLE Jobs
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -793,7 +793,7 @@ CREATE TABLE Jobs
 /*
     联盟任务
 */
-DROP TABLE IF EXISTS trickraft.AllyJob;
+DROP TABLE IF EXISTS AllyJob;
 CREATE TABLE AllyJob
 (
     Id NUMERIC(21) PRIMARY KEY,
@@ -811,7 +811,7 @@ CREATE TABLE AllyJob
 	战报详情 Account
 	drop table Account
 */
-DROP TABLE IF EXISTS trickraft.Account;
+DROP TABLE IF EXISTS Account;
 CREATE TABLE Account
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -824,7 +824,7 @@ CREATE TABLE Account
 	战报详情 scheme
 	drop table scheme
 */
-DROP TABLE IF EXISTS trickraft.scheme;
+DROP TABLE IF EXISTS scheme;
 CREATE TABLE scheme
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -841,7 +841,7 @@ CREATE TABLE scheme
 	战报详情 OnLinePlayers
 	drop table OnLinePlayers
 */
-DROP TABLE IF EXISTS trickraft.OnLinePlayers;
+DROP TABLE IF EXISTS OnLinePlayers;
 CREATE TABLE OnLinePlayers
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -853,7 +853,7 @@ CREATE TABLE OnLinePlayers
 	战报详情 system_time
 	drop table system_time
 */
-DROP TABLE IF EXISTS trickraft.system_time;
+DROP TABLE IF EXISTS system_time;
 CREATE TABLE system_time
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -864,7 +864,7 @@ CREATE TABLE system_time
 	详情 task_record
 	drop table task_record
 */
-DROP TABLE IF EXISTS trickraft.task_record;
+DROP TABLE IF EXISTS task_record;
 CREATE TABLE task_record
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -886,7 +886,7 @@ CREATE TABLE task_record
 	联盟表 Alliance
 	drop table Alliance
 */
-DROP TABLE IF EXISTS trickraft.Alliance;
+DROP TABLE IF EXISTS Alliance;
 CREATE TABLE Alliance
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -909,7 +909,7 @@ CREATE TABLE Alliance
 	联盟表 AllianceActor
 	drop table AllianceActor
 */
-DROP TABLE IF EXISTS trickraft.AllianceActor;
+DROP TABLE IF EXISTS AllianceActor;
 CREATE TABLE AllianceActor
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -926,7 +926,7 @@ CREATE TABLE AllianceActor
 	联盟表 AllianceTech
 	drop table AllianceTech
 */
-DROP TABLE IF EXISTS trickraft.AllianceTech;
+DROP TABLE IF EXISTS AllianceTech;
 CREATE TABLE AllianceTech
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -939,7 +939,7 @@ CREATE TABLE AllianceTech
 	联盟表 AllianceBattle
 	drop table AllianceBattle
 */
-DROP TABLE IF EXISTS trickraft.AllianceBattle;
+DROP TABLE IF EXISTS AllianceBattle;
 CREATE TABLE AllianceBattle
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -952,7 +952,7 @@ CREATE TABLE AllianceBattle
 	联盟道具 AllianceProps
 	drop table AllianceProps
 */
-DROP TABLE IF EXISTS trickraft.AllianceProps;
+DROP TABLE IF EXISTS AllianceProps;
 CREATE TABLE AllianceProps
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -964,7 +964,7 @@ CREATE TABLE AllianceProps
 	联盟道具 AllianceEvents
 	drop table AllianceEvents
 */
-DROP TABLE IF EXISTS trickraft.AllianceEvents;
+DROP TABLE IF EXISTS AllianceEvents;
 CREATE TABLE AllianceEvents
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -975,7 +975,7 @@ CREATE TABLE AllianceEvents
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 ####联盟结束
 
-DROP TABLE IF EXISTS trickraft.RedAlert;
+DROP TABLE IF EXISTS RedAlert;
 CREATE TABLE RedAlert
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -993,7 +993,7 @@ CREATE TABLE RedAlert
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS trickraft.consume_recode;
+DROP TABLE IF EXISTS consume_recode;
 CREATE TABLE consume_recode
 (
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -1008,7 +1008,7 @@ CREATE TABLE consume_recode
 	
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS trickraft.feedback;
+DROP TABLE IF EXISTS feedback;
 CREATE TABLE feedback
 (
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -1020,7 +1020,7 @@ CREATE TABLE feedback
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS trickraft.recharge;
+DROP TABLE IF EXISTS recharge;
 CREATE TABLE recharge
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -1039,7 +1039,7 @@ CREATE TABLE recharge
 /***
 任务记录
 **/
-DROP TABLE IF EXISTS trickraft.jobs_record;
+DROP TABLE IF EXISTS jobs_record;
 CREATE TABLE jobs_record
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -1054,7 +1054,7 @@ CREATE TABLE jobs_record
 /***
 玩家状态，禁言，无效
 **/
-DROP TABLE IF EXISTS trickraft.player_stat;
+DROP TABLE IF EXISTS player_stat;
 CREATE TABLE player_stat
 (
 	id NUMERIC(21) PRIMARY KEY,
@@ -1070,7 +1070,7 @@ CREATE TABLE player_stat
 /**
  * 玩家体力表
  */
-DROP TABLE IF EXISTS trickraft.Vigor;
+DROP TABLE IF EXISTS Vigor;
 CREATE TABLE Vigor
 (
     playerid NUMERIC(21) PRIMARY KEY,
@@ -1084,7 +1084,7 @@ CREATE TABLE Vigor
  * 系统级参数
  */
 /*
-DROP TABLE IF EXISTS trickraft.SysParam;
+DROP TABLE IF EXISTS SysParam;
 CREATE TABLE SysParam
 (
     id INT PRIMARY KEY,
@@ -1098,7 +1098,7 @@ CREATE TABLE SysParam
 /**
  * 物品掉落
  */
-DROP TABLE IF EXISTS trickraft.ItemDrop;
+DROP TABLE IF EXISTS ItemDrop;
 CREATE TABLE ItemDrop
 (
     cfgNo INT PRIMARY KEY,
