@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="CallOfWildLoginServer" default="deploy" basedir=".">
+
+	<property name="src.dir" value="src" />
+	<property name="src.test.dir" value="test" />
+	<property name="bin.dir" value="bin" />
+	<property name="bin.java.dir" value="bin" />
+	<property name="lib.dir" value="lib" />
+	<property name="res.dir" value="res" />
+	<property name="dist.dir" value="dist" />
+	<property name="tool.dir" value="tool" />
+	<property name="config.dir" value="config" />
+	<property name="prj.name" value="${ant.project.name}" />
+	<property name="portal.dir" value="${dist.dir}/portal" />
+
+	<patternset id="jar.dependencies">
+		<include name="**/*.jar" />
+		<exclude name="**/jmock*" />
+	</patternset>
+
+	<path id="ext.libs" description="third party libs">
+		<fileset dir="${lib.dir}">
+			<patternset refid="jar.dependencies" />
+		</fileset>
+	</path>
+
+	<target name="init">
+		<mkdir dir="${bin.dir}" />
+		<mkdir dir="${bin.java.dir}" />
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${portal.dir}" />
+	</target>
+
+	<target name="compileJava" depends="init">
+		<javac encoding="UTF-8" srcdir="${src.dir}" destdir="${bin.java.dir}" includeantruntime="false" 
+			includes="**/LoginServer.java,**/SafeQuit.java" 
+			debug="false" optimize="true" target="1.6" source="1.6" listfiles="yes" >
+			<classpath refid="ext.libs" />
+		</javac>
+	</target>
+
+	<target name="jar" depends="compileJava">
+		<pathconvert property="mf.classpath" pathsep=" ">
+			<path refid="ext.libs" />
+			<map from="" to="lib/"/>
+			<flattenmapper />
+		</pathconvert>
+		<jar destfile="${portal.dir}/${prj.name}.jar" baseDir="${bin.java.dir}">
+			<manifest>
+				<attribute name="Main-Class" value="com.tentacle.callofwild.lobby.LoginServer" />
+				<attribute name="Class-Path" value="${mf.classpath}" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="deploy" depends="jar">
+		<copy todir="${portal.dir}/lib">
+			<fileset dir="${lib.dir}">
+				<patternset refid="jar.dependencies" />
+			</fileset>
+		</copy>
+		<copy file="db/entrance.sh" todir="${portal.dir}/db" />
+		<copy file="db/entrance.sql" todir="${portal.dir}/db" />
+		<copy file="${tool.dir}/fill-some-data.sh" todir="${portal.dir}" />
+		<copy file="${tool.dir}/login-server-start.sh" todir="${portal.dir}" />
+		<copy file="${tool.dir}/close-login-server.sh" todir="${portal.dir}" />
+		<copy file="${config.dir}/log4j.properties" todir="${portal.dir}" />
+		<copy file="${config.dir}/c3p0Mysql.properties" todir="${portal.dir}" />
+		<copy file="${config.dir}/config.properties" todir="${portal.dir}/res" />
+		<copy file="${res.dir}/VersionControl.csv" todir="${portal.dir}/res" />
+		<mkdir dir="${portal.dir}/logs"/>
+		<touch file="${portal.dir}/logs/.keep" />
+	</target>
+
+	<target name="clean" description="clean up">
+		<delete dir="${bin.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+
+</project>
