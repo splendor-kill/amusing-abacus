@@ -15,7 +15,7 @@
 
 	<patternset id="jar.dependencies">
 		<include name="**/*.jar" />
-		<exclude name="**/jmock*" />
+		<exclude name="**/jmock*/**" />
 	</patternset>
 
 	<path id="ext.libs" description="third party libs">
@@ -61,12 +61,12 @@
 		</copy>
 		<copy file="db/entrance.sh" todir="${portal.dir}/db" />
 		<copy file="db/entrance.sql" todir="${portal.dir}/db" />
-		<copy file="${tool.dir}/fill-some-data.sh" todir="${portal.dir}" />
+		<copy file="${tool.dir}/fill-some-data.sh" todir="${portal.dir}/db" />
 		<copy file="${tool.dir}/login-server-start.sh" todir="${portal.dir}" />
-		<copy file="${tool.dir}/close-login-server.sh" todir="${portal.dir}" />
-		<copy file="${config.dir}/log4j.properties" todir="${portal.dir}" />
-		<copy file="${config.dir}/c3p0Mysql.properties" todir="${portal.dir}" />
-		<copy file="${config.dir}/config.properties" todir="${portal.dir}/res" />
+		<copy file="${tool.dir}/close-login-server.sh" todir="${portal.dir}" />		
+		<copy file="${config.dir}/log4j.properties" todir="${portal.dir}/config" />
+		<copy file="${config.dir}/c3p0Mysql.properties" todir="${portal.dir}/config" />
+		<copy file="${config.dir}/config.properties" todir="${portal.dir}/config" />
 		<copy file="${res.dir}/VersionControl.csv" todir="${portal.dir}/res" />
 		<mkdir dir="${portal.dir}/logs"/>
 		<touch file="${portal.dir}/logs/.keep" />
