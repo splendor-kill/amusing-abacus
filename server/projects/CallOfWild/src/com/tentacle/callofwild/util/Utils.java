@@ -75,42 +75,6 @@ public class Utils {
         }
     }
 
-    private static Properties sConfigProperties = null;
-
-    public static Properties getConfig() {
-        if (sConfigProperties != null)
-            return sConfigProperties;
-        readConfig();
-        return sConfigProperties;
-    }
-    
-    public static boolean readConfig() {
-        if (sConfigProperties == null)
-            sConfigProperties = new Properties();
-        
-        final String fileName = "res/config.properties";
-        boolean isOk = true;
-        FileInputStream fis = null;
-        try {
-            fis = new FileInputStream(fileName);
-            sConfigProperties.load(fis);
-        } catch (Exception e) {
-            logger.error(e);
-            System.err.println("configure[" + fileName + "] exception.");
-            isOk = false;
-        } finally {
-            try {
-                fis.close();
-            } catch (IOException e) {
-                logger.error(e);
-                System.err.println("configure[" + fileName + "] exception.");
-                isOk = false;
-            }
-        }
-        return isOk;
-    }
-    
-    
 	public static class Holder<T> {
 		public Holder(T value) {
 			this.value = value;

@@ -53,18 +53,10 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 //	private static ServerConfigService serverConfigService = new ServerConfigService();
 	private static List<ServerConfigInfo> serversInfo;
 	
-	private static int maxNumOfUsersOnSameDevice = 5;
     // file name --> config file
     private static Set<IReloadable> reloadableFiles = new HashSet<IReloadable>();
-	private static String defaultChannelId;
-    private static String adminName;
-	private static String adminKey;	
     // user id --> session    
     private static ConcurrentMap<Integer, Session> sessionMgr = new ConcurrentHashMap<Integer, Session>();
-    private static List<String> whiteDevices;
-    private static List<String> prepaidCardPartner;
-    private static long prepaidCardOpenTime;
-    private static long prepaidCardCloseTime;
     
     private static Map<String, String> channel2Platform = new HashMap<String, String>() {
         private static final long serialVersionUID = 8761755010342812032L;
@@ -77,23 +69,6 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
     
     static {
         reloadableFiles.add(VersionCfg.getInstance());
-        adminName = Utils.getConfig().getProperty("admin_name", "admin");
-        adminKey = Utils.getConfig().getProperty("admin_key", "");
-        adminKey = MD5.Md5(adminKey);
-        defaultChannelId = Utils.getConfig().getProperty("default_channel_id", "201203");
-        String tmp = Utils.getConfig().getProperty("max_num_of_users_on_same_device", "5");
-        try {
-            maxNumOfUsersOnSameDevice = Integer.parseInt(tmp);
-            tmp = Utils.getConfig().getProperty("device_white_list", "");
-            whiteDevices = Arrays.asList(tmp.split("[;,]"));
-            tmp = Utils.getConfig().getProperty("prepaid_card_partner", "");
-            prepaidCardPartner = Arrays.asList(tmp.split("[;,]"));
-            tmp = Utils.getConfig().getProperty("prepaid_card_time_open", "");
-            prepaidCardOpenTime = (long) Utils.getTimePeriodInMs(tmp);
-            tmp = Utils.getConfig().getProperty("prepaid_card_time_close", "");
-            prepaidCardCloseTime = (long) Utils.getTimePeriodInMs(tmp);            
-        } catch (RuntimeException e) {
-        }
 //        serversInfo = serverConfigService.queryServerList();
         Collections.reverse(serversInfo);
     }

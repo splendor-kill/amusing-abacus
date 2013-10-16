@@ -8,7 +8,6 @@ import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
 
 public class MD5 {
 
-	// MD5加密。32位
 	public static String Md5(String inStr) {
 		MessageDigest md5 = null;
 		try {
@@ -36,24 +35,6 @@ public class MD5 {
 		}
 
 		return hexValue.toString();
-	}
-	
-	public static String hashToMD5Hex(String sourceStr) {
-		String signStr = "";
-		try {
-			byte[] bytes = sourceStr.getBytes("utf-8");
-			MessageDigest md5 = MessageDigest.getInstance("MD5");
-			md5.update(bytes);
-			byte[] md5Byte = md5.digest();
-			if (md5Byte != null) {
-				signStr = HexBin.encode(md5Byte);
-			}
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		return signStr;
 	}
 	
     public final static String Md5ClientVersion(String s) {

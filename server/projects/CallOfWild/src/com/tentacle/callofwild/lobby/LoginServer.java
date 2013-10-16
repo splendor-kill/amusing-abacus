@@ -15,6 +15,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.jboss.netty.bootstrap.ServerBootstrap;
 import org.jboss.netty.channel.Channel;
 import org.jboss.netty.channel.ChannelPipeline;
@@ -35,29 +36,17 @@ public class LoginServer {
     private ReentrantLock mLoopLock = new ReentrantLock();
     private Condition wailCondition = mLoopLock.newCondition();
     private ChannelGroup allChannels = new DefaultChannelGroup();
-    private boolean mIsStop = false;
-    private int listenPort;
-    private int connectionClearMinute;
-    private long connectionOssifyMs;
+    private boolean mIsStop;
     private ServerBootstrap bootstrap;
     // channel --> the moment of the channel open
     private ConcurrentMap<Channel, Long> liveChannel = new ConcurrentHashMap<Channel, Long>();
     
-    public void init() {
-        parseConfig();
+    private void init() {
+        LoginServerConfig.getInst().reload();
         loadUserInfo();
         DaoLoginTread.getInstance().startDaoThread();
         startNet();
         startSlaughterZombie();
-    }
-    
-    private void parseConfig() {
-        String str = Utils.getConfig().getProperty("login_server.listening_port");
-        listenPort = Integer.parseInt(str);
-        str = Utils.getConfig().getProperty("login_server.connection_clear_minute", "30");
-        connectionClearMinute = Integer.parseInt(str);
-        str = Utils.getConfig().getProperty("login_server.connection_ossify_minute", "5");
-        connectionOssifyMs = Integer.parseInt(str) * 60 * 1000;
     }
     
     public void addChannel(Channel ch) {
@@ -191,7 +180,7 @@ public class LoginServer {
 
     
     public static void main(String[] args) {
-//        PropertyConfigurator.configure(Consts.LOG_FILE_PATH);
+        PropertyConfigurator.configure(LoginServerConfig.INBORN_LOG_CONFIG);
         LoginServer loginServer = new LoginServer();
         try {
             loginServer.init();
