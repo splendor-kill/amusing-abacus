@@ -131,29 +131,5 @@ public class DbPoolManager {
             logger.error(e);
         }
     }
-    
-    public static void close(PreparedStatement pstmt) {
-        try {
-            if (null != pstmt) {
-                pstmt.close();
-                pstmt = null;
-            }
-        } catch (SQLException e) {
-            pstmt = null;
-            logger.error(e.getMessage(), e);
-        }
-    }
-    
-    public static void close(ResultSet rs) {
-        try {
-            if (null != rs) {
-                rs.close();
-                rs = null;
-            }
-        } catch (SQLException e) {
-            rs = null;
-            logger.error(e.getMessage(), e);
-        }
-    }
-        
+       
 }

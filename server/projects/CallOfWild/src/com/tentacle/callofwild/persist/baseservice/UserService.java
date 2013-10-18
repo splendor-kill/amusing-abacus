@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import com.tentacle.callofwild.domain.baseinfo.UsersInfo;
 import com.tentacle.callofwild.persist.DbPoolManager;
 import com.tentacle.callofwild.persist.LoginDbThread;
+import com.tentacle.callofwild.persist.StaticDao;
 import com.tentacle.callofwild.persist.base.DatVector;
 
 
@@ -54,8 +55,8 @@ public class UserService {
             ret = -1;
             logger.error(e.getMessage(), e);
         } finally {
-            DbPoolManager.close(pstmt);
-            DbPoolManager.close(rs);
+            StaticDao.close(pstmt);
+            StaticDao.close(rs);
             DbPoolManager.close(conn);
         }
         return ret;
@@ -76,8 +77,8 @@ public class UserService {
             retMaxId = -1;
             logger.error(e.getMessage(), e);
         } finally {
-            DbPoolManager.close(pstmt);
-            DbPoolManager.close(rs);
+            StaticDao.close(pstmt);
+            StaticDao.close(rs);
             DbPoolManager.close(conn);
         }
         return retMaxId;
