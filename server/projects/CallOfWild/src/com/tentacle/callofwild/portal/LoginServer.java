@@ -1,4 +1,4 @@
-package com.tentacle.callofwild.lobby;
+package com.tentacle.callofwild.portal;
 
 import static org.jboss.netty.channel.Channels.pipeline;
 
@@ -25,8 +25,8 @@ import org.jboss.netty.channel.group.DefaultChannelGroup;
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 
 import com.tentacle.callofwild.domain.baseinfo.UsersInfo;
-import com.tentacle.callofwild.persist.base.DaoLoginTread;
-import com.tentacle.callofwild.persist.baseservice.UsersService;
+import com.tentacle.callofwild.persist.LoginDbThread;
+import com.tentacle.callofwild.persist.baseservice.UserService;
 import com.tentacle.callofwild.protocol.MyCodec;
 import com.tentacle.callofwild.util.Utils;
 
@@ -44,7 +44,7 @@ public class LoginServer {
     private void init() {
         LoginServerConfig.getInst().reload();
         loadUserInfo();
-        DaoLoginTread.getInstance().startDaoThread();
+        LoginDbThread.getInst().start();
         startNet();
         startSlaughterZombie();
     }
@@ -65,7 +65,7 @@ public class LoginServer {
             wailCondition.signal();
             logger.debug("login-server stop signal...");
         } catch (Exception e) {
-            logger.error("login-server stop excption..." + e.getMessage());
+            logger.error("login-server stop excption...", e);
         } finally {
             mLoopLock.unlock();
         }
@@ -79,7 +79,7 @@ public class LoginServer {
                 wailCondition.await();
                 logger.debug("login-server loopLock wait out...");
             } catch (Exception e) {
-                logger.error("login-server loopLock excption..." + e.getMessage());
+                logger.error(e.getMessage(), e);
             } finally {
                 mLoopLock.unlock();
             }
@@ -102,7 +102,7 @@ public class LoginServer {
         Iterator<Entry<Channel, Long>> it = liveChannel.entrySet().iterator();
         while (it.hasNext()) {
             Entry<Channel, Long> cur = it.next();
-            if (now - cur.getValue() > connectionOssifyMs) {
+            if (now - cur.getValue() > LoginServerConfig.getInst().getConnectionOssifyMs()) {
                 cur.getKey().close();
                 it.remove();
             }
@@ -115,7 +115,7 @@ public class LoginServer {
         allChannels.close().awaitUninterruptibly();
         bootstrap.releaseExternalResources();
         logger.info("waiting for DB-thread close...");
-        DaoLoginTread.getInstance().awaitTerm();
+        LoginDbThread.getInst().awaitTerm();
         logger.info("login-server safe exit system...");
     }
     
@@ -127,7 +127,7 @@ public class LoginServer {
                 slaughter();
                 logger.debug("channel num["+ getChannelSize()+"], zombie["+liveChannel.size()+"]");
             }
-        }, 1, connectionClearMinute, TimeUnit.MINUTES);
+        }, 1, LoginServerConfig.getInst().getConnectionClearMinute(), TimeUnit.MINUTES);
     }
     
     private void startNet() {
@@ -145,49 +145,42 @@ public class LoginServer {
             }
         });
         
-        Channel ch = bootstrap.bind(new InetSocketAddress(listenPort));
+        Channel ch = bootstrap.bind(new InetSocketAddress(LoginServerConfig.getInst().getListenPort()));
         addChannel(ch);
         logger.info("login-server init completed, wait your command...");
     }
     
-    /**
-     * 载入用户信息
-     */
     private void loadUserInfo() {
         logger.info("load pending UserInfo...");
         long snap = System.currentTimeMillis();
-        // 载入所有的用户信息
         ArrayList<UsersInfo> retList = new ArrayList<UsersInfo>();
-        UsersService.synQueryAll(retList);
+        UserService.synQueryAll(retList);
         String imei = null;
         for (UsersInfo usersInfo : retList) {
-            // 放入到内存中
             UserInfoManager.inst().putUsersInfo(usersInfo);
-            // IME号数目
             imei = usersInfo.getPhoneImei();
-            // 有效的IMEI号
             if (imei != null && imei.length() > UserInfoManager.IMEI_MAX_LENGTH) {
                 UserInfoManager.inst().putImei(usersInfo.getPhoneImei());
             }
         }
 
-        int maxId = UsersService.synQueryMaxId();
+        int maxId = UserService.synQueryMaxId();
         UserInfoManager.inst().setCurMaxUserId(maxId);
-        // 清理
+  
         retList.clear();
         logger.debug("load pending UserInfo spend [" + (System.currentTimeMillis() - snap) + "] ms");
     }
 
     
     public static void main(String[] args) {
-        PropertyConfigurator.configure(LoginServerConfig.INBORN_LOG_CONFIG);
+        PropertyConfigurator.configure(Utils.INBORN_LOG_CONFIG);
         LoginServer loginServer = new LoginServer();
         try {
             loginServer.init();
             loginServer.MainLoop();
             loginServer.exit();
         } catch (Exception e) {
-            logger.error(e);
+            logger.error(e.getMessage(), e);
         }
         System.exit(0);
     }

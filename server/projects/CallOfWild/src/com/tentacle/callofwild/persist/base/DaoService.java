@@ -5,19 +5,19 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.tentacle.callofwild.persist.DBPoolManager;
-import com.tentacle.callofwild.persist.Dao;
+import com.tentacle.callofwild.persist.DbPoolManager;
+import com.tentacle.callofwild.persist.StaticDao;
 
 public class DaoService {
     private static final Logger logger = Logger.getLogger(DaoService.class);
     private Connection conn = null;
 
-    public void saveOrUpdate(DAOBject o) {
-        Dao dao = new Dao();
+    public void saveOrUpdate(DatVector o) {
+        
         try {
-            conn = DBPoolManager.getInstance().getConnection();
+            conn = DbPoolManager.getInst().getGameDbConn();
             conn.setAutoCommit(false);
-            dao.saveOrUpdate(o.getSql(), o.getObjects(), o.getSql1(), o.getListObjects(), conn);
+            StaticDao.saveOrUpdate(o.getSql(), o.getObjects(), o.getSql1(), o.getListObjects(), conn);
             conn.commit();
         } catch (Exception e) {
             logger.error(o.getMsg() + "===>" + e.getMessage(), e);
@@ -28,7 +28,7 @@ public class DaoService {
                 logger.error(e1.getMessage(), e1);
             }
         } finally {
-            DBPoolManager.getInstance().close(conn);
+            DbPoolManager.close(conn);
             if (o.getListObjects() != null) {
                 o.getListObjects().clear();
                 o.setListObjects(null);
@@ -38,13 +38,12 @@ public class DaoService {
         }
     }
 
-    public void batchSaveOrUpdate(List<DAOBject> olist) {
-        Dao dao = new Dao();
+    public void batchSaveOrUpdate(List<DatVector> olist) {
         try {
-            conn = DBPoolManager.getInstance().getConnection();
+            conn = DbPoolManager.getInst().getGameDbConn();
             conn.setAutoCommit(false);
-            for (DAOBject o : olist) {
-                dao.saveOrUpdate(o.getSql(), o.getObjects(), o.getSql1(), o.getListObjects(), conn);
+            for (DatVector o : olist) {
+                StaticDao.saveOrUpdate(o.getSql(), o.getObjects(), o.getSql1(), o.getListObjects(), conn);
             }
             conn.commit();
         } catch (Exception e) {
@@ -55,7 +54,7 @@ public class DaoService {
                 logger.error(e1.getMessage(), e1);
             }
         } finally {
-            DBPoolManager.getInstance().close(conn);
+            DbPoolManager.close(conn);
         }
     }
 }

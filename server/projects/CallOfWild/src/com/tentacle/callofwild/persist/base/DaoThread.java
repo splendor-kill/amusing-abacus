@@ -14,12 +14,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import org.apache.log4j.Logger;
 
 import com.tentacle.callofwild.logic.GameServer;
-import com.tentacle.callofwild.persist.base.DAOBject.OPT_TYPE;
+import com.tentacle.callofwild.persist.base.DatVector.OPT_TYPE;
 
 public class DaoThread {
 	private static final Logger logger = Logger.getLogger(DaoThread.class);
 	
-	private LinkedBlockingQueue<DAOBject> queue = new LinkedBlockingQueue<DAOBject>();
+	private LinkedBlockingQueue<DatVector> queue = new LinkedBlockingQueue<DatVector>();
 	private Worker worker;
 	private ExecutorService executor = Executors.newCachedThreadPool();
 	private Future<?> dbFuture;
@@ -40,7 +40,7 @@ public class DaoThread {
 	public void awaitTerm() {
 		try {
 			willDie.set(true);
-			DAOBject obj = new DAOBject();
+			DatVector obj = new DatVector();
 			obj.setOptType(OPT_TYPE.FOR_TERM);
 			addObject(obj);
 			executor.shutdown();
@@ -73,10 +73,10 @@ public class DaoThread {
 		@Override
 		public void run() {
 			logger.info("data storing thread id["+Thread.currentThread().getId()+"] at work.");
-			List<DAOBject> olist = new ArrayList<DAOBject>();
+			List<DatVector> olist = new ArrayList<DatVector>();
 			int prevSize = 0;			
 			while (true) {
-				DAOBject o = getDAOBject();
+				DatVector o = getDAOBject();
 				if (o == null) {
 				    if (!olist.isEmpty()) {
 		                daoService.batchSaveOrUpdate(olist);
@@ -123,7 +123,7 @@ public class DaoThread {
 	}
 	
 	
-	private DAOBject getDAOBject() {
+	private DatVector getDAOBject() {
 		try {
 			return queue.take();
 		} catch (InterruptedException e) {
@@ -132,7 +132,7 @@ public class DaoThread {
 		return null;
 	}
 
-	public void addObject(DAOBject o) {
+	public void addObject(DatVector o) {
 		if (o == null) {
 			return;
 		}

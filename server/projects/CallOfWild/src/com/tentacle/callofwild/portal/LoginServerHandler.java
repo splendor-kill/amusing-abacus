@@ -1,6 +1,5 @@
-package com.tentacle.callofwild.lobby;
+package com.tentacle.callofwild.portal;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -24,7 +23,7 @@ import com.tentacle.callofwild.contract.IReloadable;
 import com.tentacle.callofwild.designer.VersionCfg;
 import com.tentacle.callofwild.domain.baseinfo.ServerConfigInfo;
 import com.tentacle.callofwild.domain.baseinfo.UsersInfo;
-import com.tentacle.callofwild.persist.baseservice.UsersService;
+import com.tentacle.callofwild.persist.baseservice.UserService;
 import com.tentacle.callofwild.protocol.MyCodec.Cocoon;
 import com.tentacle.callofwild.protocol.ProtoAdmin.SysCommonReq;
 import com.tentacle.callofwild.protocol.ProtoAdmin.SysGetSession;
@@ -34,7 +33,6 @@ import com.tentacle.callofwild.protocol.ProtoAdmin.SysRefreshServerStatus;
 import com.tentacle.callofwild.protocol.ProtoAdmin.SysReloadCfg;
 import com.tentacle.callofwild.protocol.ProtoAdmin.Warrant;
 import com.tentacle.callofwild.protocol.ProtoBasis.CommonAns;
-import com.tentacle.callofwild.protocol.ProtoBasis.CommonReq;
 import com.tentacle.callofwild.protocol.ProtoBasis.Instruction;
 import com.tentacle.callofwild.protocol.ProtoBasis.InstructionOrBuilder;
 import com.tentacle.callofwild.protocol.ProtoBasis.eCommand;
@@ -44,13 +42,12 @@ import com.tentacle.callofwild.protocol.ProtoLogin.AccountAns;
 import com.tentacle.callofwild.protocol.ProtoLogin.AccountReq;
 import com.tentacle.callofwild.protocol.ProtoLogin.Authentication;
 import com.tentacle.callofwild.protocol.ProtoLogin.VersionInfo;
-import com.tentacle.callofwild.util.MD5;
 import com.tentacle.callofwild.util.Utils;
 
 public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 	private static final Logger logger = Logger.getLogger(LoginServerHandler.class);
 	
-//	private static ServerConfigService serverConfigService = new ServerConfigService();
+	//private static ServerConfigService serverConfigService = new ServerConfigService();
 	private static List<ServerConfigInfo> serversInfo;
 	
     // file name --> config file
@@ -160,7 +157,7 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
             logger.error(ex);            
         } finally {
 			long offTime = System.currentTimeMillis() - startTime;
-			//出现超过一秒的命令
+
 			if (offTime > 1000) {
 				String recordMsg = "***timeout cmd: [" +cmd+ "***timeout:" + offTime + "ms***" + "] from ["+ch.getRemoteAddress()+"]";
 				logger.debug(recordMsg);
@@ -179,8 +176,8 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
     }
 	
 	public static boolean isTheGuyReliable(Warrant proof) {
-		if (proof != null && proof.getAdminName().equals(adminName)
-				&& proof.getCachet().equals(adminKey)) {
+		if (proof != null && proof.getAdminName().equals(LoginServerConfig.getInst().getAdminName())
+				&& proof.getCachet().equals(LoginServerConfig.getInst().getAdminKey())) {
 			return true;
 		}
         logger.error("no unauthorized access");
@@ -201,7 +198,7 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 		do {
 		    String channel = data.getChannel();
 		    if (channel == null || channel.trim().isEmpty()) {
-		        channel = defaultChannelId;
+		        channel = LoginServerConfig.getInst().getDefaultChannelId();
 		    }
 			VersionCfg verCfg = VersionCfg.getInstance().getVersionInfo(channel, data.getPlatformDesc());
 			if (verCfg == null) {
@@ -231,7 +228,7 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 		
 		String channel = data.getAccount().getChannelId();
 		if (channel == null || channel.trim().isEmpty()) {
-            channel = defaultChannelId;
+            channel = LoginServerConfig.getInst().getDefaultChannelId();
         }
 		
 		String platform = channel2Platform.get(channel);
@@ -255,7 +252,7 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 		String imei = acc.getPhoneImei();
 		//有效的IMEI
 		if (imei != null && imei.length() > UserInfoManager.IMEI_MAX_LENGTH) {
-		    if (!whiteDevices.contains(imei) && UserInfoManager.inst().getImeiNum(imei) >= maxNumOfUsersOnSameDevice) {
+		    if (!LoginServerConfig.getInst().getWhiteDevices().contains(imei) && UserInfoManager.inst().getImeiNum(imei) >= LoginServerConfig.getInst().getMaxNumOfUsersOnSameDevice()) {
 	            return eErrorCode.TOO_MANY_GHOST_PROFILE;
 			}
 			//IMEI计数
@@ -264,7 +261,7 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
         //设置新用户ID 
 		userInfo.setId(UserInfoManager.inst().getNextUserId());
 		userInfo.setUserName(name);
-		userInfo.setPassword(MD5.Md5(acc.getPassword()));
+		userInfo.setPassword(Utils.md5(acc.getPassword()));
 		userInfo.setEmail(acc.getEmail());
 		userInfo.setCardId(acc.getCardId());
 		userInfo.setPhoneNumber(acc.getPhoneNo());
@@ -282,7 +279,7 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 		//放入用户到内存中
 		UserInfoManager.inst().putUsersInfo(userInfo);
 		//保存用户到数据库
-		UsersService.asynSave(userInfo);
+		UserService.asynSave(userInfo);
 		
 		return eErrorCode.OK;
 	}
@@ -305,7 +302,7 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
                 break;
             }
             //错误密码
-            String password = MD5.Md5(pass);
+            String password = Utils.md5(pass);
             if (!password.equals(user.getPassword())) {
             	ans.setErrCode(eErrorCode.ERR_NAME_OR_PASSWORD).setName(name);
                 break;
@@ -431,12 +428,12 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
         if (s == null) {
             s = new Session();
             s.setUserId(userId);
-            s.setSessionKey("" + Utils.rand.nextLong());
+            s.setSessionKey("" + Utils.RAND.nextLong());
             s.setTimeStamp(now);
             sessionMgr.put(userId, s);
         } else if (s.isExpired()) {
             // expired, regenerate
-            s.setSessionKey("" + Utils.rand.nextLong());
+            s.setSessionKey("" + Utils.RAND.nextLong());
             s.setTimeStamp(now);
         }
         assert s != null;
@@ -462,9 +459,9 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
             return;
         }
         int userId = data.getUserId();
-        String md5val = MD5.Md5ClientVersion(data.getNewPwd());
-        md5val = MD5.Md5(md5val);
-        UsersService.resetPwd(userId, md5val);
+        String md5val = data.getNewPwd();
+        md5val = Utils.md5(md5val);
+        UserService.resetPwd(userId, md5val);
         UsersInfo user = UserInfoManager.inst().getUsersInfo(userId);
         user.setPassword(md5val);
         logger.error("["+data.getProof().getAdminName()+"] reset password of user["+userId+"]");

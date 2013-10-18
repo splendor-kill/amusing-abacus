@@ -9,32 +9,23 @@ import java.util.ArrayList;
 import org.apache.log4j.Logger;
 
 import com.tentacle.callofwild.domain.baseinfo.UsersInfo;
-import com.tentacle.callofwild.persist.DBPoolManager;
-import com.tentacle.callofwild.persist.StaticDao;
-import com.tentacle.callofwild.persist.base.DAOBject;
-import com.tentacle.callofwild.persist.base.DaoLoginTread;
+import com.tentacle.callofwild.persist.DbPoolManager;
+import com.tentacle.callofwild.persist.LoginDbThread;
+import com.tentacle.callofwild.persist.base.DatVector;
 
-public class UsersService {
-    private static final Logger logger = Logger.getLogger(UsersService.class);
-    // 保存用户
+
+public class UserService {
+    private static final Logger logger = Logger.getLogger(UserService.class);
     public static final String USER_SAVE = "INSERT INTO Users(id, UserName,PassWord,Email,phone_no,CardId,RegeditDate,platform,uid,auth_code,channel,phone_model,phone_resolution,phone_os,phone_manufacturer,phone_imei,phone_mac) "
             + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-    // 查询所有的用户
     public static final String USER_QUERYALL = "SELECT * FROM Users";
-
     public static final String USER_QUERYMAXUSERID = "SELECT MAX(id) As maxId FROM Users";
 
-    /**
-     * 同步查询所有的用户
-     * 
-     * @param retList
-     * @return
-     */
     public static int synQueryAll(ArrayList<UsersInfo> retList) {
         UsersInfo userInfo = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        Connection conn = DBPoolManager.getInstance().getGmAccountConnection();
+        Connection conn = DbPoolManager.getInst().getLoginDbConn();
         int ret = 0;
         try {
             pstmt = conn.prepareStatement(USER_QUERYALL, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -61,26 +52,19 @@ public class UsersService {
             }
         } catch (SQLException e) {
             ret = -1;
-            System.out.println("error!!!!!!!!!!!!!!!UsersService::synQueryAll");
-            logger.error("error!!!!!!!!!!!!!!!UsersService::synQueryAll--" + e.getMessage());
+            logger.error(e.getMessage(), e);
         } finally {
-            StaticDao.close(pstmt);
-            StaticDao.close(rs);
-            DBPoolManager.getInstance().close(conn);
+            DbPoolManager.close(pstmt);
+            DbPoolManager.close(rs);
+            DbPoolManager.close(conn);
         }
-
         return ret;
     }
 
-    /**
-     * 查询当前最大的用户ID
-     * 
-     * @return
-     */
     public static int synQueryMaxId() {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        Connection conn = DBPoolManager.getInstance().getGmAccountConnection();
+        Connection conn = DbPoolManager.getInst().getLoginDbConn();
         int retMaxId = 0;
         try {
             pstmt = conn.prepareStatement(USER_QUERYMAXUSERID, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -90,25 +74,17 @@ public class UsersService {
             }
         } catch (SQLException e) {
             retMaxId = -1;
-            System.out.println("error!!!!!!!!!!!!!!!UsersService::synQueryMaxId");
-            logger.error("error!!!!!!!!!!!!!!!UsersService::synQueryMaxId--" + e.getMessage());
+            logger.error(e.getMessage(), e);
         } finally {
-            StaticDao.close(pstmt);
-            StaticDao.close(rs);
-            DBPoolManager.getInstance().close(conn);
+            DbPoolManager.close(pstmt);
+            DbPoolManager.close(rs);
+            DbPoolManager.close(conn);
         }
-
         return retMaxId;
     }
 
-    /**
-     * 异步保存用户信息
-     * 
-     * @param linfo
-     * @return
-     */
     public static int asynSave(UsersInfo userInfo) {
-        DAOBject daoBject = new DAOBject("UsersService::asynSave");
+        DatVector daoBject = new DatVector("UsersService::asynSave");
         daoBject.setSql(USER_SAVE);
         Object[] objects = new Object[] { userInfo.getId(),
                 userInfo.getUserName(), userInfo.getPassword(),
@@ -120,15 +96,15 @@ public class UsersService {
                 userInfo.getPhoneOs(), userInfo.getPhoneManufacturer(),
                 userInfo.getPhoneImei(), userInfo.getPhoneMac() };
         daoBject.setObjects(objects);
-        DaoLoginTread.getInstance().addObject(daoBject);
+        LoginDbThread.getInst().addObject(daoBject);
         return 0;
     }
-    
+
     public static void resetPwd(int userId, String newPwd) {
-        DAOBject daoBject = new DAOBject("UsersService::resetPwd");
+        DatVector daoBject = new DatVector("UsersService::resetPwd");
         daoBject.setSql("UPDATE Users SET PassWord=? WHERE id=?");
         daoBject.setObjects(new Object[] { newPwd, userId });
-        DaoLoginTread.getInstance().addObject(daoBject);
+        LoginDbThread.getInst().addObject(daoBject);
     }
 
 }

@@ -2,7 +2,7 @@ package com.tentacle.callofwild.domain.tradeinfo;
 
 import java.util.Date;
 
-import com.tentacle.callofwild.persist.base.DAOBject;
+import com.tentacle.callofwild.persist.base.DatVector;
 import com.tentacle.callofwild.persist.base.DaoThread;
 import com.tentacle.callofwild.util.Utils;
 
@@ -18,7 +18,7 @@ public class ConsumeRecodeInfo {
 
 	public void save() {
 		String sql = "insert into consume_recode(consume_time,consume_money,consume_type,consume_sub_type,currency) values(?,?,?,?,?)";
-		DAOBject o = new DAOBject();
+		DatVector o = new DatVector();
 		o.setSql(sql);
 		o.setObjects(parametersSave(this));
 		DaoThread.getInstance().addObject(o);
@@ -54,7 +54,7 @@ public class ConsumeRecodeInfo {
 		};
 
 		String sql = "insert into consume_recode(player_id,consume_time,consume_money,consume_type,consume_sub_type,currency,role,consume_where) values(?,?,?,?,?,?,?,?)";
-		DAOBject o = new DAOBject();
+		DatVector o = new DatVector();
 		o.setSql(sql);
 		o.setObjects(objects);
 		DaoThread.getInstance().addObject(o);

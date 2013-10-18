@@ -1,4 +1,4 @@
-package com.tentacle.callofwild.lobby;
+package com.tentacle.callofwild.portal;
 
 import gnu.trove.map.TIntObjectMap;
 import gnu.trove.map.hash.TIntObjectHashMap;

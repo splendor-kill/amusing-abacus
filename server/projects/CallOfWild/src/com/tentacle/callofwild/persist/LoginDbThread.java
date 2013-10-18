@@ -1,4 +1,4 @@
-package com.tentacle.callofwild.persist.base;
+package com.tentacle.callofwild.persist;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,52 +13,53 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.apache.log4j.Logger;
 
-import com.tentacle.callofwild.persist.base.DAOBject.OPT_TYPE;
+import com.tentacle.callofwild.persist.base.DatVector;
+import com.tentacle.callofwild.persist.base.DaoLoginService;
+import com.tentacle.callofwild.persist.base.DatVector.OPT_TYPE;
 
-public class DaoLoginTread {
-    private static final Logger logger = Logger.getLogger(DaoLoginTread.class);
+public class LoginDbThread {
+    private static final Logger logger = Logger.getLogger(LoginDbThread.class);
 
-    public LinkedBlockingQueue<DAOBject> queue = new LinkedBlockingQueue<DAOBject>();
+    public LinkedBlockingQueue<DatVector> queue = new LinkedBlockingQueue<DatVector>();
     private Worker worker;
     private ExecutorService executor = Executors.newCachedThreadPool();
-    private Future<?> dbFuture;
+    private Future<?> future;
     private volatile AtomicBoolean willDie = new AtomicBoolean();
 
-    private static DaoLoginTread instance = new DaoLoginTread();
+    private static LoginDbThread inst = new LoginDbThread();
 
-    public static DaoLoginTread getInstance() {
-        return DaoLoginTread.instance;
+    public static LoginDbThread getInst() {
+        return LoginDbThread.inst;
     }
 
-    private DaoLoginTread() {
+    private LoginDbThread() {
     }
-	
-	
-	public void startDaoThread() {
+		
+	public void start() {
 		worker = new Worker();
-		dbFuture = executor.submit(worker);
+		future = executor.submit(worker);
 	}
 	
 	public void awaitTerm() {
 		try {
 			willDie.set(true);
-			DAOBject obj = new DAOBject();
+			DatVector obj = new DatVector();
 			obj.setOptType(OPT_TYPE.FOR_TERM);
 			addObject(obj);
 			executor.shutdown();
 			
 			try {
-				logger.debug("DB-thread isDone[" + dbFuture.isDone() + "], isCancelled[" + dbFuture.isCancelled() + "]");
-				dbFuture.get(30, TimeUnit.SECONDS);
+				logger.debug("DB-thread isDone[" + future.isDone() + "], isCancelled[" + future.isCancelled() + "]");
+				future.get(30, TimeUnit.SECONDS);
 			} catch (ExecutionException e) {
-				e.printStackTrace();
+			    logger.error(e);
 			} catch (TimeoutException e) {
-				e.printStackTrace();
+			    logger.error(e);
 			}
 			
 			logger.debug("the DB-thread will be closed after 2 min.");
 			boolean isTerm = executor.awaitTermination(2 * 60, TimeUnit.SECONDS);
-			logger.debug("awaitTermination[" + isTerm + "]");
+			logger.debug("await termination[" + isTerm + "]");
 			if (!isTerm) {
 				List<Runnable> lr = executor.shutdownNow();
 				logger.debug("num of awaiting execution tasks[" + lr.size() + "].");
@@ -74,9 +75,9 @@ public class DaoLoginTread {
 		@Override
 		public void run() {
 			logger.debug("data storing thread id["+Thread.currentThread().getId()+"] at work.");
-			List<DAOBject> olist = new ArrayList<DAOBject>();
+			List<DatVector> olist = new ArrayList<DatVector>();
 			while (true) {
-				DAOBject o = getDAOBject();
+				DatVector o = getDAOBject();
 				if (o != null && o.getOptType() == OPT_TYPE.BATCH_OP) {
 					olist.add(o);
 					if (olist.size() >= 200) {
@@ -106,23 +107,23 @@ public class DaoLoginTread {
 	}
 	
 	
-	private DAOBject getDAOBject() {
-		try {
-			return queue.take();
-		} catch (InterruptedException e) {
-			logger.error(e.getMessage(), e);
-		}
-		return null;
-	}
+    private DatVector getDAOBject() {
+        try {
+            return queue.take();
+        } catch (InterruptedException e) {
+            logger.error(e);
+        }
+        return null;
+    }
 
-	public void addObject(DAOBject o) {
-		if (o == null) {
-			return;
-		}
-		try {
-			queue.add(o);
-		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
-		}
-	}
+    public void addObject(DatVector o) {
+        if (o == null) {
+            return;
+        }
+        try {
+            queue.add(o);
+        } catch (Exception e) {
+            logger.error(e);
+        }
+    }
 }

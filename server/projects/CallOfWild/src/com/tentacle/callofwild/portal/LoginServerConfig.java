@@ -1,4 +1,4 @@
-package com.tentacle.callofwild.lobby;
+package com.tentacle.callofwild.portal;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 import com.tentacle.callofwild.contract.IReloadable;
 import com.tentacle.callofwild.util.Utils;
@@ -14,13 +15,8 @@ import com.tentacle.callofwild.util.Utils;
 
 public final class LoginServerConfig implements IReloadable {
     private static final Logger logger = Logger.getLogger(LoginServerConfig.class);
-    private static final String INBORN_PORTAL_CONFIG = "config/portal.properties";
+    private static final String INBORN_PORTAL_CONFIG = "config/config.properties";
     
-    public static final String INBORN_LOG_CONFIG = "config/log4j.properties";
-    public static final String INBORN_DB_CONFIG = "config/log4j.properties";
-    
-
-
     private int listenPort;
     private int connectionClearMinute;
     private long connectionOssifyMs;
@@ -46,50 +42,65 @@ public final class LoginServerConfig implements IReloadable {
     }
    
     public static void main(String[] args) {
-        LoginServerConfig.getInst().reload();
-        System.out.println();
-        
-
+        PropertyConfigurator.configure(Utils.INBORN_LOG_CONFIG);
+        LoginServerConfig inst = LoginServerConfig.getInst();
+        boolean isOk = inst.reload();
+        if (!isOk) {
+            System.out.println("cannot reload["+inst.getName()+"].");
+            return;
+        }
+        System.out.println(inst.getAdminKey());
+        System.out.println(inst.getAdminName());
+        System.out.println(inst.getConnectionClearMinute());
+        System.out.println(inst.getConnectionOssifyMs());
+        System.out.println(inst.getDefaultChannelId());
+        System.out.println(inst.getListenPort());
+        System.out.println(inst.getMaxNumOfUsersOnSameDevice());
+        System.out.println(inst.getPrepaidCardCloseTime());
+        System.out.println(inst.getPrepaidCardOpenTime());
+        System.out.println(inst.getPrepaidCardPartner());
+        System.out.println(inst.getWhiteDevices());
     }
 
-    private Properties readFile() throws IOException {
+    private Properties read() throws IOException {
         Properties p = new Properties();
         FileInputStream fis = null;
         try {
             fis = new FileInputStream(INBORN_PORTAL_CONFIG);
             p.load(fis);
         } finally {
-            fis.close();
+            if (fis != null)
+                fis.close();
         }
         return p;
     }
     
     private void parse(Properties p) {
-        String str = p.getProperty("login_server.listening_port");
+        String str = p.getProperty("portal.listening_port");
         listenPort = Integer.parseInt(str);
-        str = p.getProperty("login_server.connection_clear_minute", "10");
+        str = p.getProperty("portal.connection_clear_minute", "10");
         connectionClearMinute = Integer.parseInt(str);
-        str = p.getProperty("login_server.connection_ossify_minute", "5");
+        str = p.getProperty("portal.connection_ossify_minute", "5");
         connectionOssifyMs = Integer.parseInt(str) * 60 * 1000;            
-        adminName = p.getProperty("admin_name", "admin");
-        adminKey = p.getProperty("admin_key", "");            
-        defaultChannelId = p.getProperty("default_channel_id", "1234567890");            
-        str = p.getProperty("max_num_of_users_on_same_device", "5");
+        adminName = p.getProperty("portal.admin_name", "admin");
+        adminKey = p.getProperty("portal.admin_key", "");            
+        defaultChannelId = p.getProperty("portal.default_channel_id", "1234567890");            
+        str = p.getProperty("portal.max_num_of_users_on_same_device", "5");
         maxNumOfUsersOnSameDevice = Integer.parseInt(str);
-        str = p.getProperty("device_white_list", "");
+        str = p.getProperty("portal.device_white_list", "");
         whiteDevices = Arrays.asList(str.split("[;,]"));
-        str = p.getProperty("prepaid_card_partner", "");
+        str = p.getProperty("portal.prepaid_card_partner", "");
         prepaidCardPartner = Arrays.asList(str.split("[;,]"));
-        str = p.getProperty("prepaid_card_time_open", "");
+        str = p.getProperty("portal.prepaid_card_time_open", "");
         prepaidCardOpenTime = (long) Utils.getTimePeriodInMs(str);
-        str = p.getProperty("prepaid_card_time_close", "");
+        str = p.getProperty("portal.prepaid_card_time_close", "");
         prepaidCardCloseTime = (long) Utils.getTimePeriodInMs(str);
     }
     
     @Override
     public boolean reload() {
         try {
-            Properties p = readFile();
+            Properties p = read();
             parse(p);
         } catch (IOException ioex) {
             logger.error(ioex);
@@ -105,9 +116,7 @@ public final class LoginServerConfig implements IReloadable {
     public String getName() {
         return "portal-config";
     }
-    
-    
-    
+        
     public int getListenPort() {
         return listenPort;
     }

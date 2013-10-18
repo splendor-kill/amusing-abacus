@@ -47,7 +47,7 @@
 		</pathconvert>
 		<jar destfile="${portal.dir}/${prj.name}.jar" baseDir="${bin.java.dir}">
 			<manifest>
-				<attribute name="Main-Class" value="com.tentacle.callofwild.lobby.LoginServer" />
+				<attribute name="Main-Class" value="com.tentacle.callofwild.portal.LoginServer" />
 				<attribute name="Class-Path" value="${mf.classpath}" />
 			</manifest>
 		</jar>

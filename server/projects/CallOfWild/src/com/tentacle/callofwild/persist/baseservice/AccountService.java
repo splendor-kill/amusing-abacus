@@ -8,8 +8,8 @@ import org.apache.log4j.Logger;
 
 
 import com.tentacle.callofwild.domain.baseinfo.AccountInfo;
-import com.tentacle.callofwild.persist.DBPoolManager;
-import com.tentacle.callofwild.persist.base.DAOBject;
+import com.tentacle.callofwild.persist.DbPoolManager;
+import com.tentacle.callofwild.persist.base.DatVector;
 import com.tentacle.callofwild.persist.base.DaoThread;
 import com.tentacle.callofwild.protocol.ProtoBasis.eErrorCode;
 
@@ -22,7 +22,7 @@ public class AccountService {
 	 * @return
 	 */
 	public eErrorCode saveAccount(AccountInfo info) {
-		DAOBject o = new DAOBject();
+		DatVector o = new DatVector();
 		o.setSql("");
 		o.setObjects(parametersSaveAccount(info));
 		DaoThread.getInstance().addObject(o);
@@ -43,7 +43,7 @@ public class AccountService {
 	 * @return
 	 */
 	public eErrorCode updateAccount(long playerId, int glod) {
-		DAOBject o = new DAOBject();
+		DatVector o = new DatVector();
 		o.setSql("");
 		o.setObjects(parametersUpdateAccount(playerId, glod));
 		DaoThread.getInstance().addObject(o);

@@ -9,7 +9,7 @@ import org.jboss.netty.channel.Channel;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.tentacle.callofwild.designer.Glossary;
-import com.tentacle.callofwild.persist.base.DaoLoginTread;
+import com.tentacle.callofwild.persist.LoginDbThread;
 import com.tentacle.callofwild.persist.base.DaoThread;
 import com.tentacle.callofwild.protocol.MyCodec.Cocoon;
 import com.tentacle.callofwild.protocol.ProtoAdmin.SysRefreshServerStatus;
@@ -115,7 +115,7 @@ public class GameServer {
 		world.load();		
 		
 
-		DaoLoginTread.getInstance().startDaoThread();
+		LoginDbThread.getInst().start();
 		
 		try {
 			carrier = new Carrier();
@@ -206,7 +206,7 @@ public class GameServer {
 
         logger.debug("waiting for DB-thread close...");
         dbThread.awaitTerm();
-        DaoLoginTread.getInstance().awaitTerm();
+        LoginDbThread.getInst().awaitTerm();
         logger.debug("waiting for ranking close...");
 
         

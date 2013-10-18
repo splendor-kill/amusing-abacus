@@ -1,4 +1,4 @@
-package com.tentacle.callofwild.lobby;
+package com.tentacle.callofwild.portal;
 
 public class Session {
     public static final long timespan_session_key_expire = 1000 * 60 * 10;

@@ -11,6 +11,7 @@ import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
 import java.net.InetAddress;
+import java.security.MessageDigest;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -31,7 +32,9 @@ import org.apache.log4j.Logger;
 
 public class Utils {
 	private static final Logger logger = Logger.getLogger(Utils.class);
-	private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+	
+    public static final String INBORN_LOG_CONFIG = "config/log4j.properties";	
+	private static final String DATE_TIME_FORMAT_STRING = "yyyy-MM-dd HH:mm:ss";
 	
 	private static final byte UTF8HADER1 = (byte) 0xEF;
 	private static final byte UTF8HADER2 = (byte) 0xBB;
@@ -39,31 +42,31 @@ public class Utils {
 	
 	private static final Pattern SEPARATOR = Pattern.compile("[;\n\r；]");
 	private static final Pattern SUB_PAT = Pattern.compile("(.*)[,:，、][\t ]*(\\d*)[,:，、][\t ]*(\\d*)");
-    private static final Pattern illegal_char_pattern = Pattern.compile("[\\\\'`!@#$%^&*+\\-=_|:;.,<>()/?~\"\\[\\]\\n\\r\\p{Z}\\s\\uD800\\uDC00-\uDBFF\uDFFF]", Pattern.UNICODE_CASE);
+    private static final Pattern ILLEGAL_CHAR_PAT = Pattern.compile("[\\\\'`!@#$%^&*+\\-=_|:;.,<>()/?~\"\\[\\]\\n\\r\\p{Z}\\s\\uD800\\uDC00-\uDBFF\uDFFF]", Pattern.UNICODE_CASE);
 	
-	public static final int num_of_records_per_page = 50;
-	public static final Random rand = new Random();
+	private static final int NUM_OF_RECORDS_PER_PAGE = 50;
+	public static final Random RAND = new Random();
 
-	private static ThreadLocal<SimpleDateFormat> threadLocal = new ThreadLocal<SimpleDateFormat>() {
+	private static ThreadLocal<SimpleDateFormat> DATE_TIME_FORMAT = new ThreadLocal<SimpleDateFormat>() {
 		protected synchronized SimpleDateFormat initialValue() {
-			return new SimpleDateFormat(DATE_FORMAT);
+			return new SimpleDateFormat(DATE_TIME_FORMAT_STRING);
 		}
 	};
 
     public static boolean hasNextPage(int totalSize, int page) {
-        int index = totalSize % num_of_records_per_page;
-        int size = totalSize / num_of_records_per_page;
+        int index = totalSize % NUM_OF_RECORDS_PER_PAGE;
+        int size = totalSize / NUM_OF_RECORDS_PER_PAGE;
         if (index > 0)
             size += 1;
         return size > page;
     }
 	
 	public static DateFormat getDateFormat() {
-		return threadLocal.get();
+		return DATE_TIME_FORMAT.get();
 	}
 
 	public static String getDate2Str(Date date) {
-		return threadLocal.get().format(date);
+		return DATE_TIME_FORMAT.get().format(date);
 	}
     
     public static Date parse(String textDate) {
@@ -121,11 +124,11 @@ public class Utils {
 	}
 
     public static int beginIndex(int index) {
-        return (index <= 0) ? 0 : (index * num_of_records_per_page);
+        return (index <= 0) ? 0 : (index * NUM_OF_RECORDS_PER_PAGE);
     }
 	
     public static int endIndex(int index, int size) {
-        int val = (index + 1) * num_of_records_per_page;
+        int val = (index + 1) * NUM_OF_RECORDS_PER_PAGE;
         return (val > size) ? size : val;
     }
 
@@ -133,10 +136,10 @@ public class Utils {
         int total = 0;
         if (size <= 0)
             total = 0;
-        if (size % num_of_records_per_page == 0) {
-            total = size / num_of_records_per_page;
+        if (size % NUM_OF_RECORDS_PER_PAGE == 0) {
+            total = size / NUM_OF_RECORDS_PER_PAGE;
         } else {
-            total = size / num_of_records_per_page + 1;
+            total = size / NUM_OF_RECORDS_PER_PAGE + 1;
         }
         return total;
     }
@@ -157,7 +160,7 @@ public class Utils {
 		assert swing >= 0;
 		int inf = mean - swing;
 		int span = swing + swing + 1;
-		int i = rand.nextInt(span);
+		int i = RAND.nextInt(span);
 		return inf + i;
 	}
 	
@@ -266,11 +269,11 @@ public class Utils {
 		List<Integer> lucky = new ArrayList<Integer>();
 
 		for (int i = 0; i < counter; i++) {
-			double choose = rand.nextGaussian() * sigma + mu;
+			double choose = RAND.nextGaussian() * sigma + mu;
 			List<Integer> nearest = findNearestItems(choose, dist);
 			if (nearest.isEmpty())
 				break;
-			int bird = nearest.get(rand.nextInt(nearest.size()));
+			int bird = nearest.get(RAND.nextInt(nearest.size()));
 			if (!lucky.contains(bird)) {
 				lucky.add(bird);
 			}
@@ -283,7 +286,7 @@ public class Utils {
 	//随机幸运值
 	public static boolean randomChoice(int srand, int luck) {
 		if (srand > 0) {
-		     int bird = rand.nextInt(srand);
+		     int bird = RAND.nextInt(srand);
 		     if (bird < luck) {
 		    	 return true;
 		     }
@@ -299,7 +302,7 @@ public class Utils {
 		int sum = 0;
 		for (Double i : dist.values())
 			sum += i;
-		int bird = rand.nextInt(sum);
+		int bird = RAND.nextInt(sum);
 		sum = 0;
 		for (Entry<Integer, Double> entry : dist.entrySet()) {
 			sum += entry.getValue();
@@ -320,7 +323,7 @@ public class Utils {
 			sum += dist.get(i);
 		}
 		
-		int bird = rand.nextInt(sum);
+		int bird = RAND.nextInt(sum);
 		sum = 0;
 		
 		for (int i = 0; i < dist.size(); i++) {
@@ -339,7 +342,7 @@ public class Utils {
 	 */
 	public static List<Integer> randomChoice(Map<Integer, Double> dist, int atMost) {		
 		List<Integer> ret = new ArrayList<Integer>();
-		double bird = rand.nextDouble();
+		double bird = RAND.nextDouble();
 		for (Entry<Integer, Double> entry : dist.entrySet()) {
 			if (bird < entry.getValue()) {
 				ret.add(entry.getKey());
@@ -349,7 +352,7 @@ public class Utils {
 		if (size > atMost) {
 			int rm = size - atMost;
 			for (int i = 0; i < rm; i++) {
-				int boult = rand.nextInt(ret.size());
+				int boult = RAND.nextInt(ret.size());
 				ret.remove(boult);
 			}
 		}
@@ -376,7 +379,7 @@ public class Utils {
 	 * @return the foothold tileId
 	 */
 	public static int findSpace(Map<Integer, Integer> openSpace) {
-		int idx = rand.nextInt(openSpace.size());
+		int idx = RAND.nextInt(openSpace.size());
 		Integer[] keys = (Integer[]) openSpace.keySet().toArray();
 		return keys[idx];
 	}
@@ -591,7 +594,8 @@ public class Utils {
 	}
 	
 	public static void main(String[] args) {
-		testLinear();
+	    testMd5();
+//		testLinear();
 //	    testTimeInPeriod();
 //	    testGetTimePeriodInMs();
 //	    testUnicodeSupplementary();
@@ -663,12 +667,12 @@ public class Utils {
 		int number = 0;
 		int length = getIntWave(5, 2);
 		for (int i = 0; i < length;) {
-			if (rand.nextInt(3) < 2) {
-				number = rand.nextInt(consonant.length());
+			if (RAND.nextInt(3) < 2) {
+				number = RAND.nextInt(consonant.length());
 				sb.append(consonant.charAt(number));
 				i++;
 			} else {
-				number = rand.nextInt(vowel.length());
+				number = RAND.nextInt(vowel.length());
 				sb.append(vowel.charAt(number));
 				i++;
 			}
@@ -681,14 +685,6 @@ public class Utils {
 			System.out.println(genName());
 	}
 
-	public static String makeIconUrl(String path, String name) {
-		String prefix = getConfig().getProperty("icon_url_prefix", "");
-		if (path.endsWith("/"))
-			return prefix + path + name;
-		else
-			return prefix + path + "/" + name;
-	}
-	
 	/*
 	 * convert (a/b) to rational, and the denominator not < c
 	 * retval.x is the numerator, retval.y is the denominator
@@ -724,7 +720,7 @@ public class Utils {
 	}
 	
 	public static <T> T prorateRand(Map<T, Double> prorate) {
-		double x = rand.nextDouble();
+		double x = RAND.nextDouble();
 
 		for (Entry<T, Double> entry : prorate.entrySet()) {
 			double v = entry.getValue();
@@ -943,12 +939,12 @@ public class Utils {
 	}
 	
 	public static String normalizeWord(String str) {
-        Matcher m = illegal_char_pattern.matcher(str);
+        Matcher m = ILLEGAL_CHAR_PAT.matcher(str);
         return m.replaceAll("").trim();
 	}
 	
 	public static boolean isIncludeIllegalChars(String str) {
-	    Matcher m = illegal_char_pattern.matcher(str);
+	    Matcher m = ILLEGAL_CHAR_PAT.matcher(str);
         return m.find();
 	}
 	
@@ -1084,5 +1080,40 @@ public class Utils {
         }
     }
 
+    public static Properties getConfig() {
+        return null;
+    }
 	
+    public static String md5(String inStr) {
+        MessageDigest md5 = null;
+        try {
+            md5 = MessageDigest.getInstance("MD5");
+        } catch (Exception e) {
+            logger.error(e);
+            return "";
+        }
+        
+        char[] charArray = inStr.toCharArray();
+        byte[] byteArray = new byte[charArray.length];
+
+        for (int i = 0; i < charArray.length; i++)
+            byteArray[i] = (byte) charArray[i];
+
+        byte[] md5Bytes = md5.digest(byteArray);
+
+        StringBuilder hexValue = new StringBuilder();        
+        for (int i = 0; i < md5Bytes.length; i++) {
+            int val = ((int) md5Bytes[i]) & 0xff;
+            if (val < 16)
+                hexValue.append("0");
+            hexValue.append(Integer.toHexString(val));
+        }
+        return hexValue.toString();
+    }
+    
+    private static void testMd5() {
+        System.out.println(md5(""));
+    }
+    
+    
 }
