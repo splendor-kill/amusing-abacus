@@ -34,11 +34,7 @@ public class UserInfoManager {
         }
         return gUserInfoManager;
     }
-	/**
-	 * 获取用户信息
-	 * @param userName
-	 * @return
-	 */
+
     public UserInfo getUsersInfo(String userName) {
         mUserInfoLock.lock();
         try {
@@ -57,10 +53,6 @@ public class UserInfoManager {
         }
     }
 	
-	/**
-	 * 放入用户信息
-	 * @param usersInfo
-	 */
     public void putUsersInfo(UserInfo usersInfo) {
         mUserInfoLock.lock();
         try {
@@ -69,12 +61,8 @@ public class UserInfoManager {
         } finally {
             mUserInfoLock.unlock();
         }
-
     }
-	/**
-	 * 放入IMEI号
-	 * @param imei
-	 */
+
     public void putImei(String imei) {
         mImeiLock.lock();
         try {
@@ -94,10 +82,7 @@ public class UserInfoManager {
             mImeiLock.unlock();
         }
     }
-	/**
-	 * 设置当前用户最大的ID
-	 * @param maxId
-	 */
+
     public void setCurMaxUserId(int maxId) {
         mUserIdLock.lock();
         try {
@@ -107,10 +92,6 @@ public class UserInfoManager {
         }
     }
 	
-	/***
-	 * 获取下一个用户ID
-	 * @return
-	 */
     public int getNextUserId() {
         mUserIdLock.lock();
         int retId = 0;
@@ -121,4 +102,5 @@ public class UserInfoManager {
         }
         return retId;
     }
+    
 }

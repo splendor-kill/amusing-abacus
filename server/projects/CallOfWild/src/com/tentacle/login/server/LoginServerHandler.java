@@ -252,7 +252,8 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 		String imei = acc.getPhoneImei();
 		//有效的IMEI
 		if (imei != null && imei.length() > UserInfoManager.IMEI_MAX_LENGTH) {
-		    if (!LoginServerConfig.getInst().getWhiteDevices().contains(imei) && UserInfoManager.inst().getImeiNum(imei) >= LoginServerConfig.getInst().getMaxNumOfUsersOnSameDevice()) {
+		    if (!LoginServerConfig.getInst().getWhiteDevices().contains(imei) 
+		            && UserInfoManager.inst().getImeiNum(imei) >= LoginServerConfig.getInst().getMaxNumOfUsersOnSameDevice()) {
 	            return eErrorCode.TOO_MANY_GHOST_PROFILE;
 			}
 			//IMEI计数
@@ -312,7 +313,6 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
             Session ss = acquireSession(userId);
             String sessionKey = ss.getSessionKey();
             if (clientVer == null || clientVer.isEmpty()) {
-//                sessionKey = Consts.str_old_ver_do_not_support_session_key;
                 ss.setSessionKey(sessionKey);
             } else {
                 double ver = 0.0;
@@ -322,10 +322,7 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
                     ans.setErrCode(eErrorCode.YOU_DONT_HAVE_SATISFY_ME);
                     break;
                 }
-//                if (ver < Consts.client_version_start_support_session_key) {
-//                    sessionKey = Consts.str_old_ver_do_not_support_session_key;
-//                    ss.setSessionKey(sessionKey);
-//                }
+
             }
 
             ans.setSessionKey(sessionKey).setName(name).setUserId(userId);
