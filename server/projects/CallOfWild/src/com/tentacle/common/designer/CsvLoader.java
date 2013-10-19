@@ -1,0 +1,54 @@
+package com.tentacle.common.designer;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.log4j.Logger;
+
+import au.com.bytecode.opencsv.CSVReader;
+import au.com.bytecode.opencsv.bean.CsvToBean;
+import au.com.bytecode.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;
+
+import com.tentacle.common.util.Utils;
+
+public abstract class CsvLoader<T> {
+    private static final Logger logger = Logger.getLogger(CsvLoader.class);
+    
+    private Class<T> tClassType;
+    
+    protected abstract String getCsvFileName();
+    protected abstract Map<String, String> getColumnMapping();
+    protected abstract void realDo(List<T> list);
+    
+    public void load() {
+        String file = getCsvFileName();
+        CSVReader reader = null;
+        try {
+            reader = new CSVReader(Utils.getUtf8Reader(file));
+        } catch (IOException e) {
+            logger.error("read[" + file + "] failed", e);
+        }
+
+        HeaderColumnNameTranslateMappingStrategy<T> strat = new HeaderColumnNameTranslateMappingStrategy<T>();
+        strat.setColumnMapping(getColumnMapping());
+
+        strat.setType(tClassType);
+        CsvToBean<T> csv = new CsvToBean<T>();
+
+        try {
+            List<T> list = csv.parse(strat, reader);
+            realDo(list);
+        } catch (java.lang.RuntimeException e) {
+            logger.error("parse[" + file + "] failed", e);
+        } finally {
+            try {
+                if (reader != null)
+                    reader.close();
+            } catch (IOException e) {
+                logger.error(e.getMessage(), e);
+            }
+        }
+    }
+    
+}
