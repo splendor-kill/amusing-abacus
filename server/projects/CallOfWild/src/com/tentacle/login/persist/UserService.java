@@ -8,21 +8,20 @@ import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 
-import com.tentacle.common.domain.baseinfo.UsersInfo;
+import com.tentacle.common.domain.baseinfo.UserInfo;
 import com.tentacle.common.persist.DatVector;
 import com.tentacle.common.persist.DbConnPoolManager;
 import com.tentacle.common.persist.DbHelper;
 
-
 public class UserService {
-    private static final Logger logger = Logger.getLogger(UserService.class);
-    public static final String USER_SAVE = "INSERT INTO Users(id, UserName,PassWord,Email,phone_no,CardId,RegeditDate,platform,uid,auth_code,channel,phone_model,phone_resolution,phone_os,phone_manufacturer,phone_imei,phone_mac) "
-            + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-    public static final String USER_QUERYALL = "SELECT * FROM Users";
-    public static final String USER_QUERYMAXUSERID = "SELECT MAX(id) As maxId FROM Users";
+    private static final Logger logger = Logger.getLogger(UserService.class);    
+    private static final String USER_SAVE = "INSERT INTO User(id, name, pwd, email, phoneNo, cardId, registerDate, platform, uid, authCode, channelId, phoneModel, phoneResolution, phoneOs, phoneManufacturer, phoneImei, phoneImsi, phoneMac) "
+            + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String USER_QUERYALL = "SELECT * FROM User";
+    private static final String USER_QUERYMAXUSERID = "SELECT MAX(id) As maxId FROM User";
 
-    public static int synQueryAll(ArrayList<UsersInfo> retList) {
-        UsersInfo userInfo = null;
+    public static int synQueryAll(ArrayList<UserInfo> retList) {
+        UserInfo userInfo = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         Connection conn = DbConnPoolManager.getInst().getLoginDbConn();
@@ -31,23 +30,25 @@ public class UserService {
             pstmt = conn.prepareStatement(USER_QUERYALL, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                userInfo = new UsersInfo();
+                userInfo = new UserInfo();
                 userInfo.setId(rs.getInt("id"));
-                userInfo.setUserName(rs.getString("UserName"));
-                userInfo.setPassword(rs.getString("PassWord"));
-                userInfo.setChannel(rs.getString("channel"));
-                userInfo.setEmail(rs.getString("Email"));
-                userInfo.setPhoneNumber(rs.getString("phone_no"));
-                userInfo.setCardId(rs.getString("CardId"));
-                userInfo.setRegeditDate(rs.getTimestamp("RegeditDate"));
-                userInfo.setPhoneImei(rs.getString("phone_imei"));
-                userInfo.setPhoneModel(rs.getString("phone_model"));
-                userInfo.setPhoneResolution(rs.getString("phone_resolution"));
+                userInfo.setName(rs.getString("name"));
+                userInfo.setPwd(rs.getString("pwd"));
+                userInfo.setEmail(rs.getString("email"));
+                userInfo.setPhoneNo(rs.getString("phoneNo"));
+                userInfo.setCardId(rs.getString("cardId"));
+                userInfo.setRegisterDate(rs.getTimestamp("registerDate"));
                 userInfo.setPlatform(rs.getString("platform"));
-                userInfo.setPhoneOs(rs.getString("phone_os"));
-                userInfo.setPhoneManufacturer(rs.getString("phone_manufacturer"));
                 userInfo.setUid(rs.getString("uid"));
-                userInfo.setAuthCode(rs.getString("auth_code"));
+                userInfo.setAuthCode(rs.getString("authCode"));
+                userInfo.setChannelId(rs.getString("channelId"));
+                userInfo.setPhoneModel(rs.getString("phoneModel"));
+                userInfo.setPhoneResolution(rs.getString("phoneResolution"));
+                userInfo.setPhoneOs(rs.getString("phoneOs"));
+                userInfo.setPhoneManufacturer(rs.getString("phoneManufacturer"));
+                userInfo.setPhoneImei(rs.getString("phoneImei"));
+                userInfo.setPhoneImsi(rs.getString("phoneImsi"));
+                userInfo.setPhoneMac(rs.getString("phoneMac"));
                 retList.add(userInfo);
             }
         } catch (SQLException e) {
@@ -83,26 +84,25 @@ public class UserService {
         return retMaxId;
     }
 
-    public static int asynSave(UsersInfo userInfo) {
-        DatVector daoBject = new DatVector("UsersService::asynSave");
+    public static void asynSave(UserInfo userInfo) {
+        DatVector daoBject = new DatVector("UserService::asynSave");
         daoBject.setSql(USER_SAVE);
-        Object[] objects = new Object[] { userInfo.getId(),
-                userInfo.getUserName(), userInfo.getPassword(),
-                userInfo.getEmail(), userInfo.getPhoneNumber(),
-                userInfo.getCardId(), userInfo.getRegeditDate(),
+        Object[] objects = new Object[] { userInfo.getId(), userInfo.getName(),
+                userInfo.getPwd(), userInfo.getEmail(), userInfo.getPhoneNo(),
+                userInfo.getCardId(), userInfo.getRegisterDate(),
                 userInfo.getPlatform(), userInfo.getUid(),
-                userInfo.getAuthCode(), userInfo.getChannel(),
+                userInfo.getAuthCode(), userInfo.getChannelId(),
                 userInfo.getPhoneModel(), userInfo.getPhoneResolution(),
                 userInfo.getPhoneOs(), userInfo.getPhoneManufacturer(),
-                userInfo.getPhoneImei(), userInfo.getPhoneMac() };
+                userInfo.getPhoneImei(), userInfo.getPhoneImsi(),
+                userInfo.getPhoneMac() };
         daoBject.setObjects(objects);
         LoginDbThread.getInst().addObject(daoBject);
-        return 0;
     }
 
     public static void resetPwd(int userId, String newPwd) {
-        DatVector daoBject = new DatVector("UsersService::resetPwd");
-        daoBject.setSql("UPDATE Users SET PassWord=? WHERE id=?");
+        DatVector daoBject = new DatVector("UserService::resetPwd");
+        daoBject.setSql("UPDATE User SET pwd=? WHERE id=?");
         daoBject.setObjects(new Object[] { newPwd, userId });
         LoginDbThread.getInst().addObject(daoBject);
     }

@@ -2,25 +2,19 @@ package com.tentacle.common.domain.baseinfo;
 
 import com.tentacle.common.protocol.ProtoLogin.GameServer;
 
-/**
- * 
- * @author spfu
- * 
- *
- */
 public class ServerConfigInfo {
 	private int id;
 	private int port;
 	private String ip;
 	private String name;
-	private boolean isnew;
+	private boolean isNew;
 	private String doaminName;
-	//同时游戏服务器状态
-	private int curGameSrvStatus;// = Consts.GAMESRVSTATUS.RUN_WELL;
-	//当前在线时间
-	private long curSrvTime;
 	private String helpUrl;
 	private String activityUrl;	
+    // 同时游戏服务器状态
+    private int curGameSrvStatus;
+    // 当前在线时间
+    private long curSrvTime;
 
 	public void setGameSrvStatus(int srvStatus) {
 		curGameSrvStatus = srvStatus;
@@ -38,14 +32,6 @@ public class ServerConfigInfo {
 		return curSrvTime;
 	}
 	
-	public boolean isIsnew() {
-		return isnew;
-	}
-
-	public void setIsnew(boolean isnew) {
-		this.isnew = isnew;
-	}
-
 	public int getId() {
 		return id;
 	}
@@ -87,9 +73,9 @@ public class ServerConfigInfo {
 	}
 	
     public GameServer.Builder toNet() {
-        return GameServer.newBuilder().setId(id).setIpv4(ip).setName(name)
+        return GameServer.newBuilder().setId(id).setIpv4(getIp()).setName(getName())
                 .setBusyDegree(curGameSrvStatus).setPort(port)
-                .setIsNew(isIsnew()).setDomainName(getDoaminName())
+                .setIsNew(isNew).setDomainName(getDoaminName())
                 .setUrl(getHelpUrl()).setActivityUrl(getActivityUrl());
     }
 
@@ -107,6 +93,14 @@ public class ServerConfigInfo {
 
     public void setActivityUrl(String activityUrl) {
         this.activityUrl = activityUrl;
+    }
+
+    public boolean isNew() {
+        return isNew;
+    }
+
+    public void setNew(boolean isNew) {
+        this.isNew = isNew;
     }
 
 }

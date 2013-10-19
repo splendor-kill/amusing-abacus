@@ -1,14 +1,18 @@
 package com.tentacle.game.persist;
 
-import com.tentacle.common.persist.DbService;
+import java.sql.Connection;
+
+import com.tentacle.common.persist.DbConnPoolManager;
 import com.tentacle.common.persist.DbThread;
 
-public class GameDbThread extends DbThread {
-    protected DbService newDbService() {
-        return new GameDbService();
+public class GameDbThread extends DbThread {    
+    @Override
+    public Connection getConn() {
+        return DbConnPoolManager.getInst().getGameDbConn();
     }
     
-    protected int getBatchCommitSize() {
+    @Override
+    public int getBatchCommitSize() {
         return 200;
     }
     

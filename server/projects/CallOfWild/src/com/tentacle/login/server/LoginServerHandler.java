@@ -21,7 +21,7 @@ import org.jboss.netty.channel.SimpleChannelUpstreamHandler;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.tentacle.common.contract.IReloadable;
 import com.tentacle.common.domain.baseinfo.ServerConfigInfo;
-import com.tentacle.common.domain.baseinfo.UsersInfo;
+import com.tentacle.common.domain.baseinfo.UserInfo;
 import com.tentacle.common.protocol.MyCodec.Cocoon;
 import com.tentacle.common.protocol.ProtoAdmin.SysCommonReq;
 import com.tentacle.common.protocol.ProtoAdmin.SysGetSession;
@@ -242,7 +242,7 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 	}
 
 	private eErrorCode saveUser(Account acc) {
-		UsersInfo userInfo = new UsersInfo();
+		UserInfo userInfo = new UserInfo();
 		String name = acc.getName();		
 		//有重名
 		if (UserInfoManager.inst().getUsersInfo(name) != null) {
@@ -260,16 +260,16 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 		}
         //设置新用户ID 
 		userInfo.setId(UserInfoManager.inst().getNextUserId());
-		userInfo.setUserName(name);
-		userInfo.setPassword(Utils.md5(acc.getPassword()));
+		userInfo.setName(name);
+		userInfo.setPwd(Utils.md5(acc.getPassword()));
 		userInfo.setEmail(acc.getEmail());
 		userInfo.setCardId(acc.getCardId());
-		userInfo.setPhoneNumber(acc.getPhoneNo());
-		userInfo.setRegeditDate(new Date());
+		userInfo.setPhoneNo(acc.getPhoneNo());
+		userInfo.setRegisterDate(new Date());
 		userInfo.setPlatform(acc.getPlatform());
 		userInfo.setUid(acc.getUid());
 		userInfo.setAuthCode(acc.getAuthCode());
-		userInfo.setChannel(acc.getChannelId());
+		userInfo.setChannelId(acc.getChannelId());
 		userInfo.setPhoneModel(acc.getPhoneModel());
 		userInfo.setPhoneResolution(acc.getPhoneResolution());
 		userInfo.setPhoneOs(acc.getPhoneOs());
@@ -295,7 +295,7 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 				.setErrCode(eErrorCode.OK);
 		
 		do {
-            UsersInfo user = UserInfoManager.inst().getUsersInfo(name);
+            UserInfo user = UserInfoManager.inst().getUsersInfo(name);
             //无此用户
             if (null == user) {
                 ans.setErrCode(eErrorCode.ERR_NAME_OR_PASSWORD).setName(name);
@@ -303,7 +303,7 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
             }
             //错误密码
             String password = Utils.md5(pass);
-            if (!password.equals(user.getPassword())) {
+            if (!password.equals(user.getPwd())) {
             	ans.setErrCode(eErrorCode.ERR_NAME_OR_PASSWORD).setName(name);
                 break;
             }
@@ -462,8 +462,8 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
         String md5val = data.getNewPwd();
         md5val = Utils.md5(md5val);
         UserService.resetPwd(userId, md5val);
-        UsersInfo user = UserInfoManager.inst().getUsersInfo(userId);
-        user.setPassword(md5val);
+        UserInfo user = UserInfoManager.inst().getUsersInfo(userId);
+        user.setPwd(md5val);
         logger.error("["+data.getProof().getAdminName()+"] reset password of user["+userId+"]");
     }
 	

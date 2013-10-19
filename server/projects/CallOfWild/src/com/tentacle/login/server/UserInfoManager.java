@@ -7,19 +7,14 @@ import gnu.trove.map.hash.TObjectIntHashMap;
 import java.util.HashMap;
 import java.util.concurrent.locks.ReentrantLock;
 
-import com.tentacle.common.domain.baseinfo.UsersInfo;
+import com.tentacle.common.domain.baseinfo.UserInfo;
 
-/**
- * 用户信息管理
- * @author Marketing-01
- *
- */
 public class UserInfoManager {
 	public static final int IMEI_MAX_LENGTH = 10;
 	//用户索引
-	private HashMap<String, UsersInfo> mNameToUsers = new HashMap<String, UsersInfo>();
+	private HashMap<String, UserInfo> mNameToUsers = new HashMap<String, UserInfo>();
 	//user id --> user info
-	private TIntObjectMap<UsersInfo> idToUser = new TIntObjectHashMap<UsersInfo>();
+	private TIntObjectMap<UserInfo> idToUser = new TIntObjectHashMap<UserInfo>();
 	//IMEI号索引
 	private TObjectIntHashMap<String> mImeiToNum = new TObjectIntHashMap<String>();
 	//IMEI锁
@@ -44,7 +39,7 @@ public class UserInfoManager {
 	 * @param userName
 	 * @return
 	 */
-    public UsersInfo getUsersInfo(String userName) {
+    public UserInfo getUsersInfo(String userName) {
         mUserInfoLock.lock();
         try {
             return mNameToUsers.get(userName);
@@ -53,7 +48,7 @@ public class UserInfoManager {
         }
     }
     
-    public UsersInfo getUsersInfo(int userId) {
+    public UserInfo getUsersInfo(int userId) {
         mUserInfoLock.lock();
         try {
             return idToUser.get(userId);
@@ -66,10 +61,10 @@ public class UserInfoManager {
 	 * 放入用户信息
 	 * @param usersInfo
 	 */
-    public void putUsersInfo(UsersInfo usersInfo) {
+    public void putUsersInfo(UserInfo usersInfo) {
         mUserInfoLock.lock();
         try {
-            mNameToUsers.put(usersInfo.getUserName(), usersInfo);
+            mNameToUsers.put(usersInfo.getName(), usersInfo);
             idToUser.put(usersInfo.getId(), usersInfo);
         } finally {
             mUserInfoLock.unlock();

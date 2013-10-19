@@ -24,7 +24,7 @@ import org.jboss.netty.channel.group.ChannelGroup;
 import org.jboss.netty.channel.group.DefaultChannelGroup;
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 
-import com.tentacle.common.domain.baseinfo.UsersInfo;
+import com.tentacle.common.domain.baseinfo.UserInfo;
 import com.tentacle.common.protocol.MyCodec;
 import com.tentacle.common.util.Utils;
 import com.tentacle.login.persist.LoginDbThread;
@@ -153,10 +153,10 @@ public class LoginServer {
     private void loadUserInfo() {
         logger.info("load pending UserInfo...");
         long snap = System.currentTimeMillis();
-        ArrayList<UsersInfo> retList = new ArrayList<UsersInfo>();
+        ArrayList<UserInfo> retList = new ArrayList<UserInfo>();
         UserService.synQueryAll(retList);
         String imei = null;
-        for (UsersInfo usersInfo : retList) {
+        for (UserInfo usersInfo : retList) {
             UserInfoManager.inst().putUsersInfo(usersInfo);
             imei = usersInfo.getPhoneImei();
             if (imei != null && imei.length() > UserInfoManager.IMEI_MAX_LENGTH) {

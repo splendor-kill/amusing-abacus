@@ -45,7 +45,7 @@ CREATE TABLE User
 (
   id INT PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
-  password VARCHAR(50) NOT NULL,
+  pwd VARCHAR(50) NOT NULL,
   email VARCHAR(100),
   phoneNo VARCHAR(30),
   cardId VARCHAR(30),

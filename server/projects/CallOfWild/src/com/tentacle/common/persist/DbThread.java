@@ -1,5 +1,6 @@
 package com.tentacle.common.persist;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -15,7 +16,7 @@ import org.apache.log4j.Logger;
 
 import com.tentacle.common.persist.DatVector.Type;
 
-public class DbThread {
+public abstract class DbThread {
     private static final Logger logger = Logger.getLogger(DbThread.class);
 
     private LinkedBlockingQueue<DatVector> queue = new LinkedBlockingQueue<DatVector>();
@@ -23,14 +24,9 @@ public class DbThread {
     private ExecutorService executor = Executors.newSingleThreadExecutor();
     private Future<?> future;
     private volatile AtomicBoolean willDie = new AtomicBoolean();
-
-    protected DbService newDbService() {
-        return null;
-    }
     
-    protected int getBatchCommitSize() {
-        return 1;
-    }
+    public abstract Connection getConn();    
+    public abstract int getBatchCommitSize();
     
     public void start() {
         worker = new Worker();
@@ -46,7 +42,7 @@ public class DbThread {
             executor.shutdown();
 
             try {
-                logger.debug("DB-thread isDone[" + future.isDone() + "], isCancelled[" + future.isCancelled() + "]");
+                logger.info("DB-thread isDone[" + future.isDone() + "], isCancelled[" + future.isCancelled() + "]");
                 future.get(30, TimeUnit.SECONDS);
             } catch (ExecutionException e) {
                 logger.error(e.getMessage(), e);
@@ -54,33 +50,31 @@ public class DbThread {
                 logger.error(e.getMessage(), e);
             }
 
-            logger.debug("the DB-thread will be closed after 2 min.");
+            logger.info("the DB-thread will be closed after 2 min.");
             boolean isTerm = executor.awaitTermination(2 * 60, TimeUnit.SECONDS);
-            logger.debug("awaitTermination[" + isTerm + "]");
+            logger.info("awaitTermination[" + isTerm + "]");
             if (!isTerm) {
                 List<Runnable> lr = executor.shutdownNow();
-                logger.debug("num of awaiting execution tasks[" + lr.size() + "].");
+                logger.info("num of awaiting execution tasks[" + lr.size() + "].");
             }
         } catch (InterruptedException e) {
             logger.error(e.getMessage(), e);
         }
     }
 
-    class Worker implements Runnable {
-        private DbService daoService = newDbService();
+    private class Worker implements Runnable {        
         private final int dbBatchCommitSize = getBatchCommitSize();
 
         @Override
-        public void run() {
-            if (daoService == null) return;
+        public void run() {            
             logger.info("data storing thread id[" + Thread.currentThread().getId() + "] at work.");
             List<DatVector> olist = new ArrayList<DatVector>();
             int prevSize = 0;
             while (true) {
-                DatVector o = getDAOBject();
+                DatVector o = getObject();
                 if (o == null) {
                     if (!olist.isEmpty()) {
-                        daoService.batchSaveOrUpdate(olist);
+                        batchSaveOrUpdate(olist);
                         olist.clear();
                     }
                     Thread.yield();
@@ -92,7 +86,7 @@ public class DbThread {
                 } else {
                     olist.add(o);
                     if (olist.size() >= dbBatchCommitSize) {
-                        daoService.batchSaveOrUpdate(olist);
+                        batchSaveOrUpdate(olist);
                         olist.clear();
                     }
                 }
@@ -117,13 +111,13 @@ public class DbThread {
             }
 
             if (!olist.isEmpty()) {
-                daoService.batchSaveOrUpdate(olist);
+                batchSaveOrUpdate(olist);
                 olist.clear();
             }
         }
     }
 
-    private DatVector getDAOBject() {
+    private DatVector getObject() {
         try {
             return queue.take();
         } catch (InterruptedException e) {
@@ -143,4 +137,26 @@ public class DbThread {
         }
     }
 
+    private void batchSaveOrUpdate(List<DatVector> olist) {
+        Connection conn = null;        
+        try {
+            conn = getConn();
+            if (conn == null) return;
+            conn.setAutoCommit(false);
+            for (DatVector o : olist) {
+                DbHelper.saveOrUpdate(o.getSql(), o.getObjects(), o.getSql1(), o.getListObjects(), conn);
+            }
+            conn.commit();
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            try {
+                conn.rollback();
+            } catch (Exception ex) {
+                logger.error(ex.getMessage(), ex);
+            }
+        } finally {
+            DbConnPoolManager.close(conn);
+        }
+    }
+    
 }

@@ -1,14 +1,18 @@
 package com.tentacle.login.persist;
 
-import com.tentacle.common.persist.DbService;
+import java.sql.Connection;
+
+import com.tentacle.common.persist.DbConnPoolManager;
 import com.tentacle.common.persist.DbThread;
 
 public class LoginDbThread extends DbThread {
-    protected DbService newDbService() {
-        return new LoginDbService();
+    @Override
+    public Connection getConn() {
+        return DbConnPoolManager.getInst().getLoginDbConn();
     }
     
-    protected int getBatchCommitSize() {
+    @Override
+    public int getBatchCommitSize() {
         return 200;
     }
 
@@ -23,4 +27,5 @@ public class LoginDbThread extends DbThread {
     private LoginDbThread() {
         //singleton
     }
+    
 }

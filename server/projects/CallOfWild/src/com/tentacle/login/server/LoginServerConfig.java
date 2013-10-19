@@ -103,10 +103,10 @@ public final class LoginServerConfig implements IReloadable {
             Properties p = read();
             parse(p);
         } catch (IOException ioex) {
-            logger.error(ioex);
+            logger.error(ioex.getMessage(), ioex);
             return false;
         } catch (Exception e) {
-            logger.error(e);
+            logger.error(e.getMessage(), e);
             return false;
         }
         return true;
