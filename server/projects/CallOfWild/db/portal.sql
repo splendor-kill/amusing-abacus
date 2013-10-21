@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS portal;
+DROP DATABASE IF EXISTS cow_portal;
 
-CREATE DATABASE portal DEFAULT CHARACTER SET UTF8;
+CREATE DATABASE cow_portal DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 
-USE portal;
+USE cow_portal;
 
 /*
     服务器配置表

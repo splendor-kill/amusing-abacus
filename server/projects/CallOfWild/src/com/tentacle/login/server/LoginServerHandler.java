@@ -41,6 +41,7 @@ import com.tentacle.common.protocol.ProtoLogin.AccountReq;
 import com.tentacle.common.protocol.ProtoLogin.Authentication;
 import com.tentacle.common.protocol.ProtoLogin.VersionInfo;
 import com.tentacle.common.util.Utils;
+import com.tentacle.login.config.LoginServerConfig;
 import com.tentacle.login.designer.VersionCfg;
 import com.tentacle.login.persist.UserService;
 
@@ -177,7 +178,7 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 	
 	public static boolean isTheGuyReliable(Warrant proof) {
 		if (proof != null && proof.getAdminName().equals(LoginServerConfig.getInst().getAdminName())
-				&& proof.getCachet().equals(LoginServerConfig.getInst().getAdminKey())) {
+				&& proof.getCachet().equals(LoginServerConfig.getInst().getAdminPwd())) {
 			return true;
 		}
         logger.error("no unauthorized access");

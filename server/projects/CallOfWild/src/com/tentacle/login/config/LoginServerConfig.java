@@ -1,4 +1,4 @@
-package com.tentacle.login.server;
+package com.tentacle.login.config;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -21,13 +21,17 @@ public final class LoginServerConfig implements IReloadable {
     private int connectionClearMinute;
     private long connectionOssifyMs;
     private String adminName;
-    private String adminKey;
+    private String adminPwd;
     private String defaultChannelId;
     private int maxNumOfUsersOnSameDevice;
     private List<String> whiteDevices;
     private List<String> prepaidCardPartner;
     private long prepaidCardOpenTime;
     private long prepaidCardCloseTime;
+    private String redisIp;
+    private int redisPort;
+    private String redisPwd;
+    private int redisRetryNum;
 
     private static class LazyHolder {
         public static final LoginServerConfig INSTANCE = new LoginServerConfig();
@@ -49,7 +53,7 @@ public final class LoginServerConfig implements IReloadable {
             System.out.println("cannot reload["+inst.getName()+"].");
             return;
         }
-        System.out.println(inst.getAdminKey());
+        System.out.println(inst.getAdminPwd());
         System.out.println(inst.getAdminName());
         System.out.println(inst.getConnectionClearMinute());
         System.out.println(inst.getConnectionOssifyMs());
@@ -60,6 +64,9 @@ public final class LoginServerConfig implements IReloadable {
         System.out.println(inst.getPrepaidCardOpenTime());
         System.out.println(inst.getPrepaidCardPartner());
         System.out.println(inst.getWhiteDevices());
+        System.out.println(inst.getRedisIp());
+        System.out.println(inst.getRedisPort());
+        System.out.println(inst.getRedisPwd());
     }
 
     private Properties read() throws IOException {
@@ -83,7 +90,7 @@ public final class LoginServerConfig implements IReloadable {
         str = p.getProperty("portal.connection_ossify_minute", "5");
         connectionOssifyMs = Integer.parseInt(str) * 60 * 1000;            
         adminName = p.getProperty("portal.admin_name", "admin");
-        adminKey = p.getProperty("portal.admin_key", "");            
+        adminPwd = p.getProperty("portal.admin_pwd", "");            
         defaultChannelId = p.getProperty("portal.default_channel_id", "1234567890");            
         str = p.getProperty("portal.max_num_of_users_on_same_device", "5");
         maxNumOfUsersOnSameDevice = Integer.parseInt(str);
@@ -95,6 +102,13 @@ public final class LoginServerConfig implements IReloadable {
         prepaidCardOpenTime = (long) Utils.getTimePeriodInMs(str);
         str = p.getProperty("portal.prepaid_card_time_close", "");
         prepaidCardCloseTime = (long) Utils.getTimePeriodInMs(str);
+        redisIp = p.getProperty("portal.redis_ip", "localhost");
+        str = p.getProperty("portal.redis_port", "6379");
+        redisPort = Integer.parseInt(str);
+        redisPwd = p.getProperty("portal.redis_auth_code", "");
+        str = p.getProperty("portal.redis_retry_num", "3");
+        redisRetryNum = Integer.parseInt(str);
+        
     }
     
     @Override
@@ -133,8 +147,8 @@ public final class LoginServerConfig implements IReloadable {
         return adminName;
     }
 
-    public String getAdminKey() {
-        return adminKey;
+    public String getAdminPwd() {
+        return adminPwd;
     }
 
     public String getDefaultChannelId() {
@@ -159,6 +173,22 @@ public final class LoginServerConfig implements IReloadable {
 
     public long getPrepaidCardCloseTime() {
         return prepaidCardCloseTime;
+    }
+
+    public String getRedisIp() {
+        return redisIp;
+    }
+
+    public int getRedisPort() {
+        return redisPort;
+    }
+
+    public String getRedisPwd() {
+        return redisPwd;
+    }
+
+    public int getRedisRetryNum() {
+        return redisRetryNum;
     }
 
 }

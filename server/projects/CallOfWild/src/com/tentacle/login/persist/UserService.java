@@ -1,10 +1,16 @@
 package com.tentacle.login.persist;
 
+import gnu.trove.map.TObjectIntMap;
+import gnu.trove.map.hash.TObjectIntHashMap;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 
@@ -107,4 +113,48 @@ public class UserService {
         LoginDbThread.getInst().addObject(daoBject);
     }
 
+    public static List<String> queryAllUserName() {
+        List<String> allUserName = new ArrayList<String>();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        Connection conn = DbConnPoolManager.getInst().getLoginDbConn();        
+        try {
+            final String SQL = "SELECT name FROM User";
+            pstmt = conn.prepareStatement(SQL, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {           
+                allUserName.add(rs.getString("name"));
+            }
+        } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
+        } finally {
+            DbHelper.close(pstmt);
+            DbHelper.close(rs);
+            DbConnPoolManager.close(conn);
+        }
+        return allUserName;
+    }
+    
+    public static Map<String, Integer> queryImei() {
+        Map<String, Integer> imei = new HashMap<String, Integer>();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        Connection conn = DbConnPoolManager.getInst().getLoginDbConn();        
+        try {
+            final String SQL = "SELECT u.phoneImei AS imei, COUNT(*) AS num FROM User u GROUP BY u.phoneImei";
+            pstmt = conn.prepareStatement(SQL, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {           
+                imei.put(rs.getString("imei"), rs.getInt("num"));
+            }
+        } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
+        } finally {
+            DbHelper.close(pstmt);
+            DbHelper.close(rs);
+            DbConnPoolManager.close(conn);
+        }
+        return imei;
+    }
+    
 }

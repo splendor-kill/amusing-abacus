@@ -28,12 +28,12 @@ public class UserInfoManager {
 	
 	public static UserInfoManager gUserInfoManager = null;
 	
-    public static UserInfoManager inst() {
-        if (null == gUserInfoManager) {
-            gUserInfoManager = new UserInfoManager();
-        }
-        return gUserInfoManager;
-    }
+//    public static UserInfoManager inst() {
+//        if (null == gUserInfoManager) {
+//            gUserInfoManager = new UserInfoManager();
+//        }
+//        return gUserInfoManager;
+//    }
 
     public UserInfo getUsersInfo(String userName) {
         mUserInfoLock.lock();

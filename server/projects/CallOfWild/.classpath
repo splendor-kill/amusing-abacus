@@ -32,5 +32,8 @@
 	<classpathentry kind="lib" path="lib/trove-3.0.3.jar" sourcepath="D:/peer/trove-3.0.3/3.0.3/trove-3.0.3-src.jar"/>
 	<classpathentry kind="lib" path="lib/ecj-3.7.2.jar"/>
 	<classpathentry kind="lib" path="lib/gson-2.2.2.jar"/>
+	<classpathentry kind="lib" path="lib/jedis-2.2.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/jedis-2.1.0.jar"/>
+	<classpathentry kind="lib" path="lib/commons-pool-1.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
