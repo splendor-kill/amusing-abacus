@@ -1,8 +1,5 @@
 package com.tentacle.login.server;
 
-import gnu.trove.map.TObjectIntMap;
-import gnu.trove.procedure.TObjectIntProcedure;
-
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -78,31 +75,46 @@ public class RedisTeamster {
     }
     
         
-    public void loadUserName() {
-        Jedis jedis = getJedis();
-        if (jedis.get("username.cached").equals("yes")) return;
-        
-        List<String> allUserName = UserService.queryAllUserName();
-        for (String un : allUserName) {
-            jedis.sadd("all_user_name", un); 
-        }
-        jedis.set("username.cached", "yes");
-    }
+//    public void loadUserName() {
+//        Jedis jedis = getJedis();
+////        if (jedis.get("username.cached").equals("yes")) return;
+//        
+//        List<String> allUserName = UserService.queryAllUserName();
+//        for (String un : allUserName) {
+//            jedis.sadd("all_user_name", un); 
+//        }
+////        jedis.set("username.cached", "yes");
+//    }
     
-    public void loadImeiCount() {
-        final Jedis jedis = getJedis();
-        if (jedis.get("imei_count.cached").equals("yes")) return;
-        
-        Map<String, Integer> imeiCount = UserService.queryImei();
-        for (Entry<String, Integer> e : imeiCount.entrySet()) {
-            jedis.hset("imei_count", e.getKey(), e.getValue().toString());
-        }
-        jedis.set("imei_count.cached", "yes");
-    }
+//    public void loadImeiCount() {
+//        final Jedis jedis = getJedis();
+////        if (jedis.get("imei_count.cached").equals("yes")) return;
+//        
+//        Map<String, Integer> imeiCount = UserService.queryImei();
+//        for (Entry<String, Integer> e : imeiCount.entrySet()) {
+//            jedis.hset("imei_count", e.getKey(), e.getValue().toString());
+//        }
+////        jedis.set("imei_count.cached", "yes");
+//    }
     
     public boolean isUserNameDuplicated(String name) {
         return getJedis().sismember("all_user_name", name);
     }
     
+    public int getImeiNum(String imei) {
+        return Integer.parseInt(getJedis().hget("imei_to_num", imei));
+    }
     
+    public void setImeiNum(String imei) {
+        getJedis().hsetnx("imei_to_num", imei, "0");
+        getJedis().hincrBy("imei_to_num", imei, 1);
+    }
+    
+    public int getNextUserId() {
+        return getJedis().incr("max_user_id").intValue();
+    }
+    
+    public void cacheUserName(String userName) {
+        getJedis().sadd("all_user_name", userName);
+    }
 }

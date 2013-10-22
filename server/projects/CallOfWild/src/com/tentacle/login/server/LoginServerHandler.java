@@ -246,22 +246,23 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 		UserInfo userInfo = new UserInfo();
 		String name = acc.getName();		
 		//有重名
-		if (UserInfoManager.inst().getUsersInfo(name) != null) {
+		if (RedisTeamster.getInst().isUserNameDuplicated(name)) {
 			return eErrorCode.NAME_DUPLICATED;
 		}
 		
-		String imei = acc.getPhoneImei();
-		//有效的IMEI
+        String imei = acc.getPhoneImei();
+		int imeiNum = RedisTeamster.getInst().getImeiNum(imei);
+
 		if (imei != null && imei.length() > UserInfoManager.IMEI_MAX_LENGTH) {
 		    if (!LoginServerConfig.getInst().getWhiteDevices().contains(imei) 
-		            && UserInfoManager.inst().getImeiNum(imei) >= LoginServerConfig.getInst().getMaxNumOfUsersOnSameDevice()) {
+		            && imeiNum >= LoginServerConfig.getInst().getMaxNumOfUsersOnSameDevice()) {
 	            return eErrorCode.TOO_MANY_GHOST_PROFILE;
 			}
-			//IMEI计数
-			UserInfoManager.inst().putImei(imei);
+			
+		    RedisTeamster.getInst().setImeiNum(imei);
 		}
-        //设置新用户ID 
-		userInfo.setId(UserInfoManager.inst().getNextUserId());
+
+		userInfo.setId(RedisTeamster.getInst().getNextUserId());
 		userInfo.setName(name);
 		userInfo.setPwd(Utils.md5(acc.getPassword()));
 		userInfo.setEmail(acc.getEmail());
@@ -278,9 +279,8 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 		userInfo.setPhoneManufacturer(acc.getPhoneManufacturer());
 		userInfo.setPhoneImei(acc.getPhoneImei());
 		userInfo.setPhoneMac(acc.getPhoneMac());
-		//放入用户到内存中
-		UserInfoManager.inst().putUsersInfo(userInfo);
-		//保存用户到数据库
+		
+		RedisTeamster.getInst().cacheUserName(name);		
 		UserService.asynSave(userInfo);
 		
 		return eErrorCode.OK;
