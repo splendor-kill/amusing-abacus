@@ -15,13 +15,13 @@ import com.tentacle.common.persist.DbHelper;
 
 public class ServerConfigService {
     private static final Logger logger = Logger.getLogger(ServerConfigService.class);
-    private static final String SERVERLIST_QUERY = "SELECT * FROM ServerConfig ORDER BY id";
+    private static final String SERVERLIST_QUERY = "SELECT * FROM ServerConfig ORDER BY serverId";
 
-    public List<ServerConfigInfo> queryServerList() {
+    public static List<ServerConfigInfo> queryServerList() {
         List<ServerConfigInfo> serverList = new ArrayList<ServerConfigInfo>();
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        Connection conn = DbConnPoolManager.getInst().getLoginDbConn();        
+        Connection conn = DbConnPoolManager.getInst().getLoginDbConn();
         try {
             pstmt = conn.prepareStatement(SERVERLIST_QUERY, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             rs = pstmt.executeQuery();
@@ -46,5 +46,5 @@ public class ServerConfigService {
         }
         return serverList;
     }
-    
+
 }

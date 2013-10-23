@@ -1,12 +1,8 @@
 package com.tentacle.login.server;
 
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -42,42 +38,22 @@ import com.tentacle.common.protocol.ProtoLogin.Authentication;
 import com.tentacle.common.protocol.ProtoLogin.VersionInfo;
 import com.tentacle.common.util.Utils;
 import com.tentacle.login.config.LoginServerConfig;
-import com.tentacle.login.designer.VersionCfg;
+import com.tentacle.login.designer.VersionConfig;
 import com.tentacle.login.persist.UserService;
 
 public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 	private static final Logger logger = Logger.getLogger(LoginServerHandler.class);
-	
-	//private static ServerConfigService serverConfigService = new ServerConfigService();
-	private static List<ServerConfigInfo> serversInfo;
-	
-    // file name --> config file
-    private static Set<IReloadable> reloadableFiles = new HashSet<IReloadable>();
+		
     // user id --> session    
     private static ConcurrentMap<Integer, Session> sessionMgr = new ConcurrentHashMap<Integer, Session>();
     
     private static Map<String, String> channel2Platform = new HashMap<String, String>() {
         private static final long serialVersionUID = 8761755010342812032L;
         {
-
         }
     };
     
     private LoginServer loginServer;
-    
-    static {
-        reloadableFiles.add(VersionCfg.getInstance());
-//        serversInfo = serverConfigService.queryServerList();
-        Collections.reverse(serversInfo);
-    }
-
-    private static IReloadable getReloadable(String name) {
-        for (IReloadable r : reloadableFiles) {
-            if (r.getName().equals(name))
-                return r;
-        }
-        return null;
-    }
 
     public LoginServerHandler(LoginServer loginServer) {
         super();
@@ -147,15 +123,14 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 			    handleSysPwdReset(ch, SysPwdReset.parseFrom(cocoon.dat));
 			    break;
 			default:
-				logger.debug("what are you doing?");
+				logger.debug("ingore you.");
 				ch.close();
-//				ctx.sendUpstream(e);
 				return;
 			}
 		} catch (InvalidProtocolBufferException ex) {
 			logger.error("decode", ex);
 		}  catch (Exception ex) {
-            logger.error(ex);            
+            logger.error(ex.getMessage(), ex);            
         } finally {
 			long offTime = System.currentTimeMillis() - startTime;
 
@@ -181,7 +156,7 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 				&& proof.getCachet().equals(LoginServerConfig.getInst().getAdminPwd())) {
 			return true;
 		}
-        logger.error("no unauthorized access");
+        logger.debug("no unauthorized access");
 		return false;
 	}
 	
@@ -201,7 +176,7 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 		    if (channel == null || channel.trim().isEmpty()) {
 		        channel = LoginServerConfig.getInst().getDefaultChannelId();
 		    }
-			VersionCfg verCfg = VersionCfg.getInstance().getVersionInfo(channel, data.getPlatformDesc());
+			VersionConfig verCfg = VersionConfig.getInst().getVersionInfo(channel, data.getPlatformDesc());
 			if (verCfg == null) {
 				ans.setErrCode(eErrorCode.YOU_DONT_HAVE_SATISFY_ME);
 				break;
@@ -342,11 +317,7 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 
             ans.setSessionKey(sessionKey).setName(name).setUserId(userId);
             
-            if (serversInfo == null) {
-                ans.setErrCode(eErrorCode.FAILED);
-                break;
-            }
-            for (ServerConfigInfo cfg : serversInfo) {
+            for (ServerConfigInfo cfg : GameServerMonitor.getInst().getServersInfo()) {
                 ans.addServers(cfg.toNet());
             }
 		} while (false);
@@ -382,27 +353,26 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 
 		do {
 			String which = data.getWhichCfg();
-			IReloadable cfg = getReloadable(which);
+			IReloadable cfg = loginServer.getReloadable(which);
 			if (cfg != null) {
 				boolean retVal = cfg.reload();
                 logger.debug("[" + data.getProof().getAdminName() + "] reload[" + which + "] " 
                         + (retVal ? "succ" : "failed") + " at " + (new Date()) + ".");
             }
 			
-		} while (false);
-		
+		} while (false);		
 	}
 	
 	public void handleSrvStatus(Channel ch, SysRefreshServerStatus data) {
-		if (data != null) {
-			for (ServerConfigInfo cfg : serversInfo) {
-				if (cfg.getId() == data.getServerId()) {
-					cfg.setSrvTime(System.currentTimeMillis());
-					cfg.setGameSrvStatus(data.getBusyDegree());
-					break;
-				}
-			}
-		}
+		if (data == null)
+		    return;
+        for (ServerConfigInfo cfg : GameServerMonitor.getInst().getServersInfo()) {
+            if (cfg.getId() == data.getServerId()) {
+                cfg.setSrvTime(System.currentTimeMillis());
+                cfg.setGameSrvStatus(data.getBusyDegree());
+                break;
+            }
+        }
 	}
 	
 	public void handleSysGetSession(Channel ch, SysGetSession data) {
@@ -452,7 +422,7 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
         return s;
     }
     
-    private static Instruction.Builder makeCmd(InstructionOrBuilder cmd) {
+    private Instruction.Builder makeCmd(InstructionOrBuilder cmd) {
         eCommand newCmd;
         long cmdId;
         try {

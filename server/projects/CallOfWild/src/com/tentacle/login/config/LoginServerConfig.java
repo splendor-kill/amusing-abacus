@@ -43,7 +43,7 @@ public final class LoginServerConfig implements IReloadable {
     }
     
     private LoginServerConfig() {
-        //singleton
+        // singleton
     }
    
     public static void main(String[] args) {

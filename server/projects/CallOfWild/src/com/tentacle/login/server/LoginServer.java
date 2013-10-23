@@ -3,8 +3,9 @@ package com.tentacle.login.server;
 import static org.jboss.netty.channel.Channels.pipeline;
 
 import java.net.InetSocketAddress;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -24,12 +25,12 @@ import org.jboss.netty.channel.group.ChannelGroup;
 import org.jboss.netty.channel.group.DefaultChannelGroup;
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 
-import com.tentacle.common.domain.baseinfo.UserInfo;
+import com.tentacle.common.contract.IReloadable;
 import com.tentacle.common.protocol.MyCodec;
 import com.tentacle.common.util.Utils;
 import com.tentacle.login.config.LoginServerConfig;
+import com.tentacle.login.designer.VersionConfig;
 import com.tentacle.login.persist.LoginDbThread;
-import com.tentacle.login.persist.UserService;
 
 public class LoginServer {
     private static final Logger logger = Logger.getLogger(LoginServer.class);
@@ -42,14 +43,24 @@ public class LoginServer {
     // channel --> the moment of the channel open
     private ConcurrentMap<Channel, Long> liveChannel = new ConcurrentHashMap<Channel, Long>();
     
+    private Set<IReloadable> reloadableFiles = new HashSet<IReloadable>();
+
+    
     private void init() {
-        LoginServerConfig.getInst().reload();
+        reloadableFiles.add(LoginServerConfig.getInst());
+        reloadableFiles.add(VersionConfig.getInst());
+        reloadableFiles.add(GameServerMonitor.getInst());
+        
+        for (IReloadable r : reloadableFiles) {
+            if (!r.reload())
+                return;
+        }
+    
         boolean isOk = RedisTeamster.getInst().init();
         if (!isOk) {
             logger.error("init redis failed.");
             return;
         }
-//        loadUserInfo();
         LoginDbThread.getInst().start();
         startNet();
         startSlaughterZombie();
@@ -156,27 +167,13 @@ public class LoginServer {
         logger.info("login-server init completed, wait your command...");
     }
     
-//    private void loadUserInfo() {
-//        logger.info("load pending UserInfo...");
-//        long snap = System.currentTimeMillis();
-//        ArrayList<UserInfo> retList = new ArrayList<UserInfo>();
-//        UserService.synQueryAll(retList);
-//        String imei = null;
-//        for (UserInfo usersInfo : retList) {
-//            UserInfoManager.inst().putUsersInfo(usersInfo);
-//            imei = usersInfo.getPhoneImei();
-//            if (imei != null && imei.length() > UserInfoManager.IMEI_MAX_LENGTH) {
-//                UserInfoManager.inst().putImei(usersInfo.getPhoneImei());
-//            }
-//        }
-//
-//        int maxId = UserService.synQueryMaxId();
-//        UserInfoManager.inst().setCurMaxUserId(maxId);
-//  
-//        retList.clear();
-//        logger.debug("load pending UserInfo spend [" + (System.currentTimeMillis() - snap) + "] ms");
-//    }
-
+    public IReloadable getReloadable(String name) {
+        for (IReloadable r : reloadableFiles) {
+            if (r.getName().equals(name))
+                return r;
+        }
+        return null;
+    }
     
     public static void main(String[] args) {
         PropertyConfigurator.configure(Utils.INBORN_LOG_CONFIG);

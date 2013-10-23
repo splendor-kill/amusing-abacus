@@ -1,20 +1,17 @@
 package com.tentacle.login.designer;
 
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.tentacle.common.contract.IReloadable;
-import com.tentacle.common.util.Utils;
+import com.tentacle.common.designer.CsvLoader;
 
-import au.com.bytecode.opencsv.CSVReader;
-import au.com.bytecode.opencsv.bean.CsvToBean;
-import au.com.bytecode.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;
+public class VersionConfig extends CsvLoader<VersionConfig> implements IReloadable  {
+    private static final String FILE_NAME = "res/VersionConfig.csv";
 
-
-
-public class VersionCfg implements IReloadable {
-	private int majorVer;
+    private int majorVer;
 	private int minorVer;
 	private String pkgUrl;//resource package url
 	private String platform;
@@ -26,49 +23,21 @@ public class VersionCfg implements IReloadable {
     private String activityUrl;
     private String rechargeNotifyUrl;
     private String tempCredentialUrl;
-    private String tokenCredentialUrl;            
-
-	private static final String file_name = "res/Versioncfg.csv";
-	private static VersionCfg inst = null;
-	private List<VersionCfg> list;
-
-	public static VersionCfg getInstance() {
-		if (inst == null) {
-			inst = new VersionCfg();
-			inst.load(file_name);
-		}
-		return inst;
-	}
-
-	private void load(String filename) {
-		CSVReader reader = null;
-		try {
-			reader = new CSVReader(Utils.getUtf8Reader(filename));
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-
-		HeaderColumnNameTranslateMappingStrategy<VersionCfg> strat = new HeaderColumnNameTranslateMappingStrategy<VersionCfg>();
-		strat.setColumnMapping(columnMapping);
-		strat.setType(VersionCfg.class);
-		CsvToBean<VersionCfg> csv = new CsvToBean<VersionCfg>();
-
-		try {
-			list = csv.parse(strat, reader);
-		} catch (java.lang.RuntimeException e) {
-			System.out.println("data error, check file[" + file_name+ "] please");
-		} finally {
-			try {
-				if (reader != null)
-					reader.close();
-			} catch (IOException e) {
-			}
-		}
-	}
-
-    public VersionCfg getVersionInfo(String channelId, String platform) {
-        System.out.println("getVersionInfo("+channelId+", "+platform+")");
-        for (VersionCfg term : list) {
+    private String tokenCredentialUrl;
+	
+    private List<VersionConfig> list;
+	
+    private static class LazyHolder {
+        public static final VersionConfig INSTANCE = new VersionConfig();
+    }
+        
+    public static VersionConfig getInst() {
+        return LazyHolder.INSTANCE;
+    }
+	
+    public VersionConfig getVersionInfo(String channelId, String platform) {
+        System.out.println("getVersionInfo(" + channelId + ", " + platform + ")");
+        for (VersionConfig term : list) {
             if (term.getChannelId().equals(channelId)
                     && term.getPlatform().equalsIgnoreCase(platform)) {
                 return term;
@@ -97,8 +66,9 @@ public class VersionCfg implements IReloadable {
 	};
 
     public static void main(String[] args) {
-        VersionCfg verCfg = VersionCfg.getInstance();
-        for (VersionCfg cfg : verCfg.list) {
+        VersionConfig verCfg = VersionConfig.getInst();
+        verCfg.reload();
+        for (VersionConfig cfg : verCfg.list) {
             System.out.println(cfg.getMajorVer() + " " + cfg.getMinorVer() + " " + cfg.getPlatform()
                     + " " + cfg.getCompulsive() + " " + cfg.getPkgUrl() + " " + cfg.getAppRes()
                     + " " + cfg.getAppUrl() + " " + cfg.getChannelId() + " " + cfg.getHelpUrl()
@@ -107,7 +77,7 @@ public class VersionCfg implements IReloadable {
         }
         
         if (args.length == 2) {
-            VersionCfg cfg = verCfg.getVersionInfo(args[0], args[1]);
+            VersionConfig cfg = verCfg.getVersionInfo(args[0], args[1]);
             if (cfg == null) {
                 System.out.println("the version not found with channel["+args[0]+"], platform["+args[1]+"]");
             } else {
@@ -162,14 +132,15 @@ public class VersionCfg implements IReloadable {
 
 	@Override
 	public boolean reload() {
-		list.clear();
-		load(file_name);
+	    if (list != null)
+	        list.clear();
+		load();
 		return true;
 	}
 
 	@Override
 	public String getName() {
-		return "Versioncfg";
+		return "VersionConfig";
 	}
 
     public String getAppUrl() {
@@ -226,6 +197,26 @@ public class VersionCfg implements IReloadable {
 
     public void setTokenCredentialUrl(String tokenCredentialUrl) {
         this.tokenCredentialUrl = tokenCredentialUrl;
+    }
+
+    @Override
+    protected String getCsvFileName() {
+        return FILE_NAME;
+    }
+
+    @Override
+    protected Map<String, String> getColumnMapping() {
+        return columnMapping;
+    }
+
+    @Override
+    protected void realDo(List<VersionConfig> list) {
+        this.list = list;
+    }
+
+    @Override
+    protected Class<VersionConfig> getClassType() {        
+        return VersionConfig.class;
     }
 
 

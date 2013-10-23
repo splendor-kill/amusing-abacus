@@ -15,11 +15,12 @@ import com.tentacle.common.util.Utils;
 public abstract class CsvLoader<T> {
     private static final Logger logger = Logger.getLogger(CsvLoader.class);
     
-    private Class<T> tClassType;
+    private Class<T> tClassType;    
     
     protected abstract String getCsvFileName();
     protected abstract Map<String, String> getColumnMapping();
     protected abstract void realDo(List<T> list);
+    protected abstract Class<T> getClassType();
     
     public void load() {
         String file = getCsvFileName();
@@ -33,7 +34,7 @@ public abstract class CsvLoader<T> {
         HeaderColumnNameTranslateMappingStrategy<T> strat = new HeaderColumnNameTranslateMappingStrategy<T>();
         strat.setColumnMapping(getColumnMapping());
 
-        strat.setType(tClassType);
+        strat.setType(getClassType());
         CsvToBean<T> csv = new CsvToBean<T>();
 
         try {
