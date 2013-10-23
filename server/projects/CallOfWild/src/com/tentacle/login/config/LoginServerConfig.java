@@ -23,6 +23,7 @@ public final class LoginServerConfig implements IReloadable {
     private String adminName;
     private String adminPwd;
     private String defaultChannelId;
+    private int minLengthOfImei;
     private int maxNumOfUsersOnSameDevice;
     private List<String> whiteDevices;
     private List<String> prepaidCardPartner;
@@ -67,6 +68,7 @@ public final class LoginServerConfig implements IReloadable {
         System.out.println(inst.getRedisIp());
         System.out.println(inst.getRedisPort());
         System.out.println(inst.getRedisPwd());
+        System.out.println(inst.getMinLengthOfImei());
     }
 
     private Properties read() throws IOException {
@@ -108,6 +110,8 @@ public final class LoginServerConfig implements IReloadable {
         redisPwd = p.getProperty("portal.redis_auth_code", "");
         str = p.getProperty("portal.redis_retry_num", "3");
         redisRetryNum = Integer.parseInt(str);
+        str = p.getProperty("portal.min_length_of_imei", "10");
+        minLengthOfImei = Integer.parseInt(str);
         
     }
     
@@ -189,6 +193,10 @@ public final class LoginServerConfig implements IReloadable {
 
     public int getRedisRetryNum() {
         return redisRetryNum;
+    }
+
+    public int getMinLengthOfImei() {
+        return minLengthOfImei;
     }
 
 }

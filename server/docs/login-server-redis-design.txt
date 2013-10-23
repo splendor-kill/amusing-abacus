@@ -1,0 +1,16 @@
+﻿1. hash key : "all_user_name"
+      field : user_id
+      value : a int
+(persistent)
+
+2. hash key : user_id, 
+      field : "user_pwd"
+      value : a string
+(expire)
+
+3. hash key : "imei_to_num"
+      field : imei
+      value : a string
+
+4. string key : "max_user_id"
+        value : a int

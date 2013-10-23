@@ -1,8 +1,7 @@
 package com.tentacle.login.server;
 
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 
@@ -12,7 +11,6 @@ import redis.clients.jedis.JedisPoolConfig;
 
 import com.tentacle.login.config.LoginServerConfig;
 import com.tentacle.login.config.RedisConfig;
-import com.tentacle.login.persist.UserService;
 
 public class RedisTeamster {
     private static final Logger logger = Logger.getLogger(RedisTeamster.class);
@@ -97,8 +95,8 @@ public class RedisTeamster {
 ////        jedis.set("imei_count.cached", "yes");
 //    }
     
-    public boolean isUserNameDuplicated(String name) {
-        return getJedis().sismember("all_user_name", name);
+    public boolean existUserName(String name) {
+        return getJedis().hexists("all_user_name", name);
     }
     
     public int getImeiNum(String imei) {
@@ -114,7 +112,38 @@ public class RedisTeamster {
         return getJedis().incr("max_user_id").intValue();
     }
     
-    public void cacheUserName(String userName) {
-        getJedis().sadd("all_user_name", userName);
+    public void saveUserName(final String userName, int userId) {
+        final String strUserId = Integer.toString(userId);
+        getJedis().hmset("all_user_name", new HashMap<String, String>() {
+            private static final long serialVersionUID = 1L;            
+            {
+                put(userName, strUserId);
+            }
+        });
     }
+    
+    public void cacheUserPwd(int userId, final String pwd) {
+        final String strUserId = Integer.toString(userId);
+        getJedis().hmset(strUserId, new HashMap<String, String>() {
+            private static final long serialVersionUID = 1L;
+            {
+                // put("user_name", userName);
+                put("user_pwd", pwd);
+            }
+        });
+        getJedis().expire(strUserId, RedisConfig.getExpireTime());
+    }
+    
+    public String getUserId(String userName) {
+        return getJedis().hget("all_user_name", userName);
+    }
+    
+    public String getUserPwd(String strUserId) {
+        return getJedis().hget(strUserId, "user_pwd");
+    }
+    
+    public void renewExpireTime(String key) {
+        getJedis().expire(key, RedisConfig.getExpireTime());
+    }
+    
 }

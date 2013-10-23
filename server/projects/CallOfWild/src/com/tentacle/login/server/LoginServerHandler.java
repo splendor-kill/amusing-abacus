@@ -244,16 +244,16 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 
 	private eErrorCode saveUser(Account acc) {
 		UserInfo userInfo = new UserInfo();
-		String name = acc.getName();		
-		//有重名
-		if (RedisTeamster.getInst().isUserNameDuplicated(name)) {
+		String name = Utils.normalizeWord(acc.getName());
+
+		if (RedisTeamster.getInst().existUserName(name)) {
 			return eErrorCode.NAME_DUPLICATED;
 		}
 		
         String imei = acc.getPhoneImei();
 		int imeiNum = RedisTeamster.getInst().getImeiNum(imei);
 
-		if (imei != null && imei.length() > UserInfoManager.IMEI_MAX_LENGTH) {
+		if (imei != null && imei.length() > LoginServerConfig.getInst().getMinLengthOfImei()) {
 		    if (!LoginServerConfig.getInst().getWhiteDevices().contains(imei) 
 		            && imeiNum >= LoginServerConfig.getInst().getMaxNumOfUsersOnSameDevice()) {
 	            return eErrorCode.TOO_MANY_GHOST_PROFILE;
@@ -262,9 +262,11 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 		    RedisTeamster.getInst().setImeiNum(imei);
 		}
 
-		userInfo.setId(RedisTeamster.getInst().getNextUserId());
+		int userId = RedisTeamster.getInst().getNextUserId();
+		userInfo.setId(userId);
 		userInfo.setName(name);
-		userInfo.setPwd(Utils.md5(acc.getPassword()));
+		String pwd = Utils.md5(acc.getPassword());
+		userInfo.setPwd(pwd);
 		userInfo.setEmail(acc.getEmail());
 		userInfo.setCardId(acc.getCardId());
 		userInfo.setPhoneNo(acc.getPhoneNo());
@@ -280,7 +282,8 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 		userInfo.setPhoneImei(acc.getPhoneImei());
 		userInfo.setPhoneMac(acc.getPhoneMac());
 		
-		RedisTeamster.getInst().cacheUserName(name);		
+		RedisTeamster.getInst().saveUserName(name, userId);
+		RedisTeamster.getInst().cacheUserPwd(userId, pwd);
 		UserService.asynSave(userInfo);
 		
 		return eErrorCode.OK;
@@ -288,42 +291,53 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 	
 	public void handleLogin(Channel ch, AccountReq accountReqDat) {
 		Account acc = accountReqDat.getAccount();
-		String name = acc.getName();
-		String pass = acc.getPassword();	
+		String name = Utils.normalizeWord(acc.getName());
+		String pwd = Utils.md5(acc.getPassword());	
 		String clientVer = acc.getClientVersion();
 
 		AccountAns.Builder ans = AccountAns.newBuilder()
 				.setCmd(makeCmd(accountReqDat.getCmd()))
 				.setErrCode(eErrorCode.OK);
 		
-		do {
-            UserInfo user = UserInfoManager.inst().getUsersInfo(name);
-            //无此用户
-            if (null == user) {
+		do {		    
+            if (!RedisTeamster.getInst().existUserName(name)) {
                 ans.setErrCode(eErrorCode.ERR_NAME_OR_PASSWORD).setName(name);
                 break;
             }
-            //错误密码
-            String password = Utils.md5(pass);
-            if (!password.equals(user.getPwd())) {
-            	ans.setErrCode(eErrorCode.ERR_NAME_OR_PASSWORD).setName(name);
+            
+            String strUserId = RedisTeamster.getInst().getUserId(name);
+            if (strUserId == null) {
+                ans.setErrCode(eErrorCode.ERR_NAME_OR_PASSWORD).setName(name);
                 break;
             }
             
-            int userId = user.getId();
+            int userId = Integer.parseInt(strUserId);
+            
+            String userPwd = RedisTeamster.getInst().getUserPwd(strUserId);
+            if (userPwd != null) {                
+                RedisTeamster.getInst().renewExpireTime(strUserId);
+            } else {
+                UserInfo info = UserService.queryByUserId(userId);
+                if (info == null) {
+                    ans.setErrCode(eErrorCode.ERR_NAME_OR_PASSWORD).setName(name);
+                    break;
+                }
+                userPwd = info.getPwd();
+                RedisTeamster.getInst().cacheUserPwd(userId, userPwd);
+            }
+       
+            if (!pwd.equals(userPwd)) {
+                ans.setErrCode(eErrorCode.ERR_NAME_OR_PASSWORD).setName(name);
+                break;
+            }
+            
             Session ss = acquireSession(userId);
             String sessionKey = ss.getSessionKey();
             if (clientVer == null || clientVer.isEmpty()) {
                 ss.setSessionKey(sessionKey);
-            } else {
-                double ver = 0.0;
-                try {
-                    ver = Double.parseDouble(clientVer);
-                } catch (NumberFormatException e) {
-                    ans.setErrCode(eErrorCode.YOU_DONT_HAVE_SATISFY_ME);
-                    break;
-                }
-
+            } else {              
+                ans.setErrCode(eErrorCode.YOU_DONT_HAVE_SATISFY_ME);
+                break;
             }
 
             ans.setSessionKey(sessionKey).setName(name).setUserId(userId);
@@ -457,11 +471,9 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
             return;
         }
         int userId = data.getUserId();
-        String md5val = data.getNewPwd();
-        md5val = Utils.md5(md5val);
+        String md5val = Utils.md5(data.getNewPwd());
+        RedisTeamster.getInst().cacheUserPwd(userId, md5val);       
         UserService.resetPwd(userId, md5val);
-        UserInfo user = UserInfoManager.inst().getUsersInfo(userId);
-        user.setPwd(md5val);
         logger.error("["+data.getProof().getAdminName()+"] reset password of user["+userId+"]");
     }
 	

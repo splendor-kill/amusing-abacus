@@ -17,4 +17,9 @@ public class RedisConfig {
     public static int getTimeout() {
         return 1000 * 60 * 5;
     }
+    
+    public static int getExpireTime() {// in second
+        return 60;// * 60 * 24 * 10;
+    }
+    
 }

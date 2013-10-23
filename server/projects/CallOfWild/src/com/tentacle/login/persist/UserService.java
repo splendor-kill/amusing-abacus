@@ -157,4 +157,30 @@ public class UserService {
         return imei;
     }
     
+    public static UserInfo queryByUserId(int userId) {
+        UserInfo userInfo = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        Connection conn = DbConnPoolManager.getInst().getLoginDbConn();       
+        try {
+            final String SQL = "SELECT pwd FROM User WHERE id=" + userId;
+            pstmt = conn.prepareStatement(SQL, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                userInfo = new UserInfo();
+                userInfo.setId(userId);
+                userInfo.setPwd(rs.getString("pwd"));
+                break;
+            }
+        } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
+        } finally {
+            DbHelper.close(pstmt);
+            DbHelper.close(rs);
+            DbConnPoolManager.close(conn);
+        }
+        return userInfo;
+    }
+    
+    
 }
