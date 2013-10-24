@@ -39,8 +39,8 @@ public class GameServerHandler extends SimpleChannelUpstreamHandler {
 			
 		Cocoon cocoon = (Cocoon) e.getMessage();
 		try {
-			GameServer.getInstance().addMsg(new GameServer.ReqDat(e.getChannel(), cocoon));
-			logger.debug("queue size["+GameServer.getInstance().getReqQueueSize()+"]");
+			GameServer.getInst().addMsg(new GameServer.ReqDat(e.getChannel(), cocoon));
+			logger.debug("queue size["+GameServer.getInst().getReqQueueSize()+"]");
 		} catch (InterruptedException e1) {			
 		} catch (Exception ex) {			
 		} 	
@@ -49,7 +49,7 @@ public class GameServerHandler extends SimpleChannelUpstreamHandler {
 
     @Override
     public void channelOpen(ChannelHandlerContext ctx, ChannelStateEvent e) {
-        GameServer.getInstance().getCarrier().addChannel(e.getChannel());
+        GameServer.getInst().getCarrier().addChannel(e.getChannel());
     }
 	
 	

@@ -24,7 +24,6 @@ import com.tentacle.login.persist.LoginDbThread;
 
 public class GameServer {
 	private static final Logger logger = Logger.getLogger(GameServer.class);
-	private static GameServer server;
 
 	private String adminName;
 	private String adminKey;
@@ -51,20 +50,14 @@ public class GameServer {
         public Cocoon cocoon;
     }
 
-    public static GameServer getInstance() {
-        if (server == null) {
-            synchronized (GameServer.class) {
-                GameServer inst = server;
-                if (inst == null) {
-                    synchronized (GameServer.class) {
-                        server = new GameServer();
-                    }
-                }
-            }
-        }
-        return server;
+    private static class LazyHolder {
+        public static final GameServer INSTANCE = new GameServer();
     }
-
+        
+    public static GameServer getInst() {
+        return LazyHolder.INSTANCE;
+    }
+    
     private GameServer() {
         world = World.getInstance();
         world.server = this;
@@ -263,7 +256,7 @@ public class GameServer {
 	public static void main(String[] args) throws IOException {	
 //		PropertyConfigurator.configure(Consts.LOG_FILE_PATH);
 
-        final GameServer server = getInstance();
+        final GameServer server = getInst();
         Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
         
 		boolean isOk = server.init();

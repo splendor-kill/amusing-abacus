@@ -102,7 +102,7 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 				loginServer.brand(ch);
 				break;
 			case SYS_GET_SESSION:
-				handleSysGetSession(ch, SysGetSession.parseFrom(cocoon.dat));
+//				handleSysGetSession(ch, SysGetSession.parseFrom(cocoon.dat));
 				break;
 			case SYS_RELOAD_CFG:
 				handleSysReloadCfg(ch, SysReloadCfg.parseFrom(cocoon.dat));				
