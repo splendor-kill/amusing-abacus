@@ -1,6 +1,6 @@
 import "ProtoBasis.proto";
 
-package com.tentacle.callofwild.protocol;
+package com.tentacle.common.protocol;
 
 
 //Íæ¼Ò

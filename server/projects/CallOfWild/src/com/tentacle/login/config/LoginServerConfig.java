@@ -33,6 +33,8 @@ public final class LoginServerConfig implements IReloadable {
     private int redisPort;
     private String redisPwd;
     private int redisRetryNum;
+    private int sessionExpireSec;
+    private long freezeNetworkTimeInMs;
 
     private static class LazyHolder {
         public static final LoginServerConfig INSTANCE = new LoginServerConfig();
@@ -90,7 +92,7 @@ public final class LoginServerConfig implements IReloadable {
         str = p.getProperty("portal.connection_clear_minute", "10");
         connectionClearMinute = Integer.parseInt(str);
         str = p.getProperty("portal.connection_ossify_minute", "5");
-        connectionOssifyMs = Integer.parseInt(str) * 60 * 1000;            
+        connectionOssifyMs = Integer.parseInt(str) * 60l * 1000;            
         adminName = p.getProperty("portal.admin_name", "admin");
         adminPwd = p.getProperty("portal.admin_pwd", "");            
         defaultChannelId = p.getProperty("portal.default_channel_id", "1234567890");            
@@ -111,8 +113,11 @@ public final class LoginServerConfig implements IReloadable {
         str = p.getProperty("portal.redis_retry_num", "3");
         redisRetryNum = Integer.parseInt(str);
         str = p.getProperty("portal.min_length_of_imei", "10");
-        minLengthOfImei = Integer.parseInt(str);
-        
+        minLengthOfImei = Integer.parseInt(str);        
+        str = p.getProperty("portal.session_expire_seconds", "10");
+        sessionExpireSec = Integer.parseInt(str);
+        str = p.getProperty("portal.freeze_network_time_in_ms", "30000");
+        freezeNetworkTimeInMs = Long.parseLong(str);        
     }
     
     @Override
@@ -197,6 +202,14 @@ public final class LoginServerConfig implements IReloadable {
 
     public int getMinLengthOfImei() {
         return minLengthOfImei;
+    }
+
+    public int getSessionExpireSec() {
+        return sessionExpireSec;
+    }
+
+    public long getFreezeNetworkTimeInMs() {
+        return freezeNetworkTimeInMs;
     }
 
 }

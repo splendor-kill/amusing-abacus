@@ -1,4 +1,4 @@
-package com.tentacle.callofwild.protocol;
+package com.tentacle.common.protocol;
 
 
 //指令类型
@@ -83,11 +83,15 @@ enum eErrorCode {
     YOU_DONT_HAVE_PERMISSION                        = 48;   //不让你干这事, (-_-)'
     YOU_DONT_HAVE_SATISFY_ME                        = 49;   //你没能满足我, 用于期望客户端输入的数据有误
     UNKNOWN_SCHEME                                  = 54;   //未知的方案
-    CONFIGURE_FILE_CORRUPTED                        = 58;   //配置文件出错
+    CONFIG_FILE_CORRUPTED                           = 58;   //配置文件出错
     NO_THIS_ITEM                                    = 62;   //没有此道具
     TOO_MANY_GHOST_PROFILE                          = 82;   //小号太多了
     SHUT_UP                                         = 84;   //闭嘴
     FUCK_OFF                                        = 85;   //滚蛋
+    UNAUTHORIZED_ACCESS                             = 86;   //未授权的访问
+    CONFIG_FILE_NOT_FOUND                           = 87;   //配置文件没找到
+    NETWORK_TOO_HOT_TO_FREEZE                       = 88;   //不能暂停网络
+    
 
 
 

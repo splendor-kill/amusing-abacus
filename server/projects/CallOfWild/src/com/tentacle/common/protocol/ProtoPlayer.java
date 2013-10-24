@@ -43,12 +43,12 @@ public final class ProtoPlayer {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_NetPlayer_descriptor;
+      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_NetPlayer_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_NetPlayer_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_NetPlayer_fieldAccessorTable;
     }
     
     private int bitField0_;
@@ -248,15 +248,15 @@ public final class ProtoPlayer {
        implements com.tentacle.common.protocol.ProtoPlayer.NetPlayerOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_NetPlayer_descriptor;
+        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_NetPlayer_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_NetPlayer_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_NetPlayer_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoPlayer.NetPlayer.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoPlayer.NetPlayer.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -486,7 +486,7 @@ public final class ProtoPlayer {
         return this;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.NetPlayer)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.NetPlayer)
     }
     
     static {
@@ -494,13 +494,13 @@ public final class ProtoPlayer {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.NetPlayer)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.NetPlayer)
   }
   
   public interface JoinGameOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
@@ -513,7 +513,7 @@ public final class ProtoPlayer {
     boolean hasSessionKey();
     String getSessionKey();
     
-    // repeated .com.tentacle.callofwild.protocol.MyVariant args = 4;
+    // repeated .com.tentacle.common.protocol.MyVariant args = 4;
     java.util.List<com.tentacle.common.protocol.ProtoBasis.MyVariant> 
         getArgsList();
     com.tentacle.common.protocol.ProtoBasis.MyVariant getArgs(int index);
@@ -543,16 +543,16 @@ public final class ProtoPlayer {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_JoinGame_descriptor;
+      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_JoinGame_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_JoinGame_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_JoinGame_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -607,7 +607,7 @@ public final class ProtoPlayer {
       }
     }
     
-    // repeated .com.tentacle.callofwild.protocol.MyVariant args = 4;
+    // repeated .com.tentacle.common.protocol.MyVariant args = 4;
     public static final int ARGS_FIELD_NUMBER = 4;
     private java.util.List<com.tentacle.common.protocol.ProtoBasis.MyVariant> args_;
     public java.util.List<com.tentacle.common.protocol.ProtoBasis.MyVariant> getArgsList() {
@@ -780,15 +780,15 @@ public final class ProtoPlayer {
        implements com.tentacle.common.protocol.ProtoPlayer.JoinGameOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_JoinGame_descriptor;
+        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_JoinGame_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_JoinGame_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_JoinGame_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoPlayer.JoinGame.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoPlayer.JoinGame.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1001,7 +1001,7 @@ public final class ProtoPlayer {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -1148,7 +1148,7 @@ public final class ProtoPlayer {
         onChanged();
       }
       
-      // repeated .com.tentacle.callofwild.protocol.MyVariant args = 4;
+      // repeated .com.tentacle.common.protocol.MyVariant args = 4;
       private java.util.List<com.tentacle.common.protocol.ProtoBasis.MyVariant> args_ =
         java.util.Collections.emptyList();
       private void ensureArgsIsMutable() {
@@ -1334,7 +1334,7 @@ public final class ProtoPlayer {
         return argsBuilder_;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.JoinGame)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.JoinGame)
     }
     
     static {
@@ -1342,13 +1342,13 @@ public final class ProtoPlayer {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.JoinGame)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.JoinGame)
   }
   
   public interface CheckIdReqOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
@@ -1381,16 +1381,16 @@ public final class ProtoPlayer {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_CheckIdReq_descriptor;
+      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_CheckIdReq_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_CheckIdReq_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_CheckIdReq_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -1589,15 +1589,15 @@ public final class ProtoPlayer {
        implements com.tentacle.common.protocol.ProtoPlayer.CheckIdReqOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_CheckIdReq_descriptor;
+        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_CheckIdReq_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_CheckIdReq_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_CheckIdReq_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoPlayer.CheckIdReq.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoPlayer.CheckIdReq.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1762,7 +1762,7 @@ public final class ProtoPlayer {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -1909,7 +1909,7 @@ public final class ProtoPlayer {
         onChanged();
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.CheckIdReq)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.CheckIdReq)
     }
     
     static {
@@ -1917,22 +1917,22 @@ public final class ProtoPlayer {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.CheckIdReq)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.CheckIdReq)
   }
   
   public interface CheckIdAnsOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
     
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+    // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
     boolean hasErrCode();
     com.tentacle.common.protocol.ProtoBasis.eErrorCode getErrCode();
     
-    // repeated .com.tentacle.callofwild.protocol.MyVariant args = 4;
+    // repeated .com.tentacle.common.protocol.MyVariant args = 4;
     java.util.List<com.tentacle.common.protocol.ProtoBasis.MyVariant> 
         getArgsList();
     com.tentacle.common.protocol.ProtoBasis.MyVariant getArgs(int index);
@@ -1962,16 +1962,16 @@ public final class ProtoPlayer {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_CheckIdAns_descriptor;
+      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_CheckIdAns_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_CheckIdAns_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_CheckIdAns_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -1984,7 +1984,7 @@ public final class ProtoPlayer {
       return cmd_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+    // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
     public static final int ERR_CODE_FIELD_NUMBER = 2;
     private com.tentacle.common.protocol.ProtoBasis.eErrorCode errCode_;
     public boolean hasErrCode() {
@@ -1994,7 +1994,7 @@ public final class ProtoPlayer {
       return errCode_;
     }
     
-    // repeated .com.tentacle.callofwild.protocol.MyVariant args = 4;
+    // repeated .com.tentacle.common.protocol.MyVariant args = 4;
     public static final int ARGS_FIELD_NUMBER = 4;
     private java.util.List<com.tentacle.common.protocol.ProtoBasis.MyVariant> args_;
     public java.util.List<com.tentacle.common.protocol.ProtoBasis.MyVariant> getArgsList() {
@@ -2159,15 +2159,15 @@ public final class ProtoPlayer {
        implements com.tentacle.common.protocol.ProtoPlayer.CheckIdAnsOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_CheckIdAns_descriptor;
+        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_CheckIdAns_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_CheckIdAns_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_CheckIdAns_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoPlayer.CheckIdAns.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoPlayer.CheckIdAns.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2372,7 +2372,7 @@ public final class ProtoPlayer {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -2462,7 +2462,7 @@ public final class ProtoPlayer {
         return cmdBuilder_;
       }
       
-      // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+      // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
       private com.tentacle.common.protocol.ProtoBasis.eErrorCode errCode_ = com.tentacle.common.protocol.ProtoBasis.eErrorCode.OK;
       public boolean hasErrCode() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
@@ -2486,7 +2486,7 @@ public final class ProtoPlayer {
         return this;
       }
       
-      // repeated .com.tentacle.callofwild.protocol.MyVariant args = 4;
+      // repeated .com.tentacle.common.protocol.MyVariant args = 4;
       private java.util.List<com.tentacle.common.protocol.ProtoBasis.MyVariant> args_ =
         java.util.Collections.emptyList();
       private void ensureArgsIsMutable() {
@@ -2672,7 +2672,7 @@ public final class ProtoPlayer {
         return argsBuilder_;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.CheckIdAns)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.CheckIdAns)
     }
     
     static {
@@ -2680,22 +2680,22 @@ public final class ProtoPlayer {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.CheckIdAns)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.CheckIdAns)
   }
   
   public interface PlayerCreationOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
     
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+    // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
     boolean hasErrCode();
     com.tentacle.common.protocol.ProtoBasis.eErrorCode getErrCode();
     
-    // optional .com.tentacle.callofwild.protocol.NetPlayer player = 3;
+    // optional .com.tentacle.common.protocol.NetPlayer player = 3;
     boolean hasPlayer();
     com.tentacle.common.protocol.ProtoPlayer.NetPlayer getPlayer();
     com.tentacle.common.protocol.ProtoPlayer.NetPlayerOrBuilder getPlayerOrBuilder();
@@ -2720,16 +2720,16 @@ public final class ProtoPlayer {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_PlayerCreation_descriptor;
+      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_PlayerCreation_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_PlayerCreation_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_PlayerCreation_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -2742,7 +2742,7 @@ public final class ProtoPlayer {
       return cmd_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+    // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
     public static final int ERR_CODE_FIELD_NUMBER = 2;
     private com.tentacle.common.protocol.ProtoBasis.eErrorCode errCode_;
     public boolean hasErrCode() {
@@ -2752,7 +2752,7 @@ public final class ProtoPlayer {
       return errCode_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.NetPlayer player = 3;
+    // optional .com.tentacle.common.protocol.NetPlayer player = 3;
     public static final int PLAYER_FIELD_NUMBER = 3;
     private com.tentacle.common.protocol.ProtoPlayer.NetPlayer player_;
     public boolean hasPlayer() {
@@ -2909,15 +2909,15 @@ public final class ProtoPlayer {
        implements com.tentacle.common.protocol.ProtoPlayer.PlayerCreationOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_PlayerCreation_descriptor;
+        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_PlayerCreation_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_PlayerCreation_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_PlayerCreation_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoPlayer.PlayerCreation.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoPlayer.PlayerCreation.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3101,7 +3101,7 @@ public final class ProtoPlayer {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -3191,7 +3191,7 @@ public final class ProtoPlayer {
         return cmdBuilder_;
       }
       
-      // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+      // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
       private com.tentacle.common.protocol.ProtoBasis.eErrorCode errCode_ = com.tentacle.common.protocol.ProtoBasis.eErrorCode.OK;
       public boolean hasErrCode() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
@@ -3215,7 +3215,7 @@ public final class ProtoPlayer {
         return this;
       }
       
-      // optional .com.tentacle.callofwild.protocol.NetPlayer player = 3;
+      // optional .com.tentacle.common.protocol.NetPlayer player = 3;
       private com.tentacle.common.protocol.ProtoPlayer.NetPlayer player_ = com.tentacle.common.protocol.ProtoPlayer.NetPlayer.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoPlayer.NetPlayer, com.tentacle.common.protocol.ProtoPlayer.NetPlayer.Builder, com.tentacle.common.protocol.ProtoPlayer.NetPlayerOrBuilder> playerBuilder_;
@@ -3305,7 +3305,7 @@ public final class ProtoPlayer {
         return playerBuilder_;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.PlayerCreation)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.PlayerCreation)
     }
     
     static {
@@ -3313,7 +3313,7 @@ public final class ProtoPlayer {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.PlayerCreation)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.PlayerCreation)
   }
   
   public interface NetItemOrBuilder
@@ -3343,7 +3343,7 @@ public final class ProtoPlayer {
     boolean hasPlaceTime();
     long getPlaceTime();
     
-    // repeated .com.tentacle.callofwild.protocol.NetItem nested_items = 7;
+    // repeated .com.tentacle.common.protocol.NetItem nested_items = 7;
     java.util.List<com.tentacle.common.protocol.ProtoPlayer.NetItem> 
         getNestedItemsList();
     com.tentacle.common.protocol.ProtoPlayer.NetItem getNestedItems(int index);
@@ -3353,7 +3353,7 @@ public final class ProtoPlayer {
     com.tentacle.common.protocol.ProtoPlayer.NetItemOrBuilder getNestedItemsOrBuilder(
         int index);
     
-    // repeated .com.tentacle.callofwild.protocol.MyVariant attrs = 8;
+    // repeated .com.tentacle.common.protocol.MyVariant attrs = 8;
     java.util.List<com.tentacle.common.protocol.ProtoBasis.MyVariant> 
         getAttrsList();
     com.tentacle.common.protocol.ProtoBasis.MyVariant getAttrs(int index);
@@ -3383,12 +3383,12 @@ public final class ProtoPlayer {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_NetItem_descriptor;
+      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_NetItem_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_NetItem_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_NetItem_fieldAccessorTable;
     }
     
     private int bitField0_;
@@ -3452,7 +3452,7 @@ public final class ProtoPlayer {
       return placeTime_;
     }
     
-    // repeated .com.tentacle.callofwild.protocol.NetItem nested_items = 7;
+    // repeated .com.tentacle.common.protocol.NetItem nested_items = 7;
     public static final int NESTED_ITEMS_FIELD_NUMBER = 7;
     private java.util.List<com.tentacle.common.protocol.ProtoPlayer.NetItem> nestedItems_;
     public java.util.List<com.tentacle.common.protocol.ProtoPlayer.NetItem> getNestedItemsList() {
@@ -3473,7 +3473,7 @@ public final class ProtoPlayer {
       return nestedItems_.get(index);
     }
     
-    // repeated .com.tentacle.callofwild.protocol.MyVariant attrs = 8;
+    // repeated .com.tentacle.common.protocol.MyVariant attrs = 8;
     public static final int ATTRS_FIELD_NUMBER = 8;
     private java.util.List<com.tentacle.common.protocol.ProtoBasis.MyVariant> attrs_;
     public java.util.List<com.tentacle.common.protocol.ProtoBasis.MyVariant> getAttrsList() {
@@ -3678,15 +3678,15 @@ public final class ProtoPlayer {
        implements com.tentacle.common.protocol.ProtoPlayer.NetItemOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_NetItem_descriptor;
+        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_NetItem_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_NetItem_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_NetItem_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoPlayer.NetItem.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoPlayer.NetItem.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -4102,7 +4102,7 @@ public final class ProtoPlayer {
         return this;
       }
       
-      // repeated .com.tentacle.callofwild.protocol.NetItem nested_items = 7;
+      // repeated .com.tentacle.common.protocol.NetItem nested_items = 7;
       private java.util.List<com.tentacle.common.protocol.ProtoPlayer.NetItem> nestedItems_ =
         java.util.Collections.emptyList();
       private void ensureNestedItemsIsMutable() {
@@ -4288,7 +4288,7 @@ public final class ProtoPlayer {
         return nestedItemsBuilder_;
       }
       
-      // repeated .com.tentacle.callofwild.protocol.MyVariant attrs = 8;
+      // repeated .com.tentacle.common.protocol.MyVariant attrs = 8;
       private java.util.List<com.tentacle.common.protocol.ProtoBasis.MyVariant> attrs_ =
         java.util.Collections.emptyList();
       private void ensureAttrsIsMutable() {
@@ -4474,7 +4474,7 @@ public final class ProtoPlayer {
         return attrsBuilder_;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.NetItem)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.NetItem)
     }
     
     static {
@@ -4482,13 +4482,13 @@ public final class ProtoPlayer {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.NetItem)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.NetItem)
   }
   
   public interface UseItemReqOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
@@ -4501,7 +4501,7 @@ public final class ProtoPlayer {
     boolean hasCityId();
     long getCityId();
     
-    // repeated .com.tentacle.callofwild.protocol.MyVariant use_args = 4;
+    // repeated .com.tentacle.common.protocol.MyVariant use_args = 4;
     java.util.List<com.tentacle.common.protocol.ProtoBasis.MyVariant> 
         getUseArgsList();
     com.tentacle.common.protocol.ProtoBasis.MyVariant getUseArgs(int index);
@@ -4535,16 +4535,16 @@ public final class ProtoPlayer {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_UseItemReq_descriptor;
+      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_UseItemReq_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_UseItemReq_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_UseItemReq_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -4577,7 +4577,7 @@ public final class ProtoPlayer {
       return cityId_;
     }
     
-    // repeated .com.tentacle.callofwild.protocol.MyVariant use_args = 4;
+    // repeated .com.tentacle.common.protocol.MyVariant use_args = 4;
     public static final int USE_ARGS_FIELD_NUMBER = 4;
     private java.util.List<com.tentacle.common.protocol.ProtoBasis.MyVariant> useArgs_;
     public java.util.List<com.tentacle.common.protocol.ProtoBasis.MyVariant> getUseArgsList() {
@@ -4768,15 +4768,15 @@ public final class ProtoPlayer {
        implements com.tentacle.common.protocol.ProtoPlayer.UseItemReqOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_UseItemReq_descriptor;
+        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_UseItemReq_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_UseItemReq_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_UseItemReq_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoPlayer.UseItemReq.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoPlayer.UseItemReq.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -5003,7 +5003,7 @@ public final class ProtoPlayer {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -5135,7 +5135,7 @@ public final class ProtoPlayer {
         return this;
       }
       
-      // repeated .com.tentacle.callofwild.protocol.MyVariant use_args = 4;
+      // repeated .com.tentacle.common.protocol.MyVariant use_args = 4;
       private java.util.List<com.tentacle.common.protocol.ProtoBasis.MyVariant> useArgs_ =
         java.util.Collections.emptyList();
       private void ensureUseArgsIsMutable() {
@@ -5342,7 +5342,7 @@ public final class ProtoPlayer {
         return this;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.UseItemReq)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.UseItemReq)
     }
     
     static {
@@ -5350,22 +5350,22 @@ public final class ProtoPlayer {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.UseItemReq)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.UseItemReq)
   }
   
   public interface UseItemAnsOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
     
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+    // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
     boolean hasErrCode();
     com.tentacle.common.protocol.ProtoBasis.eErrorCode getErrCode();
     
-    // repeated .com.tentacle.callofwild.protocol.MyVariant use_effects = 3;
+    // repeated .com.tentacle.common.protocol.MyVariant use_effects = 3;
     java.util.List<com.tentacle.common.protocol.ProtoBasis.MyVariant> 
         getUseEffectsList();
     com.tentacle.common.protocol.ProtoBasis.MyVariant getUseEffects(int index);
@@ -5375,7 +5375,7 @@ public final class ProtoPlayer {
     com.tentacle.common.protocol.ProtoBasis.MyVariantOrBuilder getUseEffectsOrBuilder(
         int index);
     
-    // repeated .com.tentacle.callofwild.protocol.NetItem items = 4;
+    // repeated .com.tentacle.common.protocol.NetItem items = 4;
     java.util.List<com.tentacle.common.protocol.ProtoPlayer.NetItem> 
         getItemsList();
     com.tentacle.common.protocol.ProtoPlayer.NetItem getItems(int index);
@@ -5405,16 +5405,16 @@ public final class ProtoPlayer {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_UseItemAns_descriptor;
+      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_UseItemAns_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_UseItemAns_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_UseItemAns_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -5427,7 +5427,7 @@ public final class ProtoPlayer {
       return cmd_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+    // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
     public static final int ERR_CODE_FIELD_NUMBER = 2;
     private com.tentacle.common.protocol.ProtoBasis.eErrorCode errCode_;
     public boolean hasErrCode() {
@@ -5437,7 +5437,7 @@ public final class ProtoPlayer {
       return errCode_;
     }
     
-    // repeated .com.tentacle.callofwild.protocol.MyVariant use_effects = 3;
+    // repeated .com.tentacle.common.protocol.MyVariant use_effects = 3;
     public static final int USE_EFFECTS_FIELD_NUMBER = 3;
     private java.util.List<com.tentacle.common.protocol.ProtoBasis.MyVariant> useEffects_;
     public java.util.List<com.tentacle.common.protocol.ProtoBasis.MyVariant> getUseEffectsList() {
@@ -5458,7 +5458,7 @@ public final class ProtoPlayer {
       return useEffects_.get(index);
     }
     
-    // repeated .com.tentacle.callofwild.protocol.NetItem items = 4;
+    // repeated .com.tentacle.common.protocol.NetItem items = 4;
     public static final int ITEMS_FIELD_NUMBER = 4;
     private java.util.List<com.tentacle.common.protocol.ProtoPlayer.NetItem> items_;
     public java.util.List<com.tentacle.common.protocol.ProtoPlayer.NetItem> getItemsList() {
@@ -5631,15 +5631,15 @@ public final class ProtoPlayer {
        implements com.tentacle.common.protocol.ProtoPlayer.UseItemAnsOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_UseItemAns_descriptor;
+        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_UseItemAns_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_callofwild_protocol_UseItemAns_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoPlayer.internal_static_com_tentacle_common_protocol_UseItemAns_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoPlayer.UseItemAns.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoPlayer.UseItemAns.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -5892,7 +5892,7 @@ public final class ProtoPlayer {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -5982,7 +5982,7 @@ public final class ProtoPlayer {
         return cmdBuilder_;
       }
       
-      // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+      // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
       private com.tentacle.common.protocol.ProtoBasis.eErrorCode errCode_ = com.tentacle.common.protocol.ProtoBasis.eErrorCode.OK;
       public boolean hasErrCode() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
@@ -6006,7 +6006,7 @@ public final class ProtoPlayer {
         return this;
       }
       
-      // repeated .com.tentacle.callofwild.protocol.MyVariant use_effects = 3;
+      // repeated .com.tentacle.common.protocol.MyVariant use_effects = 3;
       private java.util.List<com.tentacle.common.protocol.ProtoBasis.MyVariant> useEffects_ =
         java.util.Collections.emptyList();
       private void ensureUseEffectsIsMutable() {
@@ -6192,7 +6192,7 @@ public final class ProtoPlayer {
         return useEffectsBuilder_;
       }
       
-      // repeated .com.tentacle.callofwild.protocol.NetItem items = 4;
+      // repeated .com.tentacle.common.protocol.NetItem items = 4;
       private java.util.List<com.tentacle.common.protocol.ProtoPlayer.NetItem> items_ =
         java.util.Collections.emptyList();
       private void ensureItemsIsMutable() {
@@ -6378,7 +6378,7 @@ public final class ProtoPlayer {
         return itemsBuilder_;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.UseItemAns)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.UseItemAns)
     }
     
     static {
@@ -6386,49 +6386,49 @@ public final class ProtoPlayer {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.UseItemAns)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.UseItemAns)
   }
   
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_NetPlayer_descriptor;
+    internal_static_com_tentacle_common_protocol_NetPlayer_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_NetPlayer_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_NetPlayer_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_JoinGame_descriptor;
+    internal_static_com_tentacle_common_protocol_JoinGame_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_JoinGame_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_JoinGame_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_CheckIdReq_descriptor;
+    internal_static_com_tentacle_common_protocol_CheckIdReq_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_CheckIdReq_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_CheckIdReq_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_CheckIdAns_descriptor;
+    internal_static_com_tentacle_common_protocol_CheckIdAns_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_CheckIdAns_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_CheckIdAns_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_PlayerCreation_descriptor;
+    internal_static_com_tentacle_common_protocol_PlayerCreation_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_PlayerCreation_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_PlayerCreation_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_NetItem_descriptor;
+    internal_static_com_tentacle_common_protocol_NetItem_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_NetItem_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_NetItem_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_UseItemReq_descriptor;
+    internal_static_com_tentacle_common_protocol_UseItemReq_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_UseItemReq_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_UseItemReq_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_UseItemAns_descriptor;
+    internal_static_com_tentacle_common_protocol_UseItemAns_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_UseItemAns_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_UseItemAns_fieldAccessorTable;
   
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -6438,111 +6438,109 @@ public final class ProtoPlayer {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\021ProtoPlayer.proto\022 com.tentacle.callof" +
-      "wild.protocol\032\020ProtoBasis.proto\"6\n\tNetPl" +
-      "ayer\022\n\n\002id\030\001 \001(\003\022\014\n\004name\030\002 \001(\t\022\017\n\007user_i" +
-      "d\030\004 \001(\005\"\251\001\n\010JoinGame\022:\n\003cmd\030\001 \001(\0132-.com." +
-      "tentacle.callofwild.protocol.Instruction" +
-      "\022\021\n\tplayer_id\030\002 \001(\003\022\023\n\013session_key\030\003 \001(\t" +
-      "\0229\n\004args\030\004 \003(\0132+.com.tentacle.callofwild" +
-      ".protocol.MyVariant\"n\n\nCheckIdReq\022:\n\003cmd" +
-      "\030\001 \001(\0132-.com.tentacle.callofwild.protoco" +
-      "l.Instruction\022\017\n\007user_id\030\002 \001(\005\022\023\n\013sessio",
-      "n_key\030\003 \001(\t\"\303\001\n\nCheckIdAns\022:\n\003cmd\030\001 \001(\0132" +
-      "-.com.tentacle.callofwild.protocol.Instr" +
-      "uction\022>\n\010err_code\030\002 \001(\0162,.com.tentacle." +
-      "callofwild.protocol.eErrorCode\0229\n\004args\030\004" +
-      " \003(\0132+.com.tentacle.callofwild.protocol." +
-      "MyVariant\"\311\001\n\016PlayerCreation\022:\n\003cmd\030\001 \001(" +
-      "\0132-.com.tentacle.callofwild.protocol.Ins" +
-      "truction\022>\n\010err_code\030\002 \001(\0162,.com.tentacl" +
-      "e.callofwild.protocol.eErrorCode\022;\n\006play" +
-      "er\030\003 \001(\0132+.com.tentacle.callofwild.proto",
-      "col.NetPlayer\"\345\001\n\007NetItem\022\n\n\002id\030\001 \001(\003\022\016\n" +
+      "\n\021ProtoPlayer.proto\022\034com.tentacle.common" +
+      ".protocol\032\020ProtoBasis.proto\"6\n\tNetPlayer" +
+      "\022\n\n\002id\030\001 \001(\003\022\014\n\004name\030\002 \001(\t\022\017\n\007user_id\030\004 " +
+      "\001(\005\"\241\001\n\010JoinGame\0226\n\003cmd\030\001 \001(\0132).com.tent" +
+      "acle.common.protocol.Instruction\022\021\n\tplay" +
+      "er_id\030\002 \001(\003\022\023\n\013session_key\030\003 \001(\t\0225\n\004args" +
+      "\030\004 \003(\0132\'.com.tentacle.common.protocol.My" +
+      "Variant\"j\n\nCheckIdReq\0226\n\003cmd\030\001 \001(\0132).com" +
+      ".tentacle.common.protocol.Instruction\022\017\n" +
+      "\007user_id\030\002 \001(\005\022\023\n\013session_key\030\003 \001(\t\"\267\001\n\n",
+      "CheckIdAns\0226\n\003cmd\030\001 \001(\0132).com.tentacle.c" +
+      "ommon.protocol.Instruction\022:\n\010err_code\030\002" +
+      " \001(\0162(.com.tentacle.common.protocol.eErr" +
+      "orCode\0225\n\004args\030\004 \003(\0132\'.com.tentacle.comm" +
+      "on.protocol.MyVariant\"\275\001\n\016PlayerCreation" +
+      "\0226\n\003cmd\030\001 \001(\0132).com.tentacle.common.prot" +
+      "ocol.Instruction\022:\n\010err_code\030\002 \001(\0162(.com" +
+      ".tentacle.common.protocol.eErrorCode\0227\n\006" +
+      "player\030\003 \001(\0132\'.com.tentacle.common.proto" +
+      "col.NetPlayer\"\335\001\n\007NetItem\022\n\n\002id\030\001 \001(\003\022\016\n",
       "\006cfg_no\030\002 \001(\005\022\016\n\006amount\030\003 \001(\005\022\016\n\006ration\030" +
       "\004 \001(\005\022\r\n\005level\030\005 \001(\005\022\022\n\nplace_time\030\006 \001(\003" +
-      "\022?\n\014nested_items\030\007 \003(\0132).com.tentacle.ca" +
-      "llofwild.protocol.NetItem\022:\n\005attrs\030\010 \003(\013" +
-      "2+.com.tentacle.callofwild.protocol.MyVa" +
-      "riant\"\276\001\n\nUseItemReq\022:\n\003cmd\030\001 \001(\0132-.com." +
-      "tentacle.callofwild.protocol.Instruction" +
-      "\022\017\n\007item_id\030\002 \001(\003\022\017\n\007city_id\030\003 \001(\003\022=\n\010us" +
-      "e_args\030\004 \003(\0132+.com.tentacle.callofwild.p",
-      "rotocol.MyVariant\022\023\n\013item_cfg_no\030\005 \001(\005\"\204" +
-      "\002\n\nUseItemAns\022:\n\003cmd\030\001 \001(\0132-.com.tentacl" +
-      "e.callofwild.protocol.Instruction\022>\n\010err" +
-      "_code\030\002 \001(\0162,.com.tentacle.callofwild.pr" +
-      "otocol.eErrorCode\022@\n\013use_effects\030\003 \003(\0132+" +
-      ".com.tentacle.callofwild.protocol.MyVari" +
-      "ant\0228\n\005items\030\004 \003(\0132).com.tentacle.callof" +
-      "wild.protocol.NetItem"
+      "\022;\n\014nested_items\030\007 \003(\0132%.com.tentacle.co" +
+      "mmon.protocol.NetItem\0226\n\005attrs\030\010 \003(\0132\'.c" +
+      "om.tentacle.common.protocol.MyVariant\"\266\001" +
+      "\n\nUseItemReq\0226\n\003cmd\030\001 \001(\0132).com.tentacle" +
+      ".common.protocol.Instruction\022\017\n\007item_id\030" +
+      "\002 \001(\003\022\017\n\007city_id\030\003 \001(\003\0229\n\010use_args\030\004 \003(\013" +
+      "2\'.com.tentacle.common.protocol.MyVarian" +
+      "t\022\023\n\013item_cfg_no\030\005 \001(\005\"\364\001\n\nUseItemAns\0226\n",
+      "\003cmd\030\001 \001(\0132).com.tentacle.common.protoco" +
+      "l.Instruction\022:\n\010err_code\030\002 \001(\0162(.com.te" +
+      "ntacle.common.protocol.eErrorCode\022<\n\013use" +
+      "_effects\030\003 \003(\0132\'.com.tentacle.common.pro" +
+      "tocol.MyVariant\0224\n\005items\030\004 \003(\0132%.com.ten" +
+      "tacle.common.protocol.NetItem"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_com_tentacle_callofwild_protocol_NetPlayer_descriptor =
+          internal_static_com_tentacle_common_protocol_NetPlayer_descriptor =
             getDescriptor().getMessageTypes().get(0);
-          internal_static_com_tentacle_callofwild_protocol_NetPlayer_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_NetPlayer_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_NetPlayer_descriptor,
+              internal_static_com_tentacle_common_protocol_NetPlayer_descriptor,
               new java.lang.String[] { "Id", "Name", "UserId", },
               com.tentacle.common.protocol.ProtoPlayer.NetPlayer.class,
               com.tentacle.common.protocol.ProtoPlayer.NetPlayer.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_JoinGame_descriptor =
+          internal_static_com_tentacle_common_protocol_JoinGame_descriptor =
             getDescriptor().getMessageTypes().get(1);
-          internal_static_com_tentacle_callofwild_protocol_JoinGame_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_JoinGame_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_JoinGame_descriptor,
+              internal_static_com_tentacle_common_protocol_JoinGame_descriptor,
               new java.lang.String[] { "Cmd", "PlayerId", "SessionKey", "Args", },
               com.tentacle.common.protocol.ProtoPlayer.JoinGame.class,
               com.tentacle.common.protocol.ProtoPlayer.JoinGame.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_CheckIdReq_descriptor =
+          internal_static_com_tentacle_common_protocol_CheckIdReq_descriptor =
             getDescriptor().getMessageTypes().get(2);
-          internal_static_com_tentacle_callofwild_protocol_CheckIdReq_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_CheckIdReq_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_CheckIdReq_descriptor,
+              internal_static_com_tentacle_common_protocol_CheckIdReq_descriptor,
               new java.lang.String[] { "Cmd", "UserId", "SessionKey", },
               com.tentacle.common.protocol.ProtoPlayer.CheckIdReq.class,
               com.tentacle.common.protocol.ProtoPlayer.CheckIdReq.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_CheckIdAns_descriptor =
+          internal_static_com_tentacle_common_protocol_CheckIdAns_descriptor =
             getDescriptor().getMessageTypes().get(3);
-          internal_static_com_tentacle_callofwild_protocol_CheckIdAns_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_CheckIdAns_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_CheckIdAns_descriptor,
+              internal_static_com_tentacle_common_protocol_CheckIdAns_descriptor,
               new java.lang.String[] { "Cmd", "ErrCode", "Args", },
               com.tentacle.common.protocol.ProtoPlayer.CheckIdAns.class,
               com.tentacle.common.protocol.ProtoPlayer.CheckIdAns.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_PlayerCreation_descriptor =
+          internal_static_com_tentacle_common_protocol_PlayerCreation_descriptor =
             getDescriptor().getMessageTypes().get(4);
-          internal_static_com_tentacle_callofwild_protocol_PlayerCreation_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_PlayerCreation_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_PlayerCreation_descriptor,
+              internal_static_com_tentacle_common_protocol_PlayerCreation_descriptor,
               new java.lang.String[] { "Cmd", "ErrCode", "Player", },
               com.tentacle.common.protocol.ProtoPlayer.PlayerCreation.class,
               com.tentacle.common.protocol.ProtoPlayer.PlayerCreation.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_NetItem_descriptor =
+          internal_static_com_tentacle_common_protocol_NetItem_descriptor =
             getDescriptor().getMessageTypes().get(5);
-          internal_static_com_tentacle_callofwild_protocol_NetItem_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_NetItem_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_NetItem_descriptor,
+              internal_static_com_tentacle_common_protocol_NetItem_descriptor,
               new java.lang.String[] { "Id", "CfgNo", "Amount", "Ration", "Level", "PlaceTime", "NestedItems", "Attrs", },
               com.tentacle.common.protocol.ProtoPlayer.NetItem.class,
               com.tentacle.common.protocol.ProtoPlayer.NetItem.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_UseItemReq_descriptor =
+          internal_static_com_tentacle_common_protocol_UseItemReq_descriptor =
             getDescriptor().getMessageTypes().get(6);
-          internal_static_com_tentacle_callofwild_protocol_UseItemReq_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_UseItemReq_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_UseItemReq_descriptor,
+              internal_static_com_tentacle_common_protocol_UseItemReq_descriptor,
               new java.lang.String[] { "Cmd", "ItemId", "CityId", "UseArgs", "ItemCfgNo", },
               com.tentacle.common.protocol.ProtoPlayer.UseItemReq.class,
               com.tentacle.common.protocol.ProtoPlayer.UseItemReq.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_UseItemAns_descriptor =
+          internal_static_com_tentacle_common_protocol_UseItemAns_descriptor =
             getDescriptor().getMessageTypes().get(7);
-          internal_static_com_tentacle_callofwild_protocol_UseItemAns_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_UseItemAns_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_UseItemAns_descriptor,
+              internal_static_com_tentacle_common_protocol_UseItemAns_descriptor,
               new java.lang.String[] { "Cmd", "ErrCode", "UseEffects", "Items", },
               com.tentacle.common.protocol.ProtoPlayer.UseItemAns.class,
               com.tentacle.common.protocol.ProtoPlayer.UseItemAns.Builder.class);

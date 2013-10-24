@@ -9,6 +9,7 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
+import com.tentacle.common.util.Utils;
 import com.tentacle.login.config.LoginServerConfig;
 import com.tentacle.login.config.RedisConfig;
 
@@ -30,7 +31,6 @@ public class RedisTeamster {
     }    
     
     public boolean init() {
-        LoginServerConfig cfg = LoginServerConfig.getInst();
         JedisPool pool = initPool();
         return pool != null;
     }
@@ -71,29 +71,10 @@ public class RedisTeamster {
             pool.returnResource(jedis);
         }
     }
+
+
     
-        
-//    public void loadUserName() {
-//        Jedis jedis = getJedis();
-////        if (jedis.get("username.cached").equals("yes")) return;
-//        
-//        List<String> allUserName = UserService.queryAllUserName();
-//        for (String un : allUserName) {
-//            jedis.sadd("all_user_name", un); 
-//        }
-////        jedis.set("username.cached", "yes");
-//    }
-    
-//    public void loadImeiCount() {
-//        final Jedis jedis = getJedis();
-////        if (jedis.get("imei_count.cached").equals("yes")) return;
-//        
-//        Map<String, Integer> imeiCount = UserService.queryImei();
-//        for (Entry<String, Integer> e : imeiCount.entrySet()) {
-//            jedis.hset("imei_count", e.getKey(), e.getValue().toString());
-//        }
-////        jedis.set("imei_count.cached", "yes");
-//    }
+
     
     public boolean existUserName(String name) {
         return getJedis().hexists("all_user_name", name);
@@ -104,8 +85,9 @@ public class RedisTeamster {
     }
     
     public void setImeiNum(String imei) {
-        getJedis().hsetnx("imei_to_num", imei, "0");
-        getJedis().hincrBy("imei_to_num", imei, 1);
+        Jedis j = getJedis();
+        j.hsetnx("imei_to_num", imei, "0");
+        j.hincrBy("imei_to_num", imei, 1);
     }
     
     public int getNextUserId() {
@@ -123,15 +105,16 @@ public class RedisTeamster {
     }
     
     public void cacheUserPwd(int userId, final String pwd) {
+        Jedis j = getJedis();
         final String strUserId = Integer.toString(userId);
-        getJedis().hmset(strUserId, new HashMap<String, String>() {
+        j.hmset(strUserId, new HashMap<String, String>() {
             private static final long serialVersionUID = 1L;
             {
                 // put("user_name", userName);
                 put("user_pwd", pwd);
             }
         });
-        getJedis().expire(strUserId, RedisConfig.getExpireTime());
+        j.expire(strUserId, RedisConfig.getExpireTime());
     }
     
     public String getUserId(String userName) {
@@ -144,6 +127,22 @@ public class RedisTeamster {
     
     public void renewExpireTime(String key) {
         getJedis().expire(key, RedisConfig.getExpireTime());
+    }
+    
+  
+    public String getSessionKey(String strUserId) {
+        Jedis j = getJedis();
+        String handler = "session_key" + strUserId;
+        int expireSeconds = LoginServerConfig.getInst().getSessionExpireSec();
+        String sessionKey = j.get(handler);
+        if (sessionKey != null) {
+            j.expire(handler, expireSeconds);
+            return sessionKey;
+        } else {
+            j.setex(handler, expireSeconds, "" + Utils.RAND.nextLong());
+            return j.get(handler);
+        }
+
     }
     
 }

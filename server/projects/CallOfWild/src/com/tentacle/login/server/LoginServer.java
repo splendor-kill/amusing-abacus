@@ -22,6 +22,7 @@ import org.jboss.netty.channel.Channel;
 import org.jboss.netty.channel.ChannelPipeline;
 import org.jboss.netty.channel.ChannelPipelineFactory;
 import org.jboss.netty.channel.group.ChannelGroup;
+import org.jboss.netty.channel.group.ChannelGroupFuture;
 import org.jboss.netty.channel.group.DefaultChannelGroup;
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 
@@ -73,6 +74,16 @@ public class LoginServer {
     
     public int getChannelSize() {
         return allChannels.size();
+    }
+    
+    public boolean setReadable(boolean readable) {
+        ChannelGroupFuture f = allChannels.setReadable(readable);
+        try {
+            return f.await(LoginServerConfig.getInst().getFreezeNetworkTimeInMs());
+        } catch (InterruptedException e) {
+            logger.error(e.getMessage(), e);
+            return false;
+        }
     }
  
     public void stop() {

@@ -1,6 +1,7 @@
 package com.tentacle.common.designer;
 
 import java.io.IOException;
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.Map;
 
@@ -15,12 +16,15 @@ import com.tentacle.common.util.Utils;
 public abstract class CsvLoader<T> {
     private static final Logger logger = Logger.getLogger(CsvLoader.class);
     
-    private Class<T> tClassType;    
-    
     protected abstract String getCsvFileName();
     protected abstract Map<String, String> getColumnMapping();
     protected abstract void realDo(List<T> list);
-    protected abstract Class<T> getClassType();
+    
+    @SuppressWarnings("unchecked")
+    private Class<T> getClassType() {
+        ParameterizedType superclass = (ParameterizedType) getClass().getGenericSuperclass();
+        return (Class<T>) superclass.getActualTypeArguments()[0];
+    }
     
     public void load() {
         String file = getCsvFileName();

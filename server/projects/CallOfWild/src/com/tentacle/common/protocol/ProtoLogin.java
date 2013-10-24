@@ -27,7 +27,7 @@ public final class ProtoLogin {
     boolean hasEmail();
     String getEmail();
     
-    // optional .com.tentacle.callofwild.protocol.GameServer first_server = 5;
+    // optional .com.tentacle.common.protocol.GameServer first_server = 5;
     boolean hasFirstServer();
     com.tentacle.common.protocol.ProtoLogin.GameServer getFirstServer();
     com.tentacle.common.protocol.ProtoLogin.GameServerOrBuilder getFirstServerOrBuilder();
@@ -112,12 +112,12 @@ public final class ProtoLogin {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_callofwild_protocol_Account_descriptor;
+      return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_common_protocol_Account_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_callofwild_protocol_Account_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_common_protocol_Account_fieldAccessorTable;
     }
     
     private int bitField0_;
@@ -227,7 +227,7 @@ public final class ProtoLogin {
       }
     }
     
-    // optional .com.tentacle.callofwild.protocol.GameServer first_server = 5;
+    // optional .com.tentacle.common.protocol.GameServer first_server = 5;
     public static final int FIRST_SERVER_FIELD_NUMBER = 5;
     private com.tentacle.common.protocol.ProtoLogin.GameServer firstServer_;
     public boolean hasFirstServer() {
@@ -978,15 +978,15 @@ public final class ProtoLogin {
        implements com.tentacle.common.protocol.ProtoLogin.AccountOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_callofwild_protocol_Account_descriptor;
+        return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_common_protocol_Account_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_callofwild_protocol_Account_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_common_protocol_Account_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoLogin.Account.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoLogin.Account.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1518,7 +1518,7 @@ public final class ProtoLogin {
         onChanged();
       }
       
-      // optional .com.tentacle.callofwild.protocol.GameServer first_server = 5;
+      // optional .com.tentacle.common.protocol.GameServer first_server = 5;
       private com.tentacle.common.protocol.ProtoLogin.GameServer firstServer_ = com.tentacle.common.protocol.ProtoLogin.GameServer.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoLogin.GameServer, com.tentacle.common.protocol.ProtoLogin.GameServer.Builder, com.tentacle.common.protocol.ProtoLogin.GameServerOrBuilder> firstServerBuilder_;
@@ -2133,7 +2133,7 @@ public final class ProtoLogin {
         onChanged();
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.Account)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.Account)
     }
     
     static {
@@ -2141,18 +2141,18 @@ public final class ProtoLogin {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.Account)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.Account)
   }
   
   public interface AccountReqOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
     
-    // optional .com.tentacle.callofwild.protocol.Account account = 2;
+    // optional .com.tentacle.common.protocol.Account account = 2;
     boolean hasAccount();
     com.tentacle.common.protocol.ProtoLogin.Account getAccount();
     com.tentacle.common.protocol.ProtoLogin.AccountOrBuilder getAccountOrBuilder();
@@ -2177,16 +2177,16 @@ public final class ProtoLogin {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_callofwild_protocol_AccountReq_descriptor;
+      return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_common_protocol_AccountReq_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_callofwild_protocol_AccountReq_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_common_protocol_AccountReq_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -2199,7 +2199,7 @@ public final class ProtoLogin {
       return cmd_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.Account account = 2;
+    // optional .com.tentacle.common.protocol.Account account = 2;
     public static final int ACCOUNT_FIELD_NUMBER = 2;
     private com.tentacle.common.protocol.ProtoLogin.Account account_;
     public boolean hasAccount() {
@@ -2348,15 +2348,15 @@ public final class ProtoLogin {
        implements com.tentacle.common.protocol.ProtoLogin.AccountReqOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_callofwild_protocol_AccountReq_descriptor;
+        return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_common_protocol_AccountReq_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_callofwild_protocol_AccountReq_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_common_protocol_AccountReq_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoLogin.AccountReq.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoLogin.AccountReq.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2520,7 +2520,7 @@ public final class ProtoLogin {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -2610,7 +2610,7 @@ public final class ProtoLogin {
         return cmdBuilder_;
       }
       
-      // optional .com.tentacle.callofwild.protocol.Account account = 2;
+      // optional .com.tentacle.common.protocol.Account account = 2;
       private com.tentacle.common.protocol.ProtoLogin.Account account_ = com.tentacle.common.protocol.ProtoLogin.Account.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoLogin.Account, com.tentacle.common.protocol.ProtoLogin.Account.Builder, com.tentacle.common.protocol.ProtoLogin.AccountOrBuilder> accountBuilder_;
@@ -2700,7 +2700,7 @@ public final class ProtoLogin {
         return accountBuilder_;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.AccountReq)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.AccountReq)
     }
     
     static {
@@ -2708,18 +2708,18 @@ public final class ProtoLogin {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.AccountReq)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.AccountReq)
   }
   
   public interface AccountAnsOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
     
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+    // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
     boolean hasErrCode();
     com.tentacle.common.protocol.ProtoBasis.eErrorCode getErrCode();
     
@@ -2739,7 +2739,7 @@ public final class ProtoLogin {
     boolean hasIsDebut();
     boolean getIsDebut();
     
-    // repeated .com.tentacle.callofwild.protocol.GameServer servers = 7;
+    // repeated .com.tentacle.common.protocol.GameServer servers = 7;
     java.util.List<com.tentacle.common.protocol.ProtoLogin.GameServer> 
         getServersList();
     com.tentacle.common.protocol.ProtoLogin.GameServer getServers(int index);
@@ -2769,16 +2769,16 @@ public final class ProtoLogin {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_callofwild_protocol_AccountAns_descriptor;
+      return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_common_protocol_AccountAns_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_callofwild_protocol_AccountAns_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_common_protocol_AccountAns_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -2791,7 +2791,7 @@ public final class ProtoLogin {
       return cmd_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+    // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
     public static final int ERR_CODE_FIELD_NUMBER = 2;
     private com.tentacle.common.protocol.ProtoBasis.eErrorCode errCode_;
     public boolean hasErrCode() {
@@ -2885,7 +2885,7 @@ public final class ProtoLogin {
       return isDebut_;
     }
     
-    // repeated .com.tentacle.callofwild.protocol.GameServer servers = 7;
+    // repeated .com.tentacle.common.protocol.GameServer servers = 7;
     public static final int SERVERS_FIELD_NUMBER = 7;
     private java.util.List<com.tentacle.common.protocol.ProtoLogin.GameServer> servers_;
     public java.util.List<com.tentacle.common.protocol.ProtoLogin.GameServer> getServersList() {
@@ -3082,15 +3082,15 @@ public final class ProtoLogin {
        implements com.tentacle.common.protocol.ProtoLogin.AccountAnsOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_callofwild_protocol_AccountAns_descriptor;
+        return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_common_protocol_AccountAns_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_callofwild_protocol_AccountAns_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_common_protocol_AccountAns_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoLogin.AccountAns.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoLogin.AccountAns.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3351,7 +3351,7 @@ public final class ProtoLogin {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -3441,7 +3441,7 @@ public final class ProtoLogin {
         return cmdBuilder_;
       }
       
-      // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+      // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
       private com.tentacle.common.protocol.ProtoBasis.eErrorCode errCode_ = com.tentacle.common.protocol.ProtoBasis.eErrorCode.OK;
       public boolean hasErrCode() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
@@ -3579,7 +3579,7 @@ public final class ProtoLogin {
         return this;
       }
       
-      // repeated .com.tentacle.callofwild.protocol.GameServer servers = 7;
+      // repeated .com.tentacle.common.protocol.GameServer servers = 7;
       private java.util.List<com.tentacle.common.protocol.ProtoLogin.GameServer> servers_ =
         java.util.Collections.emptyList();
       private void ensureServersIsMutable() {
@@ -3765,7 +3765,7 @@ public final class ProtoLogin {
         return serversBuilder_;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.AccountAns)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.AccountAns)
     }
     
     static {
@@ -3773,7 +3773,7 @@ public final class ProtoLogin {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.AccountAns)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.AccountAns)
   }
   
   public interface GameServerOrBuilder
@@ -3835,12 +3835,12 @@ public final class ProtoLogin {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_callofwild_protocol_GameServer_descriptor;
+      return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_common_protocol_GameServer_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_callofwild_protocol_GameServer_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_common_protocol_GameServer_fieldAccessorTable;
     }
     
     private int bitField0_;
@@ -4236,15 +4236,15 @@ public final class ProtoLogin {
        implements com.tentacle.common.protocol.ProtoLogin.GameServerOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_callofwild_protocol_GameServer_descriptor;
+        return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_common_protocol_GameServer_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_callofwild_protocol_GameServer_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_common_protocol_GameServer_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoLogin.GameServer.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoLogin.GameServer.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -4744,7 +4744,7 @@ public final class ProtoLogin {
         onChanged();
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.GameServer)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.GameServer)
     }
     
     static {
@@ -4752,18 +4752,18 @@ public final class ProtoLogin {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.GameServer)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.GameServer)
   }
   
   public interface VersionInfoOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
     
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+    // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
     boolean hasErrCode();
     com.tentacle.common.protocol.ProtoBasis.eErrorCode getErrCode();
     
@@ -4783,7 +4783,7 @@ public final class ProtoLogin {
     boolean hasChannel();
     String getChannel();
     
-    // optional .com.tentacle.callofwild.protocol.MyVariant more_info = 7;
+    // optional .com.tentacle.common.protocol.MyVariant more_info = 7;
     boolean hasMoreInfo();
     com.tentacle.common.protocol.ProtoBasis.MyVariant getMoreInfo();
     com.tentacle.common.protocol.ProtoBasis.MyVariantOrBuilder getMoreInfoOrBuilder();
@@ -4808,16 +4808,16 @@ public final class ProtoLogin {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_callofwild_protocol_VersionInfo_descriptor;
+      return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_common_protocol_VersionInfo_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_callofwild_protocol_VersionInfo_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_common_protocol_VersionInfo_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -4830,7 +4830,7 @@ public final class ProtoLogin {
       return cmd_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+    // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
     public static final int ERR_CODE_FIELD_NUMBER = 2;
     private com.tentacle.common.protocol.ProtoBasis.eErrorCode errCode_;
     public boolean hasErrCode() {
@@ -4946,7 +4946,7 @@ public final class ProtoLogin {
       }
     }
     
-    // optional .com.tentacle.callofwild.protocol.MyVariant more_info = 7;
+    // optional .com.tentacle.common.protocol.MyVariant more_info = 7;
     public static final int MORE_INFO_FIELD_NUMBER = 7;
     private com.tentacle.common.protocol.ProtoBasis.MyVariant moreInfo_;
     public boolean hasMoreInfo() {
@@ -5135,15 +5135,15 @@ public final class ProtoLogin {
        implements com.tentacle.common.protocol.ProtoLogin.VersionInfoOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_callofwild_protocol_VersionInfo_descriptor;
+        return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_common_protocol_VersionInfo_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_callofwild_protocol_VersionInfo_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_common_protocol_VersionInfo_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoLogin.VersionInfo.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoLogin.VersionInfo.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -5383,7 +5383,7 @@ public final class ProtoLogin {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -5473,7 +5473,7 @@ public final class ProtoLogin {
         return cmdBuilder_;
       }
       
-      // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+      // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
       private com.tentacle.common.protocol.ProtoBasis.eErrorCode errCode_ = com.tentacle.common.protocol.ProtoBasis.eErrorCode.OK;
       public boolean hasErrCode() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
@@ -5626,7 +5626,7 @@ public final class ProtoLogin {
         onChanged();
       }
       
-      // optional .com.tentacle.callofwild.protocol.MyVariant more_info = 7;
+      // optional .com.tentacle.common.protocol.MyVariant more_info = 7;
       private com.tentacle.common.protocol.ProtoBasis.MyVariant moreInfo_ = com.tentacle.common.protocol.ProtoBasis.MyVariant.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.MyVariant, com.tentacle.common.protocol.ProtoBasis.MyVariant.Builder, com.tentacle.common.protocol.ProtoBasis.MyVariantOrBuilder> moreInfoBuilder_;
@@ -5716,7 +5716,7 @@ public final class ProtoLogin {
         return moreInfoBuilder_;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.VersionInfo)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.VersionInfo)
     }
     
     static {
@@ -5724,18 +5724,18 @@ public final class ProtoLogin {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.VersionInfo)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.VersionInfo)
   }
   
   public interface AuthenticationOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
     
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+    // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
     boolean hasErrCode();
     com.tentacle.common.protocol.ProtoBasis.eErrorCode getErrCode();
     
@@ -5747,7 +5747,7 @@ public final class ProtoLogin {
     boolean hasUid();
     String getUid();
     
-    // optional .com.tentacle.callofwild.protocol.Account account = 5;
+    // optional .com.tentacle.common.protocol.Account account = 5;
     boolean hasAccount();
     com.tentacle.common.protocol.ProtoLogin.Account getAccount();
     com.tentacle.common.protocol.ProtoLogin.AccountOrBuilder getAccountOrBuilder();
@@ -5772,16 +5772,16 @@ public final class ProtoLogin {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_callofwild_protocol_Authentication_descriptor;
+      return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_common_protocol_Authentication_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_callofwild_protocol_Authentication_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_common_protocol_Authentication_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -5794,7 +5794,7 @@ public final class ProtoLogin {
       return cmd_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+    // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
     public static final int ERR_CODE_FIELD_NUMBER = 2;
     private com.tentacle.common.protocol.ProtoBasis.eErrorCode errCode_;
     public boolean hasErrCode() {
@@ -5868,7 +5868,7 @@ public final class ProtoLogin {
       }
     }
     
-    // optional .com.tentacle.callofwild.protocol.Account account = 5;
+    // optional .com.tentacle.common.protocol.Account account = 5;
     public static final int ACCOUNT_FIELD_NUMBER = 5;
     private com.tentacle.common.protocol.ProtoLogin.Account account_;
     public boolean hasAccount() {
@@ -6041,15 +6041,15 @@ public final class ProtoLogin {
        implements com.tentacle.common.protocol.ProtoLogin.AuthenticationOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_callofwild_protocol_Authentication_descriptor;
+        return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_common_protocol_Authentication_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_callofwild_protocol_Authentication_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoLogin.internal_static_com_tentacle_common_protocol_Authentication_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoLogin.Authentication.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoLogin.Authentication.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -6261,7 +6261,7 @@ public final class ProtoLogin {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -6351,7 +6351,7 @@ public final class ProtoLogin {
         return cmdBuilder_;
       }
       
-      // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+      // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
       private com.tentacle.common.protocol.ProtoBasis.eErrorCode errCode_ = com.tentacle.common.protocol.ProtoBasis.eErrorCode.OK;
       public boolean hasErrCode() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
@@ -6447,7 +6447,7 @@ public final class ProtoLogin {
         onChanged();
       }
       
-      // optional .com.tentacle.callofwild.protocol.Account account = 5;
+      // optional .com.tentacle.common.protocol.Account account = 5;
       private com.tentacle.common.protocol.ProtoLogin.Account account_ = com.tentacle.common.protocol.ProtoLogin.Account.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoLogin.Account, com.tentacle.common.protocol.ProtoLogin.Account.Builder, com.tentacle.common.protocol.ProtoLogin.AccountOrBuilder> accountBuilder_;
@@ -6537,7 +6537,7 @@ public final class ProtoLogin {
         return accountBuilder_;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.Authentication)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.Authentication)
     }
     
     static {
@@ -6545,39 +6545,39 @@ public final class ProtoLogin {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.Authentication)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.Authentication)
   }
   
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_Account_descriptor;
+    internal_static_com_tentacle_common_protocol_Account_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_Account_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_Account_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_AccountReq_descriptor;
+    internal_static_com_tentacle_common_protocol_AccountReq_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_AccountReq_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_AccountReq_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_AccountAns_descriptor;
+    internal_static_com_tentacle_common_protocol_AccountAns_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_AccountAns_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_AccountAns_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_GameServer_descriptor;
+    internal_static_com_tentacle_common_protocol_GameServer_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_GameServer_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_GameServer_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_VersionInfo_descriptor;
+    internal_static_com_tentacle_common_protocol_VersionInfo_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_VersionInfo_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_VersionInfo_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_Authentication_descriptor;
+    internal_static_com_tentacle_common_protocol_Authentication_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_Authentication_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_Authentication_fieldAccessorTable;
   
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -6587,98 +6587,96 @@ public final class ProtoLogin {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\020ProtoLogin.proto\022 com.tentacle.callofw" +
-      "ild.protocol\032\020ProtoBasis.proto\"\270\003\n\007Accou" +
-      "nt\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\020\n\010password" +
-      "\030\003 \001(\t\022\r\n\005email\030\004 \001(\t\022B\n\014first_server\030\005 " +
-      "\001(\0132,.com.tentacle.callofwild.protocol.G" +
-      "ameServer\022\025\n\rregister_date\030\006 \001(\003\022\017\n\007card" +
-      "_id\030\007 \001(\t\022\020\n\010platform\030\t \001(\t\022\013\n\003uid\030\n \001(\t" +
-      "\022\021\n\tauth_code\030\013 \001(\t\022\022\n\nchannel_id\030\014 \001(\t\022" +
-      "\020\n\010phone_no\030\r \001(\t\022\023\n\013phone_model\030\016 \001(\t\022\030" +
-      "\n\020phone_resolution\030\017 \001(\t\022\020\n\010phone_os\030\020 \001",
-      "(\t\022\032\n\022phone_manufacturer\030\021 \001(\t\022\022\n\nphone_" +
-      "imei\030\022 \001(\t\022\022\n\nphone_imsi\030\023 \001(\t\022\021\n\tphone_" +
-      "mac\030\024 \001(\t\022\026\n\016client_version\030\025 \001(\t\"\204\001\n\nAc" +
-      "countReq\022:\n\003cmd\030\001 \001(\0132-.com.tentacle.cal" +
-      "lofwild.protocol.Instruction\022:\n\007account\030" +
-      "\002 \001(\0132).com.tentacle.callofwild.protocol" +
-      ".Account\"\215\002\n\nAccountAns\022:\n\003cmd\030\001 \001(\0132-.c" +
-      "om.tentacle.callofwild.protocol.Instruct" +
-      "ion\022>\n\010err_code\030\002 \001(\0162,.com.tentacle.cal" +
-      "lofwild.protocol.eErrorCode\022\014\n\004name\030\003 \001(",
-      "\t\022\017\n\007user_id\030\004 \001(\005\022\023\n\013session_key\030\005 \001(\t\022" +
-      "\020\n\010is_debut\030\006 \001(\010\022=\n\007servers\030\007 \003(\0132,.com" +
-      ".tentacle.callofwild.protocol.GameServer" +
-      "\"\237\001\n\nGameServer\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(" +
-      "\t\022\014\n\004ipv4\030\003 \001(\t\022\014\n\004port\030\004 \001(\005\022\016\n\006is_new\030" +
-      "\005 \001(\010\022\023\n\013busy_degree\030\006 \001(\005\022\023\n\013domain_nam" +
-      "e\030\007 \001(\t\022\013\n\003url\030\010 \001(\t\022\024\n\014activity_url\030\t \001" +
-      "(\t\"\231\002\n\013VersionInfo\022:\n\003cmd\030\001 \001(\0132-.com.te" +
-      "ntacle.callofwild.protocol.Instruction\022>" +
-      "\n\010err_code\030\002 \001(\0162,.com.tentacle.callofwi",
-      "ld.protocol.eErrorCode\022\017\n\007ver_num\030\003 \001(\t\022" +
-      "\025\n\rplatform_desc\030\004 \001(\t\022\025\n\ris_compulsive\030" +
-      "\005 \001(\010\022\017\n\007channel\030\006 \001(\t\022>\n\tmore_info\030\007 \001(" +
-      "\0132+.com.tentacle.callofwild.protocol.MyV" +
-      "ariant\"\351\001\n\016Authentication\022:\n\003cmd\030\001 \001(\0132-" +
-      ".com.tentacle.callofwild.protocol.Instru" +
-      "ction\022>\n\010err_code\030\002 \001(\0162,.com.tentacle.c" +
-      "allofwild.protocol.eErrorCode\022\022\n\nsession" +
-      "_id\030\003 \001(\t\022\013\n\003uid\030\004 \001(\t\022:\n\007account\030\005 \001(\0132" +
-      ").com.tentacle.callofwild.protocol.Accou",
-      "nt"
+      "\n\020ProtoLogin.proto\022\034com.tentacle.common." +
+      "protocol\032\020ProtoBasis.proto\"\264\003\n\007Account\022\n" +
+      "\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\020\n\010password\030\003 \001" +
+      "(\t\022\r\n\005email\030\004 \001(\t\022>\n\014first_server\030\005 \001(\0132" +
+      "(.com.tentacle.common.protocol.GameServe" +
+      "r\022\025\n\rregister_date\030\006 \001(\003\022\017\n\007card_id\030\007 \001(" +
+      "\t\022\020\n\010platform\030\t \001(\t\022\013\n\003uid\030\n \001(\t\022\021\n\tauth" +
+      "_code\030\013 \001(\t\022\022\n\nchannel_id\030\014 \001(\t\022\020\n\010phone" +
+      "_no\030\r \001(\t\022\023\n\013phone_model\030\016 \001(\t\022\030\n\020phone_" +
+      "resolution\030\017 \001(\t\022\020\n\010phone_os\030\020 \001(\t\022\032\n\022ph",
+      "one_manufacturer\030\021 \001(\t\022\022\n\nphone_imei\030\022 \001" +
+      "(\t\022\022\n\nphone_imsi\030\023 \001(\t\022\021\n\tphone_mac\030\024 \001(" +
+      "\t\022\026\n\016client_version\030\025 \001(\t\"|\n\nAccountReq\022" +
+      "6\n\003cmd\030\001 \001(\0132).com.tentacle.common.proto" +
+      "col.Instruction\0226\n\007account\030\002 \001(\0132%.com.t" +
+      "entacle.common.protocol.Account\"\201\002\n\nAcco" +
+      "untAns\0226\n\003cmd\030\001 \001(\0132).com.tentacle.commo" +
+      "n.protocol.Instruction\022:\n\010err_code\030\002 \001(\016" +
+      "2(.com.tentacle.common.protocol.eErrorCo" +
+      "de\022\014\n\004name\030\003 \001(\t\022\017\n\007user_id\030\004 \001(\005\022\023\n\013ses",
+      "sion_key\030\005 \001(\t\022\020\n\010is_debut\030\006 \001(\010\0229\n\007serv" +
+      "ers\030\007 \003(\0132(.com.tentacle.common.protocol" +
+      ".GameServer\"\237\001\n\nGameServer\022\n\n\002id\030\001 \001(\005\022\014" +
+      "\n\004name\030\002 \001(\t\022\014\n\004ipv4\030\003 \001(\t\022\014\n\004port\030\004 \001(\005" +
+      "\022\016\n\006is_new\030\005 \001(\010\022\023\n\013busy_degree\030\006 \001(\005\022\023\n" +
+      "\013domain_name\030\007 \001(\t\022\013\n\003url\030\010 \001(\t\022\024\n\014activ" +
+      "ity_url\030\t \001(\t\"\215\002\n\013VersionInfo\0226\n\003cmd\030\001 \001" +
+      "(\0132).com.tentacle.common.protocol.Instru" +
+      "ction\022:\n\010err_code\030\002 \001(\0162(.com.tentacle.c" +
+      "ommon.protocol.eErrorCode\022\017\n\007ver_num\030\003 \001",
+      "(\t\022\025\n\rplatform_desc\030\004 \001(\t\022\025\n\ris_compulsi" +
+      "ve\030\005 \001(\010\022\017\n\007channel\030\006 \001(\t\022:\n\tmore_info\030\007" +
+      " \001(\0132\'.com.tentacle.common.protocol.MyVa" +
+      "riant\"\335\001\n\016Authentication\0226\n\003cmd\030\001 \001(\0132)." +
+      "com.tentacle.common.protocol.Instruction" +
+      "\022:\n\010err_code\030\002 \001(\0162(.com.tentacle.common" +
+      ".protocol.eErrorCode\022\022\n\nsession_id\030\003 \001(\t" +
+      "\022\013\n\003uid\030\004 \001(\t\0226\n\007account\030\005 \001(\0132%.com.ten" +
+      "tacle.common.protocol.Account"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_com_tentacle_callofwild_protocol_Account_descriptor =
+          internal_static_com_tentacle_common_protocol_Account_descriptor =
             getDescriptor().getMessageTypes().get(0);
-          internal_static_com_tentacle_callofwild_protocol_Account_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_Account_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_Account_descriptor,
+              internal_static_com_tentacle_common_protocol_Account_descriptor,
               new java.lang.String[] { "Id", "Name", "Password", "Email", "FirstServer", "RegisterDate", "CardId", "Platform", "Uid", "AuthCode", "ChannelId", "PhoneNo", "PhoneModel", "PhoneResolution", "PhoneOs", "PhoneManufacturer", "PhoneImei", "PhoneImsi", "PhoneMac", "ClientVersion", },
               com.tentacle.common.protocol.ProtoLogin.Account.class,
               com.tentacle.common.protocol.ProtoLogin.Account.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_AccountReq_descriptor =
+          internal_static_com_tentacle_common_protocol_AccountReq_descriptor =
             getDescriptor().getMessageTypes().get(1);
-          internal_static_com_tentacle_callofwild_protocol_AccountReq_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_AccountReq_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_AccountReq_descriptor,
+              internal_static_com_tentacle_common_protocol_AccountReq_descriptor,
               new java.lang.String[] { "Cmd", "Account", },
               com.tentacle.common.protocol.ProtoLogin.AccountReq.class,
               com.tentacle.common.protocol.ProtoLogin.AccountReq.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_AccountAns_descriptor =
+          internal_static_com_tentacle_common_protocol_AccountAns_descriptor =
             getDescriptor().getMessageTypes().get(2);
-          internal_static_com_tentacle_callofwild_protocol_AccountAns_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_AccountAns_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_AccountAns_descriptor,
+              internal_static_com_tentacle_common_protocol_AccountAns_descriptor,
               new java.lang.String[] { "Cmd", "ErrCode", "Name", "UserId", "SessionKey", "IsDebut", "Servers", },
               com.tentacle.common.protocol.ProtoLogin.AccountAns.class,
               com.tentacle.common.protocol.ProtoLogin.AccountAns.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_GameServer_descriptor =
+          internal_static_com_tentacle_common_protocol_GameServer_descriptor =
             getDescriptor().getMessageTypes().get(3);
-          internal_static_com_tentacle_callofwild_protocol_GameServer_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_GameServer_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_GameServer_descriptor,
+              internal_static_com_tentacle_common_protocol_GameServer_descriptor,
               new java.lang.String[] { "Id", "Name", "Ipv4", "Port", "IsNew", "BusyDegree", "DomainName", "Url", "ActivityUrl", },
               com.tentacle.common.protocol.ProtoLogin.GameServer.class,
               com.tentacle.common.protocol.ProtoLogin.GameServer.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_VersionInfo_descriptor =
+          internal_static_com_tentacle_common_protocol_VersionInfo_descriptor =
             getDescriptor().getMessageTypes().get(4);
-          internal_static_com_tentacle_callofwild_protocol_VersionInfo_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_VersionInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_VersionInfo_descriptor,
+              internal_static_com_tentacle_common_protocol_VersionInfo_descriptor,
               new java.lang.String[] { "Cmd", "ErrCode", "VerNum", "PlatformDesc", "IsCompulsive", "Channel", "MoreInfo", },
               com.tentacle.common.protocol.ProtoLogin.VersionInfo.class,
               com.tentacle.common.protocol.ProtoLogin.VersionInfo.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_Authentication_descriptor =
+          internal_static_com_tentacle_common_protocol_Authentication_descriptor =
             getDescriptor().getMessageTypes().get(5);
-          internal_static_com_tentacle_callofwild_protocol_Authentication_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_Authentication_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_Authentication_descriptor,
+              internal_static_com_tentacle_common_protocol_Authentication_descriptor,
               new java.lang.String[] { "Cmd", "ErrCode", "SessionId", "Uid", "Account", },
               com.tentacle.common.protocol.ProtoLogin.Authentication.class,
               com.tentacle.common.protocol.ProtoLogin.Authentication.Builder.class);

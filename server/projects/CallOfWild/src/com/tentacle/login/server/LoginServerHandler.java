@@ -3,8 +3,6 @@ package com.tentacle.login.server;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 
 import org.apache.log4j.Logger;
 import org.jboss.netty.channel.Channel;
@@ -21,7 +19,6 @@ import com.tentacle.common.domain.baseinfo.UserInfo;
 import com.tentacle.common.protocol.MyCodec.Cocoon;
 import com.tentacle.common.protocol.ProtoAdmin.SysCommonReq;
 import com.tentacle.common.protocol.ProtoAdmin.SysGetSession;
-import com.tentacle.common.protocol.ProtoAdmin.SysGetSessionAns;
 import com.tentacle.common.protocol.ProtoAdmin.SysPwdReset;
 import com.tentacle.common.protocol.ProtoAdmin.SysRefreshServerStatus;
 import com.tentacle.common.protocol.ProtoAdmin.SysReloadCfg;
@@ -44,9 +41,6 @@ import com.tentacle.login.persist.UserService;
 public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 	private static final Logger logger = Logger.getLogger(LoginServerHandler.class);
 		
-    // user id --> session    
-    private static ConcurrentMap<Integer, Session> sessionMgr = new ConcurrentHashMap<Integer, Session>();
-    
     private static Map<String, String> channel2Platform = new HashMap<String, String>() {
         private static final long serialVersionUID = 8761755010342812032L;
         {
@@ -306,14 +300,8 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
                 break;
             }
             
-            Session ss = acquireSession(userId);
-            String sessionKey = ss.getSessionKey();
-            if (clientVer == null || clientVer.isEmpty()) {
-                ss.setSessionKey(sessionKey);
-            } else {              
-                ans.setErrCode(eErrorCode.YOU_DONT_HAVE_SATISFY_ME);
-                break;
-            }
+            String sessionKey = RedisTeamster.getInst().getSessionKey(strUserId);
+            
 
             ans.setSessionKey(sessionKey).setName(name).setUserId(userId);
             
@@ -346,21 +334,39 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 	}
 	
 	public void handleSysReloadCfg(Channel ch, SysReloadCfg data) {
-		if (!isTheGuyReliable(data.getProof())) {
-			ch.close();
-			return;
-		}
-
-		do {
-			String which = data.getWhichCfg();
-			IReloadable cfg = loginServer.getReloadable(which);
-			if (cfg != null) {
-				boolean retVal = cfg.reload();
-                logger.debug("[" + data.getProof().getAdminName() + "] reload[" + which + "] " 
-                        + (retVal ? "succ" : "failed") + " at " + (new Date()) + ".");
+        CommonAns.Builder ans = CommonAns.newBuilder()
+                .setCmd(makeCmd(data.getCmd())).setErrCode(eErrorCode.OK);
+	    
+        do {
+            if (!isTheGuyReliable(data.getProof())) {
+                ans.setErrCode(eErrorCode.UNAUTHORIZED_ACCESS);
+                break;
             }
-			
-		} while (false);		
+
+            String which = data.getWhichCfg();
+            IReloadable cfg = loginServer.getReloadable(which);
+            if (cfg == null) {
+                ans.setErrCode(eErrorCode.CONFIG_FILE_NOT_FOUND);
+                break;
+            }
+            if (!loginServer.setReadable(false)) {
+                ans.setErrCode(eErrorCode.NETWORK_TOO_HOT_TO_FREEZE);
+                return;
+            }
+            boolean retVal = cfg.reload();
+            logger.debug("[" + data.getProof().getAdminName() + "] reload["
+                    + which + "] " + (retVal ? "succ" : "failed") + " at "
+                    + (new Date()) + ".");
+            loginServer.setReadable(true);
+
+        } while (false);
+    
+        Instruction ins = ans.getCmd();
+        eCommand cmd = ins.getCmd();
+        long cmdId = ins.getId();
+        Cocoon wrapper = new Cocoon(cmd.getNumber(), cmdId, ans.build().toByteArray());
+        ch.write(wrapper);
+        logger.debug("[" + cmd + "]: send[" + ans.getErrCode() + "] to [" + ch.getRemoteAddress() + "]");
 	}
 	
 	public void handleSrvStatus(Channel ch, SysRefreshServerStatus data) {
@@ -381,46 +387,47 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 //			return;
 //		}
 
-		SysGetSessionAns.Builder ans = SysGetSessionAns.newBuilder()
-				.setCmd(makeCmd(data.getCmd())).setErrCode(eErrorCode.OK);
-
-		int userId = data.getUserId();
-		int serverId = data.getServerId();
-		do {
-			Session ss = sessionMgr.get(userId);
-			if (ss == null || ss.isExpired()) {
-				ans.setErrCode(eErrorCode.SESSION_KEY_ERR);
-				break;
-			}
-			ans.setUserId(userId).setSessionKey(ss.getSessionKey()).setTimeStamp(ss.getTimeStamp());
-		} while (false);
-
-		logger.debug("user[" + userId + "] from[" + serverId + "] acquire session.");
-
-		Instruction ins = ans.getCmd();
-		eCommand cmd = ins.getCmd();
-		Cocoon wrapper = new Cocoon(cmd.getNumber(), ins.getId(), ans.build().toByteArray());
-		ch.write(wrapper);
-		logger.debug("[" + cmd + "]: send[" + ans.getErrCode() + "] to [" + ch.getRemoteAddress() + "]");
+//		SysGetSessionAns.Builder ans = SysGetSessionAns.newBuilder()
+//				.setCmd(makeCmd(data.getCmd())).setErrCode(eErrorCode.OK);
+//
+//		int userId = data.getUserId();
+//		int serverId = data.getServerId();
+//		do {
+//			Session ss = sessionMgr.get(userId);
+//			if (ss == null || ss.isExpired()) {
+//				ans.setErrCode(eErrorCode.SESSION_KEY_ERR);
+//				break;
+//			}
+//			ans.setUserId(userId).setSessionKey(ss.getSessionKey()).setTimeStamp(ss.getTimeStamp());
+//		} while (false);
+//
+//		logger.debug("user[" + userId + "] from[" + serverId + "] acquire session.");
+//
+//		Instruction ins = ans.getCmd();
+//		eCommand cmd = ins.getCmd();
+//		Cocoon wrapper = new Cocoon(cmd.getNumber(), ins.getId(), ans.build().toByteArray());
+//		ch.write(wrapper);
+//		logger.debug("[" + cmd + "]: send[" + ans.getErrCode() + "] to [" + ch.getRemoteAddress() + "]");
 	}
 	
-    private Session acquireSession(int userId) {
-        Session s = sessionMgr.get(userId);
-        long now = System.currentTimeMillis();
-        if (s == null) {
-            s = new Session();
-            s.setUserId(userId);
-            s.setSessionKey("" + Utils.RAND.nextLong());
-            s.setTimeStamp(now);
-            sessionMgr.put(userId, s);
-        } else if (s.isExpired()) {
-            // expired, regenerate
-            s.setSessionKey("" + Utils.RAND.nextLong());
-            s.setTimeStamp(now);
-        }
-        assert s != null;
-        return s;
-    }
+//    private String acquireSession(String strUserId) {
+//        RedisTeamster.getInst().
+//        String sessionKey = RedisTeamster.getInst().getSessionKey(strUserId, "" + Utils.RAND.nextLong());
+//        
+//        long now = System.currentTimeMillis();
+//        if (sessionKey == null) {
+//        
+//            s.setSessionKey("" + Utils.RAND.nextLong());
+//            s.setTimeStamp(now);
+//            sessionMgr.put(userId, s);
+//        } else if (s.isExpired()) {
+//            // expired, regenerate
+//            s.setSessionKey("" + Utils.RAND.nextLong());
+//            s.setTimeStamp(now);
+//        }
+//        assert s != null;
+//        return s;
+//    }
     
     private Instruction.Builder makeCmd(InstructionOrBuilder cmd) {
         eCommand newCmd;

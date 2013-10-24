@@ -1,6 +1,5 @@
 package com.tentacle.login.designer;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,7 +60,8 @@ public class VersionConfig extends CsvLoader<VersionConfig> implements IReloadab
 			put("活动地址", "activityUrl");
 			put("充值通知地址", "rechargeNotifyUrl");
 			put("临时证书地址", "tempCredentialUrl");
-			put("令牌证书地址", "tokenCredentialUrl");			
+			put("令牌证书地址", "tokenCredentialUrl");
+            // put("联运平台", "channelName");
 		}
 	};
 
@@ -212,11 +212,6 @@ public class VersionConfig extends CsvLoader<VersionConfig> implements IReloadab
     @Override
     protected void realDo(List<VersionConfig> list) {
         this.list = list;
-    }
-
-    @Override
-    protected Class<VersionConfig> getClassType() {        
-        return VersionConfig.class;
     }
 
 

@@ -17,9 +17,9 @@ public final class ProtoAlliance {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\023ProtoAlliance.proto\022 com.tentacle.call" +
-      "ofwild.protocol\032\020ProtoBasis.proto\032\021Proto" +
-      "Player.proto"
+      "\n\023ProtoAlliance.proto\022\034com.tentacle.comm" +
+      "on.protocol\032\020ProtoBasis.proto\032\021ProtoPlay" +
+      "er.proto"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

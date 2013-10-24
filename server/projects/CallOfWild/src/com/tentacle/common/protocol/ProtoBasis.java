@@ -209,7 +209,7 @@ public final class ProtoBasis {
       this.value = value;
     }
     
-    // @@protoc_insertion_point(enum_scope:com.tentacle.callofwild.protocol.eCommand)
+    // @@protoc_insertion_point(enum_scope:com.tentacle.common.protocol.eCommand)
   }
   
   public enum eErrorCode
@@ -236,11 +236,14 @@ public final class ProtoBasis {
     YOU_DONT_HAVE_PERMISSION(19, 48),
     YOU_DONT_HAVE_SATISFY_ME(20, 49),
     UNKNOWN_SCHEME(21, 54),
-    CONFIGURE_FILE_CORRUPTED(22, 58),
+    CONFIG_FILE_CORRUPTED(22, 58),
     NO_THIS_ITEM(23, 62),
     TOO_MANY_GHOST_PROFILE(24, 82),
     SHUT_UP(25, 84),
     FUCK_OFF(26, 85),
+    UNAUTHORIZED_ACCESS(27, 86),
+    CONFIG_FILE_NOT_FOUND(28, 87),
+    NETWORK_TOO_HOT_TO_FREEZE(29, 88),
     ;
     
     public static final int OK_VALUE = 0;
@@ -265,11 +268,14 @@ public final class ProtoBasis {
     public static final int YOU_DONT_HAVE_PERMISSION_VALUE = 48;
     public static final int YOU_DONT_HAVE_SATISFY_ME_VALUE = 49;
     public static final int UNKNOWN_SCHEME_VALUE = 54;
-    public static final int CONFIGURE_FILE_CORRUPTED_VALUE = 58;
+    public static final int CONFIG_FILE_CORRUPTED_VALUE = 58;
     public static final int NO_THIS_ITEM_VALUE = 62;
     public static final int TOO_MANY_GHOST_PROFILE_VALUE = 82;
     public static final int SHUT_UP_VALUE = 84;
     public static final int FUCK_OFF_VALUE = 85;
+    public static final int UNAUTHORIZED_ACCESS_VALUE = 86;
+    public static final int CONFIG_FILE_NOT_FOUND_VALUE = 87;
+    public static final int NETWORK_TOO_HOT_TO_FREEZE_VALUE = 88;
     
     
     public final int getNumber() { return value; }
@@ -298,11 +304,14 @@ public final class ProtoBasis {
         case 48: return YOU_DONT_HAVE_PERMISSION;
         case 49: return YOU_DONT_HAVE_SATISFY_ME;
         case 54: return UNKNOWN_SCHEME;
-        case 58: return CONFIGURE_FILE_CORRUPTED;
+        case 58: return CONFIG_FILE_CORRUPTED;
         case 62: return NO_THIS_ITEM;
         case 82: return TOO_MANY_GHOST_PROFILE;
         case 84: return SHUT_UP;
         case 85: return FUCK_OFF;
+        case 86: return UNAUTHORIZED_ACCESS;
+        case 87: return CONFIG_FILE_NOT_FOUND;
+        case 88: return NETWORK_TOO_HOT_TO_FREEZE;
         default: return null;
       }
     }
@@ -333,7 +342,7 @@ public final class ProtoBasis {
     }
     
     private static final eErrorCode[] VALUES = {
-      OK, FAILED, NO_IMPLEMENTED, INTERNAL_ERROR, WHO_ARE_YOU, OBSOLETED_COMMAND, BROKEN_TIMER, TOO_MANY_WORDS, NOT_ENOUGH_RES, NOT_ENOUGH_COPPER, NOT_ENOUGH_GOLD, SESSION_KEY_ERR, IN_BLACKLIST, ERR_NAME_OR_PASSWORD, NAME_DUPLICATED, NO_THIS_PLAYER, NEED_HIGHER_LEVEL, NO_INFO_ABOUT_THIS_ITEM, YOU_CANNOT_ORDER_ME, YOU_DONT_HAVE_PERMISSION, YOU_DONT_HAVE_SATISFY_ME, UNKNOWN_SCHEME, CONFIGURE_FILE_CORRUPTED, NO_THIS_ITEM, TOO_MANY_GHOST_PROFILE, SHUT_UP, FUCK_OFF, 
+      OK, FAILED, NO_IMPLEMENTED, INTERNAL_ERROR, WHO_ARE_YOU, OBSOLETED_COMMAND, BROKEN_TIMER, TOO_MANY_WORDS, NOT_ENOUGH_RES, NOT_ENOUGH_COPPER, NOT_ENOUGH_GOLD, SESSION_KEY_ERR, IN_BLACKLIST, ERR_NAME_OR_PASSWORD, NAME_DUPLICATED, NO_THIS_PLAYER, NEED_HIGHER_LEVEL, NO_INFO_ABOUT_THIS_ITEM, YOU_CANNOT_ORDER_ME, YOU_DONT_HAVE_PERMISSION, YOU_DONT_HAVE_SATISFY_ME, UNKNOWN_SCHEME, CONFIG_FILE_CORRUPTED, NO_THIS_ITEM, TOO_MANY_GHOST_PROFILE, SHUT_UP, FUCK_OFF, UNAUTHORIZED_ACCESS, CONFIG_FILE_NOT_FOUND, NETWORK_TOO_HOT_TO_FREEZE, 
     };
     
     public static eErrorCode valueOf(
@@ -353,7 +362,7 @@ public final class ProtoBasis {
       this.value = value;
     }
     
-    // @@protoc_insertion_point(enum_scope:com.tentacle.callofwild.protocol.eErrorCode)
+    // @@protoc_insertion_point(enum_scope:com.tentacle.common.protocol.eErrorCode)
   }
   
   public enum eResType
@@ -425,7 +434,7 @@ public final class ProtoBasis {
       this.value = value;
     }
     
-    // @@protoc_insertion_point(enum_scope:com.tentacle.callofwild.protocol.eResType)
+    // @@protoc_insertion_point(enum_scope:com.tentacle.common.protocol.eResType)
   }
   
   public interface MyVariantOrBuilder
@@ -513,12 +522,12 @@ public final class ProtoBasis {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_callofwild_protocol_MyVariant_descriptor;
+      return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_common_protocol_MyVariant_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_callofwild_protocol_MyVariant_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_common_protocol_MyVariant_fieldAccessorTable;
     }
     
     private int bitField0_;
@@ -1005,15 +1014,15 @@ public final class ProtoBasis {
        implements com.tentacle.common.protocol.ProtoBasis.MyVariantOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_callofwild_protocol_MyVariant_descriptor;
+        return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_common_protocol_MyVariant_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_callofwild_protocol_MyVariant_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_common_protocol_MyVariant_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoBasis.MyVariant.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoBasis.MyVariant.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1907,7 +1916,7 @@ public final class ProtoBasis {
         return this;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.MyVariant)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.MyVariant)
     }
     
     static {
@@ -1915,13 +1924,13 @@ public final class ProtoBasis {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.MyVariant)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.MyVariant)
   }
   
   public interface InstructionOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.eCommand cmd = 1;
+    // optional .com.tentacle.common.protocol.eCommand cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.eCommand getCmd();
     
@@ -1949,16 +1958,16 @@ public final class ProtoBasis {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_callofwild_protocol_Instruction_descriptor;
+      return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_common_protocol_Instruction_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_callofwild_protocol_Instruction_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_common_protocol_Instruction_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.eCommand cmd = 1;
+    // optional .com.tentacle.common.protocol.eCommand cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.eCommand cmd_;
     public boolean hasCmd() {
@@ -2114,15 +2123,15 @@ public final class ProtoBasis {
        implements com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_callofwild_protocol_Instruction_descriptor;
+        return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_common_protocol_Instruction_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_callofwild_protocol_Instruction_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_common_protocol_Instruction_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoBasis.Instruction.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoBasis.Instruction.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2266,7 +2275,7 @@ public final class ProtoBasis {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.eCommand cmd = 1;
+      // optional .com.tentacle.common.protocol.eCommand cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.eCommand cmd_ = com.tentacle.common.protocol.ProtoBasis.eCommand.NOP;
       public boolean hasCmd() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
@@ -2311,7 +2320,7 @@ public final class ProtoBasis {
         return this;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.Instruction)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.Instruction)
     }
     
     static {
@@ -2319,13 +2328,13 @@ public final class ProtoBasis {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.Instruction)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.Instruction)
   }
   
   public interface CommonReqOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
@@ -2350,16 +2359,16 @@ public final class ProtoBasis {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_callofwild_protocol_CommonReq_descriptor;
+      return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_common_protocol_CommonReq_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_callofwild_protocol_CommonReq_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_common_protocol_CommonReq_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -2500,15 +2509,15 @@ public final class ProtoBasis {
        implements com.tentacle.common.protocol.ProtoBasis.CommonReqOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_callofwild_protocol_CommonReq_descriptor;
+        return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_common_protocol_CommonReq_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_callofwild_protocol_CommonReq_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_common_protocol_CommonReq_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoBasis.CommonReq.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoBasis.CommonReq.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2645,7 +2654,7 @@ public final class ProtoBasis {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -2735,7 +2744,7 @@ public final class ProtoBasis {
         return cmdBuilder_;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.CommonReq)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.CommonReq)
     }
     
     static {
@@ -2743,18 +2752,18 @@ public final class ProtoBasis {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.CommonReq)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.CommonReq)
   }
   
   public interface CommonAnsOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
     
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+    // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
     boolean hasErrCode();
     com.tentacle.common.protocol.ProtoBasis.eErrorCode getErrCode();
   }
@@ -2778,16 +2787,16 @@ public final class ProtoBasis {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_callofwild_protocol_CommonAns_descriptor;
+      return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_common_protocol_CommonAns_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_callofwild_protocol_CommonAns_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_common_protocol_CommonAns_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -2800,7 +2809,7 @@ public final class ProtoBasis {
       return cmd_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+    // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
     public static final int ERR_CODE_FIELD_NUMBER = 2;
     private com.tentacle.common.protocol.ProtoBasis.eErrorCode errCode_;
     public boolean hasErrCode() {
@@ -2946,15 +2955,15 @@ public final class ProtoBasis {
        implements com.tentacle.common.protocol.ProtoBasis.CommonAnsOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_callofwild_protocol_CommonAns_descriptor;
+        return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_common_protocol_CommonAns_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_callofwild_protocol_CommonAns_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_common_protocol_CommonAns_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoBasis.CommonAns.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoBasis.CommonAns.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3111,7 +3120,7 @@ public final class ProtoBasis {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -3201,7 +3210,7 @@ public final class ProtoBasis {
         return cmdBuilder_;
       }
       
-      // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+      // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
       private com.tentacle.common.protocol.ProtoBasis.eErrorCode errCode_ = com.tentacle.common.protocol.ProtoBasis.eErrorCode.OK;
       public boolean hasErrCode() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
@@ -3225,7 +3234,7 @@ public final class ProtoBasis {
         return this;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.CommonAns)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.CommonAns)
     }
     
     static {
@@ -3233,13 +3242,13 @@ public final class ProtoBasis {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.CommonAns)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.CommonAns)
   }
   
   public interface ResAmountOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.eResType type = 1;
+    // optional .com.tentacle.common.protocol.eResType type = 1;
     boolean hasType();
     com.tentacle.common.protocol.ProtoBasis.eResType getType();
     
@@ -3267,16 +3276,16 @@ public final class ProtoBasis {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_callofwild_protocol_ResAmount_descriptor;
+      return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_common_protocol_ResAmount_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_callofwild_protocol_ResAmount_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_common_protocol_ResAmount_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.eResType type = 1;
+    // optional .com.tentacle.common.protocol.eResType type = 1;
     public static final int TYPE_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.eResType type_;
     public boolean hasType() {
@@ -3432,15 +3441,15 @@ public final class ProtoBasis {
        implements com.tentacle.common.protocol.ProtoBasis.ResAmountOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_callofwild_protocol_ResAmount_descriptor;
+        return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_common_protocol_ResAmount_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_callofwild_protocol_ResAmount_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoBasis.internal_static_com_tentacle_common_protocol_ResAmount_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoBasis.ResAmount.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoBasis.ResAmount.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3584,7 +3593,7 @@ public final class ProtoBasis {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.eResType type = 1;
+      // optional .com.tentacle.common.protocol.eResType type = 1;
       private com.tentacle.common.protocol.ProtoBasis.eResType type_ = com.tentacle.common.protocol.ProtoBasis.eResType.RT_UNKNOWN;
       public boolean hasType() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
@@ -3629,7 +3638,7 @@ public final class ProtoBasis {
         return this;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.ResAmount)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.ResAmount)
     }
     
     static {
@@ -3637,34 +3646,34 @@ public final class ProtoBasis {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.ResAmount)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.ResAmount)
   }
   
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_MyVariant_descriptor;
+    internal_static_com_tentacle_common_protocol_MyVariant_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_MyVariant_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_MyVariant_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_Instruction_descriptor;
+    internal_static_com_tentacle_common_protocol_Instruction_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_Instruction_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_Instruction_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_CommonReq_descriptor;
+    internal_static_com_tentacle_common_protocol_CommonReq_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_CommonReq_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_CommonReq_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_CommonAns_descriptor;
+    internal_static_com_tentacle_common_protocol_CommonAns_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_CommonAns_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_CommonAns_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_ResAmount_descriptor;
+    internal_static_com_tentacle_common_protocol_ResAmount_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_ResAmount_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_ResAmount_fieldAccessorTable;
   
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -3674,105 +3683,107 @@ public final class ProtoBasis {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\020ProtoBasis.proto\022 com.tentacle.callofw" +
-      "ild.protocol\"\377\001\n\tMyVariant\022\014\n\004name\030\001 \001(\t" +
-      "\022\020\n\010val_type\030\002 \001(\t\022\016\n\006val_i4\030\003 \001(\005\022\016\n\006va" +
-      "l_i8\030\004 \001(\003\022\r\n\005val_b\030\005 \001(\010\022\017\n\007val_str\030\006 \001" +
-      "(\t\022\r\n\005val_f\030\007 \001(\001\022\r\n\005val_d\030\010 \001(\001\022\022\n\nval_" +
-      "i4_seq\030\t \003(\005\022\022\n\nval_i8_seq\030\n \003(\003\022\021\n\tval_" +
-      "b_seq\030\013 \003(\010\022\023\n\013val_str_seq\030\014 \003(\t\022\021\n\tval_" +
-      "f_seq\030\r \003(\001\022\021\n\tval_d_seq\030\016 \003(\001\"R\n\013Instru" +
-      "ction\0227\n\003cmd\030\001 \001(\0162*.com.tentacle.callof" +
-      "wild.protocol.eCommand\022\n\n\002id\030\002 \001(\003\"G\n\tCo",
-      "mmonReq\022:\n\003cmd\030\001 \001(\0132-.com.tentacle.call" +
-      "ofwild.protocol.Instruction\"\207\001\n\tCommonAn" +
-      "s\022:\n\003cmd\030\001 \001(\0132-.com.tentacle.callofwild" +
-      ".protocol.Instruction\022>\n\010err_code\030\002 \001(\0162" +
-      ",.com.tentacle.callofwild.protocol.eErro" +
-      "rCode\"U\n\tResAmount\0228\n\004type\030\001 \001(\0162*.com.t" +
-      "entacle.callofwild.protocol.eResType\022\016\n\006" +
-      "amount\030\002 \001(\005*\210\007\n\010eCommand\022\007\n\003NOP\020\000\022\r\n\tHE" +
-      "ARTBEAT\020\003\022\014\n\010CHECK_ID\020)\022\010\n\004JOIN\020\004\022\023\n\017GET" +
-      "_PLAYER_INFO\020\007\022\013\n\007UPGRADE\020\010\022\010\n\004CHAT\020\014\022\021\n",
-      "\rGET_RANK_INFO\020\016\022\020\n\014GET_MAILLIST\020\017\022\020\n\014SE" +
-      "ND_MESSAGE\020\024\022\n\n\006ATTACK\020\025\022\n\n\006FIT_UP\020\031\022\016\n\n" +
-      "STRENGTHEN\020\032\022\021\n\rCREATE_PLAYER\020\"\022\020\n\014MARK_" +
-      "AS_READ\020/\022\017\n\013MAKE_FRIEND\0206\022\014\n\010USE_ITEM\020h" +
-      "\022\025\n\021GET_SCENARIO_INFO\020p\022\026\n\022CHALLENGE_SCE" +
-      "NARIO\020q\022\r\n\010REGISTER\020\320\017\022\n\n\005LOGIN\020\321\017\022\021\n\014AU" +
-      "THENTICATE\020\322\017\022\013\n\006LOGOUT\020\323\017\022\025\n\020GET_VERSIO" +
-      "N_INFO\020\324\017\022\021\n\014PUSH_MESSAGE\020\244\006\022\026\n\021PUSH_CHA" +
-      "T_CONTENT\020\245\006\022\033\n\026PUSH_YOU_HAVE_NEW_MAIL\020\256" +
-      "\006\022\027\n\022PUSH_BATTLE_REPORT\020\261\006\022 \n\033PUSH_SCENA",
-      "RIO_BATTLE_REPORT\020\267\006\022\026\n\021PUSH_TRADE_REPOR" +
-      "T\020\263\006\022\023\n\016PUSH_BROADCAST\020\266\006\022\023\n\016SYS_RELOAD_" +
-      "CFG\020\350\007\022\r\n\010SYS_EXIT\020\351\007\022\r\n\010SYS_IDLE\020\352\007\022\r\n\010" +
-      "SYS_POST\020\353\007\022\027\n\022SYS_QUERY_ONLINERS\020\354\007\022\025\n\020" +
-      "SYS_PRESENT_GIFT\020\355\007\022\022\n\rSYS_SEND_MAIL\020\360\007\022" +
-      "\030\n\023SYS_GET_RELOADABLES\020\361\007\022\024\n\017SYS_KICK_PL" +
-      "AYER\020\362\007\022\020\n\013SYS_SHUT_UP\020\363\007\022\024\n\017SYS_GET_SES" +
-      "SION\020\364\007\022\020\n\013SYS_GM_TALK\020\365\007\022\036\n\031SYS_REFRESH" +
-      "_SERVER_STATUS\020\366\007\022\020\n\013SYS_UNBLOCK\020\370\007\022\027\n\022S" +
-      "YS_RESET_PASSWORD\020\372\007\022\021\n\014SYS_RECHARGE\020\373\007*",
-      "\304\004\n\neErrorCode\022\006\n\002OK\020\000\022\n\n\006FAILED\020\001\022\022\n\016NO" +
-      "_IMPLEMENTED\020\022\022\022\n\016INTERNAL_ERROR\020\031\022\017\n\013WH" +
-      "O_ARE_YOU\020\023\022\025\n\021OBSOLETED_COMMAND\020!\022\020\n\014BR" +
-      "OKEN_TIMER\020\036\022\022\n\016TOO_MANY_WORDS\020\"\022\022\n\016NOT_" +
-      "ENOUGH_RES\020\002\022\025\n\021NOT_ENOUGH_COPPER\020\\\022\023\n\017N" +
-      "OT_ENOUGH_GOLD\020]\022\023\n\017SESSION_KEY_ERR\020\006\022\020\n" +
-      "\014IN_BLACKLIST\020\007\022\030\n\024ERR_NAME_OR_PASSWORD\020" +
-      "\n\022\023\n\017NAME_DUPLICATED\020\013\022\022\n\016NO_THIS_PLAYER" +
-      "\020\014\022\025\n\021NEED_HIGHER_LEVEL\020\'\022\033\n\027NO_INFO_ABO" +
-      "UT_THIS_ITEM\020(\022\027\n\023YOU_CANNOT_ORDER_ME\020,\022",
-      "\034\n\030YOU_DONT_HAVE_PERMISSION\0200\022\034\n\030YOU_DON" +
-      "T_HAVE_SATISFY_ME\0201\022\022\n\016UNKNOWN_SCHEME\0206\022" +
-      "\034\n\030CONFIGURE_FILE_CORRUPTED\020:\022\020\n\014NO_THIS" +
-      "_ITEM\020>\022\032\n\026TOO_MANY_GHOST_PROFILE\020R\022\013\n\007S" +
-      "HUT_UP\020T\022\014\n\010FUCK_OFF\020U*0\n\010eResType\022\016\n\nRT" +
-      "_UNKNOWN\020\000\022\n\n\006COPPER\020\001\022\010\n\004GOLD\020\006"
+      "\n\020ProtoBasis.proto\022\034com.tentacle.common." +
+      "protocol\"\377\001\n\tMyVariant\022\014\n\004name\030\001 \001(\t\022\020\n\010" +
+      "val_type\030\002 \001(\t\022\016\n\006val_i4\030\003 \001(\005\022\016\n\006val_i8" +
+      "\030\004 \001(\003\022\r\n\005val_b\030\005 \001(\010\022\017\n\007val_str\030\006 \001(\t\022\r" +
+      "\n\005val_f\030\007 \001(\001\022\r\n\005val_d\030\010 \001(\001\022\022\n\nval_i4_s" +
+      "eq\030\t \003(\005\022\022\n\nval_i8_seq\030\n \003(\003\022\021\n\tval_b_se" +
+      "q\030\013 \003(\010\022\023\n\013val_str_seq\030\014 \003(\t\022\021\n\tval_f_se" +
+      "q\030\r \003(\001\022\021\n\tval_d_seq\030\016 \003(\001\"N\n\013Instructio" +
+      "n\0223\n\003cmd\030\001 \001(\0162&.com.tentacle.common.pro" +
+      "tocol.eCommand\022\n\n\002id\030\002 \001(\003\"C\n\tCommonReq\022",
+      "6\n\003cmd\030\001 \001(\0132).com.tentacle.common.proto" +
+      "col.Instruction\"\177\n\tCommonAns\0226\n\003cmd\030\001 \001(" +
+      "\0132).com.tentacle.common.protocol.Instruc" +
+      "tion\022:\n\010err_code\030\002 \001(\0162(.com.tentacle.co" +
+      "mmon.protocol.eErrorCode\"Q\n\tResAmount\0224\n" +
+      "\004type\030\001 \001(\0162&.com.tentacle.common.protoc" +
+      "ol.eResType\022\016\n\006amount\030\002 \001(\005*\210\007\n\010eCommand" +
+      "\022\007\n\003NOP\020\000\022\r\n\tHEARTBEAT\020\003\022\014\n\010CHECK_ID\020)\022\010" +
+      "\n\004JOIN\020\004\022\023\n\017GET_PLAYER_INFO\020\007\022\013\n\007UPGRADE" +
+      "\020\010\022\010\n\004CHAT\020\014\022\021\n\rGET_RANK_INFO\020\016\022\020\n\014GET_M",
+      "AILLIST\020\017\022\020\n\014SEND_MESSAGE\020\024\022\n\n\006ATTACK\020\025\022" +
+      "\n\n\006FIT_UP\020\031\022\016\n\nSTRENGTHEN\020\032\022\021\n\rCREATE_PL" +
+      "AYER\020\"\022\020\n\014MARK_AS_READ\020/\022\017\n\013MAKE_FRIEND\020" +
+      "6\022\014\n\010USE_ITEM\020h\022\025\n\021GET_SCENARIO_INFO\020p\022\026" +
+      "\n\022CHALLENGE_SCENARIO\020q\022\r\n\010REGISTER\020\320\017\022\n\n" +
+      "\005LOGIN\020\321\017\022\021\n\014AUTHENTICATE\020\322\017\022\013\n\006LOGOUT\020\323" +
+      "\017\022\025\n\020GET_VERSION_INFO\020\324\017\022\021\n\014PUSH_MESSAGE" +
+      "\020\244\006\022\026\n\021PUSH_CHAT_CONTENT\020\245\006\022\033\n\026PUSH_YOU_" +
+      "HAVE_NEW_MAIL\020\256\006\022\027\n\022PUSH_BATTLE_REPORT\020\261" +
+      "\006\022 \n\033PUSH_SCENARIO_BATTLE_REPORT\020\267\006\022\026\n\021P",
+      "USH_TRADE_REPORT\020\263\006\022\023\n\016PUSH_BROADCAST\020\266\006" +
+      "\022\023\n\016SYS_RELOAD_CFG\020\350\007\022\r\n\010SYS_EXIT\020\351\007\022\r\n\010" +
+      "SYS_IDLE\020\352\007\022\r\n\010SYS_POST\020\353\007\022\027\n\022SYS_QUERY_" +
+      "ONLINERS\020\354\007\022\025\n\020SYS_PRESENT_GIFT\020\355\007\022\022\n\rSY" +
+      "S_SEND_MAIL\020\360\007\022\030\n\023SYS_GET_RELOADABLES\020\361\007" +
+      "\022\024\n\017SYS_KICK_PLAYER\020\362\007\022\020\n\013SYS_SHUT_UP\020\363\007" +
+      "\022\024\n\017SYS_GET_SESSION\020\364\007\022\020\n\013SYS_GM_TALK\020\365\007" +
+      "\022\036\n\031SYS_REFRESH_SERVER_STATUS\020\366\007\022\020\n\013SYS_" +
+      "UNBLOCK\020\370\007\022\027\n\022SYS_RESET_PASSWORD\020\372\007\022\021\n\014S" +
+      "YS_RECHARGE\020\373\007*\224\005\n\neErrorCode\022\006\n\002OK\020\000\022\n\n",
+      "\006FAILED\020\001\022\022\n\016NO_IMPLEMENTED\020\022\022\022\n\016INTERNA" +
+      "L_ERROR\020\031\022\017\n\013WHO_ARE_YOU\020\023\022\025\n\021OBSOLETED_" +
+      "COMMAND\020!\022\020\n\014BROKEN_TIMER\020\036\022\022\n\016TOO_MANY_" +
+      "WORDS\020\"\022\022\n\016NOT_ENOUGH_RES\020\002\022\025\n\021NOT_ENOUG" +
+      "H_COPPER\020\\\022\023\n\017NOT_ENOUGH_GOLD\020]\022\023\n\017SESSI" +
+      "ON_KEY_ERR\020\006\022\020\n\014IN_BLACKLIST\020\007\022\030\n\024ERR_NA" +
+      "ME_OR_PASSWORD\020\n\022\023\n\017NAME_DUPLICATED\020\013\022\022\n" +
+      "\016NO_THIS_PLAYER\020\014\022\025\n\021NEED_HIGHER_LEVEL\020\'" +
+      "\022\033\n\027NO_INFO_ABOUT_THIS_ITEM\020(\022\027\n\023YOU_CAN" +
+      "NOT_ORDER_ME\020,\022\034\n\030YOU_DONT_HAVE_PERMISSI",
+      "ON\0200\022\034\n\030YOU_DONT_HAVE_SATISFY_ME\0201\022\022\n\016UN" +
+      "KNOWN_SCHEME\0206\022\031\n\025CONFIG_FILE_CORRUPTED\020" +
+      ":\022\020\n\014NO_THIS_ITEM\020>\022\032\n\026TOO_MANY_GHOST_PR" +
+      "OFILE\020R\022\013\n\007SHUT_UP\020T\022\014\n\010FUCK_OFF\020U\022\027\n\023UN" +
+      "AUTHORIZED_ACCESS\020V\022\031\n\025CONFIG_FILE_NOT_F" +
+      "OUND\020W\022\035\n\031NETWORK_TOO_HOT_TO_FREEZE\020X*0\n" +
+      "\010eResType\022\016\n\nRT_UNKNOWN\020\000\022\n\n\006COPPER\020\001\022\010\n" +
+      "\004GOLD\020\006"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_com_tentacle_callofwild_protocol_MyVariant_descriptor =
+          internal_static_com_tentacle_common_protocol_MyVariant_descriptor =
             getDescriptor().getMessageTypes().get(0);
-          internal_static_com_tentacle_callofwild_protocol_MyVariant_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_MyVariant_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_MyVariant_descriptor,
+              internal_static_com_tentacle_common_protocol_MyVariant_descriptor,
               new java.lang.String[] { "Name", "ValType", "ValI4", "ValI8", "ValB", "ValStr", "ValF", "ValD", "ValI4Seq", "ValI8Seq", "ValBSeq", "ValStrSeq", "ValFSeq", "ValDSeq", },
               com.tentacle.common.protocol.ProtoBasis.MyVariant.class,
               com.tentacle.common.protocol.ProtoBasis.MyVariant.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_Instruction_descriptor =
+          internal_static_com_tentacle_common_protocol_Instruction_descriptor =
             getDescriptor().getMessageTypes().get(1);
-          internal_static_com_tentacle_callofwild_protocol_Instruction_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_Instruction_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_Instruction_descriptor,
+              internal_static_com_tentacle_common_protocol_Instruction_descriptor,
               new java.lang.String[] { "Cmd", "Id", },
               com.tentacle.common.protocol.ProtoBasis.Instruction.class,
               com.tentacle.common.protocol.ProtoBasis.Instruction.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_CommonReq_descriptor =
+          internal_static_com_tentacle_common_protocol_CommonReq_descriptor =
             getDescriptor().getMessageTypes().get(2);
-          internal_static_com_tentacle_callofwild_protocol_CommonReq_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_CommonReq_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_CommonReq_descriptor,
+              internal_static_com_tentacle_common_protocol_CommonReq_descriptor,
               new java.lang.String[] { "Cmd", },
               com.tentacle.common.protocol.ProtoBasis.CommonReq.class,
               com.tentacle.common.protocol.ProtoBasis.CommonReq.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_CommonAns_descriptor =
+          internal_static_com_tentacle_common_protocol_CommonAns_descriptor =
             getDescriptor().getMessageTypes().get(3);
-          internal_static_com_tentacle_callofwild_protocol_CommonAns_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_CommonAns_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_CommonAns_descriptor,
+              internal_static_com_tentacle_common_protocol_CommonAns_descriptor,
               new java.lang.String[] { "Cmd", "ErrCode", },
               com.tentacle.common.protocol.ProtoBasis.CommonAns.class,
               com.tentacle.common.protocol.ProtoBasis.CommonAns.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_ResAmount_descriptor =
+          internal_static_com_tentacle_common_protocol_ResAmount_descriptor =
             getDescriptor().getMessageTypes().get(4);
-          internal_static_com_tentacle_callofwild_protocol_ResAmount_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_ResAmount_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_ResAmount_descriptor,
+              internal_static_com_tentacle_common_protocol_ResAmount_descriptor,
               new java.lang.String[] { "Type", "Amount", },
               com.tentacle.common.protocol.ProtoBasis.ResAmount.class,
               com.tentacle.common.protocol.ProtoBasis.ResAmount.Builder.class);

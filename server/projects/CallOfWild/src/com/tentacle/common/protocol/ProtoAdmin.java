@@ -39,12 +39,12 @@ public final class ProtoAdmin {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_Warrant_descriptor;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_Warrant_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_Warrant_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_Warrant_fieldAccessorTable;
     }
     
     private int bitField0_;
@@ -248,15 +248,15 @@ public final class ProtoAdmin {
        implements com.tentacle.common.protocol.ProtoAdmin.WarrantOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_Warrant_descriptor;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_Warrant_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_Warrant_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_Warrant_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoAdmin.Warrant.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoAdmin.Warrant.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -466,7 +466,7 @@ public final class ProtoAdmin {
         onChanged();
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.Warrant)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.Warrant)
     }
     
     static {
@@ -474,18 +474,18 @@ public final class ProtoAdmin {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.Warrant)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.Warrant)
   }
   
   public interface SysReloadCfgOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
     
-    // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+    // optional .com.tentacle.common.protocol.Warrant proof = 2;
     boolean hasProof();
     com.tentacle.common.protocol.ProtoAdmin.Warrant getProof();
     com.tentacle.common.protocol.ProtoAdmin.WarrantOrBuilder getProofOrBuilder();
@@ -514,16 +514,16 @@ public final class ProtoAdmin {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysReloadCfg_descriptor;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysReloadCfg_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysReloadCfg_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysReloadCfg_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -536,7 +536,7 @@ public final class ProtoAdmin {
       return cmd_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+    // optional .com.tentacle.common.protocol.Warrant proof = 2;
     public static final int PROOF_FIELD_NUMBER = 2;
     private com.tentacle.common.protocol.ProtoAdmin.Warrant proof_;
     public boolean hasProof() {
@@ -725,15 +725,15 @@ public final class ProtoAdmin {
        implements com.tentacle.common.protocol.ProtoAdmin.SysReloadCfgOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysReloadCfg_descriptor;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysReloadCfg_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysReloadCfg_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysReloadCfg_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoAdmin.SysReloadCfg.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoAdmin.SysReloadCfg.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -911,7 +911,7 @@ public final class ProtoAdmin {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -1001,7 +1001,7 @@ public final class ProtoAdmin {
         return cmdBuilder_;
       }
       
-      // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+      // optional .com.tentacle.common.protocol.Warrant proof = 2;
       private com.tentacle.common.protocol.ProtoAdmin.Warrant proof_ = com.tentacle.common.protocol.ProtoAdmin.Warrant.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoAdmin.Warrant, com.tentacle.common.protocol.ProtoAdmin.Warrant.Builder, com.tentacle.common.protocol.ProtoAdmin.WarrantOrBuilder> proofBuilder_;
@@ -1127,7 +1127,7 @@ public final class ProtoAdmin {
         onChanged();
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.SysReloadCfg)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.SysReloadCfg)
     }
     
     static {
@@ -1135,18 +1135,18 @@ public final class ProtoAdmin {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.SysReloadCfg)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.SysReloadCfg)
   }
   
   public interface SysPostOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
     
-    // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+    // optional .com.tentacle.common.protocol.Warrant proof = 2;
     boolean hasProof();
     com.tentacle.common.protocol.ProtoAdmin.Warrant getProof();
     com.tentacle.common.protocol.ProtoAdmin.WarrantOrBuilder getProofOrBuilder();
@@ -1175,16 +1175,16 @@ public final class ProtoAdmin {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysPost_descriptor;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysPost_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysPost_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysPost_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -1197,7 +1197,7 @@ public final class ProtoAdmin {
       return cmd_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+    // optional .com.tentacle.common.protocol.Warrant proof = 2;
     public static final int PROOF_FIELD_NUMBER = 2;
     private com.tentacle.common.protocol.ProtoAdmin.Warrant proof_;
     public boolean hasProof() {
@@ -1386,15 +1386,15 @@ public final class ProtoAdmin {
        implements com.tentacle.common.protocol.ProtoAdmin.SysPostOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysPost_descriptor;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysPost_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysPost_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysPost_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoAdmin.SysPost.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoAdmin.SysPost.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1572,7 +1572,7 @@ public final class ProtoAdmin {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -1662,7 +1662,7 @@ public final class ProtoAdmin {
         return cmdBuilder_;
       }
       
-      // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+      // optional .com.tentacle.common.protocol.Warrant proof = 2;
       private com.tentacle.common.protocol.ProtoAdmin.Warrant proof_ = com.tentacle.common.protocol.ProtoAdmin.Warrant.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoAdmin.Warrant, com.tentacle.common.protocol.ProtoAdmin.Warrant.Builder, com.tentacle.common.protocol.ProtoAdmin.WarrantOrBuilder> proofBuilder_;
@@ -1788,7 +1788,7 @@ public final class ProtoAdmin {
         onChanged();
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.SysPost)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.SysPost)
     }
     
     static {
@@ -1796,18 +1796,18 @@ public final class ProtoAdmin {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.SysPost)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.SysPost)
   }
   
   public interface SysPresentGiftOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
     
-    // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+    // optional .com.tentacle.common.protocol.Warrant proof = 2;
     boolean hasProof();
     com.tentacle.common.protocol.ProtoAdmin.Warrant getProof();
     com.tentacle.common.protocol.ProtoAdmin.WarrantOrBuilder getProofOrBuilder();
@@ -1817,7 +1817,7 @@ public final class ProtoAdmin {
     int getNameCount();
     String getName(int index);
     
-    // repeated .com.tentacle.callofwild.protocol.SysPresentGift.Gift gifts = 5;
+    // repeated .com.tentacle.common.protocol.SysPresentGift.Gift gifts = 5;
     java.util.List<com.tentacle.common.protocol.ProtoAdmin.SysPresentGift.Gift> 
         getGiftsList();
     com.tentacle.common.protocol.ProtoAdmin.SysPresentGift.Gift getGifts(int index);
@@ -1852,12 +1852,12 @@ public final class ProtoAdmin {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysPresentGift_descriptor;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysPresentGift_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysPresentGift_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysPresentGift_fieldAccessorTable;
     }
     
     public interface GiftOrBuilder
@@ -1875,7 +1875,7 @@ public final class ProtoAdmin {
       boolean hasEquipStrengthenLv();
       int getEquipStrengthenLv();
       
-      // repeated .com.tentacle.callofwild.protocol.ResAmount res = 4;
+      // repeated .com.tentacle.common.protocol.ResAmount res = 4;
       java.util.List<com.tentacle.common.protocol.ProtoBasis.ResAmount> 
           getResList();
       com.tentacle.common.protocol.ProtoBasis.ResAmount getRes(int index);
@@ -1909,12 +1909,12 @@ public final class ProtoAdmin {
       
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysPresentGift_Gift_descriptor;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysPresentGift_Gift_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysPresentGift_Gift_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysPresentGift_Gift_fieldAccessorTable;
       }
       
       private int bitField0_;
@@ -1948,7 +1948,7 @@ public final class ProtoAdmin {
         return equipStrengthenLv_;
       }
       
-      // repeated .com.tentacle.callofwild.protocol.ResAmount res = 4;
+      // repeated .com.tentacle.common.protocol.ResAmount res = 4;
       public static final int RES_FIELD_NUMBER = 4;
       private java.util.List<com.tentacle.common.protocol.ProtoBasis.ResAmount> res_;
       public java.util.List<com.tentacle.common.protocol.ProtoBasis.ResAmount> getResList() {
@@ -2139,15 +2139,15 @@ public final class ProtoAdmin {
          implements com.tentacle.common.protocol.ProtoAdmin.SysPresentGift.GiftOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysPresentGift_Gift_descriptor;
+          return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysPresentGift_Gift_descriptor;
         }
         
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysPresentGift_Gift_fieldAccessorTable;
+          return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysPresentGift_Gift_fieldAccessorTable;
         }
         
-        // Construct using com.tentacle.callofwild.protocol.ProtoAdmin.SysPresentGift.Gift.newBuilder()
+        // Construct using com.tentacle.common.protocol.ProtoAdmin.SysPresentGift.Gift.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
@@ -2424,7 +2424,7 @@ public final class ProtoAdmin {
           return this;
         }
         
-        // repeated .com.tentacle.callofwild.protocol.ResAmount res = 4;
+        // repeated .com.tentacle.common.protocol.ResAmount res = 4;
         private java.util.List<com.tentacle.common.protocol.ProtoBasis.ResAmount> res_ =
           java.util.Collections.emptyList();
         private void ensureResIsMutable() {
@@ -2631,7 +2631,7 @@ public final class ProtoAdmin {
           return this;
         }
         
-        // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.SysPresentGift.Gift)
+        // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.SysPresentGift.Gift)
       }
       
       static {
@@ -2639,11 +2639,11 @@ public final class ProtoAdmin {
         defaultInstance.initFields();
       }
       
-      // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.SysPresentGift.Gift)
+      // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.SysPresentGift.Gift)
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -2656,7 +2656,7 @@ public final class ProtoAdmin {
       return cmd_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+    // optional .com.tentacle.common.protocol.Warrant proof = 2;
     public static final int PROOF_FIELD_NUMBER = 2;
     private com.tentacle.common.protocol.ProtoAdmin.Warrant proof_;
     public boolean hasProof() {
@@ -2683,7 +2683,7 @@ public final class ProtoAdmin {
       return name_.get(index);
     }
     
-    // repeated .com.tentacle.callofwild.protocol.SysPresentGift.Gift gifts = 5;
+    // repeated .com.tentacle.common.protocol.SysPresentGift.Gift gifts = 5;
     public static final int GIFTS_FIELD_NUMBER = 5;
     private java.util.List<com.tentacle.common.protocol.ProtoAdmin.SysPresentGift.Gift> gifts_;
     public java.util.List<com.tentacle.common.protocol.ProtoAdmin.SysPresentGift.Gift> getGiftsList() {
@@ -2888,15 +2888,15 @@ public final class ProtoAdmin {
        implements com.tentacle.common.protocol.ProtoAdmin.SysPresentGiftOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysPresentGift_descriptor;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysPresentGift_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysPresentGift_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysPresentGift_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoAdmin.SysPresentGift.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoAdmin.SysPresentGift.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3162,7 +3162,7 @@ public final class ProtoAdmin {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -3252,7 +3252,7 @@ public final class ProtoAdmin {
         return cmdBuilder_;
       }
       
-      // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+      // optional .com.tentacle.common.protocol.Warrant proof = 2;
       private com.tentacle.common.protocol.ProtoAdmin.Warrant proof_ = com.tentacle.common.protocol.ProtoAdmin.Warrant.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoAdmin.Warrant, com.tentacle.common.protocol.ProtoAdmin.Warrant.Builder, com.tentacle.common.protocol.ProtoAdmin.WarrantOrBuilder> proofBuilder_;
@@ -3398,7 +3398,7 @@ public final class ProtoAdmin {
         onChanged();
       }
       
-      // repeated .com.tentacle.callofwild.protocol.SysPresentGift.Gift gifts = 5;
+      // repeated .com.tentacle.common.protocol.SysPresentGift.Gift gifts = 5;
       private java.util.List<com.tentacle.common.protocol.ProtoAdmin.SysPresentGift.Gift> gifts_ =
         java.util.Collections.emptyList();
       private void ensureGiftsIsMutable() {
@@ -3629,7 +3629,7 @@ public final class ProtoAdmin {
         return this;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.SysPresentGift)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.SysPresentGift)
     }
     
     static {
@@ -3637,18 +3637,18 @@ public final class ProtoAdmin {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.SysPresentGift)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.SysPresentGift)
   }
   
   public interface SysCommonReqOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
     
-    // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+    // optional .com.tentacle.common.protocol.Warrant proof = 2;
     boolean hasProof();
     com.tentacle.common.protocol.ProtoAdmin.Warrant getProof();
     com.tentacle.common.protocol.ProtoAdmin.WarrantOrBuilder getProofOrBuilder();
@@ -3673,16 +3673,16 @@ public final class ProtoAdmin {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysCommonReq_descriptor;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysCommonReq_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysCommonReq_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysCommonReq_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -3695,7 +3695,7 @@ public final class ProtoAdmin {
       return cmd_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+    // optional .com.tentacle.common.protocol.Warrant proof = 2;
     public static final int PROOF_FIELD_NUMBER = 2;
     private com.tentacle.common.protocol.ProtoAdmin.Warrant proof_;
     public boolean hasProof() {
@@ -3844,15 +3844,15 @@ public final class ProtoAdmin {
        implements com.tentacle.common.protocol.ProtoAdmin.SysCommonReqOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysCommonReq_descriptor;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysCommonReq_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysCommonReq_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysCommonReq_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoAdmin.SysCommonReq.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoAdmin.SysCommonReq.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -4016,7 +4016,7 @@ public final class ProtoAdmin {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -4106,7 +4106,7 @@ public final class ProtoAdmin {
         return cmdBuilder_;
       }
       
-      // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+      // optional .com.tentacle.common.protocol.Warrant proof = 2;
       private com.tentacle.common.protocol.ProtoAdmin.Warrant proof_ = com.tentacle.common.protocol.ProtoAdmin.Warrant.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoAdmin.Warrant, com.tentacle.common.protocol.ProtoAdmin.Warrant.Builder, com.tentacle.common.protocol.ProtoAdmin.WarrantOrBuilder> proofBuilder_;
@@ -4196,7 +4196,7 @@ public final class ProtoAdmin {
         return proofBuilder_;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.SysCommonReq)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.SysCommonReq)
     }
     
     static {
@@ -4204,18 +4204,18 @@ public final class ProtoAdmin {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.SysCommonReq)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.SysCommonReq)
   }
   
   public interface SysQueryDeadAnsOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
     
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+    // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
     boolean hasErrCode();
     com.tentacle.common.protocol.ProtoBasis.eErrorCode getErrCode();
     
@@ -4243,16 +4243,16 @@ public final class ProtoAdmin {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysQueryDeadAns_descriptor;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysQueryDeadAns_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysQueryDeadAns_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysQueryDeadAns_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -4265,7 +4265,7 @@ public final class ProtoAdmin {
       return cmd_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+    // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
     public static final int ERR_CODE_FIELD_NUMBER = 2;
     private com.tentacle.common.protocol.ProtoBasis.eErrorCode errCode_;
     public boolean hasErrCode() {
@@ -4429,15 +4429,15 @@ public final class ProtoAdmin {
        implements com.tentacle.common.protocol.ProtoAdmin.SysQueryDeadAnsOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysQueryDeadAns_descriptor;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysQueryDeadAns_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysQueryDeadAns_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysQueryDeadAns_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoAdmin.SysQueryDeadAns.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoAdmin.SysQueryDeadAns.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -4608,7 +4608,7 @@ public final class ProtoAdmin {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -4698,7 +4698,7 @@ public final class ProtoAdmin {
         return cmdBuilder_;
       }
       
-      // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+      // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
       private com.tentacle.common.protocol.ProtoBasis.eErrorCode errCode_ = com.tentacle.common.protocol.ProtoBasis.eErrorCode.OK;
       public boolean hasErrCode() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
@@ -4743,7 +4743,7 @@ public final class ProtoAdmin {
         return this;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.SysQueryDeadAns)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.SysQueryDeadAns)
     }
     
     static {
@@ -4751,18 +4751,18 @@ public final class ProtoAdmin {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.SysQueryDeadAns)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.SysQueryDeadAns)
   }
   
   public interface SysSendMailOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
     
-    // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+    // optional .com.tentacle.common.protocol.Warrant proof = 2;
     boolean hasProof();
     com.tentacle.common.protocol.ProtoAdmin.Warrant getProof();
     com.tentacle.common.protocol.ProtoAdmin.WarrantOrBuilder getProofOrBuilder();
@@ -4808,16 +4808,16 @@ public final class ProtoAdmin {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysSendMail_descriptor;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysSendMail_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysSendMail_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysSendMail_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -4830,7 +4830,7 @@ public final class ProtoAdmin {
       return cmd_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+    // optional .com.tentacle.common.protocol.Warrant proof = 2;
     public static final int PROOF_FIELD_NUMBER = 2;
     private com.tentacle.common.protocol.ProtoAdmin.Warrant proof_;
     public boolean hasProof() {
@@ -5144,15 +5144,15 @@ public final class ProtoAdmin {
        implements com.tentacle.common.protocol.ProtoAdmin.SysSendMailOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysSendMail_descriptor;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysSendMail_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysSendMail_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysSendMail_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoAdmin.SysSendMail.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoAdmin.SysSendMail.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -5395,7 +5395,7 @@ public final class ProtoAdmin {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -5485,7 +5485,7 @@ public final class ProtoAdmin {
         return cmdBuilder_;
       }
       
-      // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+      // optional .com.tentacle.common.protocol.Warrant proof = 2;
       private com.tentacle.common.protocol.ProtoAdmin.Warrant proof_ = com.tentacle.common.protocol.ProtoAdmin.Warrant.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoAdmin.Warrant, com.tentacle.common.protocol.ProtoAdmin.Warrant.Builder, com.tentacle.common.protocol.ProtoAdmin.WarrantOrBuilder> proofBuilder_;
@@ -5760,7 +5760,7 @@ public final class ProtoAdmin {
         onChanged();
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.SysSendMail)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.SysSendMail)
     }
     
     static {
@@ -5768,18 +5768,18 @@ public final class ProtoAdmin {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.SysSendMail)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.SysSendMail)
   }
   
   public interface SysGetReloadablesOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
     
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+    // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
     boolean hasErrCode();
     com.tentacle.common.protocol.ProtoBasis.eErrorCode getErrCode();
     
@@ -5808,16 +5808,16 @@ public final class ProtoAdmin {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysGetReloadables_descriptor;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysGetReloadables_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysGetReloadables_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysGetReloadables_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -5830,7 +5830,7 @@ public final class ProtoAdmin {
       return cmd_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+    // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
     public static final int ERR_CODE_FIELD_NUMBER = 2;
     private com.tentacle.common.protocol.ProtoBasis.eErrorCode errCode_;
     public boolean hasErrCode() {
@@ -6003,15 +6003,15 @@ public final class ProtoAdmin {
        implements com.tentacle.common.protocol.ProtoAdmin.SysGetReloadablesOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysGetReloadables_descriptor;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysGetReloadables_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysGetReloadables_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysGetReloadables_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoAdmin.SysGetReloadables.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoAdmin.SysGetReloadables.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -6191,7 +6191,7 @@ public final class ProtoAdmin {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -6281,7 +6281,7 @@ public final class ProtoAdmin {
         return cmdBuilder_;
       }
       
-      // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+      // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
       private com.tentacle.common.protocol.ProtoBasis.eErrorCode errCode_ = com.tentacle.common.protocol.ProtoBasis.eErrorCode.OK;
       public boolean hasErrCode() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
@@ -6361,7 +6361,7 @@ public final class ProtoAdmin {
         onChanged();
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.SysGetReloadables)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.SysGetReloadables)
     }
     
     static {
@@ -6369,18 +6369,18 @@ public final class ProtoAdmin {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.SysGetReloadables)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.SysGetReloadables)
   }
   
   public interface SysLimitPlayerBehaviorOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
     
-    // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+    // optional .com.tentacle.common.protocol.Warrant proof = 2;
     boolean hasProof();
     com.tentacle.common.protocol.ProtoAdmin.Warrant getProof();
     com.tentacle.common.protocol.ProtoAdmin.WarrantOrBuilder getProofOrBuilder();
@@ -6425,16 +6425,16 @@ public final class ProtoAdmin {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysLimitPlayerBehavior_descriptor;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysLimitPlayerBehavior_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysLimitPlayerBehavior_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysLimitPlayerBehavior_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -6447,7 +6447,7 @@ public final class ProtoAdmin {
       return cmd_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+    // optional .com.tentacle.common.protocol.Warrant proof = 2;
     public static final int PROOF_FIELD_NUMBER = 2;
     private com.tentacle.common.protocol.ProtoAdmin.Warrant proof_;
     public boolean hasProof() {
@@ -6730,15 +6730,15 @@ public final class ProtoAdmin {
        implements com.tentacle.common.protocol.ProtoAdmin.SysLimitPlayerBehaviorOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysLimitPlayerBehavior_descriptor;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysLimitPlayerBehavior_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysLimitPlayerBehavior_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysLimitPlayerBehavior_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoAdmin.SysLimitPlayerBehavior.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoAdmin.SysLimitPlayerBehavior.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -6972,7 +6972,7 @@ public final class ProtoAdmin {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -7062,7 +7062,7 @@ public final class ProtoAdmin {
         return cmdBuilder_;
       }
       
-      // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+      // optional .com.tentacle.common.protocol.Warrant proof = 2;
       private com.tentacle.common.protocol.ProtoAdmin.Warrant proof_ = com.tentacle.common.protocol.ProtoAdmin.Warrant.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoAdmin.Warrant, com.tentacle.common.protocol.ProtoAdmin.Warrant.Builder, com.tentacle.common.protocol.ProtoAdmin.WarrantOrBuilder> proofBuilder_;
@@ -7287,7 +7287,7 @@ public final class ProtoAdmin {
         onChanged();
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.SysLimitPlayerBehavior)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.SysLimitPlayerBehavior)
     }
     
     static {
@@ -7295,18 +7295,18 @@ public final class ProtoAdmin {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.SysLimitPlayerBehavior)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.SysLimitPlayerBehavior)
   }
   
   public interface SysGetSessionOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
     
-    // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+    // optional .com.tentacle.common.protocol.Warrant proof = 2;
     boolean hasProof();
     com.tentacle.common.protocol.ProtoAdmin.Warrant getProof();
     com.tentacle.common.protocol.ProtoAdmin.WarrantOrBuilder getProofOrBuilder();
@@ -7339,16 +7339,16 @@ public final class ProtoAdmin {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysGetSession_descriptor;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysGetSession_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysGetSession_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysGetSession_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -7361,7 +7361,7 @@ public final class ProtoAdmin {
       return cmd_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+    // optional .com.tentacle.common.protocol.Warrant proof = 2;
     public static final int PROOF_FIELD_NUMBER = 2;
     private com.tentacle.common.protocol.ProtoAdmin.Warrant proof_;
     public boolean hasProof() {
@@ -7546,15 +7546,15 @@ public final class ProtoAdmin {
        implements com.tentacle.common.protocol.ProtoAdmin.SysGetSessionOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysGetSession_descriptor;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysGetSession_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysGetSession_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysGetSession_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoAdmin.SysGetSession.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoAdmin.SysGetSession.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -7746,7 +7746,7 @@ public final class ProtoAdmin {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -7836,7 +7836,7 @@ public final class ProtoAdmin {
         return cmdBuilder_;
       }
       
-      // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+      // optional .com.tentacle.common.protocol.Warrant proof = 2;
       private com.tentacle.common.protocol.ProtoAdmin.Warrant proof_ = com.tentacle.common.protocol.ProtoAdmin.Warrant.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoAdmin.Warrant, com.tentacle.common.protocol.ProtoAdmin.Warrant.Builder, com.tentacle.common.protocol.ProtoAdmin.WarrantOrBuilder> proofBuilder_;
@@ -7968,7 +7968,7 @@ public final class ProtoAdmin {
         return this;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.SysGetSession)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.SysGetSession)
     }
     
     static {
@@ -7976,18 +7976,18 @@ public final class ProtoAdmin {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.SysGetSession)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.SysGetSession)
   }
   
   public interface SysGetSessionAnsOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
     
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+    // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
     boolean hasErrCode();
     com.tentacle.common.protocol.ProtoBasis.eErrorCode getErrCode();
     
@@ -8023,16 +8023,16 @@ public final class ProtoAdmin {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysGetSessionAns_descriptor;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysGetSessionAns_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysGetSessionAns_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysGetSessionAns_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -8045,7 +8045,7 @@ public final class ProtoAdmin {
       return cmd_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+    // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
     public static final int ERR_CODE_FIELD_NUMBER = 2;
     private com.tentacle.common.protocol.ProtoBasis.eErrorCode errCode_;
     public boolean hasErrCode() {
@@ -8267,15 +8267,15 @@ public final class ProtoAdmin {
        implements com.tentacle.common.protocol.ProtoAdmin.SysGetSessionAnsOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysGetSessionAns_descriptor;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysGetSessionAns_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysGetSessionAns_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysGetSessionAns_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoAdmin.SysGetSessionAns.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoAdmin.SysGetSessionAns.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -8474,7 +8474,7 @@ public final class ProtoAdmin {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -8564,7 +8564,7 @@ public final class ProtoAdmin {
         return cmdBuilder_;
       }
       
-      // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+      // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
       private com.tentacle.common.protocol.ProtoBasis.eErrorCode errCode_ = com.tentacle.common.protocol.ProtoBasis.eErrorCode.OK;
       public boolean hasErrCode() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
@@ -8666,7 +8666,7 @@ public final class ProtoAdmin {
         return this;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.SysGetSessionAns)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.SysGetSessionAns)
     }
     
     static {
@@ -8674,18 +8674,18 @@ public final class ProtoAdmin {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.SysGetSessionAns)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.SysGetSessionAns)
   }
   
   public interface SysGmTalkOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
     
-    // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+    // optional .com.tentacle.common.protocol.Warrant proof = 2;
     boolean hasProof();
     com.tentacle.common.protocol.ProtoAdmin.Warrant getProof();
     com.tentacle.common.protocol.ProtoAdmin.WarrantOrBuilder getProofOrBuilder();
@@ -8714,16 +8714,16 @@ public final class ProtoAdmin {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysGmTalk_descriptor;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysGmTalk_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysGmTalk_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysGmTalk_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -8736,7 +8736,7 @@ public final class ProtoAdmin {
       return cmd_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+    // optional .com.tentacle.common.protocol.Warrant proof = 2;
     public static final int PROOF_FIELD_NUMBER = 2;
     private com.tentacle.common.protocol.ProtoAdmin.Warrant proof_;
     public boolean hasProof() {
@@ -8925,15 +8925,15 @@ public final class ProtoAdmin {
        implements com.tentacle.common.protocol.ProtoAdmin.SysGmTalkOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysGmTalk_descriptor;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysGmTalk_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysGmTalk_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysGmTalk_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoAdmin.SysGmTalk.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoAdmin.SysGmTalk.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -9111,7 +9111,7 @@ public final class ProtoAdmin {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -9201,7 +9201,7 @@ public final class ProtoAdmin {
         return cmdBuilder_;
       }
       
-      // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+      // optional .com.tentacle.common.protocol.Warrant proof = 2;
       private com.tentacle.common.protocol.ProtoAdmin.Warrant proof_ = com.tentacle.common.protocol.ProtoAdmin.Warrant.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoAdmin.Warrant, com.tentacle.common.protocol.ProtoAdmin.Warrant.Builder, com.tentacle.common.protocol.ProtoAdmin.WarrantOrBuilder> proofBuilder_;
@@ -9327,7 +9327,7 @@ public final class ProtoAdmin {
         onChanged();
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.SysGmTalk)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.SysGmTalk)
     }
     
     static {
@@ -9335,18 +9335,18 @@ public final class ProtoAdmin {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.SysGmTalk)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.SysGmTalk)
   }
   
   public interface SysGmTalkAnsOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
     
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+    // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
     boolean hasErrCode();
     com.tentacle.common.protocol.ProtoBasis.eErrorCode getErrCode();
     
@@ -9374,16 +9374,16 @@ public final class ProtoAdmin {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysGmTalkAns_descriptor;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysGmTalkAns_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysGmTalkAns_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysGmTalkAns_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -9396,7 +9396,7 @@ public final class ProtoAdmin {
       return cmd_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+    // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
     public static final int ERR_CODE_FIELD_NUMBER = 2;
     private com.tentacle.common.protocol.ProtoBasis.eErrorCode errCode_;
     public boolean hasErrCode() {
@@ -9560,15 +9560,15 @@ public final class ProtoAdmin {
        implements com.tentacle.common.protocol.ProtoAdmin.SysGmTalkAnsOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysGmTalkAns_descriptor;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysGmTalkAns_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysGmTalkAns_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysGmTalkAns_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoAdmin.SysGmTalkAns.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoAdmin.SysGmTalkAns.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -9739,7 +9739,7 @@ public final class ProtoAdmin {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -9829,7 +9829,7 @@ public final class ProtoAdmin {
         return cmdBuilder_;
       }
       
-      // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+      // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
       private com.tentacle.common.protocol.ProtoBasis.eErrorCode errCode_ = com.tentacle.common.protocol.ProtoBasis.eErrorCode.OK;
       public boolean hasErrCode() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
@@ -9874,7 +9874,7 @@ public final class ProtoAdmin {
         return this;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.SysGmTalkAns)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.SysGmTalkAns)
     }
     
     static {
@@ -9882,18 +9882,18 @@ public final class ProtoAdmin {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.SysGmTalkAns)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.SysGmTalkAns)
   }
   
   public interface SysRefreshServerStatusOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
     
-    // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+    // optional .com.tentacle.common.protocol.Warrant proof = 2;
     boolean hasProof();
     com.tentacle.common.protocol.ProtoAdmin.Warrant getProof();
     com.tentacle.common.protocol.ProtoAdmin.WarrantOrBuilder getProofOrBuilder();
@@ -9926,16 +9926,16 @@ public final class ProtoAdmin {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysRefreshServerStatus_descriptor;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysRefreshServerStatus_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysRefreshServerStatus_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysRefreshServerStatus_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -9948,7 +9948,7 @@ public final class ProtoAdmin {
       return cmd_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+    // optional .com.tentacle.common.protocol.Warrant proof = 2;
     public static final int PROOF_FIELD_NUMBER = 2;
     private com.tentacle.common.protocol.ProtoAdmin.Warrant proof_;
     public boolean hasProof() {
@@ -10133,15 +10133,15 @@ public final class ProtoAdmin {
        implements com.tentacle.common.protocol.ProtoAdmin.SysRefreshServerStatusOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysRefreshServerStatus_descriptor;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysRefreshServerStatus_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysRefreshServerStatus_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysRefreshServerStatus_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoAdmin.SysRefreshServerStatus.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoAdmin.SysRefreshServerStatus.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -10333,7 +10333,7 @@ public final class ProtoAdmin {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -10423,7 +10423,7 @@ public final class ProtoAdmin {
         return cmdBuilder_;
       }
       
-      // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+      // optional .com.tentacle.common.protocol.Warrant proof = 2;
       private com.tentacle.common.protocol.ProtoAdmin.Warrant proof_ = com.tentacle.common.protocol.ProtoAdmin.Warrant.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoAdmin.Warrant, com.tentacle.common.protocol.ProtoAdmin.Warrant.Builder, com.tentacle.common.protocol.ProtoAdmin.WarrantOrBuilder> proofBuilder_;
@@ -10555,7 +10555,7 @@ public final class ProtoAdmin {
         return this;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.SysRefreshServerStatus)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.SysRefreshServerStatus)
     }
     
     static {
@@ -10563,22 +10563,22 @@ public final class ProtoAdmin {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.SysRefreshServerStatus)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.SysRefreshServerStatus)
   }
   
   public interface SysOnlinersOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
     
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+    // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
     boolean hasErrCode();
     com.tentacle.common.protocol.ProtoBasis.eErrorCode getErrCode();
     
-    // repeated .com.tentacle.callofwild.protocol.SysOnliners.SimpleInfo info = 3;
+    // repeated .com.tentacle.common.protocol.SysOnliners.SimpleInfo info = 3;
     java.util.List<com.tentacle.common.protocol.ProtoAdmin.SysOnliners.SimpleInfo> 
         getInfoList();
     com.tentacle.common.protocol.ProtoAdmin.SysOnliners.SimpleInfo getInfo(int index);
@@ -10608,12 +10608,12 @@ public final class ProtoAdmin {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysOnliners_descriptor;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysOnliners_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysOnliners_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysOnliners_fieldAccessorTable;
     }
     
     public interface SimpleInfoOrBuilder
@@ -10647,12 +10647,12 @@ public final class ProtoAdmin {
       
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysOnliners_SimpleInfo_descriptor;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysOnliners_SimpleInfo_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysOnliners_SimpleInfo_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysOnliners_SimpleInfo_fieldAccessorTable;
       }
       
       private int bitField0_;
@@ -10834,15 +10834,15 @@ public final class ProtoAdmin {
          implements com.tentacle.common.protocol.ProtoAdmin.SysOnliners.SimpleInfoOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysOnliners_SimpleInfo_descriptor;
+          return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysOnliners_SimpleInfo_descriptor;
         }
         
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysOnliners_SimpleInfo_fieldAccessorTable;
+          return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysOnliners_SimpleInfo_fieldAccessorTable;
         }
         
-        // Construct using com.tentacle.callofwild.protocol.ProtoAdmin.SysOnliners.SimpleInfo.newBuilder()
+        // Construct using com.tentacle.common.protocol.ProtoAdmin.SysOnliners.SimpleInfo.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
@@ -11037,7 +11037,7 @@ public final class ProtoAdmin {
           onChanged();
         }
         
-        // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.SysOnliners.SimpleInfo)
+        // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.SysOnliners.SimpleInfo)
       }
       
       static {
@@ -11045,11 +11045,11 @@ public final class ProtoAdmin {
         defaultInstance.initFields();
       }
       
-      // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.SysOnliners.SimpleInfo)
+      // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.SysOnliners.SimpleInfo)
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -11062,7 +11062,7 @@ public final class ProtoAdmin {
       return cmd_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+    // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
     public static final int ERR_CODE_FIELD_NUMBER = 2;
     private com.tentacle.common.protocol.ProtoBasis.eErrorCode errCode_;
     public boolean hasErrCode() {
@@ -11072,7 +11072,7 @@ public final class ProtoAdmin {
       return errCode_;
     }
     
-    // repeated .com.tentacle.callofwild.protocol.SysOnliners.SimpleInfo info = 3;
+    // repeated .com.tentacle.common.protocol.SysOnliners.SimpleInfo info = 3;
     public static final int INFO_FIELD_NUMBER = 3;
     private java.util.List<com.tentacle.common.protocol.ProtoAdmin.SysOnliners.SimpleInfo> info_;
     public java.util.List<com.tentacle.common.protocol.ProtoAdmin.SysOnliners.SimpleInfo> getInfoList() {
@@ -11237,15 +11237,15 @@ public final class ProtoAdmin {
        implements com.tentacle.common.protocol.ProtoAdmin.SysOnlinersOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysOnliners_descriptor;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysOnliners_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysOnliners_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysOnliners_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoAdmin.SysOnliners.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoAdmin.SysOnliners.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -11450,7 +11450,7 @@ public final class ProtoAdmin {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -11540,7 +11540,7 @@ public final class ProtoAdmin {
         return cmdBuilder_;
       }
       
-      // optional .com.tentacle.callofwild.protocol.eErrorCode err_code = 2;
+      // optional .com.tentacle.common.protocol.eErrorCode err_code = 2;
       private com.tentacle.common.protocol.ProtoBasis.eErrorCode errCode_ = com.tentacle.common.protocol.ProtoBasis.eErrorCode.OK;
       public boolean hasErrCode() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
@@ -11564,7 +11564,7 @@ public final class ProtoAdmin {
         return this;
       }
       
-      // repeated .com.tentacle.callofwild.protocol.SysOnliners.SimpleInfo info = 3;
+      // repeated .com.tentacle.common.protocol.SysOnliners.SimpleInfo info = 3;
       private java.util.List<com.tentacle.common.protocol.ProtoAdmin.SysOnliners.SimpleInfo> info_ =
         java.util.Collections.emptyList();
       private void ensureInfoIsMutable() {
@@ -11750,7 +11750,7 @@ public final class ProtoAdmin {
         return infoBuilder_;
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.SysOnliners)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.SysOnliners)
     }
     
     static {
@@ -11758,18 +11758,18 @@ public final class ProtoAdmin {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.SysOnliners)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.SysOnliners)
   }
   
   public interface SysUnblockOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
     
-    // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+    // optional .com.tentacle.common.protocol.Warrant proof = 2;
     boolean hasProof();
     com.tentacle.common.protocol.ProtoAdmin.Warrant getProof();
     com.tentacle.common.protocol.ProtoAdmin.WarrantOrBuilder getProofOrBuilder();
@@ -11778,7 +11778,7 @@ public final class ProtoAdmin {
     boolean hasPlayerId();
     long getPlayerId();
     
-    // optional .com.tentacle.callofwild.protocol.eCommand behavior = 4;
+    // optional .com.tentacle.common.protocol.eCommand behavior = 4;
     boolean hasBehavior();
     com.tentacle.common.protocol.ProtoBasis.eCommand getBehavior();
     
@@ -11806,16 +11806,16 @@ public final class ProtoAdmin {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysUnblock_descriptor;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysUnblock_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysUnblock_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysUnblock_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -11828,7 +11828,7 @@ public final class ProtoAdmin {
       return cmd_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+    // optional .com.tentacle.common.protocol.Warrant proof = 2;
     public static final int PROOF_FIELD_NUMBER = 2;
     private com.tentacle.common.protocol.ProtoAdmin.Warrant proof_;
     public boolean hasProof() {
@@ -11851,7 +11851,7 @@ public final class ProtoAdmin {
       return playerId_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.eCommand behavior = 4;
+    // optional .com.tentacle.common.protocol.eCommand behavior = 4;
     public static final int BEHAVIOR_FIELD_NUMBER = 4;
     private com.tentacle.common.protocol.ProtoBasis.eCommand behavior_;
     public boolean hasBehavior() {
@@ -12053,15 +12053,15 @@ public final class ProtoAdmin {
        implements com.tentacle.common.protocol.ProtoAdmin.SysUnblockOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysUnblock_descriptor;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysUnblock_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysUnblock_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysUnblock_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoAdmin.SysUnblock.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoAdmin.SysUnblock.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -12273,7 +12273,7 @@ public final class ProtoAdmin {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -12363,7 +12363,7 @@ public final class ProtoAdmin {
         return cmdBuilder_;
       }
       
-      // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+      // optional .com.tentacle.common.protocol.Warrant proof = 2;
       private com.tentacle.common.protocol.ProtoAdmin.Warrant proof_ = com.tentacle.common.protocol.ProtoAdmin.Warrant.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoAdmin.Warrant, com.tentacle.common.protocol.ProtoAdmin.Warrant.Builder, com.tentacle.common.protocol.ProtoAdmin.WarrantOrBuilder> proofBuilder_;
@@ -12474,7 +12474,7 @@ public final class ProtoAdmin {
         return this;
       }
       
-      // optional .com.tentacle.callofwild.protocol.eCommand behavior = 4;
+      // optional .com.tentacle.common.protocol.eCommand behavior = 4;
       private com.tentacle.common.protocol.ProtoBasis.eCommand behavior_ = com.tentacle.common.protocol.ProtoBasis.eCommand.NOP;
       public boolean hasBehavior() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
@@ -12534,7 +12534,7 @@ public final class ProtoAdmin {
         onChanged();
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.SysUnblock)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.SysUnblock)
     }
     
     static {
@@ -12542,18 +12542,18 @@ public final class ProtoAdmin {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.SysUnblock)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.SysUnblock)
   }
   
   public interface SysPwdResetOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     boolean hasCmd();
     com.tentacle.common.protocol.ProtoBasis.Instruction getCmd();
     com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder getCmdOrBuilder();
     
-    // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+    // optional .com.tentacle.common.protocol.Warrant proof = 2;
     boolean hasProof();
     com.tentacle.common.protocol.ProtoAdmin.Warrant getProof();
     com.tentacle.common.protocol.ProtoAdmin.WarrantOrBuilder getProofOrBuilder();
@@ -12598,16 +12598,16 @@ public final class ProtoAdmin {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysPwdReset_descriptor;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysPwdReset_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysPwdReset_fieldAccessorTable;
+      return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysPwdReset_fieldAccessorTable;
     }
     
     private int bitField0_;
-    // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+    // optional .com.tentacle.common.protocol.Instruction cmd = 1;
     public static final int CMD_FIELD_NUMBER = 1;
     private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_;
     public boolean hasCmd() {
@@ -12620,7 +12620,7 @@ public final class ProtoAdmin {
       return cmd_;
     }
     
-    // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+    // optional .com.tentacle.common.protocol.Warrant proof = 2;
     public static final int PROOF_FIELD_NUMBER = 2;
     private com.tentacle.common.protocol.ProtoAdmin.Warrant proof_;
     public boolean hasProof() {
@@ -12925,15 +12925,15 @@ public final class ProtoAdmin {
        implements com.tentacle.common.protocol.ProtoAdmin.SysPwdResetOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysPwdReset_descriptor;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysPwdReset_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_callofwild_protocol_SysPwdReset_fieldAccessorTable;
+        return com.tentacle.common.protocol.ProtoAdmin.internal_static_com_tentacle_common_protocol_SysPwdReset_fieldAccessorTable;
       }
       
-      // Construct using com.tentacle.callofwild.protocol.ProtoAdmin.SysPwdReset.newBuilder()
+      // Construct using com.tentacle.common.protocol.ProtoAdmin.SysPwdReset.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -13167,7 +13167,7 @@ public final class ProtoAdmin {
       
       private int bitField0_;
       
-      // optional .com.tentacle.callofwild.protocol.Instruction cmd = 1;
+      // optional .com.tentacle.common.protocol.Instruction cmd = 1;
       private com.tentacle.common.protocol.ProtoBasis.Instruction cmd_ = com.tentacle.common.protocol.ProtoBasis.Instruction.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoBasis.Instruction, com.tentacle.common.protocol.ProtoBasis.Instruction.Builder, com.tentacle.common.protocol.ProtoBasis.InstructionOrBuilder> cmdBuilder_;
@@ -13257,7 +13257,7 @@ public final class ProtoAdmin {
         return cmdBuilder_;
       }
       
-      // optional .com.tentacle.callofwild.protocol.Warrant proof = 2;
+      // optional .com.tentacle.common.protocol.Warrant proof = 2;
       private com.tentacle.common.protocol.ProtoAdmin.Warrant proof_ = com.tentacle.common.protocol.ProtoAdmin.Warrant.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.tentacle.common.protocol.ProtoAdmin.Warrant, com.tentacle.common.protocol.ProtoAdmin.Warrant.Builder, com.tentacle.common.protocol.ProtoAdmin.WarrantOrBuilder> proofBuilder_;
@@ -13497,7 +13497,7 @@ public final class ProtoAdmin {
         onChanged();
       }
       
-      // @@protoc_insertion_point(builder_scope:com.tentacle.callofwild.protocol.SysPwdReset)
+      // @@protoc_insertion_point(builder_scope:com.tentacle.common.protocol.SysPwdReset)
     }
     
     static {
@@ -13505,104 +13505,104 @@ public final class ProtoAdmin {
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:com.tentacle.callofwild.protocol.SysPwdReset)
+    // @@protoc_insertion_point(class_scope:com.tentacle.common.protocol.SysPwdReset)
   }
   
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_Warrant_descriptor;
+    internal_static_com_tentacle_common_protocol_Warrant_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_Warrant_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_Warrant_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_SysReloadCfg_descriptor;
+    internal_static_com_tentacle_common_protocol_SysReloadCfg_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_SysReloadCfg_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_SysReloadCfg_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_SysPost_descriptor;
+    internal_static_com_tentacle_common_protocol_SysPost_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_SysPost_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_SysPost_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_SysPresentGift_descriptor;
+    internal_static_com_tentacle_common_protocol_SysPresentGift_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_SysPresentGift_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_SysPresentGift_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_SysPresentGift_Gift_descriptor;
+    internal_static_com_tentacle_common_protocol_SysPresentGift_Gift_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_SysPresentGift_Gift_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_SysPresentGift_Gift_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_SysCommonReq_descriptor;
+    internal_static_com_tentacle_common_protocol_SysCommonReq_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_SysCommonReq_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_SysCommonReq_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_SysQueryDeadAns_descriptor;
+    internal_static_com_tentacle_common_protocol_SysQueryDeadAns_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_SysQueryDeadAns_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_SysQueryDeadAns_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_SysSendMail_descriptor;
+    internal_static_com_tentacle_common_protocol_SysSendMail_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_SysSendMail_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_SysSendMail_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_SysGetReloadables_descriptor;
+    internal_static_com_tentacle_common_protocol_SysGetReloadables_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_SysGetReloadables_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_SysGetReloadables_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_SysLimitPlayerBehavior_descriptor;
+    internal_static_com_tentacle_common_protocol_SysLimitPlayerBehavior_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_SysLimitPlayerBehavior_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_SysLimitPlayerBehavior_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_SysGetSession_descriptor;
+    internal_static_com_tentacle_common_protocol_SysGetSession_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_SysGetSession_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_SysGetSession_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_SysGetSessionAns_descriptor;
+    internal_static_com_tentacle_common_protocol_SysGetSessionAns_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_SysGetSessionAns_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_SysGetSessionAns_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_SysGmTalk_descriptor;
+    internal_static_com_tentacle_common_protocol_SysGmTalk_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_SysGmTalk_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_SysGmTalk_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_SysGmTalkAns_descriptor;
+    internal_static_com_tentacle_common_protocol_SysGmTalkAns_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_SysGmTalkAns_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_SysGmTalkAns_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_SysRefreshServerStatus_descriptor;
+    internal_static_com_tentacle_common_protocol_SysRefreshServerStatus_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_SysRefreshServerStatus_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_SysRefreshServerStatus_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_SysOnliners_descriptor;
+    internal_static_com_tentacle_common_protocol_SysOnliners_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_SysOnliners_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_SysOnliners_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_SysOnliners_SimpleInfo_descriptor;
+    internal_static_com_tentacle_common_protocol_SysOnliners_SimpleInfo_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_SysOnliners_SimpleInfo_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_SysOnliners_SimpleInfo_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_SysUnblock_descriptor;
+    internal_static_com_tentacle_common_protocol_SysUnblock_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_SysUnblock_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_SysUnblock_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tentacle_callofwild_protocol_SysPwdReset_descriptor;
+    internal_static_com_tentacle_common_protocol_SysPwdReset_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_tentacle_callofwild_protocol_SysPwdReset_fieldAccessorTable;
+      internal_static_com_tentacle_common_protocol_SysPwdReset_fieldAccessorTable;
   
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -13612,244 +13612,241 @@ public final class ProtoAdmin {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\020ProtoAdmin.proto\022 com.tentacle.callofw" +
-      "ild.protocol\032\020ProtoBasis.proto\"-\n\007Warran" +
-      "t\022\022\n\nadmin_name\030\001 \001(\t\022\016\n\006cachet\030\002 \001(\t\"\227\001" +
-      "\n\014SysReloadCfg\022:\n\003cmd\030\001 \001(\0132-.com.tentac" +
-      "le.callofwild.protocol.Instruction\0228\n\005pr" +
-      "oof\030\002 \001(\0132).com.tentacle.callofwild.prot" +
-      "ocol.Warrant\022\021\n\twhich_cfg\030\004 \001(\t\"\220\001\n\007SysP" +
-      "ost\022:\n\003cmd\030\001 \001(\0132-.com.tentacle.callofwi" +
-      "ld.protocol.Instruction\0228\n\005proof\030\002 \001(\0132)" +
-      ".com.tentacle.callofwild.protocol.Warran",
-      "t\022\017\n\007content\030\003 \001(\t\"\377\002\n\016SysPresentGift\022:\n" +
-      "\003cmd\030\001 \001(\0132-.com.tentacle.callofwild.pro" +
-      "tocol.Instruction\0228\n\005proof\030\002 \001(\0132).com.t" +
-      "entacle.callofwild.protocol.Warrant\022\014\n\004n" +
-      "ame\030\004 \003(\t\022D\n\005gifts\030\005 \003(\01325.com.tentacle." +
-      "callofwild.protocol.SysPresentGift.Gift\022" +
-      "\017\n\007doneeId\030\006 \003(\003\032\221\001\n\004Gift\022\016\n\006cfg_no\030\001 \001(" +
-      "\005\022\016\n\006amount\030\002 \001(\005\022\033\n\023equip_strengthen_lv" +
-      "\030\003 \001(\005\0228\n\003res\030\004 \003(\0132+.com.tentacle.callo" +
-      "fwild.protocol.ResAmount\022\022\n\nreputation\030\005",
-      " \001(\005\"\204\001\n\014SysCommonReq\022:\n\003cmd\030\001 \001(\0132-.com" +
-      ".tentacle.callofwild.protocol.Instructio" +
-      "n\0228\n\005proof\030\002 \001(\0132).com.tentacle.callofwi" +
-      "ld.protocol.Warrant\"\251\001\n\017SysQueryDeadAns\022" +
-      ":\n\003cmd\030\001 \001(\0132-.com.tentacle.callofwild.p" +
-      "rotocol.Instruction\022>\n\010err_code\030\002 \001(\0162,." +
-      "com.tentacle.callofwild.protocol.eErrorC" +
-      "ode\022\032\n\022cur_size_msg_queue\030\003 \001(\005\"\315\001\n\013SysS" +
-      "endMail\022:\n\003cmd\030\001 \001(\0132-.com.tentacle.call" +
-      "ofwild.protocol.Instruction\0228\n\005proof\030\002 \001",
-      "(\0132).com.tentacle.callofwild.protocol.Wa" +
-      "rrant\022\014\n\004from\030\003 \001(\t\022\014\n\004time\030\004 \001(\003\022\017\n\007sub" +
-      "ject\030\005 \001(\t\022\017\n\007content\030\006 \001(\t\022\n\n\002to\030\007 \003(\t\"" +
-      "\235\001\n\021SysGetReloadables\022:\n\003cmd\030\001 \001(\0132-.com" +
-      ".tentacle.callofwild.protocol.Instructio" +
-      "n\022>\n\010err_code\030\002 \001(\0162,.com.tentacle.callo" +
-      "fwild.protocol.eErrorCode\022\014\n\004cfgs\030\003 \003(\t\"" +
-      "\361\001\n\026SysLimitPlayerBehavior\022:\n\003cmd\030\001 \001(\0132" +
-      "-.com.tentacle.callofwild.protocol.Instr" +
-      "uction\0228\n\005proof\030\002 \001(\0132).com.tentacle.cal",
-      "lofwild.protocol.Warrant\022\021\n\tplayer_id\030\003 " +
-      "\001(\003\022\026\n\016begin_ban_time\030\004 \001(\003\022\024\n\014end_ban_t" +
-      "ime\030\005 \001(\003\022\014\n\004memo\030\006 \001(\t\022\022\n\nsupervisor\030\007 " +
-      "\001(\t\"\251\001\n\rSysGetSession\022:\n\003cmd\030\001 \001(\0132-.com" +
-      ".tentacle.callofwild.protocol.Instructio" +
-      "n\0228\n\005proof\030\002 \001(\0132).com.tentacle.callofwi" +
-      "ld.protocol.Warrant\022\021\n\tserver_id\030\003 \001(\005\022\017" +
-      "\n\007user_id\030\004 \001(\005\"\310\001\n\020SysGetSessionAns\022:\n\003" +
-      "cmd\030\001 \001(\0132-.com.tentacle.callofwild.prot" +
-      "ocol.Instruction\022>\n\010err_code\030\002 \001(\0162,.com",
-      ".tentacle.callofwild.protocol.eErrorCode" +
-      "\022\017\n\007user_id\030\003 \001(\005\022\023\n\013session_key\030\004 \001(\t\022\022" +
-      "\n\ntime_stamp\030\005 \001(\003\"\226\001\n\tSysGmTalk\022:\n\003cmd\030" +
-      "\001 \001(\0132-.com.tentacle.callofwild.protocol" +
-      ".Instruction\0228\n\005proof\030\002 \001(\0132).com.tentac" +
-      "le.callofwild.protocol.Warrant\022\023\n\013game_m" +
-      "aster\030\003 \001(\t\"\242\001\n\014SysGmTalkAns\022:\n\003cmd\030\001 \001(" +
-      "\0132-.com.tentacle.callofwild.protocol.Ins" +
-      "truction\022>\n\010err_code\030\002 \001(\0162,.com.tentacl" +
-      "e.callofwild.protocol.eErrorCode\022\026\n\016game",
-      "_master_id\030\003 \001(\003\"\266\001\n\026SysRefreshServerSta" +
-      "tus\022:\n\003cmd\030\001 \001(\0132-.com.tentacle.callofwi" +
-      "ld.protocol.Instruction\0228\n\005proof\030\002 \001(\0132)" +
-      ".com.tentacle.callofwild.protocol.Warran" +
-      "t\022\021\n\tserver_id\030\003 \001(\005\022\023\n\013busy_degree\030\004 \001(" +
-      "\005\"\371\001\n\013SysOnliners\022:\n\003cmd\030\001 \001(\0132-.com.ten" +
-      "tacle.callofwild.protocol.Instruction\022>\n" +
-      "\010err_code\030\002 \001(\0162,.com.tentacle.callofwil" +
-      "d.protocol.eErrorCode\022F\n\004info\030\003 \003(\01328.co" +
-      "m.tentacle.callofwild.protocol.SysOnline",
-      "rs.SimpleInfo\032&\n\nSimpleInfo\022\n\n\002id\030\001 \001(\003\022" +
-      "\014\n\004name\030\002 \001(\t\"\347\001\n\nSysUnblock\022:\n\003cmd\030\001 \001(" +
-      "\0132-.com.tentacle.callofwild.protocol.Ins" +
-      "truction\0228\n\005proof\030\002 \001(\0132).com.tentacle.c" +
-      "allofwild.protocol.Warrant\022\021\n\tplayer_id\030" +
-      "\003 \001(\003\022<\n\010behavior\030\004 \001(\0162*.com.tentacle.c" +
-      "allofwild.protocol.eCommand\022\022\n\nsuperviso" +
-      "r\030\005 \001(\t\"\340\001\n\013SysPwdReset\022:\n\003cmd\030\001 \001(\0132-.c" +
-      "om.tentacle.callofwild.protocol.Instruct" +
-      "ion\0228\n\005proof\030\002 \001(\0132).com.tentacle.callof",
-      "wild.protocol.Warrant\022\017\n\007user_id\030\003 \001(\005\022\021" +
-      "\n\tuser_name\030\004 \001(\t\022\021\n\tplayer_id\030\005 \001(\003\022\023\n\013" +
-      "player_name\030\006 \001(\t\022\017\n\007new_pwd\030\007 \001(\t"
+      "\n\020ProtoAdmin.proto\022\034com.tentacle.common." +
+      "protocol\032\020ProtoBasis.proto\"-\n\007Warrant\022\022\n" +
+      "\nadmin_name\030\001 \001(\t\022\016\n\006cachet\030\002 \001(\t\"\217\001\n\014Sy" +
+      "sReloadCfg\0226\n\003cmd\030\001 \001(\0132).com.tentacle.c" +
+      "ommon.protocol.Instruction\0224\n\005proof\030\002 \001(" +
+      "\0132%.com.tentacle.common.protocol.Warrant" +
+      "\022\021\n\twhich_cfg\030\004 \001(\t\"\210\001\n\007SysPost\0226\n\003cmd\030\001" +
+      " \001(\0132).com.tentacle.common.protocol.Inst" +
+      "ruction\0224\n\005proof\030\002 \001(\0132%.com.tentacle.co" +
+      "mmon.protocol.Warrant\022\017\n\007content\030\003 \001(\t\"\357",
+      "\002\n\016SysPresentGift\0226\n\003cmd\030\001 \001(\0132).com.ten" +
+      "tacle.common.protocol.Instruction\0224\n\005pro" +
+      "of\030\002 \001(\0132%.com.tentacle.common.protocol." +
+      "Warrant\022\014\n\004name\030\004 \003(\t\022@\n\005gifts\030\005 \003(\01321.c" +
+      "om.tentacle.common.protocol.SysPresentGi" +
+      "ft.Gift\022\017\n\007doneeId\030\006 \003(\003\032\215\001\n\004Gift\022\016\n\006cfg" +
+      "_no\030\001 \001(\005\022\016\n\006amount\030\002 \001(\005\022\033\n\023equip_stren" +
+      "gthen_lv\030\003 \001(\005\0224\n\003res\030\004 \003(\0132\'.com.tentac" +
+      "le.common.protocol.ResAmount\022\022\n\nreputati" +
+      "on\030\005 \001(\005\"|\n\014SysCommonReq\0226\n\003cmd\030\001 \001(\0132).",
+      "com.tentacle.common.protocol.Instruction" +
+      "\0224\n\005proof\030\002 \001(\0132%.com.tentacle.common.pr" +
+      "otocol.Warrant\"\241\001\n\017SysQueryDeadAns\0226\n\003cm" +
+      "d\030\001 \001(\0132).com.tentacle.common.protocol.I" +
+      "nstruction\022:\n\010err_code\030\002 \001(\0162(.com.tenta" +
+      "cle.common.protocol.eErrorCode\022\032\n\022cur_si" +
+      "ze_msg_queue\030\003 \001(\005\"\305\001\n\013SysSendMail\0226\n\003cm" +
+      "d\030\001 \001(\0132).com.tentacle.common.protocol.I" +
+      "nstruction\0224\n\005proof\030\002 \001(\0132%.com.tentacle" +
+      ".common.protocol.Warrant\022\014\n\004from\030\003 \001(\t\022\014",
+      "\n\004time\030\004 \001(\003\022\017\n\007subject\030\005 \001(\t\022\017\n\007content" +
+      "\030\006 \001(\t\022\n\n\002to\030\007 \003(\t\"\225\001\n\021SysGetReloadables" +
+      "\0226\n\003cmd\030\001 \001(\0132).com.tentacle.common.prot" +
+      "ocol.Instruction\022:\n\010err_code\030\002 \001(\0162(.com" +
+      ".tentacle.common.protocol.eErrorCode\022\014\n\004" +
+      "cfgs\030\003 \003(\t\"\351\001\n\026SysLimitPlayerBehavior\0226\n" +
+      "\003cmd\030\001 \001(\0132).com.tentacle.common.protoco" +
+      "l.Instruction\0224\n\005proof\030\002 \001(\0132%.com.tenta" +
+      "cle.common.protocol.Warrant\022\021\n\tplayer_id" +
+      "\030\003 \001(\003\022\026\n\016begin_ban_time\030\004 \001(\003\022\024\n\014end_ba",
+      "n_time\030\005 \001(\003\022\014\n\004memo\030\006 \001(\t\022\022\n\nsupervisor" +
+      "\030\007 \001(\t\"\241\001\n\rSysGetSession\0226\n\003cmd\030\001 \001(\0132)." +
+      "com.tentacle.common.protocol.Instruction" +
+      "\0224\n\005proof\030\002 \001(\0132%.com.tentacle.common.pr" +
+      "otocol.Warrant\022\021\n\tserver_id\030\003 \001(\005\022\017\n\007use" +
+      "r_id\030\004 \001(\005\"\300\001\n\020SysGetSessionAns\0226\n\003cmd\030\001" +
+      " \001(\0132).com.tentacle.common.protocol.Inst" +
+      "ruction\022:\n\010err_code\030\002 \001(\0162(.com.tentacle" +
+      ".common.protocol.eErrorCode\022\017\n\007user_id\030\003" +
+      " \001(\005\022\023\n\013session_key\030\004 \001(\t\022\022\n\ntime_stamp\030",
+      "\005 \001(\003\"\216\001\n\tSysGmTalk\0226\n\003cmd\030\001 \001(\0132).com.t" +
+      "entacle.common.protocol.Instruction\0224\n\005p" +
+      "roof\030\002 \001(\0132%.com.tentacle.common.protoco" +
+      "l.Warrant\022\023\n\013game_master\030\003 \001(\t\"\232\001\n\014SysGm" +
+      "TalkAns\0226\n\003cmd\030\001 \001(\0132).com.tentacle.comm" +
+      "on.protocol.Instruction\022:\n\010err_code\030\002 \001(" +
+      "\0162(.com.tentacle.common.protocol.eErrorC" +
+      "ode\022\026\n\016game_master_id\030\003 \001(\003\"\256\001\n\026SysRefre" +
+      "shServerStatus\0226\n\003cmd\030\001 \001(\0132).com.tentac" +
+      "le.common.protocol.Instruction\0224\n\005proof\030",
+      "\002 \001(\0132%.com.tentacle.common.protocol.War" +
+      "rant\022\021\n\tserver_id\030\003 \001(\005\022\023\n\013busy_degree\030\004" +
+      " \001(\005\"\355\001\n\013SysOnliners\0226\n\003cmd\030\001 \001(\0132).com." +
+      "tentacle.common.protocol.Instruction\022:\n\010" +
+      "err_code\030\002 \001(\0162(.com.tentacle.common.pro" +
+      "tocol.eErrorCode\022B\n\004info\030\003 \003(\01324.com.ten" +
+      "tacle.common.protocol.SysOnliners.Simple" +
+      "Info\032&\n\nSimpleInfo\022\n\n\002id\030\001 \001(\003\022\014\n\004name\030\002" +
+      " \001(\t\"\333\001\n\nSysUnblock\0226\n\003cmd\030\001 \001(\0132).com.t" +
+      "entacle.common.protocol.Instruction\0224\n\005p",
+      "roof\030\002 \001(\0132%.com.tentacle.common.protoco" +
+      "l.Warrant\022\021\n\tplayer_id\030\003 \001(\003\0228\n\010behavior" +
+      "\030\004 \001(\0162&.com.tentacle.common.protocol.eC" +
+      "ommand\022\022\n\nsupervisor\030\005 \001(\t\"\330\001\n\013SysPwdRes" +
+      "et\0226\n\003cmd\030\001 \001(\0132).com.tentacle.common.pr" +
+      "otocol.Instruction\0224\n\005proof\030\002 \001(\0132%.com." +
+      "tentacle.common.protocol.Warrant\022\017\n\007user" +
+      "_id\030\003 \001(\005\022\021\n\tuser_name\030\004 \001(\t\022\021\n\tplayer_i" +
+      "d\030\005 \001(\003\022\023\n\013player_name\030\006 \001(\t\022\017\n\007new_pwd\030" +
+      "\007 \001(\t"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_com_tentacle_callofwild_protocol_Warrant_descriptor =
+          internal_static_com_tentacle_common_protocol_Warrant_descriptor =
             getDescriptor().getMessageTypes().get(0);
-          internal_static_com_tentacle_callofwild_protocol_Warrant_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_Warrant_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_Warrant_descriptor,
+              internal_static_com_tentacle_common_protocol_Warrant_descriptor,
               new java.lang.String[] { "AdminName", "Cachet", },
               com.tentacle.common.protocol.ProtoAdmin.Warrant.class,
               com.tentacle.common.protocol.ProtoAdmin.Warrant.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_SysReloadCfg_descriptor =
+          internal_static_com_tentacle_common_protocol_SysReloadCfg_descriptor =
             getDescriptor().getMessageTypes().get(1);
-          internal_static_com_tentacle_callofwild_protocol_SysReloadCfg_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_SysReloadCfg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_SysReloadCfg_descriptor,
+              internal_static_com_tentacle_common_protocol_SysReloadCfg_descriptor,
               new java.lang.String[] { "Cmd", "Proof", "WhichCfg", },
               com.tentacle.common.protocol.ProtoAdmin.SysReloadCfg.class,
               com.tentacle.common.protocol.ProtoAdmin.SysReloadCfg.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_SysPost_descriptor =
+          internal_static_com_tentacle_common_protocol_SysPost_descriptor =
             getDescriptor().getMessageTypes().get(2);
-          internal_static_com_tentacle_callofwild_protocol_SysPost_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_SysPost_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_SysPost_descriptor,
+              internal_static_com_tentacle_common_protocol_SysPost_descriptor,
               new java.lang.String[] { "Cmd", "Proof", "Content", },
               com.tentacle.common.protocol.ProtoAdmin.SysPost.class,
               com.tentacle.common.protocol.ProtoAdmin.SysPost.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_SysPresentGift_descriptor =
+          internal_static_com_tentacle_common_protocol_SysPresentGift_descriptor =
             getDescriptor().getMessageTypes().get(3);
-          internal_static_com_tentacle_callofwild_protocol_SysPresentGift_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_SysPresentGift_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_SysPresentGift_descriptor,
+              internal_static_com_tentacle_common_protocol_SysPresentGift_descriptor,
               new java.lang.String[] { "Cmd", "Proof", "Name", "Gifts", "DoneeId", },
               com.tentacle.common.protocol.ProtoAdmin.SysPresentGift.class,
               com.tentacle.common.protocol.ProtoAdmin.SysPresentGift.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_SysPresentGift_Gift_descriptor =
-            internal_static_com_tentacle_callofwild_protocol_SysPresentGift_descriptor.getNestedTypes().get(0);
-          internal_static_com_tentacle_callofwild_protocol_SysPresentGift_Gift_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_SysPresentGift_Gift_descriptor =
+            internal_static_com_tentacle_common_protocol_SysPresentGift_descriptor.getNestedTypes().get(0);
+          internal_static_com_tentacle_common_protocol_SysPresentGift_Gift_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_SysPresentGift_Gift_descriptor,
+              internal_static_com_tentacle_common_protocol_SysPresentGift_Gift_descriptor,
               new java.lang.String[] { "CfgNo", "Amount", "EquipStrengthenLv", "Res", "Reputation", },
               com.tentacle.common.protocol.ProtoAdmin.SysPresentGift.Gift.class,
               com.tentacle.common.protocol.ProtoAdmin.SysPresentGift.Gift.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_SysCommonReq_descriptor =
+          internal_static_com_tentacle_common_protocol_SysCommonReq_descriptor =
             getDescriptor().getMessageTypes().get(4);
-          internal_static_com_tentacle_callofwild_protocol_SysCommonReq_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_SysCommonReq_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_SysCommonReq_descriptor,
+              internal_static_com_tentacle_common_protocol_SysCommonReq_descriptor,
               new java.lang.String[] { "Cmd", "Proof", },
               com.tentacle.common.protocol.ProtoAdmin.SysCommonReq.class,
               com.tentacle.common.protocol.ProtoAdmin.SysCommonReq.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_SysQueryDeadAns_descriptor =
+          internal_static_com_tentacle_common_protocol_SysQueryDeadAns_descriptor =
             getDescriptor().getMessageTypes().get(5);
-          internal_static_com_tentacle_callofwild_protocol_SysQueryDeadAns_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_SysQueryDeadAns_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_SysQueryDeadAns_descriptor,
+              internal_static_com_tentacle_common_protocol_SysQueryDeadAns_descriptor,
               new java.lang.String[] { "Cmd", "ErrCode", "CurSizeMsgQueue", },
               com.tentacle.common.protocol.ProtoAdmin.SysQueryDeadAns.class,
               com.tentacle.common.protocol.ProtoAdmin.SysQueryDeadAns.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_SysSendMail_descriptor =
+          internal_static_com_tentacle_common_protocol_SysSendMail_descriptor =
             getDescriptor().getMessageTypes().get(6);
-          internal_static_com_tentacle_callofwild_protocol_SysSendMail_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_SysSendMail_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_SysSendMail_descriptor,
+              internal_static_com_tentacle_common_protocol_SysSendMail_descriptor,
               new java.lang.String[] { "Cmd", "Proof", "From", "Time", "Subject", "Content", "To", },
               com.tentacle.common.protocol.ProtoAdmin.SysSendMail.class,
               com.tentacle.common.protocol.ProtoAdmin.SysSendMail.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_SysGetReloadables_descriptor =
+          internal_static_com_tentacle_common_protocol_SysGetReloadables_descriptor =
             getDescriptor().getMessageTypes().get(7);
-          internal_static_com_tentacle_callofwild_protocol_SysGetReloadables_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_SysGetReloadables_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_SysGetReloadables_descriptor,
+              internal_static_com_tentacle_common_protocol_SysGetReloadables_descriptor,
               new java.lang.String[] { "Cmd", "ErrCode", "Cfgs", },
               com.tentacle.common.protocol.ProtoAdmin.SysGetReloadables.class,
               com.tentacle.common.protocol.ProtoAdmin.SysGetReloadables.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_SysLimitPlayerBehavior_descriptor =
+          internal_static_com_tentacle_common_protocol_SysLimitPlayerBehavior_descriptor =
             getDescriptor().getMessageTypes().get(8);
-          internal_static_com_tentacle_callofwild_protocol_SysLimitPlayerBehavior_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_SysLimitPlayerBehavior_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_SysLimitPlayerBehavior_descriptor,
+              internal_static_com_tentacle_common_protocol_SysLimitPlayerBehavior_descriptor,
               new java.lang.String[] { "Cmd", "Proof", "PlayerId", "BeginBanTime", "EndBanTime", "Memo", "Supervisor", },
               com.tentacle.common.protocol.ProtoAdmin.SysLimitPlayerBehavior.class,
               com.tentacle.common.protocol.ProtoAdmin.SysLimitPlayerBehavior.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_SysGetSession_descriptor =
+          internal_static_com_tentacle_common_protocol_SysGetSession_descriptor =
             getDescriptor().getMessageTypes().get(9);
-          internal_static_com_tentacle_callofwild_protocol_SysGetSession_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_SysGetSession_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_SysGetSession_descriptor,
+              internal_static_com_tentacle_common_protocol_SysGetSession_descriptor,
               new java.lang.String[] { "Cmd", "Proof", "ServerId", "UserId", },
               com.tentacle.common.protocol.ProtoAdmin.SysGetSession.class,
               com.tentacle.common.protocol.ProtoAdmin.SysGetSession.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_SysGetSessionAns_descriptor =
+          internal_static_com_tentacle_common_protocol_SysGetSessionAns_descriptor =
             getDescriptor().getMessageTypes().get(10);
-          internal_static_com_tentacle_callofwild_protocol_SysGetSessionAns_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_SysGetSessionAns_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_SysGetSessionAns_descriptor,
+              internal_static_com_tentacle_common_protocol_SysGetSessionAns_descriptor,
               new java.lang.String[] { "Cmd", "ErrCode", "UserId", "SessionKey", "TimeStamp", },
               com.tentacle.common.protocol.ProtoAdmin.SysGetSessionAns.class,
               com.tentacle.common.protocol.ProtoAdmin.SysGetSessionAns.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_SysGmTalk_descriptor =
+          internal_static_com_tentacle_common_protocol_SysGmTalk_descriptor =
             getDescriptor().getMessageTypes().get(11);
-          internal_static_com_tentacle_callofwild_protocol_SysGmTalk_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_SysGmTalk_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_SysGmTalk_descriptor,
+              internal_static_com_tentacle_common_protocol_SysGmTalk_descriptor,
               new java.lang.String[] { "Cmd", "Proof", "GameMaster", },
               com.tentacle.common.protocol.ProtoAdmin.SysGmTalk.class,
               com.tentacle.common.protocol.ProtoAdmin.SysGmTalk.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_SysGmTalkAns_descriptor =
+          internal_static_com_tentacle_common_protocol_SysGmTalkAns_descriptor =
             getDescriptor().getMessageTypes().get(12);
-          internal_static_com_tentacle_callofwild_protocol_SysGmTalkAns_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_SysGmTalkAns_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_SysGmTalkAns_descriptor,
+              internal_static_com_tentacle_common_protocol_SysGmTalkAns_descriptor,
               new java.lang.String[] { "Cmd", "ErrCode", "GameMasterId", },
               com.tentacle.common.protocol.ProtoAdmin.SysGmTalkAns.class,
               com.tentacle.common.protocol.ProtoAdmin.SysGmTalkAns.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_SysRefreshServerStatus_descriptor =
+          internal_static_com_tentacle_common_protocol_SysRefreshServerStatus_descriptor =
             getDescriptor().getMessageTypes().get(13);
-          internal_static_com_tentacle_callofwild_protocol_SysRefreshServerStatus_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_SysRefreshServerStatus_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_SysRefreshServerStatus_descriptor,
+              internal_static_com_tentacle_common_protocol_SysRefreshServerStatus_descriptor,
               new java.lang.String[] { "Cmd", "Proof", "ServerId", "BusyDegree", },
               com.tentacle.common.protocol.ProtoAdmin.SysRefreshServerStatus.class,
               com.tentacle.common.protocol.ProtoAdmin.SysRefreshServerStatus.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_SysOnliners_descriptor =
+          internal_static_com_tentacle_common_protocol_SysOnliners_descriptor =
             getDescriptor().getMessageTypes().get(14);
-          internal_static_com_tentacle_callofwild_protocol_SysOnliners_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_SysOnliners_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_SysOnliners_descriptor,
+              internal_static_com_tentacle_common_protocol_SysOnliners_descriptor,
               new java.lang.String[] { "Cmd", "ErrCode", "Info", },
               com.tentacle.common.protocol.ProtoAdmin.SysOnliners.class,
               com.tentacle.common.protocol.ProtoAdmin.SysOnliners.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_SysOnliners_SimpleInfo_descriptor =
-            internal_static_com_tentacle_callofwild_protocol_SysOnliners_descriptor.getNestedTypes().get(0);
-          internal_static_com_tentacle_callofwild_protocol_SysOnliners_SimpleInfo_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_SysOnliners_SimpleInfo_descriptor =
+            internal_static_com_tentacle_common_protocol_SysOnliners_descriptor.getNestedTypes().get(0);
+          internal_static_com_tentacle_common_protocol_SysOnliners_SimpleInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_SysOnliners_SimpleInfo_descriptor,
+              internal_static_com_tentacle_common_protocol_SysOnliners_SimpleInfo_descriptor,
               new java.lang.String[] { "Id", "Name", },
               com.tentacle.common.protocol.ProtoAdmin.SysOnliners.SimpleInfo.class,
               com.tentacle.common.protocol.ProtoAdmin.SysOnliners.SimpleInfo.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_SysUnblock_descriptor =
+          internal_static_com_tentacle_common_protocol_SysUnblock_descriptor =
             getDescriptor().getMessageTypes().get(15);
-          internal_static_com_tentacle_callofwild_protocol_SysUnblock_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_SysUnblock_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_SysUnblock_descriptor,
+              internal_static_com_tentacle_common_protocol_SysUnblock_descriptor,
               new java.lang.String[] { "Cmd", "Proof", "PlayerId", "Behavior", "Supervisor", },
               com.tentacle.common.protocol.ProtoAdmin.SysUnblock.class,
               com.tentacle.common.protocol.ProtoAdmin.SysUnblock.Builder.class);
-          internal_static_com_tentacle_callofwild_protocol_SysPwdReset_descriptor =
+          internal_static_com_tentacle_common_protocol_SysPwdReset_descriptor =
             getDescriptor().getMessageTypes().get(16);
-          internal_static_com_tentacle_callofwild_protocol_SysPwdReset_fieldAccessorTable = new
+          internal_static_com_tentacle_common_protocol_SysPwdReset_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_tentacle_callofwild_protocol_SysPwdReset_descriptor,
+              internal_static_com_tentacle_common_protocol_SysPwdReset_descriptor,
               new java.lang.String[] { "Cmd", "Proof", "UserId", "UserName", "PlayerId", "PlayerName", "NewPwd", },
               com.tentacle.common.protocol.ProtoAdmin.SysPwdReset.class,
               com.tentacle.common.protocol.ProtoAdmin.SysPwdReset.Builder.class);
