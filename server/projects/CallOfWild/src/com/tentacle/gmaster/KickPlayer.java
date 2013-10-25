@@ -5,7 +5,6 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 
 import com.tentacle.common.protocol.MyCodec;
 import com.tentacle.common.protocol.MyCodec.Cocoon;
@@ -13,18 +12,13 @@ import com.tentacle.common.protocol.ProtoAdmin.SysLimitPlayerBehavior;
 import com.tentacle.common.protocol.ProtoAdmin.Warrant;
 import com.tentacle.common.protocol.ProtoBasis.Instruction;
 import com.tentacle.common.protocol.ProtoBasis.eCommand;
-import com.tentacle.common.util.Utils;
 
 public class KickPlayer {
 	private static final Logger logger = Logger.getLogger(KickPlayer.class);
 
-	public static void kickPlayer(String adminName, String adminKey, String memo, long playerId, long span) throws IOException {
+	public static void kickPlayer(String adminName, String adminKey, String memo, long playerId, long span, String ipv4, int port) throws IOException {
 		final int req_timeout_duration = 60 * 1000; // by millisecond
-		
-		String ipv4 = Utils.getConfig().getProperty("game_server.ipv4", "127.0.0.1");		
-		String tmp = Utils.getConfig().getProperty("game_server.listening_port", "10000");
-		int port = Integer.parseInt(tmp);
-		
+
 		Socket socket = new Socket();
 		socket.setTcpNoDelay(true);
 		socket.setSoTimeout(req_timeout_duration);
@@ -47,8 +41,8 @@ public class KickPlayer {
 
 	public static void main(String[] args) {
 //		PropertyConfigurator.configure(Consts.LOG_FILE_PATH);
-		if (args.length < 5) {
-			System.out.println("usage: KickPlayer name key player timespan memo");
+		if (args.length < 7) {
+			System.out.println("usage: KickPlayer name key player timespan memo ip port");
 			return;
 		}
 		String adminName = args[0];
@@ -56,10 +50,12 @@ public class KickPlayer {
 		long playerId = Long.parseLong(args[2]);
 		long timespan = Long.parseLong(args[3]);
 		String memo = args[4];
+		String ip = args[5];
+		int port = Integer.parseInt(args[6]);
 		
 		
 		try {
-			kickPlayer(adminName, adminKey, memo, playerId, timespan);
+			kickPlayer(adminName, adminKey, memo, playerId, timespan, ip, port);
 			String fingerprint = "[" + adminName + "] kick the player[" + playerId + "].";
 			System.out.println(fingerprint);
 			logger.info(fingerprint);

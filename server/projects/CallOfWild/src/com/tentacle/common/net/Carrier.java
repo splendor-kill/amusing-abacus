@@ -20,6 +20,7 @@ import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 
 import com.tentacle.common.protocol.MyCodec;
 import com.tentacle.common.util.Utils;
+import com.tentacle.game.config.GameServerConfig;
 import com.tentacle.game.server.GameServerHandler;
 
 public class Carrier {
@@ -59,18 +60,12 @@ public class Carrier {
 //						INITIAL_READ_BUFFER_SIZE,
 //						MAX_READ_BUFFER_SIZE));
 				
-		int listeningPort = 0;
 		try {
-		    String str = Utils.getConfig().getProperty("game_server.listening_port", "");
-			listeningPort = Integer.parseInt(str);			
-			String loginServerHost = Utils.getConfig().getProperty("login_server.ipv4", "127.0.0.1");
-			str = Utils.getConfig().getProperty("login_server.listening_port", "");
-			int loginServerPort = Integer.parseInt(str);
-		    loginServerAddress = new InetSocketAddress(loginServerHost, loginServerPort);
+		    loginServerAddress = new InetSocketAddress(GameServerConfig.getInst().getPortalIp(), GameServerConfig.getInst().getPortalListeningPort());
 		} catch (NumberFormatException e) {
 			logger.error("the game server port number cfg error.");
 		}		
-		Channel serverChannel = bootstrap.bind(new InetSocketAddress(listeningPort));
+		Channel serverChannel = bootstrap.bind(new InetSocketAddress(GameServerConfig.getInst().getGameServerListeningPort()));
 		allChannels.add(serverChannel);      
 		
 		bootstrapToLogin = new ClientBootstrap(new NioClientSocketChannelFactory(

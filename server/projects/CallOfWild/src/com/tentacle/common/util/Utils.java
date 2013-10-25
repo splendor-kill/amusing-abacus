@@ -1080,10 +1080,6 @@ public class Utils {
         }
     }
 
-    public static Properties getConfig() {
-        return null;
-    }
-	
     public static String md5(String inStr) {
         MessageDigest md5 = null;
         try {

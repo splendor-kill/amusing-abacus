@@ -17,23 +17,12 @@ import com.tentacle.common.protocol.ProtoBasis.Instruction;
 import com.tentacle.common.protocol.ProtoBasis.eCommand;
 import com.tentacle.common.protocol.ProtoBasis.eErrorCode;
 import com.tentacle.common.script.LoadScriptFile;
-import com.tentacle.common.util.Utils;
-import com.tentacle.game.designer.Glossary;
+import com.tentacle.game.config.GameServerConfig;
 import com.tentacle.game.persist.GameDbThread;
 import com.tentacle.login.persist.LoginDbThread;
 
 public class GameServer {
 	private static final Logger logger = Logger.getLogger(GameServer.class);
-
-	private String adminName;
-	private String adminKey;
-	private String scriptDir;
-	private int cultureLang;
-	private int theServerId;
-	private int msgQueueSize;
-    private int dbBatchCommitSize;
-	private boolean isConsoleEnabled = false;
-	private boolean isLoggerEnabled = false;
 
 	private Carrier carrier;   //network
 	private LinkedBlockingQueue<ReqDat> reqQ;	//request queue
@@ -63,38 +52,10 @@ public class GameServer {
         world.server = this;
     }
 	
-	private void parseConfig() {
-        String strTmp = Utils.getConfig().getProperty("logger_debug", "no");
-//        if (Consts.LOGGER_DEBUG.equals(strTmp))
-            isConsoleEnabled = true;
-        strTmp = Utils.getConfig().getProperty("console_debug", "yes");
-//        if (Consts.CONSOLE_DEBUG.equals(strTmp))
-            isLoggerEnabled = true;
-	    
-		strTmp = Utils.getConfig().getProperty("culture_lang", "chs");
-        if (strTmp.equals("cht"))
-            cultureLang = Glossary.culture_lang_cht;
-        else if (strTmp.equals("english"))
-            cultureLang = Glossary.culture_lang_en;
-        else
-            cultureLang = Glossary.culture_lang_chs;
-		
-        adminName = Utils.getConfig().getProperty("admin_name", "admin");
-        adminKey = Utils.getConfig().getProperty("admin_key", "");
-        scriptDir = Utils.getConfig().getProperty("script_dir", ".");
-
-        strTmp = Utils.getConfig().getProperty("game_server.id", "1");
-        theServerId = Integer.parseInt(strTmp);
-        strTmp = Utils.getConfig().getProperty("db_batch_commit_size", "500");
-        dbBatchCommitSize = Integer.parseInt(strTmp);
-        strTmp = Utils.getConfig().getProperty("msg_queue.size", "50000");
-        msgQueueSize = Integer.parseInt(strTmp);
-	}
-	
 	public boolean init() {
         try {
-            parseConfig();
-            LoadScriptFile.loadScriptFile(scriptDir);
+            GameServerConfig.getInst().reload();
+            LoadScriptFile.loadScriptFile(GameServerConfig.getInst().getScriptDir());
         } catch (Exception e) {
             return false;
         }
@@ -104,7 +65,7 @@ public class GameServer {
 		dbThread = GameDbThread.getInst();
 	    dbThread.start();
 	    		
-		reqQ = new LinkedBlockingQueue<ReqDat>(msgQueueSize);
+		reqQ = new LinkedBlockingQueue<ReqDat>(GameServerConfig.getInst().getMsgQueueSize());
 		
 		world.setupTimer();
 		world.load();		
@@ -167,8 +128,9 @@ public class GameServer {
 		World world = World.getInstance();
 		SysRefreshServerStatus.Builder sb = SysRefreshServerStatus.newBuilder()
                  .setCmd(Instruction.newBuilder().setCmd(eCommand.SYS_REFRESH_SERVER_STATUS))
-                 .setServerId(getTheServerId())
-                 .setProof(Warrant.newBuilder().setAdminName(world.server.getAdminName()).setCachet(world.server.getAdminKey()));
+                 .setServerId(GameServerConfig.getInst().getTheServerId())
+                 .setProof(Warrant.newBuilder().setAdminName(GameServerConfig.getInst().getAdminName())
+                 .setCachet(GameServerConfig.getInst().getAdminPwd()));
 //		sb.setBusyDegree(Consts.GAMESRVSTATUS.RUN_WELL);
         
 		world.send(getCarrier().getChannel2LoginServer(), sb.getCmd(), eErrorCode.OK, sb.build());   
@@ -178,8 +140,8 @@ public class GameServer {
 		World world = World.getInstance();
 		SysRefreshServerStatus.Builder sb = SysRefreshServerStatus.newBuilder()
                  .setCmd(Instruction.newBuilder().setCmd(eCommand.SYS_REFRESH_SERVER_STATUS))
-                 .setServerId(getTheServerId())
-                 .setProof(Warrant.newBuilder().setAdminName(world.server.getAdminName()).setCachet(world.server.getAdminKey()));
+                 .setServerId(GameServerConfig.getInst().getTheServerId())
+                 .setProof(Warrant.newBuilder().setAdminName(GameServerConfig.getInst().getAdminName()).setCachet(GameServerConfig.getInst().getAdminPwd()));
 //		sb.setBusyDegree(Consts.GAMESRVSTATUS.HALTED);
         
 		world.send(getCarrier().getChannel2LoginServer(), sb.getCmd(), eErrorCode.OK, sb.build());   
@@ -249,9 +211,7 @@ public class GameServer {
 	    return this.carrier;
 	}
 	
-	public int getTheServerId() {
-	    return theServerId;
-	}
+
 	
 	public static void main(String[] args) throws IOException {	
 //		PropertyConfigurator.configure(Consts.LOG_FILE_PATH);
@@ -273,25 +233,7 @@ public class GameServer {
         logger.info("server exit.");
 	}
 
-    public int getCultureLang() {
-        return cultureLang;
-    }
 
-    public boolean isConsoleEnabled() {
-        return isConsoleEnabled;
-    }
-
-    public boolean isLoggerEnabled() {
-        return isLoggerEnabled;
-    }
-
-    public String getAdminName() {
-        return adminName;
-    }
-
-    public String getAdminKey() {
-        return adminKey;
-    }
     
     public boolean addMsg(ReqDat req) throws InterruptedException {
         return reqQ.offer(req, 500L, TimeUnit.MILLISECONDS);
@@ -301,8 +243,4 @@ public class GameServer {
         return reqQ.size();
     }
 
-    public int getDbBatchCommitSize() {
-        return dbBatchCommitSize;
-    }
-    
 }

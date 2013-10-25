@@ -39,22 +39,16 @@ public class SafeQuit {
 
 	public static void main(String[] args) {
 //		PropertyConfigurator.configure(Consts.LOG_FILE_PATH);
-		if (args.length < 2) {
+		if (args.length < 3) {
 			System.out.println("usage: SafeQuit name key port");
 			return;
 		}
 		String adminName = args[0];
 		String adminKey = args[1];
 		String ipv4 = "localhost";
-		String tmp;
-		if (args.length == 3) {
-		    tmp = args[2];
-		} else {
-		    tmp = Utils.getConfig().getProperty("game_server.listening_port", "10000");
-		}
-		
-		try {
-            int port = Integer.parseInt(tmp);
+		int port = Integer.parseInt(args[2]);
+	
+		try {          
 			quitSafely(adminName, adminKey, ipv4, port);
 			String fingerprint = "[" + adminName + "] issue the 'EXIT' command at " + (new Date()) + ".";
 			logger.info(fingerprint);

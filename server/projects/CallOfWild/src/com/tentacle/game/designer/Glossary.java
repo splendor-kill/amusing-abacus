@@ -14,9 +14,9 @@ import au.com.bytecode.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;
 
 
 public class Glossary {
-	public static final int culture_lang_chs = 0;
-	public static final int culture_lang_cht = 1;
-	public static final int culture_lang_en = 2;
+	public static final int CULTURE_LANG_CHS = 0;
+	public static final int CULTURE_LANG_CHT = 1;
+	public static final int CULTURE_LANG_EN = 2;
 	
 	private String key;
 	private String chs;		//Chinese simplified
@@ -122,11 +122,11 @@ public class Glossary {
 	}
 
 	public String getStr(String key, int lang) {
-		if (lang == culture_lang_chs)
+		if (lang == CULTURE_LANG_CHS)
 			return cacheChs.get(key);
-		else if (lang == culture_lang_cht)
+		else if (lang == CULTURE_LANG_CHT)
 			return cacheCht.get(key);
-		else if (lang == culture_lang_en)
+		else if (lang == CULTURE_LANG_EN)
 			return cacheEn.get(key);
 		return null;
 	}
@@ -136,9 +136,9 @@ public class Glossary {
 		
 		for (String k : cfg.getKeys()) {
 			try {
-				System.out.println(""+k+": "+cfg.getStr(k, culture_lang_chs)+",\t"
-						+cfg.getStr(k, culture_lang_cht)+",\t"
-						+cfg.getStr(k, culture_lang_en)+"");				
+				System.out.println(""+k+": "+cfg.getStr(k, CULTURE_LANG_CHS)+",\t"
+						+cfg.getStr(k, CULTURE_LANG_CHT)+",\t"
+						+cfg.getStr(k, CULTURE_LANG_EN)+"");				
 			} catch (Exception e) {
 				System.out.println();
 			}
