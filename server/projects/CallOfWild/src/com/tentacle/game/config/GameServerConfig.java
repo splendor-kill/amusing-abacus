@@ -105,14 +105,14 @@ public class GameServerConfig implements IReloadable {
 
         str = p.getProperty("game_server.id", "1");
         theServerId = Integer.parseInt(str);
-        str = p.getProperty("game_server.db_batch_commit_size", "500");
+        str = p.getProperty("game_server.db_batch_commit_size", "100");
         dbBatchCommitSize = Integer.parseInt(str);
         str = p.getProperty("game_server.msg_queue_size", "1000");
         msgQueueSize = Integer.parseInt(str);        
         str = p.getProperty("game_server.listening_port", "");
         gameServerListeningPort = Integer.parseInt(str);        
         portalIp = p.getProperty("game_server.portal_ip", "localhost");
-        str = p.getProperty("portal.listening_port", "");
+        str = p.getProperty("game_server.portal_listening_port", "");
         portalListeningPort = Integer.parseInt(str);
        
     }

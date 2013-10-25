@@ -5,6 +5,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.jboss.netty.channel.Channel;
 
 import com.google.protobuf.InvalidProtocolBufferException;
@@ -17,6 +18,7 @@ import com.tentacle.common.protocol.ProtoBasis.Instruction;
 import com.tentacle.common.protocol.ProtoBasis.eCommand;
 import com.tentacle.common.protocol.ProtoBasis.eErrorCode;
 import com.tentacle.common.script.LoadScriptFile;
+import com.tentacle.common.util.Utils;
 import com.tentacle.game.config.GameServerConfig;
 import com.tentacle.game.persist.GameDbThread;
 import com.tentacle.login.persist.LoginDbThread;
@@ -214,7 +216,7 @@ public class GameServer {
 
 	
 	public static void main(String[] args) throws IOException {	
-//		PropertyConfigurator.configure(Consts.LOG_FILE_PATH);
+		PropertyConfigurator.configure(Utils.INBORN_LOG_CONFIG);
 
         final GameServer server = getInst();
         Thread.currentThread().setPriority(Thread.MAX_PRIORITY);

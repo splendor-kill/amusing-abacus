@@ -35,6 +35,7 @@ public final class LoginServerConfig implements IReloadable {
     private int redisRetryNum;
     private int sessionExpireSec;
     private long freezeNetworkTimeInMs;
+    private int dbBatchCommitSize;
 
     private static class LazyHolder {
         public static final LoginServerConfig INSTANCE = new LoginServerConfig();
@@ -117,7 +118,9 @@ public final class LoginServerConfig implements IReloadable {
         str = p.getProperty("portal.session_expire_seconds", "10");
         sessionExpireSec = Integer.parseInt(str);
         str = p.getProperty("portal.freeze_network_time_in_ms", "30000");
-        freezeNetworkTimeInMs = Long.parseLong(str);        
+        freezeNetworkTimeInMs = Long.parseLong(str);
+        str = p.getProperty("portal.db_batch_commit_size", "100");
+        dbBatchCommitSize = Integer.parseInt(str);
     }
     
     @Override
@@ -210,6 +213,10 @@ public final class LoginServerConfig implements IReloadable {
 
     public long getFreezeNetworkTimeInMs() {
         return freezeNetworkTimeInMs;
+    }
+
+    public int getDbBatchCommitSize() {
+        return dbBatchCommitSize;
     }
 
 }

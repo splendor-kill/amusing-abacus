@@ -4,6 +4,7 @@ import java.sql.Connection;
 
 import com.tentacle.common.persist.DbConnPoolManager;
 import com.tentacle.common.persist.DbThread;
+import com.tentacle.login.config.LoginServerConfig;
 
 public class LoginDbThread extends DbThread {
     @Override
@@ -13,7 +14,7 @@ public class LoginDbThread extends DbThread {
     
     @Override
     public int getBatchCommitSize() {
-        return 200;
+        return LoginServerConfig.getInst().getDbBatchCommitSize();
     }
 
     private static class LazyHolder {
