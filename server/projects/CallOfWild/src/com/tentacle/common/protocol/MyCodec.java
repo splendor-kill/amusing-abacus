@@ -85,9 +85,9 @@ public class MyCodec {
 			
 			Cocoon v = (Cocoon) msg;
 			ChannelBuffer buf = ChannelBuffers.dynamicBuffer();
-			buf.writeInt(v.dat.length);
-			buf.writeInt(v.cmdType);
 			buf.writeLong(v.cmdId);
+			buf.writeInt(v.cmdType);
+			buf.writeInt(v.dat.length);
 			buf.writeBytes(v.dat);
 			return buf;
 		}
@@ -101,9 +101,9 @@ public class MyCodec {
 			}
 			buffer.markReaderIndex();
 			
-			int bodyLen = buffer.readInt();
-			int cmdType = buffer.readInt();
 			long cmdId = buffer.readLong();
+			int cmdType = buffer.readInt();
+			int bodyLen = buffer.readInt();
 
 			if (bodyLen < 0 || buffer.readableBytes() < 0) {
 //			    System.out.println("body len:" + bodyLen + " cmd type:" + cmdType + " cmd id:" + cmdId + " readable:" + buffer.readableBytes());

@@ -81,6 +81,9 @@ public class RedisTeamster {
     }
     
     public int getImeiNum(String imei) {
+        if (!getJedis().hexists("imei_to_num", imei)) {
+            return 0;
+        }                
         return Integer.parseInt(getJedis().hget("imei_to_num", imei));
     }
     
@@ -122,7 +125,7 @@ public class RedisTeamster {
     }
     
     public String getUserPwd(String strUserId) {
-        return getJedis().hget(strUserId, "user_pwd");
+        return getJedis().hmget(strUserId, "user_pwd").get(0);
     }
     
     public void renewExpireTime(String key) {

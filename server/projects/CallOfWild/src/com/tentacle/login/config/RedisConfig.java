@@ -19,7 +19,7 @@ public class RedisConfig {
     }
     
     public static int getExpireTime() {// in second
-        return 60;// * 60 * 24 * 10;
+        return 60 * 60 * 24 * 10;
     }
     
 }

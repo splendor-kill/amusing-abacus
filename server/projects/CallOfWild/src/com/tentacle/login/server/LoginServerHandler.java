@@ -268,7 +268,7 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
 				.setCmd(makeCmd(accountReqDat.getCmd()))
 				.setErrCode(eErrorCode.OK);
 		
-		do {		    
+		do {
             if (!RedisTeamster.getInst().existUserName(name)) {
                 ans.setErrCode(eErrorCode.ERR_NAME_OR_PASSWORD).setName(name);
                 break;
@@ -283,7 +283,7 @@ public class LoginServerHandler extends SimpleChannelUpstreamHandler {
             int userId = Integer.parseInt(strUserId);
             
             String userPwd = RedisTeamster.getInst().getUserPwd(strUserId);
-            if (userPwd != null) {                
+            if (userPwd != null) {
                 RedisTeamster.getInst().renewExpireTime(strUserId);
             } else {
                 UserInfo info = UserService.queryByUserId(userId);
