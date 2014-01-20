@@ -12,6 +12,7 @@ import java.io.Reader;
 import java.io.Writer;
 import java.net.InetAddress;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -594,7 +595,8 @@ public class Utils {
 	}
 	
 	public static void main(String[] args) {
-	    testMd5();
+	    testBytesToHex();
+//	    testMd5();
 //		testLinear();
 //	    testTimeInPeriod();
 //	    testGetTimePeriodInMs();
@@ -1078,38 +1080,54 @@ public class Utils {
         for (int i = 0; i < 50; i++) {
             System. out.println(i + ":\t" + Arrays.toString( linear(i, 3)));
         }
-    }
-
+    }    
+    
     public static String md5(String inStr) {
-        MessageDigest md5 = null;
         try {
-            md5 = MessageDigest.getInstance("MD5");
-        } catch (Exception e) {
-            logger.error(e);
-            return "";
+            MessageDigest md5 = MessageDigest.getInstance("MD5");
+            byte[] byteArray = inStr.getBytes();
+            return bytesToHex(md5.digest(byteArray));
+        } catch (NoSuchAlgorithmException e) {
+            logger.error(e.getMessage(), e);
         }
-        
-        char[] charArray = inStr.toCharArray();
-        byte[] byteArray = new byte[charArray.length];
-
-        for (int i = 0; i < charArray.length; i++)
-            byteArray[i] = (byte) charArray[i];
-
-        byte[] md5Bytes = md5.digest(byteArray);
-
-        StringBuilder hexValue = new StringBuilder();        
-        for (int i = 0; i < md5Bytes.length; i++) {
-            int val = ((int) md5Bytes[i]) & 0xff;
-            if (val < 16)
-                hexValue.append("0");
-            hexValue.append(Integer.toHexString(val));
-        }
-        return hexValue.toString();
+        return null;
     }
     
     private static void testMd5() {
         System.out.println(md5(""));
     }
     
+    public static String bytesToHex(byte[] bytes) {
+        final char[] hexArray = { '0', '1', '2', '3', '4', '5', '6', '7', '8',
+                '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+        char[] hexChars = new char[bytes.length * 2];
+        int k = 0;
+        for (int j = 0; j < bytes.length; j++) {
+            int v = bytes[j] & 0xFF;
+            hexChars[k++] = hexArray[v >>> 4];
+            hexChars[k++] = hexArray[v & 0x0F];
+        }
+        return new String(hexChars);
+    }
+    
+    private static void testBytesToHex() {
+        byte[] data = "can not sleep well".getBytes();
+        System.out.println(bytesToHex(data));
+        long[] notes = new long[10];
+        for (int j = 0; j < notes.length; j++) {
+            long begin = System.currentTimeMillis();
+            final int num = 10000000;
+            for (int i = 0; i < num; i++) {
+                bytesToHex(data);
+            }
+            long period = System.currentTimeMillis() - begin;
+            notes[j] = period;
+        }
+        long sum = 0;
+        for (long i : notes) {
+            sum += i;
+        }
+        System.out.println("avg[" + sum / notes.length + "]");
+    }
     
 }
