@@ -62,7 +62,27 @@ squad
 fireteam
 
 
-
+	轮回(进化, evolve)
+	升灵(突变, metamorphose)
+	宠物品质(quality)
+	宠物境界(根据等级计算得来的, attainment)
+	灵宝(一种道具)
+	宠物默契度(战斗胜利时加点, understanding)
+	致命(deadly strike)
+	韧性(tenacity)
+	锻造(装备升级, upgrade)
+	炼化(装备加属性, forge)
+	锻造提升(一个上限值，用于限制锻造装备升级, craft neck)
+	段位(duan stage)
+	灵石(游戏币, InGameCoin)
+	成就值(achievement)
+	熟练度(dexterity)
+	境界(attainment)
+	熟练度(dexterity)
+	境界(attainment)
+	道具(item)
+	包裹(inventory)
+	任务(quest)
 
 
 
