@@ -33,6 +33,13 @@ public class MyCodec {
      * +-----------------|-----------------|---------------+
      * | body_len(int32) | cmd_type(int32) | cmd_id(int64) |
      * +-----------------|-----------------|---------------+
+     * 
+     * length (4 bytes, include length of header)
+     * id (8 bytes, reply package with the same id)
+     * flags (1 byte, digest algo, crypto algo, send or reply...)
+     * sequence number(4 bytes, for thwart replay attack)
+     * digest(for tampering prevention)
+     * command|error code (4 bytes)
      */
 	
 	public static void encode(Cocoon msg, OutputStream os) throws IOException {		

@@ -595,7 +595,8 @@ public class Utils {
 	}
 	
 	public static void main(String[] args) {
-	    testBytesToHex();
+	    testHexStrToBytes();
+//	    testBytesToHexStr();
 //	    testMd5();
 //		testLinear();
 //	    testTimeInPeriod();
@@ -1086,7 +1087,7 @@ public class Utils {
         try {
             MessageDigest md5 = MessageDigest.getInstance("MD5");
             byte[] byteArray = inStr.getBytes();
-            return bytesToHex(md5.digest(byteArray));
+            return bytesToHexStr(md5.digest(byteArray));
         } catch (NoSuchAlgorithmException e) {
             logger.error(e.getMessage(), e);
         }
@@ -1097,7 +1098,7 @@ public class Utils {
         System.out.println(md5(""));
     }
     
-    public static String bytesToHex(byte[] bytes) {
+    public static String bytesToHexStr(byte[] bytes) {
         final char[] hexArray = { '0', '1', '2', '3', '4', '5', '6', '7', '8',
                 '9', 'A', 'B', 'C', 'D', 'E', 'F' };
         char[] hexChars = new char[bytes.length * 2];
@@ -1110,15 +1111,75 @@ public class Utils {
         return new String(hexChars);
     }
     
-    private static void testBytesToHex() {
+    private static void testBytesToHexStr() {
         byte[] data = "can not sleep well".getBytes();
-        System.out.println(bytesToHex(data));
+        System.out.println(bytesToHexStr(data));
         long[] notes = new long[10];
         for (int j = 0; j < notes.length; j++) {
             long begin = System.currentTimeMillis();
             final int num = 10000000;
             for (int i = 0; i < num; i++) {
-                bytesToHex(data);
+                bytesToHexStr(data);
+            }
+            long period = System.currentTimeMillis() - begin;
+            notes[j] = period;
+        }
+        long sum = 0;
+        for (long i : notes) {
+            sum += i;
+        }
+        System.out.println("avg[" + sum / notes.length + "]");
+    }
+    
+    public static byte[] hexStrToBytes(String s) {
+        int len = s.length();
+        if ((len & 0x1) == 1) {
+            throw new IllegalArgumentException();
+        }
+        byte[] data = new byte[len / 2];
+        for (int i = 0; i < len; i += 2) {
+            int h = Character.digit(s.charAt(i), 16);
+            int l = Character.digit(s.charAt(i + 1), 16);
+            if (h == -1 || l == -1) {
+                throw new IllegalArgumentException();
+            }
+            data[i / 2] = (byte) ((h << 4) + l);
+        }
+        return data;
+    }
+    
+    public static int unitStep(int x) {
+        return (x >= 0) ? 1 : 0;
+    }
+    
+    public static byte[] hexStrToBytes2(String s) {
+        int len = s.length();
+        if ((len & 0x1) == 1) {
+            throw new IllegalArgumentException();
+        }
+        byte[] data = new byte[len / 2];
+        for (int i = 0; i < len; i += 2) {
+            int c = s.charAt(i);
+            int u = (c >= 'A') ? 1 : 0;
+            int h = u * (c - 'A' + 10) + (1 - u) * (c - '0');
+            c = s.charAt(i + 1);
+            u = (c >= 'A') ? 1 : 0;
+            int l = u * (c - 'A' + 10) + (1 - u) * (c - '0');
+            data[i / 2] = (byte) ((h << 4) + l);
+        }
+        return data;
+    }
+    
+    private static void testHexStrToBytes() {
+        String data = "63616E206E6F7420736C6565702077656C6C";
+        System.out.println(new String(hexStrToBytes2(data)));
+        System.out.println(hexStrToBytes2("g1"));
+        long[] notes = new long[10];
+        for (int j = 0; j < notes.length; j++) {
+            long begin = System.currentTimeMillis();
+            final int num = 10000000;
+            for (int i = 0; i < num; i++) {
+                hexStrToBytes2(data);
             }
             long period = System.currentTimeMillis() - begin;
             notes[j] = period;
